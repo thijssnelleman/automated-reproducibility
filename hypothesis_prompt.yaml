@@ -1,0 +1,61 @@
+---
+Introduction:
+  You will be provided with a research paper and your task is to determine what the hypothesis is the authors aimed to test **empirically**.
+
+  A hypothesis is a statement that is expected to be true, and is the main aim of investigation of a study. It has the following properties:
+  - A hypothesis must be **falsifiable** e.g. there exists a logical statement describing an observation that contradicts it.
+  - A hypothesis must be **testable** e.g. a hypothesis can be tested by an experiment.
+  - A hypothesis in empirical research must be quantifiable, e.g. the authors use a metric to measure and produce an outcome with which the hypothesis can be tested
+
+
+  You are expected to produce as output a JSON object. Each key in the JSON object should correspond to the name of each question. \
+  Within that substructure, e.g. for each question, you are expected to produce an answer with the following structure:
+
+  - "answer"; **Yes** in case of a positive result, **No** in case of a negative result.
+  - "reason"; Summarise why you provided this answer in 2-3 sentences, where you quote or paraphrase the input, on which you base your answer.
+
+
+hypothesis:
+  - Explicit Hypothesis: |
+    Determine whether the paper includes an **explicit statement of the hypothesis**, using exact phrasing or close lexical variants.
+
+    Add a key to your JSON answer, named hypothesis. If found, fill this key with your answer, in the format "The authors hypothesise that ..". Otherwise, leave an empty string as value. 
+    Leave your reasoning in the "reason" key of the JSON.
+  
+    If the paper states "We hypothesise" or "Our hypothesis is" this is considered an explicit statement.
+    This also includes explicit statements of their **research question** if they specify what they expect the outcome to be.
+
+  - Implied Hypothesis: |
+    Determine whether the paper **implies an hypothesis**, using exact phrasing or close lexical variants.
+    
+    Add a key to your JSON answer, named hypothesis. If found, fill this key with the following; **Phrase the hypothesis explictly** if this is the case with a sentence starting "The authors hypothesise that.."
+
+    In the case that the explicit hypothesis from the previous question was already found, simply refer to this answer instead.
+
+    This can often be found seperated by inspecting the abstract or introduction, where the authors first describe the problem they aim to solve, and propose an improved solution to. 
+    Then it is implied that they hypothesise that their proposed method excels at solving the problem for certain objective.
+
+    For the expected outcome, this can either be found with the problem description, or at the end of the paper in the discussion or conclusion sections.
+    However, it may be possible that this is found elsewhere in the paper.
+    If the paper only states vague things such as, "We aim to study ..." or "We aim to investigate.." without an expected outcome, this is not a hypothesis, but only a research question.
+
+  - Hypothesis Testing: |
+    Determine whether the paper **clearly states how the hypothesis is to be empirically tested**, using exact phrasing or close lexical variants.
+  
+    Provide your answer with key "testing" in the structured JSON format, where each item specifies the answers to the following questions:
+
+    - "metric": Specifying what rubrics/metrics are to be used to measure the method.
+    - "test": The tests used to determine differences between outcomes. This can be a simple comparison (e.g. greater than, less than), in which case state how this is compared. This can also be statistical test, in which case report the name of the test, with possible parameters names and their values used such as the significance level for the p-value between brackets (e.g. "T-test (p < 0.05)" or "Permutation Test (p < 0.05, permutations = 10000)").
+    - "data": What data the authors report on in the paper to test their hypothesis. This can be datasets used or data simulators such as synthetic data generators or simulation environments. Summarise the names as a list with possible citations between brackets (e.g. "MNIST (LeCun et al. 1998)", ...). In case it is defined or introduced in this work, simply state "(This work)" as a citation.
+    - "strategy": What is the strategy applied to the data to produce the outcome and possible parameters and their values, for example "K-fold cross-validation (k = 10)". For datasets or synthetic datasets / synthetic data generators this often means a splitting strategy (not required), but for simulation environments there is usually some stopping criterion such as a budget. In case the strategy is only a split between training and test set (And possible validation split), state "Random split" with the proportions between brackets (e.g. "Random split (train = 0.8, validation = 0.0, test = 0.2)").
+
+  - Hypothesis outcome: |
+    Based on your answers from the previous questions and the paper, determine whether the paper **accepts or rejects the hypothesis**.
+
+    Specify the arguments provided by the authors to justify their decision. If the authors have results that contradict the hypothesis, specify these seperately.
+
+  - Hypothesis tree: |
+    Based on your previous answers, you need to create a hypothesis tree (Directed Acyclic Graph). 
+    - The root node will contain the indentified hypothesis. 
+    - The children of the root will contain 'sub' hypothesis, ???
+    - Each sub hypothesis will need like a tree underneath it for each result produced and tested and stuff??
