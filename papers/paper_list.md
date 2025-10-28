@@ -12,11 +12,11 @@ Robustness Distributions in Neural Network Verification
 
 # Andreas Paraskeva
 
-Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence.
+Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 
 # Hadar Shavit
 
-Revisiting SATZilla Features in 2024.
+Revisiting SATZilla Features in 2024
 
 # Konstantin Kaulen
 
@@ -32,8 +32,20 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 
 # Julian Dierkes
 
-Combining Automated Optimisation of Hyperparameters and Reward Shape.
+Combining Automated Optimisation of Hyperparameters and Reward Shape
 
 # Aaron Berger
 
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks.
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
+
+# Bram Renting
+
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning
+
+# Odd Erik Gundersen
+
+The Unreasonable Effectiveness of Open Science in AI: A Replication Study
+
+# Guus Toussaint
+
+EDC: Equation Discovery for Classification paper

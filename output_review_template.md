@@ -22,7 +22,9 @@ The LLM ...
 
 [] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
 
-[] has stated an hallucination, there is (nearly) no overlap with our work.
+[] has stated an hypothesis that has (nearly) no overlap with our work.
+
+[] Other: If it is an hallucination, please explain below.
 
 Based on the LLMs answer, can you improve the answer to more accurately capture the hypothesis?
 - If you wish to change nothing, simply state the answer of the LLM
