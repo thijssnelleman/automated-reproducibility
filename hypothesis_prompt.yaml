@@ -31,7 +31,8 @@ study:
   - Experiment: |
     Determine whether the paper **clearly states how the hypothesis is to be empirically tested**, using exact phrasing or close lexical variants.
   
-    For each hypothesis, provide a key in the JSON, called experiment_n, where n is the number of the hypothesis, and inside this key provide a JSON structure with the following information:
+    For each hypothesis, provide a key in the JSON, called experiment_m, where m is the id of the experiment, and inside this key provide a JSON structure with the following information:
+    - "hypothesis": A list of hypothesis IDs that this experiment is used for.
     - "metrics": The list of metrics used for the measurements and testing.
     - "statistics": Specifying what kind of statistics are reported on (for example mean with standard deviations / confidence intervals, or median with quantiles, ..)
     - "experiment_details": A description of the experiment being conducted with relation to the hypothesis.
@@ -41,8 +42,11 @@ study:
     - "strategy": What is the strategy applied to the data to produce the outcome and possible parameters and their values, for example "K-fold cross-validation (k = 10)". For datasets or synthetic datasets / synthetic data generators this often means a splitting strategy (not required), but for simulation environments there is usually some stopping criterion such as a budget. In case the strategy is only a split between training and test set (And possible validation split), state "Random split" with the proportions between brackets (e.g. "Random split (train = 0.8, validation = 0.0, test = 0.2)").
 
   - Interpretation: |
-    Based on your answers from the previous questions and the paper, determine for each hypothesis whether the paper **accepts or rejects the hypothesis**.
+    Based on your answers from the previous questions and the paper, determine for each analysis of each experiment whether the results **support or not the hypothesis**.
+    paper **accepts or rejects the hypothesis**.
 
-    Add a key to the JSON, named interpretation_n, where n is the number of the hypothesis, and inside this key provide a JSON structure with the following information:
-    - "accept": Whether the authors accept or reject the hypothesis. This is a boolean.
-    - "reason": The reason the authors accept or reject the hypothesis. Specify the arguments provided by the authors to justify their decision. If the authors have results that contradict the hypothesis, specify these seperately.
+    Add a key to the JSON, named interpretation_k, where k is the id of the interpretation, and inside this key provide a JSON structure with the following information:
+    - "experiment": The experiment ID this interpretation is based on.
+    - "hypothesis": The hypothesis ID this interpretation aiming to support or not.
+    - "support": Whether the authors can accept the hypothesis based on this experiment outcome analysis interpretation. This is a boolean.
+    - "reason": The reason the authors decide whether to support the hypothesis. Specify the arguments provided by the authors to justify their decision. If the authors have results / reasons that contradict the hypothesis, specify these seperately. Make sure to quote / paraphrase the paper clearly and state which pages or sections you find your answers.

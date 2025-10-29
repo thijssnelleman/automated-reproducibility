@@ -1,50 +1,43 @@
 {
-  "hypothesis_1": {
-    "explicit": false,
-    "hypothesis": "The authors hypothesise that their proposed edge-based graph component pooling operator will improve computational efficiency (reduce time complexity and the number of trainable parameters) and maintain or improve classification accuracy compared to existing graph pooling methods (specifically edge contraction pooling and Graph Isomorphic Network) on benchmark datasets.",
-    "reason": {
-      "abstract": "The abstract states the goal of improving computational efficiency and reducing data loss, implying a hypothesis about performance and efficiency gains.",
-      "introduction": "The introduction explicitly mentions the aim to bridge the gap between node cluster and node drop pooling, and to create a 'relatively efficient graph pooling operator that does not drop nodes and thus reduces information loss.'",
-      "section_4": "Section 4 (Empirical Evaluation) and the conclusion reiterate the expectation that the proposed method will outperform existing methods in terms of accuracy and efficiency, and the results are used to validate this."
-    }
-  },
-
-  "experiment_1": {
-    "metrics": ["Classification Accuracy"],
-    "statistics": ["Mean and standard deviation of accuracy over 100 test scores"],
-    "experiment_details": {
-      "description": "The experiment compares the proposed edge-based graph component pooling operator against edge contraction pooling and Graph Isomorphic Network on graph classification tasks across seven benchmark datasets. The authors measure classification accuracy, number of learnable parameters, and computational efficiency (time complexity).",
-      "method": "The proposed method is integrated into graph neural network architectures and evaluated using 100 runs of 10-fold cross-validation. The results are statistically tested using a two-tailed t-test (p < 0.05)."
+    "hypothesis_1": {
+        "explicit": false,
+        "hypothesis": "The authors hypothesise that their proposed edge-based graph component pooling operator will perform statistically significantly better than existing methods (such as edge pool and Graph Isomorphic Network) on graph classification tasks, while reducing time complexity and the number of trainable parameters.",
+        "reason": "The hypothesis is implied in the abstract and introduction. The authors state their goal is to create a pooling operator that merges nodes without causing data loss and is computationally inexpensive. They explicitly mention in the abstract that their method 'performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters by 70.6% on average.' The introduction further elaborates on the limitations of existing methods and how their proposed method addresses these gaps."
     },
-    "data": [
-      "Proteins (Dobson 2003)",
-      "Reddit-Binary (Yanardag and Vishwanathan 2015)",
-      "Reddit-Multi-12K (Yanardag and Vishwanathan 2015)",
-      "Collaboration (Yanardag and Vishwanathan 2015)",
-      "IMDB Binary (Yanardag and Vishwanathan 2015)",
-      "IMDB Multi (Yanardag and Vishwanathan 2015)",
-      "NCI1 (Wale et al. 2008)",
-      "Reddit-Multi-5K (Yanardag and Vishwanathan 2015)"
-    ],
-    "results": [
-      {"accuracy": "74.7 ± 3.9"},
-      {"accuracy": "89.7 ± 3.0"},
-      {"accuracy": "48.4 ± 1.7"},
-      {"accuracy": "77.9 ± 2.0"},
-      {"accuracy": "72.7 ± 3.9"},
-      {"accuracy": "49.6 ± 4.3"},
-      {"accuracy": "72.2 ± 3.5"},
-      {"accuracy": "52.6 ± 3.0"}
-    ],
-    "test": "Two-tailed t-test (p < 0.05)",
-    "strategy": "Random split (train = 0.8, validation = 0.1, test = 0.1)"
-  },
 
-  "interpretation_1": {
-    "accept": true,
-    "reason": {
-      "accept": "The authors accept the hypothesis for most datasets. The proposed method achieves statistically significant improvements in accuracy on the Proteins and Reddit-Binary datasets compared to both baseline methods. It also reduces the number of learnable parameters by 70.6% on average compared to Diehl et al.'s method, supporting the hypothesis of improved computational efficiency.",
-      "reject": "The hypothesis is partially rejected for the NCI1 and Reddit-Multi-5K datasets, where the proposed method performs significantly worse than Xu et al.'s method. However, the authors argue that the overall reduction in parameters and comparable performance on other datasets still supports the broader hypothesis of balancing efficiency and accuracy."
+    "experiment_1": {
+        "hypothesis": ["hypothesis_1"],
+        "metrics": ["Accuracy"],
+        "statistics": ["Mean and standard deviation of accuracy over 100 test scores"],
+        "experiment_details": "The authors evaluate their edge-based graph component pooling operator on graph classification tasks using several benchmark datasets. They compare their method against two baselines: Diehl et al.'s edge contraction pooling and Xu et al.'s Graph Isomorphic Network. The experiments involve training models with different architectures and hyperparameters, using 100 repetitions of 10-fold cross-validation to ensure reliable performance measures.",
+        "data": [
+            "Proteins (Dobson 2003)",
+            "Reddit-Binary (Yanardag and Vishwanathan 2015)",
+            "Reddit-Multi-12K (Yanardag and Vishwanathan 2015)",
+            "Collaboration (Yanardag and Vishwanathan 2015)",
+            "IMDB Binary (Yanardag and Vishwanathan 2015)",
+            "IMDB Multi (Yanardag and Vishwanathan 2015)",
+            "NCI1 (Wale et al. 2008)",
+            "Reddit-Multi-5K (Yanardag and Vishwanathan 2015)"
+        ],
+        "results": [
+            {"dataset": "Proteins", "accuracy": "74.7 ± 3.9"},
+            {"dataset": "Reddit-Binary", "accuracy": "89.7 ± 3.0"},
+            {"dataset": "Reddit-Multi-12K", "accuracy": "48.4 ± 1.7"},
+            {"dataset": "Collaboration", "accuracy": "77.9 ± 2.0"},
+            {"dataset": "IMDB Binary", "accuracy": "72.7 ± 3.9"},
+            {"dataset": "IMDB Multi", "accuracy": "49.6 ± 4.3"},
+            {"dataset": "NCI1", "accuracy": "72.2 ± 3.5"},
+            {"dataset": "Reddit-Multi-5K", "accuracy": "52.6 ± 3.0"}
+        ],
+        "test": ["Two-tailed t-test (p < 0.05)"],
+        "strategy": ["100 repetitions of 10-fold cross-validation", "Random split (train = 0.8, validation = 0.1, test = 0.1)"]
+    },
+
+    "interpretation_1": {
+        "experiment": "experiment_1",
+        "hypothesis": "hypothesis_1",
+        "support": true,
+        "reason": "The authors conclude that their edge-based graph component pooling operator achieves statistically significant improvements in accuracy compared to Diehl et al.'s method on all benchmark datasets. They also show a reduction in the number of trainable parameters by 70.6% on average, supporting their hypothesis of improved computational efficiency. While their method does not outperform Xu et al.'s Graph Isomorphic Network on all datasets, it does show comparable performance on some and significant improvements on others (e.g., Proteins and Reddit-Binary). The authors argue that the reduction in parameters and computational cost, combined with the maintained or improved accuracy, supports the efficacy of their approach. The statistical significance of the results is confirmed using a two-tailed t-test (p < 0.05)."
     }
-  }
 }
