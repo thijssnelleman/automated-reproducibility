@@ -9,6 +9,12 @@ Introduction:
   You are expected to produce as output a JSON object. For each question, it is stated what keys you are expected to produce inside this JSON.
 
 study:
+  - Meta: |
+    Write in this key a JSON structure with:
+    - "title": The title of the paper
+    - "authors": A list with the names of the authors
+    - "year": The year of publication
+    - "venue": The name of the venue (Conference or Journal, if not present name the publisher).
   - Hypothesis: |
     Determine the paper's **hypothesis**, using exact phrasing or close lexical variants. This can be **explicit** or **implied**.
 
