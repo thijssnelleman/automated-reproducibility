@@ -10,7 +10,9 @@ Please answer the following questions:
 
 ## Hypothesis
 
-The LLM states a hypothesis in its answer. Please grade the answer from the following options:
+### $HYPOTHESIS_ID$
+
+The LLM states the hypothesis in its answer. Please grade each hypothesis stated from the following options:
 
 The LLM ...
 
@@ -31,12 +33,98 @@ Based on the LLMs answer, can you improve the answer to more accurately capture 
 - If you wish to improve the answer, please adapt the original answer
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording
 
-## Hypothesis testing
+### General questions
 
-The LLM has provided a table stating how your hypothesis was tested.
+The LLM has provided you with one or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-For each cell in the table, please mark if you find the answer correct or in correct.
+Please write the amount of hypothesis you had for the study: []
 
-In case there are missing rows in the table, please state in below which information is missing. Feel free to either:
-- Create your own table with missing information
-- Write lines of text, where each line represents one missing row in the table
+If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
+
+## Experiment
+
+The LLM has found one or more experiment that were used for the empirical evaluation of your hypotheses. 
+
+In each subsection one of the experiments is listed, with key details that describe it.
+For each detail, please correct the LLM if necessary;
+- You can leave the correction field empty if no corrections are necessary.
+- If any changes are required:
+    - [!] Copy the output of the LLM into your answer field
+    - If an element is partially incorrect, update it there
+    - If an element is wrong, remove it from the list
+    - If an element is missing, add it at the end
+
+### $EXPERIMENT_ID$
+
+The LLM describes this experiment as follows:
+$EXPERIMENT_DESCRIPTION$
+
+The LLM ...
+[] has described the experiment (nearly) perfectly
+[] has described the experiment but is lacking information
+[] has stated the experiment but has introduced false information or made mistakes
+[] has stated the experiment but has nearly no overlap with our work
+[] Other. If it has hallucinated, please describe below.
+
+
+
+#### Hypothesis list
+This experiment is used for the following hypotheses: $LIST_HYPOTHESIS_IDS$
+Your corrected list (empty if correct):
+
+#### Metrics list
+The measured metrics in this experiment are: $LIST_EXPERIMENT_METRICS$
+Your corrected list (empty if correct):
+
+#### Statistics
+The statistics for the metrics used are: $LIST_EXPERIMENT_STATISTICS$
+Your corrected list (empty if correct):
+
+#### Results
+
+The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom.
+
+The results of the experiment are as follows:
+
+$EXPERIMENT_RESULTS_TABLE$
+
+#### General
+
+The LLM has overall captured the experiment details...
+
+[] Very well (No major mistakes and/or missing information)
+[] Well (Some missing information and/or minor mistakes)
+[] Okay (Substantial missing information and/or mistakes)
+[] Poorly (Severe missing information and/or mistakes)
+[] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
+
+## Interpretation
+
+Experiment outcomes are analysed and interpreted to determine whether the experiment supports the hypothesis or not. 
+
+The LLM has found the following interpretations of the experiment outcomes;
+
+## $INTERPRETATION_ID$
+
+This interpretation has the following description/reasoning:
+$REASON$
+
+This interpretation is for the outcome of the following experiment: $EXPERIMENT_ID$
+Your corrected answer (empty if correct):
+
+Answer this question about the (possibly **corrected!**) experiment_id.
+This interpretation of the experiment outcome is ...
+[] Representative
+[] Adequate
+[] Acceptable
+[] (Partially) Incorrect
+[] Incorrect
+[] Hallucinatory, if so explain below:
+
+
+
+This interpretation is to support (or not) the following hypothesis: $HYPOTHESIS_ID$
+Your corrected answer (empty if correct):
+
+This interpretation supports the hypothesis: $SUPPORT$
+Your corrected answer (empty if correct):

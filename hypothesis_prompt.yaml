@@ -38,10 +38,10 @@ study:
     Determine whether the paper **clearly states how the hypothesis is to be empirically tested**, using exact phrasing or close lexical variants.
   
     For each hypothesis, provide a key in the JSON, called experiment_m, where m is the id of the experiment, and inside this key provide a JSON structure with the following information:
+    - "experiment_description": A description of the experiment being conducted with relation to the hypothesis.
     - "hypothesis": A list of hypothesis IDs that this experiment is used for.
     - "metrics": The list of metrics used for the measurements and testing.
     - "statistics": Specifying what kind of statistics are reported on (for example mean with standard deviations / confidence intervals, or median with quantiles, ..)
-    - "experiment_details": A description of the experiment being conducted with relation to the hypothesis.
     - "data": What data the authors report on in the paper to test their hypothesis. This can be datasets used or data simulators such as synthetic data generators or simulation environments. Summarise the names as a list with possible citations between brackets (e.g. "MNIST (LeCun et al. 1998)", ...). In case it is defined or introduced in this work, simply state "(This work)" as a citation.
     - "results": The a list with values found per data; Make sure the values in this list are in the same order as the data in the "data" key.
     - "test": The tests used to determine differences between outcomes. This can be a simple comparison (e.g. greater than, less than), in which case state how this is compared. This can also be statistical test, in which case report the name of the test, with possible parameters names and their values used such as the significance level for the p-value between brackets (e.g. "T-test (p < 0.05)" or "Permutation Test (p < 0.05, permutations = 10000)").
