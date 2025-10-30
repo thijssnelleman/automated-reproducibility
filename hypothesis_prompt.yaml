@@ -6,7 +6,7 @@ Introduction:
   - A hypothesis must be **testable** e.g. a hypothesis can be tested by an experiment.
   - A hypothesis in empirical research must be quantifiable, e.g. the authors use a metric to measure and produce an outcome with which the hypothesis can be tested
 
-  You are expected to produce as output a JSON object. For each question, it is stated what keys you are expected to produce inside this JSON.
+  You are expected to produce as output a JSON object **and nothing else**. For each question, it is stated what keys you are expected to produce inside this JSON.
 
 study:
   - Meta: |
