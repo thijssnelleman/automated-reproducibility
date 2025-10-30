@@ -1,0 +1,79 @@
+{
+  "Meta": {
+    "title": "The Unreasonable Effectiveness of Open Science in AI: A Replication Study",
+    "authors": [
+      "Odd Erik Gundersen",
+      "Odd Cappelen",
+      "Martin Mølnå",
+      "Nicklas Grimstad Nilsen"
+    ],
+    "year": 2025,
+    "venue": "Association for the Advancement of Artificial Intelligence (AAAI)"
+  },
+
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the availability of code and data correlates strongly with the reproducibility of AI research, and that the quality of data documentation is more important for successful replication than the quality of code documentation.",
+      "reason": "The hypothesis is implied in the abstract and introduction, where the authors state: 'The availability of code and data correlate strongly with reproducibility, as 86% of articles that shared code and data were fully or partly reproduced, while this was true for 33% of articles that shared only data. The quality of the data documentation correlates with successful replication. Poorly documented or miss-specified data will probably result in unsuccessful replication. Surprisingly, the quality of the code documentation does not correlate with successful replication.' (Abstract, Introduction)"
+    },
+
+    "hypothesis_2": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that sharing both code and data publicly is extremely important to ensure the reproducibility of AI studies, and that the reproducibility rate is significantly higher for studies that share both code and data compared to those that only share data.",
+      "reason": "The hypothesis is implied in the conclusion, where the authors state: 'This study emphasizes the effectiveness of open science. The sharing of both code and data publicly is extremely important to ensure the reproducibility of AI studies, since 86% of the studies that shared both code and data were reproduced while only 33% of the studies that only shared data were reproduced.' (Conclusion)"
+    }
+  },
+
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The study conducted a systematic replication of 30 highly cited AI studies, focusing on the availability of code and data, and the quality of documentation. The goal was to determine the correlation between these factors and the reproducibility of the studies.",
+      "hypothesis": ["hypothesis_1", "hypothesis_2"],
+      "metrics": [
+        "Reproducibility rate (Success, Partial Success, Failure, No Result, Not Started)",
+        "Number of experiments completed",
+        "Percentage of experiments that were identical, consistent, or failed",
+        "True Positive Rate (TPR) for problem types",
+        "Logistic regression weights for problem types"
+      ],
+      "statistics": [
+        "Counts and percentages of reproducibility outcomes",
+        "Logistic regression accuracy and bias",
+        "True Positive Rate (TPR) for problem types"
+      ],
+      "data": [
+        "30 highly cited AI studies from 2012, 2014, and 2016 (Scopus)",
+        "Problem types and their occurrences (Table 2)",
+        "Reproducibility outcomes (Table 1, Figure 2)"
+      ],
+      "results": [
+        [
+          "22 studies attempted, 11 successful (6 full, 5 partial), 6 failures, 5 no result",
+          "86% reproducibility for R4 (code and data), 33% for R3 (only data)",
+          "Problem types P15, P7, P18 most significant for irreproducibility"
+        ],
+        [
+          "Logistic regression accuracy: 0.91, bias: 0.20",
+          "TPR for problem types (Table 2)"
+        ]
+      ],
+      "test": [
+        "Comparison of reproducibility rates between R3 and R4 studies",
+        "Logistic regression to identify significant problem types"
+      ],
+      "strategy": [
+        "Replication of experiments using available code and data, with a 40-hour time limit per study",
+        "Classification of reproducibility outcomes based on experiment results"
+      ]
+    }
+  },
+
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": ["hypothesis_1", "hypothesis_2"],
+      "support": true,
+      "reason": "The results support both hypotheses. The study found that 86% of R4 studies (code and data shared) were reproduced, compared to 33% of R3 studies (only data shared), confirming the importance of sharing both code and data. The logistic regression and TPR analysis also confirmed that data documentation quality is more critical for reproducibility than code documentation quality. The authors conclude: 'This study emphasizes the effectiveness of open science. The sharing of both code and data publicly is extremely important to ensure the reproducibility of AI studies...' (Conclusion)"
+    }
+  }
+}
