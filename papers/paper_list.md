@@ -42,10 +42,29 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 
-# Odd Erik Gundersen
+### [Odd Erik Gundersen](odderik@ntnu.no)
 
 The Unreasonable Effectiveness of Open Science in AI: A Replication Study
 
 # Guus Toussaint
 
 EDC: Equation Discovery for Classification paper
+
+### [Xavier Fernando Cuauhtémoc Sánchez Díaz](xavier.sanchezdz@ntnu.no)
+
+Regularized Feature Selection Landscapes An Empirical Study of Multimodality
+
+Link to research: https://rdcu.be/eM9hG
+
+### [Aleksandra Jekic](aleksander.jekic@ntnu.no)
+
+Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
+
+### [Keith Downing](keithd@ntnu.no)
+
+The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents
+
+### [Pauline C Haddow](pauline@ntnu.no)
+
+Currently awaiting research paper per email.
+
