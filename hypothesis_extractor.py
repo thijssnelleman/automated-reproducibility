@@ -21,13 +21,16 @@ def encode_pdf(file_path: Path):
 papers = Path("papers").glob("*.pdf")
 
 # Override for testing
-papers = [Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf")]
+papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
+          #Path("papers/Edge-Based Graph Component Pooling.pdf"),
+          Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
+          ]
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
     output_path = Path("llm_output") / f"{paper_path.stem}.json"
-    if output_path.exists():  # Continue, do not replace responses anymore
-        continue
+    #if output_path.exists():  # Continue, do not replace responses anymore
+    #    continue
     prompt = Path("hypothesis_prompt.yaml").open().read()
     response = response = client.models.generate_content(
         model=model,

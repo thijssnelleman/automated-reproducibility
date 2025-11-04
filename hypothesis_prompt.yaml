@@ -5,7 +5,7 @@ Introduction:
   - A hypothesis must be **falsifiable** i.e. there exists a logical statement describing an observation that contradicts it.
   - A hypothesis must be **testable**, i.e. a hypothesis can be tested by an experiment.
   - A hypothesis in empirical research must be **quantifiable**, e.g. the authors use a metric to measure and produce an outcome with which the hypothesis can be tested
-  - A hypothesis can contain **multiple clauses**, i.e. a hypothesis can contain multiple claims in a single statement that can be tested seperately.
+  - A hypothesis can contain **multiple clauses** that are **closely related**, i.e. a hypothesis can contain multiple claims in a single statement that can be tested seperately.
   - A hypothesis is **concise**; It is a strong statement that aptly describes the foundation of the research.
 
   You are expected to produce as output a JSON object **and nothing else**. For each question, it is stated what keys you are expected to produce inside this JSON.

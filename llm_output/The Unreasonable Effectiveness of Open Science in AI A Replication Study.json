@@ -14,51 +14,68 @@
   "Hypothesis": {
     "hypothesis_1": {
       "explicit": false,
-      "hypothesis": "The authors hypothesise that the availability of both source code and data is strongly and positively correlated with the reproducibility of AI research.",
-      "reason": "This hypothesis is implied in the abstract: 'The availability of code and data correlate strongly with reproducibility, as 86% of articles that shared code and data were fully or partly reproduced, while this was true for 33% of articles that shared only data.' It is also listed as a main contribution in the introduction: 'Empirically establishing the importance of sharing both code and data to ensure the reproducibility of AI research.'"
+      "hypothesis": "The authors hypothesise that sharing both code and data (R4 reproducibility type) leads to a higher rate of successful replication than sharing only data (R3 reproducibility type).",
+      "reason": "This hypothesis is central to the paper's thesis. The abstract states: 'The availability of code and data correlate strongly with reproducibility, as 86% of articles that shared code and data were fully or partly reproduced, while this was true for 33% of articles that shared only data.' The introduction further lists as a main contribution: 'Empirically establishing the importance of sharing both code and data to ensure the reproducibility of AI research.' (Page 2)."
     },
     "hypothesis_2": {
       "explicit": false,
-      "hypothesis": "The authors hypothesise that the quality of data documentation is positively correlated with successful replication.",
-      "reason": "This hypothesis is stated in the abstract: 'The quality of the data documentation correlates with successful replication. Poorly documented or miss-specified data will probably result in unsuccessful replication.' It is also mentioned as a finding in the introduction: 'We also found that the quality of the data documentation has a higher correlation with reproducibility than the quality of the code documentation.'"
+      "hypothesis": "The authors hypothesise that poor or inadequate data documentation is a primary cause of irreproducibility in AI research.",
+      "reason": "This is presented as a key finding. The abstract claims: 'The quality of the data documentation correlates with successful replication.' The introduction states: 'We also found that the quality of the data documentation has a higher correlation with reproducibility than the quality of the code documentation.' (Page 2). The results section identifies specific data-related problems (P15, P18) as the most significant predictors of failed replications (Page 5)."
     },
     "hypothesis_3": {
       "explicit": false,
-      "hypothesis": "The authors hypothesise that the quality of code documentation does not correlate with successful replication, as long as the code is shared.",
-      "reason": "This hypothesis is explicitly stated as a surprising finding in the abstract: 'Surprisingly, the quality of the code documentation does not correlate with successful replication. Whether the code is poorly documented, partially missing, or not versioned is not important for successful replication, as long as the code is shared.'"
+      "hypothesis": "The authors hypothesise that the quality of code documentation does not significantly impact the success of a replication attempt, provided that the code itself is shared.",
+      "reason": "This is framed as a surprising finding in the paper. The abstract notes: 'Surprisingly, the quality of the code documentation does not correlate with successful replication.' The discussion on page 6 elaborates: 'Problems related to the quality of the documentation of code, whether it is partially missing or not versioned, are not important for successful replication as long as code is shared.'"
     }
   },
   "Experiment": {
     "experiment_1": {
-      "experiment_description": "A systematic replication study was performed on 30 highly cited AI research articles from 2012, 2014, and 2016. After filtering for availability of materials, 22 articles were selected for replication attempts. These were categorized as R3 (data only available, 15 articles) or R4 (code and data available, 7 articles). Each replication attempt was time-boxed to a maximum of 40 hours. The outcome of each replication study was classified, and problems encountered during the process were documented and categorized. The relationship between material availability, problem types, and replication success was then analyzed.",
+      "experiment_description": "A systematic replication study was performed on 30 highly-cited AI papers from 2012, 2014, and 2016. After filtering for empirical studies with available materials and rejecting 8 for practical reasons, the authors attempted to reproduce the results of the remaining 22 papers. Each replication attempt was time-boxed to 40 hours. The papers were categorized by the available materials: R3 (data only) or R4 (code and data). The outcome of each replication was classified, and problems encountered were categorized into 20 types. The correlation between problem types and reproducibility outcomes was analyzed using logistic regression.",
       "hypothesis": [
         "hypothesis_1",
         "hypothesis_2",
         "hypothesis_3"
       ],
       "metrics": [
-        "Replication Outcome",
-        "Inclusive Success Rate",
-        "Problem Type Frequency",
-        "Problem Type True Positive Rate (TPR)",
-        "Logistic Regression Weight (wi)"
+        "Replication Outcome (Success, Partial Success, Failure, No Result)",
+        "Inclusive Success Rate (Percentage of studies with Success or Partial Success)",
+        "Logistic Regression Weights (wi)",
+        "True Positive Rate (TPR) of problem types in irreproducible studies"
       ],
       "statistics": [
-        "Counts and percentages",
-        "Logistic regression model coefficients"
+        "Counts and percentages of outcomes",
+        "Logistic regression model accuracy and feature weights",
+        "True Positive Rate"
       ],
       "data": [
-        "22 highly cited AI research articles (See Table 1 for full list)"
+        "22 highly-cited empirical AI research articles from 2012, 2014, and 2016 (selected from Scopus, listed in Table 1)"
       ],
       "results": {
-        "22 highly cited AI research articles (See Table 1 for full list)": {
-          "Inclusive Success Rate": "For R4 studies (code and data): 86% (6 out of 7). For R3 studies (data only): 33% (5 out of 15).",
-          "Problem Type True Positive Rate (TPR)": "Data-related problems P15 ('Mismatch between dataset specified and version of it found online') and P18 ('How dataset is partitioned... is not described') had a TPR of 1.0. Code-related problem P3 ('Poor documentation of code') had a TPR of 0.0.",
-          "Logistic Regression Weight (wi)": "Data-related problems P15 and P18 had large negative weights (-1.00 and -0.82, respectively). Code-related problem P3 had a small positive weight (0.12)."
+        "R3 studies (N=15)": {
+          "Replication Outcome (Success, Partial Success, Failure, No Result)": "1 S, 4 PS, 5 F, 5 NR",
+          "Inclusive Success Rate": 0.33
+        },
+        "R4 studies (N=7)": {
+          "Replication Outcome (Success, Partial Success, Failure, No Result)": "5 S, 1 PS, 1 F, 0 NR",
+          "Inclusive Success Rate": 0.86
+        },
+        "Problem Types Analysis (across all 22 studies)": {
+          "P15 (Mismatch between dataset specified and version found online)": {
+            "Logistic Regression Weights (wi)": -1.0,
+            "True Positive Rate (TPR) of problem types in irreproducible studies": 1.0
+          },
+          "P18 (How dataset is partitioned... is not described)": {
+            "Logistic Regression Weights (wi)": -0.82,
+            "True Positive Rate (TPR) of problem types in irreproducible studies": 1.0
+          },
+          "P3 (Poor documentation of code)": {
+            "Logistic Regression Weights (wi)": 0.12,
+            "True Positive Rate (TPR) of problem types in irreproducible studies": 0.0
+          }
         }
       },
-      "test": "Comparison of proportions (Inclusive Success Rate for R3 vs R4). Analysis of TPR values and logistic regression weights to determine the importance of different problem types for predicting irreproducibility.",
-      "strategy": "Systematic replication study with a 40-hour time limit per article."
+      "test": "Comparison of percentages (Inclusive Success Rate) between R3 and R4 groups. Logistic regression was used to identify problem types that significantly predict irreproducibility, with feature significance determined by the magnitude of the weights (|wi|). TPR was used to identify problems characteristic of irreproducible studies.",
+      "strategy": "Systematic replication of selected published papers, with each replication attempt limited to a maximum of 40 hours of focused work."
     }
   },
   "Interpretation": {
@@ -66,19 +83,19 @@
       "experiment": "experiment_1",
       "hypothesis": "hypothesis_1",
       "support": true,
-      "reason": "The authors conclude that sharing both code and data is extremely important for reproducibility. Their results show a stark contrast: '86% of the studies that shared both code and data were reproduced while only 33% of the studies that only shared data were reproduced' (Page 7, Conclusion). This large difference in success rates strongly supports the hypothesis."
+      "reason": "The results strongly support the hypothesis. The Inclusive Success rate for R4 studies (code and data available) was 86%, whereas for R3 studies (only data available) it was only 33%. The authors conclude: 'The main findings is that sharing both code and data increases the chance of reproducing results immensely.' (Page 5)."
     },
     "interpretation_2": {
       "experiment": "experiment_1",
       "hypothesis": "hypothesis_2",
       "support": true,
-      "reason": "The authors find that poor data documentation is a primary cause of irreproducibility. They state, 'problems with documenting the data work are the most important source of irreproducibility. This is further emphasized by the fact that both the weights of logistic regression and TPR indicate that problem types P15 and P18 characterize irreproducible research. The source of these is poor data documentation.' (Page 6). This directly supports the hypothesis that the quality of data documentation is critical for successful replication."
+      "reason": "The analysis identified data documentation issues as the strongest predictors of irreproducibility. The authors state that 'problems with documenting the data work are the most important source of irreproducibility' (Page 6). This is based on the logistic regression analysis where problems P15 ('Mismatch between dataset specified and version of it found online') and P18 ('How dataset is partitioned... is not described') were found to be the most significant features predicting failure, and both had a TPR of 1.0, meaning they were only encountered in irreproducible studies (Table 2, Page 4-5)."
     },
     "interpretation_3": {
       "experiment": "experiment_1",
       "hypothesis": "hypothesis_3",
       "support": true,
-      "reason": "The authors report this as a 'surprising result' (Page 6). They find that while sharing code is crucial, the quality of its documentation is not a significant factor in replication success. They state: 'Problems related to the quality of the documentation of code, whether it is partially missing or not versioned, are not important for successful replication as long as code is shared.' (Page 6). The low TPR (0.0) and small logistic regression weight for 'Poor documentation of code' (P3) provide quantitative evidence for this conclusion, thus supporting the hypothesis."
+      "reason": "The study's results support this hypothesis. The authors describe it as a 'surprising result' that 'problem types related to code are not indicative of irreproducible research' and that 'Problems related to the quality of the documentation of code... are not important for successful replication as long as code is shared' (Page 6). In the quantitative analysis (Table 2), 'Poor documentation of code' (P3) had a low logistic regression weight (wi=0.12) and a TPR of 0.0, indicating it was not a predictor of failure and was not observed in any of the irreproducible studies."
     }
   }
 }
