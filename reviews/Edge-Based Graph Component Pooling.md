@@ -10,19 +10,21 @@ The answer of the LLM is structured into three parts; Hypothesis, experiments an
 - For each experiment the LLM has linked it to one or more hypothesis
 - For each interpretation, the LLM has linked it to **one** experiment and **one** hypothesis.
 
+The LLM has been tasked to extract a hypothesis **including an expected outcome**. This may not always be the case for each study; it should be interpreted as a post-hoc hypothesis.
+
 Please answer the following questions:
 
-## Hypothesis Questions
+## Hypotheses
 
 ### hypothesis_1
 
 The LLM has found the following **implied** hypothesis:
 
-The authors hypothesise that their proposed edge-based graph component pooling operator achieves better classification accuracy and is more computationally efficient (in terms of learnable parameters and time complexity) compared to the original edge contraction pooling method by Diehl et al. [5].
+The authors hypothesise that their proposed edge-based graph component pooling operator (1) improves performance and is more computationally efficient in terms of trainable parameters compared to the original edge contraction pooling method by Diehl et al., and (2) achieves comparable or better performance without significant information loss compared to a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al., while being more parameter-efficient.
 
 The LLM has provided the following reasoning with this hypothesis:
 
-This hypothesis is implied in the abstract and contributions. The abstract states the proposed operator 'performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters by 70.6% on average.' On page 2, under 'main contributions', the authors state: 'We show that our operator improves performance compared to edge contraction pooling while being substantially more computationally efficient.'
+The hypothesis is implied and constructed from several claims in the Abstract and the list of main contributions on page 2. The abstract states: "We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool... while reducing time complexity and the number of trainable parameters by 70.6% on average." and "Compared to another maximally powerful method named Graph Isomporhic Network, we show that we outperform them on two popular benchmark datasets while reducing the number of learnable parameters on average by 60.9%." The contributions on page 2 further clarify these goals: "We show that our operator improves performance compared to edge contraction pooling while being substantially more computationally efficient." and "We show that our operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes."
 
 Please grade each hypothesis stated from the following options:
 
@@ -30,37 +32,7 @@ The LLM ...
 
 [] captures the hypothesis (nearly) perfectly.
 
-[] has stated an incomplete hypothesis; The answer is correct but is missing key information.
-
-[] has stated the general hypothesis but has introduced false or incorrect information.
-
-[] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
-
-[] has stated an hypothesis that has (nearly) no overlap with our work.
-
-[] Other: If it is an hallucination, please explain below.
-
-Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
-- If you wish to change nothing, leave blank.
-- If you wish to improve the answer, please copy the original answer and adapt it below.
-- If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
-
-
-### hypothesis_2
-
-The LLM has found the following **implied** hypothesis:
-
-The authors hypothesise that their proposed pooling operator does not cause significant information loss, which is demonstrated by achieving classification accuracy that is comparable to or better than a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al. [25], while using fewer learnable parameters.
-
-The LLM has provided the following reasoning with this hypothesis:
-
-This hypothesis is implied by the authors' goal to create an operator that 'merges nodes so as not to cause data loss' (Abstract, page 1). On page 2, a main contribution is: 'We show that our operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes.' The comparison to GIN is made explicit in the abstract: 'Compared to another maximally powerful method named Graph Isomporhic Network, we show that we outperform them on two popular benchmark datasets while reducing the number of learnable parameters on average by 60.9%.'
-
-Please grade each hypothesis stated from the following options:
-
-The LLM ...
-
-[] captures the hypothesis (nearly) perfectly.
+[] has stated a hypothesis capturing the general spirit of our work.
 
 [] has stated an incomplete hypothesis; The answer is correct but is missing key information.
 
@@ -68,9 +40,11 @@ The LLM ...
 
 [] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
 
-[] has stated an hypothesis that has (nearly) no overlap with our work.
+[] has stated a hypothesis that has (nearly) no overlap with our work.
 
-[] Other: If it is an hallucination, please explain below.
+[] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
+
+
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
 - If you wish to change nothing, leave blank.
@@ -88,7 +62,7 @@ Please write the amount of hypothesis you had for the study: []
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
 
-## Experiment
+## Experiments
 
 The LLM has found one or more experiment that were used for the empirical evaluation of your hypotheses. 
 
@@ -104,7 +78,7 @@ For each detail, please correct the LLM if necessary;
 ### experiment_1
 
 The LLM describes this experiment as follows:
-The proposed pooling operator is evaluated on a graph classification task and compared against two baseline methods: the original edge contraction pooling (Diehl et al.) and a powerful non-pooling Graph Isomorphism Network (Xu et al.). The comparison is based on classification accuracy and the number of learnable parameters.
+The authors evaluate their proposed pooling operator on a graph classification task across eight benchmark datasets. They compare its performance and parameter count against two key baselines: the original edge contraction pooling method by Diehl et al. [5] and a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al. [25].
 
 The LLM ...
 [] has described the experiment (nearly) perfectly
@@ -116,15 +90,15 @@ The LLM ...
 
 
 #### Hypothesis list
-This experiment is used for the following hypotheses: hypothesis_1, hypothesis_2
+This experiment is used for the following hypotheses: hypothesis_1
 Your corrected list (empty if correct):
 
 #### Metrics list
-The measured metrics in this experiment are: Classification Accuracy, Number of Learnable Parameters
+The measured metrics in this experiment are: Accuracy, Number of learnable parameters
 Your corrected list (empty if correct):
 
 #### Statistics
-The statistics for the metrics used are: Mean and standard deviation over 100 runs.
+The statistics for the metrics used are: Mean with standard deviations over 100 runs.
 Your corrected list (empty if correct):
 
 #### Strategy and Test
@@ -140,16 +114,16 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-|                       | Classification Accuracy                                              | Number of Learnable Parameters                         |
+|                       | Accuracy                                                             | Number of learnable parameters                         |
 |:----------------------|:---------------------------------------------------------------------|:-------------------------------------------------------|
 | Proteins [6]          | 74.7 ± 3.9 (Ours), 70.9 ± 4.6 (Diehl et al.), 73.5 ± 4.6 (Xu et al.) | 802 (Ours), 156291 (Diehl et al.), 2742 (Xu et al.)    |
 | Reddit-Binary [26]    | 89.7 ± 3.0 (Ours), 81.1 ± 5.6 (Diehl et al.), 87.8 ± 2.7 (Xu et al.) | 83459 (Ours), 149123 (Diehl et al.), 30538 (Xu et al.) |
-| Reddit-Multi-12K [26] | 48.4 ± 1.7 (Ours), 36.9 ± 2.1 (Diehl et al.), N/A (Xu et al.)        | 333325 (Ours), 595725 (Diehl et al.), N/A (Xu et al.)  |
-| Collaboration [26]    | 77.9 ± 2.0 (Ours), N/A (Diehl et al.), 78.7 ± 2.0 (Xu et al.)        | 12996 (Ours), 243077 (Diehl et al.), 55584 (Xu et al.) |
-| IMDB Binary [26]      | 72.7 ± 3.9 (Ours), 69.5 ± 2.7 (Diehl et al.), 72.7 ± 4.3 (Xu et al.) | 18498 (Ours), 65638 (Diehl et al.), N/A (Xu et al.)    |
-| IMDB Multi [26]       | 49.6 ± 4.3 (Ours), N/A (Diehl et al.), 49.6 ± 4.3 (Xu et al.)        | 62468 (Ours), 54646 (Diehl et al.), N/A (Xu et al.)    |
-| NCI1 [24]             | 72.2 ± 3.5 (Ours), N/A (Diehl et al.), 79.5 ± 2.0 (Xu et al.)        | 38274 (Ours), 9294 (Diehl et al.), N/A (Xu et al.)     |
-| Reddit-Multi-5K [26]  | 52.6 ± 3.0 (Ours), N/A (Diehl et al.), 55.1 ± 2.4 (Xu et al.)        | 83975 (Ours), 31586 (Diehl et al.), N/A (Xu et al.)    |
+| Reddit-Multi-12K [26] | 48.4 ± 1.7 (Ours), 36.9 ± 2.1 (Diehl et al.), None (Xu et al.)       | 333325 (Ours), 595725 (Diehl et al.), None (Xu et al.) |
+| Collaboration [26]    | 77.9 ± 2.0 (Ours), None (Diehl et al.), 78.7 ± 2.0 (Xu et al.)       | 12996 (Ours), 243077 (Diehl et al.), 55584 (Xu et al.) |
+| IMDB Binary [26]      | 72.7 ± 3.9 (Ours), 69.5 ± 2.7 (Diehl et al.), 72.7 ± 4.3 (Xu et al.) | 18498 (Ours), None (Diehl et al.), 65638 (Xu et al.)   |
+| IMDB Multi [26]       | 49.6 ± 4.3 (Ours), None (Diehl et al.), 49.6 ± 4.3 (Xu et al.)       | 62468 (Ours), None (Diehl et al.), 54646 (Xu et al.)   |
+| NCI1 [24]             | 72.2 ± 3.5 (Ours), None (Diehl et al.), 79.5 ± 2.0 (Xu et al.)       | 38274 (Ours), None (Diehl et al.), 9294 (Xu et al.)    |
+| Reddit-Multi-5K [26]  | 52.6 ± 3.0 (Ours), None (Diehl et al.), 55.1 ± 2.4 (Xu et al.)       | 83975 (Ours), None (Diehl et al.), 31586 (Xu et al.)   |
 
 #### General
 
@@ -180,7 +154,13 @@ The LLM has found the following interpretations of the experiment outcomes;
 ## interpretation_1
 
 This interpretation has the following description/reasoning:
-The results fully support the hypothesis. The authors' method shows a statistically significant improvement in accuracy over the method by Diehl et al. on all four datasets where a comparison was made (Table 3 and 4). The authors also state that 'on average, our models use 70.6% fewer learnable parameters compared to the original method of Diehl et al.' (page 11), confirming the improved efficiency.
+The hypothesis is supported, but with significant caveats regarding the comparison to Xu et al. [25].
+
+1. **Comparison with Diehl et al. [5]:** This part of the hypothesis is strongly supported. The authors' method shows a "substantial improvement... on every benchmark dataset" (Page 9), with all differences being statistically significant (Table 4). Furthermore, the claim of being more parameter-efficient is supported, with the authors noting their models use "70.6% fewer learnable parameters compared to the original method" (Page 11), a figure consistent with the data in Table 5.
+
+2. **Comparison with Xu et al. [25]:** This part of the hypothesis is only partially supported, and some claims are inconsistent.
+   - **Performance:** The results are mixed. The proposed method is statistically significantly better on two datasets, significantly worse on three, and shows no significant difference on two (Page 9, Table 4). The authors interpret this comparable performance as evidence that their "operator does not cause information loss" (Page 11), which is a reasonable interpretation of this specific goal.
+   - **Efficiency:** The results for parameter efficiency are also mixed. The proposed model is substantially more efficient on three datasets but significantly less efficient on three others (Page 10). The claim in the abstract of "reducing the number of learnable parameters on average by 60.9%" is not supported by the data in Table 5, which shows an average increase in parameters across the seven common datasets. The body of the paper provides a more accurate, nuanced assessment of these mixed results than the abstract.
 
 This interpretation is for the outcome of the following experiment: experiment_1
 Your corrected answer (empty if correct):
@@ -197,31 +177,6 @@ This interpretation of the experiment outcome is ...
 
 
 This interpretation is to support (or not) the following hypothesis: hypothesis_1
-Your corrected answer (empty if correct):
-
-This interpretation supports the hypothesis: True
-Your corrected answer (empty if correct):
-
-## interpretation_2
-
-This interpretation has the following description/reasoning:
-The authors interpret the results as supporting the hypothesis, although the evidence is mixed. They argue that the performance is 'comparable' to the non-pooling GIN model, which indicates no significant information loss. Specifically, their method is statistically significantly better on two datasets (Proteins, Reddit-Binary), statistically significantly worse on three (Collaboration, NCI1, Reddit-Multi-5K), and tied on two (IMDB datasets) (pages 9-10, Table 3). The authors conclude: 'The comparable performance indicates that our operator does not cause information loss while having the benefit of reducing the number of required parameters through graph coarsening' (page 11). The claim of reducing parameters compared to GIN is also mixed, with reductions on some datasets but increases on others (page 10, Table 5).
-
-This interpretation is for the outcome of the following experiment: experiment_1
-Your corrected answer (empty if correct):
-
-Answer this question about the (possibly **corrected!**) experiment_id.
-This interpretation of the experiment outcome is ...
-[] Representative
-[] Adequate
-[] Acceptable
-[] (Partially) Incorrect
-[] Incorrect
-[] Hallucinatory, if so explain below:
-
-
-
-This interpretation is to support (or not) the following hypothesis: hypothesis_2
 Your corrected answer (empty if correct):
 
 This interpretation supports the hypothesis: True

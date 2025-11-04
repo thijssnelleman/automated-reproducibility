@@ -10,6 +10,8 @@ The answer of the LLM is structured into three parts; Hypothesis, experiments an
 - For each experiment the LLM has linked it to one or more hypothesis
 - For each interpretation, the LLM has linked it to **one** experiment and **one** hypothesis.
 
+The LLM has been tasked to extract a hypothesis **including an expected outcome**. This may not always be the case for each study; it should be interpreted as a post-hoc hypothesis.
+
 Please answer the following questions:
 
 ## Hypotheses
@@ -30,28 +32,33 @@ The LLM ...
 
 [] captures the hypothesis (nearly) perfectly.
 
+[X] has stated a hypothesis capturing the general spirit of our work.
+
 [] has stated an incomplete hypothesis; The answer is correct but is missing key information.
 
 [] has stated the general hypothesis but has introduced false or incorrect information.
 
 [] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
 
-[] has stated an hypothesis that has (nearly) no overlap with our work.
+[] has stated a hypothesis that has (nearly) no overlap with our work.
 
-[] Other: If it is an hallucination, please explain below.
+[] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
+
+
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
 - If you wish to change nothing, leave blank.
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
+The authors hypothesise that modifying an evolutionary algorithm for polyphonic music approximation by using spectral information to initialise populations with probable pitches will result in significantly faster convergence speed and improved pitch and instrument detection errors compared to the baseline algorithm with random initialisation.
 
 
 ### General Hypothesis questions
 
 The LLM has provided you with one or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -75,7 +82,7 @@ The LLM describes this experiment as follows:
 The baseline and modified evolutionary algorithms are run on a dataset of 1000 single-onset polyphonic audio mixes where the ground truth is known and perfectly reproducible. The goal is to measure the algorithms' ability to find the global optimum and to compare their convergence speed and final detection errors.
 
 The LLM ...
-[] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has stated the experiment but has introduced false information or made mistakes
 [] has stated the experiment but has nearly no overlap with our work
@@ -89,7 +96,7 @@ Your corrected list (empty if correct):
 
 #### Metrics list
 The measured metrics in this experiment are: Jaccard error for instrument classes (Ji), Jaccard error for pitch classes (Jp), Jaccard error for joint instrument-pitch tuples (Jip)
-Your corrected list (empty if correct):
+Your corrected list (empty if correct): Jaccard error for instrument classes (Ji), Jaccard error for pitch classes (Jp), Jaccard error for joint instrument-pitch tuples (Jip), Mean Fitness
 
 #### Statistics
 The statistics for the metrics used are: Mean error across 1000 target examples, plotted over generations.
@@ -116,7 +123,7 @@ The results of the experiment are as follows:
 
 The LLM has overall captured the experiment details...
 
-[] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Some missing information and/or minor mistakes)
 [] Okay (Substantial missing information and/or mistakes)
 [] Poorly (Severe missing information and/or mistakes)
@@ -128,7 +135,7 @@ The LLM describes this experiment as follows:
 The baseline and modified evolutionary algorithms are run on a dataset of 20 full, artificially created musical pieces to evaluate performance on a more realistic, complex task. The experiment compares initial errors, convergence speed, and final errors after 10000 generations.
 
 The LLM ...
-[] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has stated the experiment but has introduced false information or made mistakes
 [] has stated the experiment but has nearly no overlap with our work
@@ -142,7 +149,7 @@ Your corrected list (empty if correct):
 
 #### Metrics list
 The measured metrics in this experiment are: Jaccard error for instrument classes (Ji), Jaccard error for pitch classes (Jp), Jaccard error for joint instrument-pitch tuples (Jip)
-Your corrected list (empty if correct):
+Your corrected list (empty if correct): Jaccard error for instrument classes (Ji), Jaccard error for pitch classes (Jp), Jaccard error for joint instrument-pitch tuples (Jip), Mean Fitness
 
 #### Statistics
 The statistics for the metrics used are: Mean error across 20 repeated runs per piece, plotted over generations.
@@ -153,7 +160,7 @@ The experiment strategy is summarised as: Each experiment is repeated 20 times f
 Your corrected answer (empty if correct):
 
 The experiment test is summarised as: Visual comparison of the mean error curves over 10000 generations between the baseline algorithm (dotted lines) and the modified algorithm (solid lines) in Fig. 8.
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): Visual and numerical comparison of the mean error curves over 10000 generations between the baseline algorithm (dotted lines) and the modified algorithm (solid lines) in Fig. 8.
 
 #### Results
 
@@ -163,7 +170,7 @@ The results of the experiment are as follows:
 
 |                                                 | Jaccard error for instrument classes (Ji)                                                                                           | Jaccard error for pitch classes (Jp)                                                                                                | Jaccard error for joint instrument-pitch tuples (Jip)                                                                               |
 |:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|
-| Artificial Audio Multitracks (AAM) dataset [30] | Modified algorithm shows lower initial error (~0.92 vs ~0.98) and slightly lower final error (~0.86 vs ~0.87) compared to baseline. | Modified algorithm shows lower initial error (~0.95 vs ~0.98) and slightly lower final error (~0.84 vs ~0.85) compared to baseline. | Modified algorithm shows lower initial error (~0.96 vs ~0.99) and slightly lower final error (~0.87 vs ~0.88) compared to baseline. |
+| Artificial Audio Multitracks (AAM) dataset [30] | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. |
 
 #### General
 
@@ -171,16 +178,16 @@ The LLM has overall captured the experiment details...
 
 [] Very well (No major mistakes and/or missing information)
 [] Well (Some missing information and/or minor mistakes)
-[] Okay (Substantial missing information and/or mistakes)
+[X] Okay (Substantial missing information and/or mistakes)
 [] Poorly (Severe missing information and/or mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
 
 
 ### General Experiment Questions
 
-The LLM has provided you with one or more experiments from your work. Is this the amount of hypothesis the same as the amount you specified?
+The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of experiments you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -198,13 +205,14 @@ The results support the hypothesis regarding faster convergence. The authors sta
 
 This interpretation is for the outcome of the following experiment: experiment_1
 Your corrected answer (empty if correct):
+The results support the hypothesis regarding faster convergence. The authors state that 'the slopes in the first few thousand generations are steeper in our modified algorithm,' which means the error decreases faster. They conclude, 'In cases where there is not ample time to run the algorithm for the full 10000 generations, using our proposed method will provide better detection upon early termination.' (Section 6.1, page 9). While the final errors are described as 'comparable', the significant improvement in convergence speed supports a key part of the hypothesis.
 
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
 [] Representative
 [] Adequate
 [] Acceptable
-[] (Partially) Incorrect
+[X] (Partially) Incorrect
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
@@ -223,13 +231,14 @@ The results support both parts of the hypothesis. The authors observe 'lower ini
 
 This interpretation is for the outcome of the following experiment: experiment_2
 Your corrected answer (empty if correct):
+The results support both parts of the hypothesis. The authors observe 'lower initial errors for all three error classes' and 'a slight improvement in errors after convergence for the modified algorithm' (Section 6.2, page 11). The slightly lower final errors support the 'slightly improved detection errors' claim. The authors conclude that 'even its slight improvements in converged errors makes it a useful addition regardless.' (Section 6.2, page 11).
 
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
 [] Representative
 [] Adequate
 [] Acceptable
-[] (Partially) Incorrect
+[X] (Partially) Incorrect
 [] Incorrect
 [] Hallucinatory, if so explain below:
 

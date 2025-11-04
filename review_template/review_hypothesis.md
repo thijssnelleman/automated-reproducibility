@@ -14,15 +14,19 @@ The LLM ...
 
 [] captures the hypothesis (nearly) perfectly.
 
+[] has stated a hypothesis capturing the general spirit of our work.
+
 [] has stated an incomplete hypothesis; The answer is correct but is missing key information.
 
 [] has stated the general hypothesis but has introduced false or incorrect information.
 
 [] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
 
-[] has stated an hypothesis that has (nearly) no overlap with our work.
+[] has stated a hypothesis that has (nearly) no overlap with our work.
 
-[] Other: If it is an hallucination, please explain below.
+[] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
+
+
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
 - If you wish to change nothing, leave blank.
