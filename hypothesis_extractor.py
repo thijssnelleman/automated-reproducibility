@@ -1,14 +1,15 @@
-import os
+# import os
 import base64
 from pathlib import Path
 from dotenv import load_dotenv
-from mistralai import Mistral
-# from mistralai.models import UserMessage
+from google import genai
+from google.genai import types
 
 load_dotenv()
-api_key = os.environ["MISTRAL_API_KEY"]
-#model = "mistral-small-latest"
-model = "mistral-medium-2508"  # Latest premium model
+#api_key = os.environ["MISTRAL_API_KEY"]
+
+client = genai.Client()
+model = "gemini-2.5-pro"  # Alternative: "gemini-2.5-flash", 
 
 # Load PDF
 
@@ -20,43 +21,32 @@ def encode_pdf(file_path: Path):
 papers = Path("papers").glob("*.pdf")
 
 # Override for testing
-papers = [Path("papers/Edge-Based Graph Component Pooling.pdf"),
-          Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf")]
+papers = [Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf")]
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
-
-    client = Mistral(api_key=api_key)
-
+    output_path = Path("llm_output") / f"{paper_path.stem}.json"
+    if output_path.exists():  # Continue, do not replace responses anymore
+        continue
     prompt = Path("hypothesis_prompt.yaml").open().read()
-
-    messages = [
-        {
-            "role": "user",
-            "content": prompt,
-        },
-        {
-            "role": "user",
-            "type": "file",
-            "content": pdf_encoded,
-        }
-        # {
-        #     "type": "file",
-        #     "content": pdf_encoded,
-        #     "filename": "your_file.pdf",
-        #     "mime_type": paper_path.name,
-        # },
-    ]
-
-    # NOTE: Doesn't work due to model context length; "Prompt contains 627325 tokens and 0 draft tokens, too large for model with 131072 maximum context length"
-    chat_response = client.chat.complete(
+    response = response = client.models.generate_content(
         model=model,
-        temperature=0.0,  # For determinism
-        messages=messages,
-        #max_tokens=
+        contents=[
+            types.Part.from_bytes(
+                data=pdf_encoded,
+                mime_type="application/pdf",
+            ),
+            prompt
+        ],
+        config={
+            "temperature": 0.0,  # 0.0 = deterministic
+        }
     )
-    output_path = Path("llm_output") / paper_path.stem + ".json"
     with output_path.open("w+") as f:
-        f.write(chat_response.json())
-    print(chat_response.choices[0].message.content)
-    
+        response_data = response.text
+        if response_data[:7] == "```json":  # Trim leading ```json
+            response_data = response_data[7:]
+        if response_data[-3:] == "```":  # Trim trailing ```
+            response_data = response_data[:-3]
+        print("Writing to: ", output_path)
+        f.write(response_data)

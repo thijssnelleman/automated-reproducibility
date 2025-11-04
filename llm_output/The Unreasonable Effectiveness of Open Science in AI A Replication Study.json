@@ -1,0 +1,84 @@
+
+{
+  "Meta": {
+    "title": "The Unreasonable Effectiveness of Open Science in AI: A Replication Study",
+    "authors": [
+      "Odd Erik Gundersen",
+      "Odd Cappelen",
+      "Martin Mølnå",
+      "Nicklas Grimstad Nilsen"
+    ],
+    "year": 2024,
+    "venue": "arXiv"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the availability of both source code and data is strongly and positively correlated with the reproducibility of AI research.",
+      "reason": "This hypothesis is implied in the abstract: 'The availability of code and data correlate strongly with reproducibility, as 86% of articles that shared code and data were fully or partly reproduced, while this was true for 33% of articles that shared only data.' It is also listed as a main contribution in the introduction: 'Empirically establishing the importance of sharing both code and data to ensure the reproducibility of AI research.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the quality of data documentation is positively correlated with successful replication.",
+      "reason": "This hypothesis is stated in the abstract: 'The quality of the data documentation correlates with successful replication. Poorly documented or miss-specified data will probably result in unsuccessful replication.' It is also mentioned as a finding in the introduction: 'We also found that the quality of the data documentation has a higher correlation with reproducibility than the quality of the code documentation.'"
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the quality of code documentation does not correlate with successful replication, as long as the code is shared.",
+      "reason": "This hypothesis is explicitly stated as a surprising finding in the abstract: 'Surprisingly, the quality of the code documentation does not correlate with successful replication. Whether the code is poorly documented, partially missing, or not versioned is not important for successful replication, as long as the code is shared.'"
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "A systematic replication study was performed on 30 highly cited AI research articles from 2012, 2014, and 2016. After filtering for availability of materials, 22 articles were selected for replication attempts. These were categorized as R3 (data only available, 15 articles) or R4 (code and data available, 7 articles). Each replication attempt was time-boxed to a maximum of 40 hours. The outcome of each replication study was classified, and problems encountered during the process were documented and categorized. The relationship between material availability, problem types, and replication success was then analyzed.",
+      "hypothesis": [
+        "hypothesis_1",
+        "hypothesis_2",
+        "hypothesis_3"
+      ],
+      "metrics": [
+        "Replication Outcome",
+        "Inclusive Success Rate",
+        "Problem Type Frequency",
+        "Problem Type True Positive Rate (TPR)",
+        "Logistic Regression Weight (wi)"
+      ],
+      "statistics": [
+        "Counts and percentages",
+        "Logistic regression model coefficients"
+      ],
+      "data": [
+        "22 highly cited AI research articles (See Table 1 for full list)"
+      ],
+      "results": {
+        "22 highly cited AI research articles (See Table 1 for full list)": {
+          "Inclusive Success Rate": "For R4 studies (code and data): 86% (6 out of 7). For R3 studies (data only): 33% (5 out of 15).",
+          "Problem Type True Positive Rate (TPR)": "Data-related problems P15 ('Mismatch between dataset specified and version of it found online') and P18 ('How dataset is partitioned... is not described') had a TPR of 1.0. Code-related problem P3 ('Poor documentation of code') had a TPR of 0.0.",
+          "Logistic Regression Weight (wi)": "Data-related problems P15 and P18 had large negative weights (-1.00 and -0.82, respectively). Code-related problem P3 had a small positive weight (0.12)."
+        }
+      },
+      "test": "Comparison of proportions (Inclusive Success Rate for R3 vs R4). Analysis of TPR values and logistic regression weights to determine the importance of different problem types for predicting irreproducibility.",
+      "strategy": "Systematic replication study with a 40-hour time limit per article."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The authors conclude that sharing both code and data is extremely important for reproducibility. Their results show a stark contrast: '86% of the studies that shared both code and data were reproduced while only 33% of the studies that only shared data were reproduced' (Page 7, Conclusion). This large difference in success rates strongly supports the hypothesis."
+    },
+    "interpretation_2": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_2",
+      "support": true,
+      "reason": "The authors find that poor data documentation is a primary cause of irreproducibility. They state, 'problems with documenting the data work are the most important source of irreproducibility. This is further emphasized by the fact that both the weights of logistic regression and TPR indicate that problem types P15 and P18 characterize irreproducible research. The source of these is poor data documentation.' (Page 6). This directly supports the hypothesis that the quality of data documentation is critical for successful replication."
+    },
+    "interpretation_3": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_3",
+      "support": true,
+      "reason": "The authors report this as a 'surprising result' (Page 6). They find that while sharing code is crucial, the quality of its documentation is not a significant factor in replication success. They state: 'Problems related to the quality of the documentation of code, whether it is partially missing or not versioned, are not important for successful replication as long as code is shared.' (Page 6). The low TPR (0.0) and small logistic regression weight for 'Poor documentation of code' (P3) provide quantitative evidence for this conclusion, thus supporting the hypothesis."
+    }
+  }
+}

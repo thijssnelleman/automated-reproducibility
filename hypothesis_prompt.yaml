@@ -2,57 +2,58 @@ Introduction:
   You will be provided with a research paper and your task is to determine what the hypothesis is the authors aimed to test **empirically**.
 
   A hypothesis is a logical statement that is expected to be true, and is the main aim of investigation of a study. It has the following properties:
-  - A hypothesis must be **falsifiable** e.g. there exists a logical statement describing an observation that contradicts it.
-  - A hypothesis must be **testable** e.g. a hypothesis can be tested by an experiment.
-  - A hypothesis in empirical research must be quantifiable, e.g. the authors use a metric to measure and produce an outcome with which the hypothesis can be tested
+  - A hypothesis must be **falsifiable** i.e. there exists a logical statement describing an observation that contradicts it.
+  - A hypothesis must be **testable**, i.e. a hypothesis can be tested by an experiment.
+  - A hypothesis in empirical research must be **quantifiable**, e.g. the authors use a metric to measure and produce an outcome with which the hypothesis can be tested
+  - A hypothesis can contain **multiple clauses**, i.e. a hypothesis can contain multiple claims in a single statement that can be tested seperately.
+  - A hypothesis is **concise**; It is a strong statement that aptly describes the foundation of the research.
 
   You are expected to produce as output a JSON object **and nothing else**. For each question, it is stated what keys you are expected to produce inside this JSON.
 
-study:
-  - Meta: |
-    Write in this key a JSON structure with:
-    - "title": The title of the paper
-    - "authors": A list with the names of the authors
-    - "year": The year of publication
-    - "venue": The name of the venue (Conference or Journal, if not present name the publisher).
-  - Hypothesis: |
-    Determine the paper's **hypothesis**, using exact phrasing or close lexical variants. This can be **explicit** or **implied**.
+- Meta: |
+  Write in this key a JSON structure with:
+  - "title": The title of the paper
+  - "authors": A list with the names of the authors
+  - "year": The year of publication
+  - "venue": The name of the venue (Conference or Journal, if not present name the publisher).
+- Hypothesis: |
+  Determine the paper's **hypothesis**, using exact phrasing or close lexical variants. This can be **explicit** or **implied**.
 
-    **Explicit Hypothesis**
-    - If the paper states "We hypothesise" or "Our hypothesis is" this is considered an explicit statement.
-    - This also includes explicit statements of their **research question** if they specify what they expect the outcome to be.
+  **Explicit Hypothesis**
+  - If the paper states something like "We hypothesise" or "Our hypothesis is" this is considered an explicit statement.
+  - This also includes explicit statements of their **research question** if they specify what they expect the outcome to be.
 
-    **Implied Hypothesis**
-    - This can often be found seperated by inspecting the abstract or introduction, where the authors first describe the problem they aim to solve, and propose an improved solution to. 
-    - Then it is implied that they hypothesise that their proposed method excels at solving the problem for certain objective.
-    - For the expected outcome, this can either be found with the problem description, or at the end of the paper in the discussion or conclusion sections. However, it may be possible that this is found elsewhere in the paper.
-    - If the paper only states vague things such as, "We aim to study ..." or "We aim to investigate.." without an expected outcome, this is not a hypothesis, but only a research question and you will need more information to construct the hypothesis from this.
+  **Implied Hypothesis**
+  - This can often be found seperated by inspecting the abstract or introduction, where the authors first describe the problem they aim to solve, and propose an improved solution to. 
+  - Then it is implied that they hypothesise that their proposed method excels at solving the problem for certain objective.
+  - For the expected outcome, this can either be found with the problem description, or at the end of the paper in the discussion or conclusion sections. However, it may be possible that this is found elsewhere in the paper.
+  - If the paper only states vague things such as, "We aim to study ..." or "We aim to investigate.." without an expected outcome, this is not a hypothesis, but only a research question and you will need more information to construct the hypothesis from this.
 
-    Your answer will be expected in the following format:
-    Papers can have one or more hypothesis. For each hypothesis found; add a key to your JSON answer, named hypothesis_n, where n is the number of the hypothesis. The value is another JSON object with the following values;
-    - If an explicit hypothesis was found, add a key to your JSON answer "explicit" with value True, otherwise False.
-    - Add a key to your JSON answer "hypothesis" with a string value where you either cite the paper for an explicit hypothesis; if the hypothesis is implied **phrase the hypothesis explictly** with a sentence starting "The authors hypothesise that.."
-    - Leave your reasoning in the "reason" key of the JSON; Here you state which parts of the paper you base your answer on, referring to specific pages and/or sections.
+  Your answer will be expected in the following format:
+  Papers can have one or more hypothesis. For each hypothesis found; add a key to your JSON answer, named hypothesis_n, where n is the number of the hypothesis. The value is another JSON object with the following values;
+  - If an explicit hypothesis was found, add a key to your JSON answer "explicit" with value True, otherwise False.
+  - Add a key to your JSON answer "hypothesis" with a string value where you either cite the paper for an explicit hypothesis; if the hypothesis is implied **phrase the hypothesis explictly** with a sentence starting "The authors hypothesise that.."
+  - Leave your reasoning in the "reason" key of the JSON; Here you state which parts of the paper you base your answer on, referring to specific pages and/or sections.
 
-  - Experiment: |
-    Determine whether the paper **clearly states how the hypothesis is to be empirically tested**, using exact phrasing or close lexical variants.
-  
-    For each hypothesis, provide a key in the JSON, called experiment_m, where m is the id of the experiment, and inside this key provide a JSON structure with the following information:
-    - "experiment_description": A description of the experiment being conducted with relation to the hypothesis.
-    - "hypothesis": A list of hypothesis IDs that this experiment is used for.
-    - "metrics": The list of metrics used for the measurements and testing.
-    - "statistics": Specifying what kind of statistics are reported on (for example mean with standard deviations / confidence intervals, or median with quantiles, ..)
-    - "data": What **input** data the authors use for the experiment. This can be datasets used or data simulators such as synthetic data generators or simulation environments. Summarise the names as a list with possible citations between brackets (e.g. "MNIST (LeCun et al. 1998)", ...). In case it is defined or introduced in this work, simply state "(This work)" as a citation.
-    - "results": The found metric values per input data per metric. Create a JSON structure with a key for each input data, that contains a key for each metric. Make sure that the **keys** of data and metric match **exactly** the ones reported earlier under **data** and **metrics**.
-    - "test": The tests used to determine differences between outcomes. This can be a simple comparison (e.g. greater than, less than), in which case state how this is compared. This can also be statistical test, in which case report the name of the test, with possible parameters names and their values used such as the significance level for the p-value between brackets (e.g. "T-test (p < 0.05)" or "Permutation Test (p < 0.05, permutations = 10000)").
-    - "strategy": What is the strategy applied to the data to produce the outcome and possible parameters and their values, for example "K-fold cross-validation (k = 10)". For datasets or synthetic datasets / synthetic data generators this often means a splitting strategy (not required), but for simulation environments there is usually some stopping criterion such as a budget. In case the strategy is only a split between training and test set (And possible validation split), state "Random split" with the proportions between brackets (e.g. "Random split (train = 0.8, validation = 0.0, test = 0.2)").
+- Experiment: |
+  Determine whether the paper **clearly states how the hypothesis is to be empirically tested**, using exact phrasing or close lexical variants.
 
-  - Interpretation: |
-    Based on your answers from the previous questions and the paper, determine for each analysis of each experiment whether the results **support or not the hypothesis**.
-    paper **accepts or rejects the hypothesis**.
+  For each hypothesis, provide a key in the JSON, called experiment_m, where m is the id of the experiment, and inside this key provide a JSON structure with the following information:
+  - "experiment_description": A description of the experiment being conducted with relation to the hypothesis.
+  - "hypothesis": A list of hypothesis IDs that this experiment is used for.
+  - "metrics": The list of metrics used for the measurements and testing.
+  - "statistics": Specifying what kind of statistics are reported on (for example mean with standard deviations / confidence intervals, or median with quantiles, ..)
+  - "data": What **input** data the authors use for the experiment. This can be datasets used or data simulators such as synthetic data generators or simulation environments. Summarise the names as a list with possible citations between brackets (e.g. "MNIST (LeCun et al. 1998)", ...). In case it is defined or introduced in this work, simply state "(This work)" as a citation.
+  - "results": The found metric values per input data per metric. Create a JSON structure with a key for each input data, that contains a key for each metric. Make sure that the **keys** of data and metric match **exactly** the ones reported earlier under **data** and **metrics**.
+  - "test": The tests used to determine differences between outcomes. This can be a simple comparison (e.g. greater than, less than), in which case state how this is compared. This can also be statistical test, in which case report the name of the test, with possible parameters names and their values used such as the significance level for the p-value between brackets (e.g. "T-test (p < 0.05)" or "Permutation Test (p < 0.05, permutations = 10000)").
+  - "strategy": What is the strategy applied to the data to produce the outcome and possible parameters and their values, for example "K-fold cross-validation (k = 10)". For datasets or synthetic datasets / synthetic data generators this often means a splitting strategy (not required), but for simulation environments there is usually some stopping criterion such as a budget. In case the strategy is only a split between training and test set (And possible validation split), state "Random split" with the proportions between brackets (e.g. "Random split (train = 0.8, validation = 0.0, test = 0.2)").
 
-    Add a key to the JSON, named interpretation_k, where k is the id of the interpretation, and inside this key provide a JSON structure with the following information:
-    - "experiment": The experiment ID this interpretation is based on.
-    - "hypothesis": The hypothesis ID this interpretation aiming to support or not.
-    - "support": Whether the authors can accept the hypothesis based on this experiment outcome analysis interpretation. This is a boolean.
-    - "reason": The reason the authors decide whether to support the hypothesis. Specify the arguments provided by the authors to justify their decision. If the authors have results / reasons that contradict the hypothesis, specify these seperately. Make sure to quote / paraphrase the paper clearly and state which pages or sections you find your answers.
+- Interpretation: |
+  Based on your answers from the previous questions and the paper, determine for each analysis of each experiment whether the results **support or not the hypothesis**.
+  paper **accepts or rejects the hypothesis**.
+
+  Add a key to the JSON, named interpretation_k, where k is the id of the interpretation, and inside this key provide a JSON structure with the following information:
+  - "experiment": The experiment ID this interpretation is based on.
+  - "hypothesis": The hypothesis ID this interpretation aiming to support or not.
+  - "support": Whether the authors can accept the hypothesis based on this experiment outcome analysis interpretation. This is a boolean.
+  - "reason": The reason the authors decide whether to support the hypothesis. Specify the arguments provided by the authors to justify their decision. If the authors have results / reasons that contradict the hypothesis, specify these seperately. Make sure to quote / paraphrase the paper clearly and state which pages or sections you find your answers.

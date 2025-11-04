@@ -2,16 +2,23 @@
 from pathlib import Path
 import json
 import pandas as pd
+import sys
 
 general_template = Path("review_template/review_general.md").open().read()
 hypothesis_template = Path("review_template/review_hypothesis.md").open().read()
 experiment_template = Path("review_template/review_experiment.md").open().read()
 interpretation_template = Path("review_template/review_interpretation.md").open().read()
 
-with Path("llm_output/Edge-Based Graph Component Pooling.json").open() as json_file:  # Place holder
+input_path = Path(sys.argv[1])
+
+if not input_path.exists() or input_path.suffix != ".json":
+    print("File does not exist or is not a JSON file.")
+    sys.exit(1)
+
+with input_path.open() as json_file:
     llm_output = json.load(json_file)
 
-output = Path("reviews/Edge-Based Graph Component Pooling.md").open("w")
+output = Path(f"reviews/{input_path.stem}.md").open("w")
 
 hypothesis_sections, experiment_sections, interpretation_sections = [], [], []
 
@@ -34,7 +41,9 @@ for key in llm_output["Experiment"]:
     exp_o = exp_o.replace("@@@EXPERIMENT_DESCRIPTION@@@", llm_output["Experiment"][key]["experiment_description"])
     exp_o = exp_o.replace("@@@EXPERIMENT_HYPOTHESIS@@@", ", ".join(llm_output["Experiment"][key]["hypothesis"]))
     exp_o = exp_o.replace("@@@EXPERIMENT_METRICS@@@", ", ".join(llm_output["Experiment"][key]["metrics"]))
-    exp_o = exp_o.replace("@@@EXPERIMENT_STATISTICS@@@", llm_output["Experiment"][key]["statistics"])
+    statistics = llm_output["Experiment"][key]["statistics"]
+    statistics = ", ".join(statistics) if isinstance(statistics, list) else statistics
+    exp_o = exp_o.replace("@@@EXPERIMENT_STATISTICS@@@", statistics)
     exp_o = exp_o.replace("@@@EXPERIMENT_STRATEGY@@@", llm_output["Experiment"][key]["strategy"])
     exp_o = exp_o.replace("@@@EXPERIMENT_TEST@@@", llm_output["Experiment"][key]["test"])
 
@@ -45,7 +54,11 @@ for key in llm_output["Experiment"]:
             if metric not in llm_output["Experiment"][key]["results"][result]:
                 row.append("-")
             else:
-                row.append(llm_output["Experiment"][key]["results"][result][metric])
+                metric_out = llm_output["Experiment"][key]["results"][result][metric]
+                if isinstance(metric_out, dict):
+                    row.append(", ".join([f"{metric_out[key]} ({key})" for key in metric_out]))
+                else:
+                    row.append(llm_output["Experiment"][key]["results"][result][metric])
         experiment_table.append(row)
     experiment_table = pd.DataFrame(experiment_table, columns=llm_output["Experiment"][key]["metrics"], index=llm_output["Experiment"][key]["results"])
     exp_o = exp_o.replace("@@@EXPERIMENT_RESULTS_TABLE@@@", experiment_table.to_markdown())
@@ -65,3 +78,4 @@ general_template = general_template.replace("@@@EXPERIMENT_SECTIONS@@@", "\n".jo
 general_template = general_template.replace("@@@INTERPRETATION_SECTIONS@@@", "\n".join(interpretation_sections))    
 
 output.write(general_template)
+output.close()

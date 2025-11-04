@@ -12,7 +12,7 @@ The answer of the LLM is structured into three parts; Hypothesis, experiments an
 
 Please answer the following questions:
 
-## Hypothesis Questions
+## Hypotheses
 
 @@@HYPOTHESIS_SECTIONS@@@
 
@@ -25,7 +25,7 @@ Please write the amount of hypothesis you had for the study: []
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
 
-## Experiment
+## Experiments
 
 The LLM has found one or more experiment that were used for the empirical evaluation of your hypotheses. 
 

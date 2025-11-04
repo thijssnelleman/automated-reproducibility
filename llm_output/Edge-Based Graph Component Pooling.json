@@ -1,3 +1,4 @@
+
 {
   "Meta": {
     "title": "Edge-Based Graph Component Pooling",
@@ -7,67 +8,145 @@
       "H.H. Hoos",
       "J.N. van Rijn"
     ],
-    "year": 2025,
-    "venue": "Not explicitly stated (likely a conference or journal in the field of geometric deep learning or graph neural networks)"
+    "year": 2024,
+    "venue": "ECML PKDD 2024"
   },
-
   "Hypothesis": {
     "hypothesis_1": {
       "explicit": false,
-      "hypothesis": "The authors hypothesise that their proposed edge-based graph component pooling operator, which merges nodes based on edge scores and a configurable threshold, will improve computational efficiency and classification performance compared to existing pooling methods (such as edge contraction pooling and node drop pooling) without causing information loss.",
-      "reason": "The hypothesis is implied throughout the paper, especially in the Introduction and Methodology sections. The authors state their aim to bridge the gap between node drop and node cluster pooling by creating a computationally efficient operator that does not drop nodes and thus reduces information loss. They also explicitly mention their contributions in the Introduction, including the removal of hard constraints, improved computational complexity, and empirical performance improvements."
-    },
-
-    "hypothesis_2": {
-      "explicit": false,
-      "hypothesis": "The authors hypothesise that their edge-based graph component pooling operator will reduce the number of learnable parameters in graph neural networks, thereby mitigating overfitting and reducing computational cost for training and inference.",
-      "reason": "This hypothesis is implied in the Introduction and Conclusions sections. The authors discuss the reduction of learnable parameters as a key advantage of their method, highlighting its impact on overfitting and computational efficiency."
+      "hypothesis": "The authors hypothesise that their proposed edge-based graph component pooling operator performs better, is more computationally efficient, and causes less information loss compared to existing methods, specifically outperforming edge contraction pooling (Diehl et al.) and achieving comparable performance to a non-pooling Graph Isomorphism Network (Xu et al.) while using fewer parameters on average.",
+      "reason": "This hypothesis is implied in the Abstract and Introduction. The abstract claims the proposed operator \"performs statistically significantly better than edge pool... while reducing time complexity and the number of trainable parameters by 70.6% on average.\" It also claims to \"outperform [Graph Isomorphism Network] on two popular benchmark datasets while reducing the number of learnable parameters on average by 60.9%.\" The introduction (Page 2) states the goal is to \"create a relatively efficient graph pooling operator that does not drop nodes and thus reduces information loss\" and that it \"does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes.\""
     }
   },
-
   "Experiment": {
     "experiment_1": {
-      "experiment_description": "The authors evaluate their edge-based graph component pooling operator on graph classification tasks using several benchmark datasets. They compare their method to edge contraction pooling and a graph isomorphism network, focusing on accuracy, computational efficiency, and the number of learnable parameters.",
-      "hypothesis": ["hypothesis_1", "hypothesis_2"],
-      "metrics": ["Accuracy", "Number of learnable parameters", "Time complexity"],
-      "statistics": "Mean and standard deviation of accuracy over 100 test scores; p-values from two-tailed t-tests for statistical significance.",
+      "experiment_description": "The proposed pooling operator is evaluated on a graph classification task against two baselines: edge contraction pooling (Diehl et al., 2019) and Graph Isomorphism Network (Xu et al., 2019). The performance is measured by classification accuracy, and computational efficiency is measured by the number of learnable parameters.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Accuracy",
+        "Number of learnable parameters"
+      ],
+      "statistics": "Mean and standard deviation over 100 test scores",
       "data": [
-        "Proteins (Dobson and Doig 2003)",
-        "Reddit-Binary (Yanardag and Vishwanathan 2015)",
-        "Reddit-Multi-12K (Yanardag and Vishwanathan 2015)",
-        "Collaboration (Yanardag and Vishwanathan 2015)",
-        "IMDB Binary (Yanardag and Vishwanathan 2015)",
-        "IMDB Multi (Yanardag and Vishwanathan 2015)",
-        "NCI1 (Wale et al. 2008)",
-        "Reddit-Multi-5K (Yanardag and Vishwanathan 2015)"
+        "Proteins [6]",
+        "Reddit-Binary [26]",
+        "Reddit-Multi-12K [26]",
+        "Collaboration [26]",
+        "IMDB Binary [26]",
+        "IMDB Multi [26]",
+        "NCI1 [24]",
+        "Reddit-Multi-5K [26]"
       ],
       "results": {
-        "Proteins": {"Accuracy": "74.7 ± 3.9", "Parameters": "802"},
-        "Reddit-Binary": {"Accuracy": "89.7 ± 3.0", "Parameters": "83459"},
-        "Reddit-Multi-12K": {"Accuracy": "48.4 ± 1.7", "Parameters": "333325"},
-        "Collaboration": {"Accuracy": "77.9 ± 2.0", "Parameters": "12996"},
-        "IMDB Binary": {"Accuracy": "72.7 ± 3.9", "Parameters": "18498"},
-        "IMDB Multi": {"Accuracy": "49.6 ± 4.3", "Parameters": "62468"},
-        "NCI1": {"Accuracy": "72.2 ± 3.5", "Parameters": "38274"},
-        "Reddit-Multi-5K": {"Accuracy": "52.6 ± 3.0", "Parameters": "38274"}
+        "Proteins [6]": {
+          "Accuracy": {
+            "Ours": "74.7 ± 3.9",
+            "Diehl et al.": "70.9 ± 4.6",
+            "Xu et al.": "73.5 ± 4.6"
+          },
+          "Number of learnable parameters": {
+            "Ours": 802,
+            "Diehl et al.": 156291,
+            "Xu et al.": 2742
+          }
+        },
+        "Reddit-Binary [26]": {
+          "Accuracy": {
+            "Ours": "89.7 ± 3.0",
+            "Diehl et al.": "81.1 ± 5.6",
+            "Xu et al.": "87.8 ± 2.7"
+          },
+          "Number of learnable parameters": {
+            "Ours": 83459,
+            "Diehl et al.": 149123,
+            "Xu et al.": 30538
+          }
+        },
+        "Reddit-Multi-12K [26]": {
+          "Accuracy": {
+            "Ours": "48.4 ± 1.7",
+            "Diehl et al.": "36.9 ± 2.1",
+            "Xu et al.": "Not reported"
+          },
+          "Number of learnable parameters": {
+            "Ours": 333325,
+            "Diehl et al.": 595725,
+            "Xu et al.": "Not reported"
+          }
+        },
+        "Collaboration [26]": {
+          "Accuracy": {
+            "Ours": "77.9 ± 2.0",
+            "Diehl et al.": "69.5 ± 2.7",
+            "Xu et al.": "78.7 ± 2.0"
+          },
+          "Number of learnable parameters": {
+            "Ours": 12996,
+            "Diehl et al.": 243077,
+            "Xu et al.": 55584
+          }
+        },
+        "IMDB Binary [26]": {
+          "Accuracy": {
+            "Ours": "72.7 ± 3.9",
+            "Diehl et al.": "Not reported",
+            "Xu et al.": "72.7 ± 4.3"
+          },
+          "Number of learnable parameters": {
+            "Ours": 18498,
+            "Diehl et al.": "Not reported",
+            "Xu et al.": "Not reported"
+          }
+        },
+        "IMDB Multi [26]": {
+          "Accuracy": {
+            "Ours": "49.6 ± 4.3",
+            "Diehl et al.": "Not reported",
+            "Xu et al.": "49.6 ± 4.3"
+          },
+          "Number of learnable parameters": {
+            "Ours": 62468,
+            "Diehl et al.": "Not reported",
+            "Xu et al.": 54646
+          }
+        },
+        "NCI1 [24]": {
+          "Accuracy": {
+            "Ours": "72.2 ± 3.5",
+            "Diehl et al.": "Not reported",
+            "Xu et al.": "79.5 ± 2.0"
+          },
+          "Number of learnable parameters": {
+            "Ours": 38274,
+            "Diehl et al.": "Not reported",
+            "Xu et al.": 9294
+          }
+        },
+        "Reddit-Multi-5K [26]": {
+          "Accuracy": {
+            "Ours": "52.6 ± 3.0",
+            "Diehl et al.": "Not reported",
+            "Xu et al.": "55.1 ± 2.4"
+          },
+          "Number of learnable parameters": {
+            "Ours": 83975,
+            "Diehl et al.": "Not reported",
+            "Xu et al.": 31586
+          }
+        }
       },
-      "test": "Two-tailed t-test (p < 0.05) for statistical significance of accuracy differences; comparison of parameter counts.",
-      "strategy": "100-fold repeated random train/validation/test splits (80/10/10)."
+      "test": "Two-tailed t-test (p < 0.05)",
+      "strategy": "Random split (train = 0.8, validation = 0.1, test = 0.1), repeated 100 times"
     }
   },
-
   "Interpretation": {
     "interpretation_1": {
       "experiment": "experiment_1",
       "hypothesis": "hypothesis_1",
       "support": true,
-      "reason": "The authors report statistically significant improvements in accuracy on the Proteins and Reddit-Binary datasets compared to both Diehl et al. and Xu et al., with p-values < 0.05. They also demonstrate a substantial reduction in the number of learnable parameters, supporting the claim of improved computational efficiency and performance. However, they note a decrease in performance on the NCI1 and Reddit-Multi-5K datasets compared to Xu et al., but argue that the overall reduction in parameters and computational cost justifies the trade-off."
-    },
-    "interpretation_2": {
-      "experiment": "experiment_1",
-      "hypothesis": "hypothesis_2",
-      "support": true,
-      "reason": "The authors show a significant reduction in the number of learnable parameters across all datasets, with an average reduction of 70.6% compared to Diehl et al. and substantial reductions in some cases compared to Xu et al. This supports the hypothesis that their method mitigates overfitting and reduces computational cost, as fewer parameters generally lead to lower storage requirements and faster training/inference."
+      "reason": "The authors conclude that their hypothesis is supported based on the experimental results.\n\n- **Comparison with Diehl et al. [5]**: The proposed method shows a \"substantial improvement... on every benchmark dataset\" where the baseline was evaluated (Page 9, Table 3). The performance gains are statistically significant (p=0.000, Table 4). Furthermore, the proposed method uses significantly fewer learnable parameters (Table 5), supporting the claim of improved computational efficiency.\n\n- **Comparison with Xu et al. [25]**: The performance results are mixed. The proposed method is statistically significantly better on two datasets (Proteins, Reddit-Binary), significantly worse on three (Collaboration, NCI1, Reddit-Multi-5K), and shows no significant difference on two (IMDB datasets) (Page 9-10, Tables 3 & 4). The authors interpret this as achieving \"comparable performance\", which they argue \"indicates that our operator does not cause information loss while having the benefit of reducing the number of required parameters through graph coarsening\" (Page 11).\n\n- **Contradictory Evidence**: The claim of reducing the number of parameters compared to Xu et al. is not consistently supported by the data. While parameters are substantially reduced on three datasets, they are substantially increased on four others (Page 10, Table 5). The abstract's claim of a 60.9% average reduction is difficult to reconcile with the full results and appears to be contradicted by the data for at least one of the datasets where superior performance is claimed (Reddit-Binary, where parameters increase by 173.3%). Despite this, the authors' overall conclusion is that their operator is an effective and efficient alternative."
     }
   }
 }
