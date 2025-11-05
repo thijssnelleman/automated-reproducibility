@@ -1,8 +1,8 @@
-# Thijs Snelleman
+# Thijs Snelleman 
 
 Edge-Based Graph Component Pooling
 
-# Wadie Skaf
+# Wadie Skaf 
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
@@ -33,6 +33,10 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 # Julian Dierkes
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
+
+# Marie Anastacio
+
+Instance selection for configuration performance comparison
 
 # Aaron Berger
 
