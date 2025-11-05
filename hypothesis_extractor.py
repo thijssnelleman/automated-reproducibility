@@ -4,6 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+import sys
 
 load_dotenv()
 #api_key = os.environ["MISTRAL_API_KEY"]
@@ -21,10 +22,14 @@ def encode_pdf(file_path: Path):
 papers = Path("papers").glob("*.pdf")
 
 # Override for testing
-papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
-          #Path("papers/Edge-Based Graph Component Pooling.pdf"),
-          Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
-          ]
+
+if len(sys.argv) == 2 and Path(sys.argv[1]).exists():
+    papers = [Path(sys.argv[1])]
+else:
+    papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
+            #Path("papers/Edge-Based Graph Component Pooling.pdf"),
+            Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
+            ]
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
