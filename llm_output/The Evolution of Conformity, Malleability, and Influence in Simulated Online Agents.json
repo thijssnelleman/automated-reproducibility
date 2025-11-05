@@ -1,0 +1,130 @@
+
+{
+  "Meta": {
+    "title": "The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents",
+    "authors": [
+      "Keith L. Downing"
+    ],
+    "year": 2023,
+    "venue": "Artificial Life"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that local, peer-to-peer interactions can drive a population towards reduced diversity (polarization or homogeneity), but only when assimilative forces (homophily) dominate repulsive ones, and even then, complete homogeneity is not guaranteed.",
+      "reason": "This hypothesis is implied by the setup and analysis of the first model in Section 4, 'A Basic Model of Social Influence'. The authors investigate how the balance between assimilation (for similar agents) and repulsion (for dissimilar agents) affects population diversity. The conclusion for this model states: 'In summary, runs of the basic model indicate that, on their own, local interactions between basic agents (a.k.a. peers) that occasionally influence one another can decrease diversity, to either polarization or complete homogeneity. However, this only occurs when the positive forces of peer influence outweigh the negative... Yet even when positive influences overwhelm the negative, there are no guarantees of complete homogeneity.' (p. 13, 14)."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that a global matchmaker system, akin to a collaborative filter, that strategically pairs most-similar agents will lead to polarization (multiple stable clusters) rather than complete homogeneity, but the addition of random interactions can break these clusters and drive the population to full conformity.",
+      "reason": "This hypothesis is implied by the design and results of the second model in Section 5, 'The Matchmaker Enhancement'. The authors test the 'naive assumption is that the matchmaker will easily drive the population to homogeneity' (p. 15) and find it to be false. They conclude that 'automated systems whose nudges stem from influencers that are algorithmically-selected for maximum match (and impact), do not, on their own, produce homogeneity. Instead, they form multiple islands of similarity (multiple poles) that resist further mergers.' (p. 16). They then show that adding a small probability of random interaction leads to full convergence (Figure 4, top right)."
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that a goal-directed predictor agent, whose influence strengthens as its ability to predict agent behavior improves, creates a positive feedback loop with the agent population, where declining population diversity makes prediction easier, which in turn strengthens the predictor's influence and drives the population toward complete conformity, even under conditions where peer influence alone would not.",
+      "reason": "This is the central hypothesis of the paper, investigating 'the Loop' (Ward, 2022). The abstract states: 'the combination of basic agents and a self-interested AI predictor yields an emergent positive feedback that can drive the agent population to complete conformity.' Section 6 introduces the predictor agent model designed to test this. The conclusion on page 22 summarizes the findings: 'These results suggest the positive feedback displayed in the causal diagram of Figure 10, wherein declining diversity simplifies the learning problem of the predictor, which can then exert a stronger influence on the population... thus reducing diversity even more... This provides good evidence that the causal influences work in both directions, thus producing an abstract example of the Loop and its emergence.'"
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "A simulation of the 'Basic Model of Social Influence' where agents interact based on random pairings. The effect of varying the trigger thresholds for assimilative (θ1) and repulsive (θ2) influence on population diversity is observed.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Population diversity (Δp)",
+        "Positive Peer Influence",
+        "Negative Peer Influence"
+      ],
+      "statistics": "Mean and standard deviation over 25 runs",
+      "data": [
+        "Simulated agents (This work)"
+      ],
+      "results": {
+        "Simulated agents (This work)": {
+          "Population diversity (Δp)": [
+            "With θ1=27°, θ2=27°, diversity increases from ~0.23 to a steady state around 0.3.",
+            "With θ1=27°, θ2=18°, diversity decreases to a steady state between 0.04 and 0.14 (polarization).",
+            "With θ1=36°, θ2=27°, diversity decreases to 0 (complete homogeneity)."
+          ],
+          "Positive Peer Influence": null,
+          "Negative Peer Influence": null
+        }
+      },
+      "test": "Visual comparison of the evolution of the mean metric values over time across different parameter settings.",
+      "strategy": "Simulation for 250,000 timesteps (2,500 epochs of 100 timesteps)."
+    },
+    "experiment_2": {
+      "experiment_description": "A simulation of the 'Matchmaker Enhancement' model. A global matchmaker strategically pairs a source agent with its most similar influencer (or one of K-nearest). The experiment tests this setup's effect on diversity and contrasts it with a variant that includes a probability (ε) of random pairings.",
+      "hypothesis": [
+        "hypothesis_2"
+      ],
+      "metrics": [
+        "Population diversity (Δp)"
+      ],
+      "statistics": "Mean and standard deviation over 25 runs",
+      "data": [
+        "Simulated agents (This work)"
+      ],
+      "results": {
+        "Simulated agents (This work)": {
+          "Population diversity (Δp)": [
+            "With K=1 and ε=0.0, diversity stabilizes in the range [0.13, 0.21] (polarization).",
+            "With K=8 and ε=0.0, diversity stabilizes at a lower level, around 0.05.",
+            "With K=1 and ε=0.05, diversity converges to 0 (complete homogeneity)."
+          ]
+        }
+      },
+      "test": "Visual comparison of the evolution of the mean metric values over time across different parameter settings.",
+      "strategy": "Simulation for 250,000 timesteps (2,500 epochs of 100 timesteps)."
+    },
+    "experiment_3": {
+      "experiment_description": "A simulation of the 'Predictor Agent' model, which includes basic agents and a single predictor agent. The predictor's influence is inversely proportional to its error in predicting agent behaviors. The experiment observes the co-evolution of population diversity and prediction error under different peer-influence (θ1) and predictor-learning (λ) parameters.",
+      "hypothesis": [
+        "hypothesis_3"
+      ],
+      "metrics": [
+        "Population diversity (Δp)",
+        "Prediction error (E)"
+      ],
+      "statistics": "Mean and standard deviation over 25 runs",
+      "data": [
+        "Simulated agents (This work)"
+      ],
+      "results": {
+        "Simulated agents (This work)": {
+          "Population diversity (Δp)": [
+            "With θ1=27°, θ2=27°, λ=0.01, diversity converges to near 0, whereas in the basic model it increased.",
+            "With weaker positive peer influence (θ1=9°, λ=0.01), diversity remains high.",
+            "Increasing the predictor's learning rate (θ1=9°, λ=0.1) is sufficient to drive diversity down significantly."
+          ],
+          "Prediction error (E)": [
+            "Prediction error drops nearly in tandem with diversity, indicating a strong relationship."
+          ]
+        }
+      },
+      "test": "Visual comparison of the evolution of the mean metric values over time, and comparison with results from Experiment 1 under similar peer-influence parameters.",
+      "strategy": "Simulation for 250,000 timesteps (2,500 epochs of 100 timesteps). The predictor's neural network is trained at the end of each epoch."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results from the basic model simulation directly support the hypothesis. As shown in Figure 2 and discussed on pages 13-14, the population's trajectory depends on the balance of assimilative and repulsive forces. When repulsion is strong (θ1=27°, θ2=27°), diversity increases. When assimilation dominates (θ1=27°, θ2=18°), the population polarizes but does not achieve full homogeneity, supporting the claim that it is not guaranteed. Only with very strong assimilation (θ1=36°) does complete homogeneity emerge."
+    },
+    "interpretation_2": {
+      "experiment": "experiment_2",
+      "hypothesis": "hypothesis_2",
+      "support": true,
+      "reason": "The results from the matchmaker simulation support the hypothesis. Without random interactions (ε=0), the system forms 'multiple islands of similarity (multiple poles) that resist further mergers' (p. 16), resulting in stable diversity (polarization) as seen in Figure 4. The addition of a small amount of randomness (ε=0.05) is shown to be sufficient to merge these clusters and drive the population to complete homogeneity, confirming the second part of the hypothesis."
+    },
+    "interpretation_3": {
+      "experiment": "experiment_3",
+      "hypothesis": "hypothesis_3",
+      "support": true,
+      "reason": "The results from the predictor model simulation strongly support the hypothesis. The authors demonstrate that the predictor can 'tip the scales in favor of convergence' (p. 21) even in a scenario (θ1=27°, θ2=27°) where peer influence alone led to high diversity. The tandem drop in diversity and prediction error (Figures 6 and 7) provides evidence for the feedback loop. The authors conclude that these results illustrate 'a fortification of either positive influence... or prediction... accelerates the transition to conformity' and provide 'good evidence that the causal influences work in both directions, thus producing an abstract example of the Loop and its emergence' (p. 22)."
+    }
+  }
+}

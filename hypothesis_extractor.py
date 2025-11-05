@@ -1,13 +1,12 @@
-# import os
 import base64
 from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 import sys
+import time
 
 load_dotenv()
-#api_key = os.environ["MISTRAL_API_KEY"]
 
 client = genai.Client()
 model = "gemini-2.5-pro"  # Alternative: "gemini-2.5-flash", 
@@ -24,10 +23,6 @@ if len(sys.argv) == 2:
     papers = [Path(sys.argv[1])]
 else:
     papers = Path("papers").glob("*.pdf")
-    # papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
-    #         #Path("papers/Edge-Based Graph Component Pooling.pdf"),
-    #         Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
-    #         ]
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
@@ -56,3 +51,4 @@ for paper_path in papers:
             response_data = response_data[:-3]
         print("Writing to: ", output_path)
         f.write(response_data)
+    time.sleep(5)  # Avoid API overload
