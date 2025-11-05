@@ -30,7 +30,7 @@ Please grade each hypothesis stated from the following options:
 
 The LLM ...
 
-[] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 
 [] has stated a hypothesis capturing the general spirit of our work.
 
@@ -82,11 +82,12 @@ The authors evaluate their proposed pooling operator on a graph classification t
 
 The LLM ...
 [] has described the experiment (nearly) perfectly
-[] has described the experiment but is lacking information
+[X] has described the experiment but is lacking information
 [] has stated the experiment but has introduced false information or made mistakes
 [] has stated the experiment but has nearly no overlap with our work
 [] Other. If it has hallucinated, please describe below.
 
+The authors evaluate their proposed pooling operator on a graph classification task across eight benchmark datasets. They compare its performance in terms of accuracy and parameter count against two key baselines: the original edge contraction pooling method by Diehl et al. [5] and a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al. [25].
 
 
 #### Hypothesis list
@@ -103,7 +104,7 @@ Your corrected list (empty if correct):
 
 #### Strategy and Test
 The experiment strategy is summarised as: Random split (train = 0.8, validation = 0.1, test = 0.1), repeated 100 times.
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): 10-fold cross validation on random split (train = 0.8, validation = 0.1, test = 0.1), repeated 100 times.
 
 The experiment test is summarised as: Two-tailed t-test (p < 0.05)
 Your corrected answer (empty if correct):
@@ -119,8 +120,8 @@ The results of the experiment are as follows:
 | Proteins [6]          | 74.7 ± 3.9 (Ours), 70.9 ± 4.6 (Diehl et al.), 73.5 ± 4.6 (Xu et al.) | 802 (Ours), 156291 (Diehl et al.), 2742 (Xu et al.)    |
 | Reddit-Binary [26]    | 89.7 ± 3.0 (Ours), 81.1 ± 5.6 (Diehl et al.), 87.8 ± 2.7 (Xu et al.) | 83459 (Ours), 149123 (Diehl et al.), 30538 (Xu et al.) |
 | Reddit-Multi-12K [26] | 48.4 ± 1.7 (Ours), 36.9 ± 2.1 (Diehl et al.), None (Xu et al.)       | 333325 (Ours), 595725 (Diehl et al.), None (Xu et al.) |
-| Collaboration [26]    | 77.9 ± 2.0 (Ours), None (Diehl et al.), 78.7 ± 2.0 (Xu et al.)       | 12996 (Ours), 243077 (Diehl et al.), 55584 (Xu et al.) |
-| IMDB Binary [26]      | 72.7 ± 3.9 (Ours), 69.5 ± 2.7 (Diehl et al.), 72.7 ± 4.3 (Xu et al.) | 18498 (Ours), None (Diehl et al.), 65638 (Xu et al.)   |
+| Collaboration [26]    | 77.9 ± 2.0 (Ours), 69.5 ± 2.7 (Diehl et al.), 78.7 ± 2.0 (Xu et al.) | 12996 (Ours), 243077 (Diehl et al.), 55584 (Xu et al.) |
+| IMDB Binary [26]      | 72.7 ± 3.9 (Ours), None (Diehl et al.), 72.7 ± 4.3 (Xu et al.)       | 18498 (Ours), None (Diehl et al.), 65638 (Xu et al.)   |
 | IMDB Multi [26]       | 49.6 ± 4.3 (Ours), None (Diehl et al.), 49.6 ± 4.3 (Xu et al.)       | 62468 (Ours), None (Diehl et al.), 54646 (Xu et al.)   |
 | NCI1 [24]             | 72.2 ± 3.5 (Ours), None (Diehl et al.), 79.5 ± 2.0 (Xu et al.)       | 38274 (Ours), None (Diehl et al.), 9294 (Xu et al.)    |
 | Reddit-Multi-5K [26]  | 52.6 ± 3.0 (Ours), None (Diehl et al.), 55.1 ± 2.4 (Xu et al.)       | 83975 (Ours), None (Diehl et al.), 31586 (Xu et al.)   |
@@ -130,7 +131,7 @@ The results of the experiment are as follows:
 The LLM has overall captured the experiment details...
 
 [] Very well (No major mistakes and/or missing information)
-[] Well (Some missing information and/or minor mistakes)
+[X] Well (Some missing information and/or minor mistakes)
 [] Okay (Substantial missing information and/or mistakes)
 [] Poorly (Severe missing information and/or mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
@@ -138,9 +139,9 @@ The LLM has overall captured the experiment details...
 
 ### General Experiment Questions
 
-The LLM has provided you with one or more experiments from your work. Is this the amount of hypothesis the same as the amount you specified?
+The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of experiments you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -168,7 +169,7 @@ Your corrected answer (empty if correct):
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
 [] Representative
-[] Adequate
+[X] Adequate
 [] Acceptable
 [] (Partially) Incorrect
 [] Incorrect
