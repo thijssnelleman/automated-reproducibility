@@ -8,7 +8,7 @@ The LLM has provided the following reasoning with this hypothesis:
 
 @@@HYPOTHESIS_REASON@@@
 
-Please grade each hypothesis stated from the following options:
+Please grade the hypothesis stated from the following options:
 
 The LLM ...
 
@@ -16,7 +16,7 @@ The LLM ...
 
 [] has stated a hypothesis capturing the general spirit of our work.
 
-[] has stated an incomplete hypothesis; The answer is correct but is missing key information.
+[] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 
 [] has stated the general hypothesis but has introduced false or incorrect information.
 

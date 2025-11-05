@@ -6,8 +6,8 @@ The LLM describes this experiment as follows:
 The LLM ...
 [] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
-[] has stated the experiment but has introduced false information or made mistakes
-[] has stated the experiment but has nearly no overlap with our work
+[] has described the experiment but has introduced false information or made mistakes
+[] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
 
 
@@ -44,7 +44,7 @@ The results of the experiment are as follows:
 The LLM has overall captured the experiment details...
 
 [] Very well (No major mistakes and/or missing information)
-[] Well (Some missing information and/or minor mistakes)
-[] Okay (Substantial missing information and/or mistakes)
-[] Poorly (Severe missing information and/or mistakes)
+[] Well (Missing some information and/or minor mistakes)
+[] Okay (Missing important information and/or substantial mistakes)
+[] Poorly (Missing crucial information and/or severe mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)

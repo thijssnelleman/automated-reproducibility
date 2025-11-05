@@ -8,10 +8,10 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
-[] Representative
-[] Adequate
-[] Acceptable
-[] (Partially) Incorrect
+[] Correct
+[] Almost correct (few and minor misinterpretations or mistakes)
+[] Acceptable (some misinterpretations or mistakes)
+[] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
