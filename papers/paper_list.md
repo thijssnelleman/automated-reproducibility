@@ -1,8 +1,8 @@
-# Thijs Snelleman 
+# Thijs Snelleman ✅
 
 Edge-Based Graph Component Pooling
 
-# Wadie Skaf 
+# Wadie Skaf ✅
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
@@ -14,11 +14,11 @@ Robustness Distributions in Neural Network Verification
 
 Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 
-# Hadar Shavit
+# Hadar Shavit 
 
 Revisiting SATZilla Features in 2024
 
-# Konstantin Kaulen
+# Konstantin Kaulen ✅
 
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification
 
@@ -26,11 +26,11 @@ Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verifica
 
 Trajectory-based algorithm selection with warm-starting
 
-# Justin Dettmer
+# Justin Dettmer ✅
 
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music
 
-# Julian Dierkes
+# Julian Dierkes 
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
@@ -46,13 +46,13 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 
-### [Odd Erik Gundersen](odderik@ntnu.no)
-
-The Unreasonable Effectiveness of Open Science in AI: A Replication Study
-
 # Guus Toussaint
 
 EDC: Equation Discovery for Classification paper
+
+### [Odd Erik Gundersen](odderik@ntnu.no)
+
+The Unreasonable Effectiveness of Open Science in AI: A Replication Study
 
 ### [Xavier Fernando Cuauhtémoc Sánchez Díaz](xavier.sanchezdz@ntnu.no)
 
