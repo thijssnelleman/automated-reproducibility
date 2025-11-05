@@ -12,30 +12,28 @@ load_dotenv()
 client = genai.Client()
 model = "gemini-2.5-pro"  # Alternative: "gemini-2.5-flash", 
 
-# Load PDF
-
 def encode_pdf(file_path: Path):
+    """PDF Loader."""
     with file_path.open("rb") as pdf_file:
         pdf_bytes = pdf_file.read()
     return base64.b64encode(pdf_bytes).decode("utf-8")
 
-papers = Path("papers").glob("*.pdf")
-
-# Override for testing
-
-if len(sys.argv) == 2 and Path(sys.argv[1]).exists():
+if len(sys.argv) == 2:
+    assert Path(sys.argv[1]).exists()
+    assert Path(sys.argv[1]).suffix == ".pdf"
     papers = [Path(sys.argv[1])]
 else:
-    papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
-            #Path("papers/Edge-Based Graph Component Pooling.pdf"),
-            Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
-            ]
+    papers = Path("papers").glob("*.pdf")
+    # papers = [#Path("papers/Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music.pdf"),
+    #         #Path("papers/Edge-Based Graph Component Pooling.pdf"),
+    #         Path("papers/The Unreasonable Effectiveness of Open Science in AI A Replication Study.pdf"),
+    #         ]
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
     output_path = Path("llm_output") / f"{paper_path.stem}.json"
-    #if output_path.exists():  # Continue, do not replace responses anymore
-    #    continue
+    if output_path.exists():  # Continue, do not replace responses anymore
+        continue
     prompt = Path("hypothesis_prompt.yaml").open().read()
     response = response = client.models.generate_content(
         model=model,

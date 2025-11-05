@@ -1,0 +1,86 @@
+
+{
+  "Meta": {
+    "title": "Towards General Negotiation Strategies with End-to-End Reinforcement Learning",
+    "authors": [
+      "Bram M. Renting",
+      "Thomas M. Moerland",
+      "Holger H. Hoos",
+      "Catholijn M. Jonker"
+    ],
+    "year": 2024,
+    "venue": "RLC 2024"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that their end-to-end reinforcement learning method, using a graph representation and Graph Neural Networks (GNNs), can (1) effectively learn to negotiate in a fixed negotiation problem, performing comparably to existing specialized methods, and (2) learn a general negotiation strategy that successfully negotiates on diverse, never-before-seen negotiation problems.",
+      "reason": "The hypothesis is implied from statements in the abstract, introduction, and conclusion. The abstract states, 'we show that our method is effective and that we can learn to negotiate with other agents on never-before-seen negotiation problems.' The introduction (p. 2) outlines the goal to create a 'more general RL-based negotiation strategy capable of dealing with various negotiation problems'. The conclusion (p. 8) summarizes the findings, stating that 'our method performs as well as a recent end-to-end method that is not transferrable beyond a single fixed negotiation problem' and 'we have shown how an agent can learn to negotiate on diverse negotiation problems in such a way that performance generalises to never-before-seen negotiation problems.' These claims directly correspond to the two clauses of the formulated hypothesis."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "To test the effectiveness of the proposed GNN-based policy on a fixed negotiation problem, it is compared against a recent end-to-end RL method by Higa et al. (2023), which is designed for such fixed problems. Both methods are trained and evaluated against a set of four baseline negotiation agents.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Episodic return",
+        "Average obtained utility"
+      ],
+      "statistics": "Mean and 99% confidence interval over 10 random seeds.",
+      "data": [
+        "A single, fixed negotiation problem with baseline opponents (BoulwareAgent, ConcederAgent, LinearAgent, RandomAgent)"
+      ],
+      "results": {
+        "A single, fixed negotiation problem with baseline opponents (BoulwareAgent, ConcederAgent, LinearAgent, RandomAgent)": {
+          "Episodic return": "During training, the proposed method achieves a similar episodic return curve to the Higa et al. method, both converging to approximately 0.9 (Figure 2).",
+          "Average obtained utility": "In evaluation, the proposed method achieves nearly identical average utility scores against all four baseline opponents compared to the Higa et al. method. For example, against BoulwareAgent, both methods score ~0.9 utility, and against ConcederAgent, both score ~0.9 utility (Figure 3)."
+        }
+      },
+      "test": "Visual comparison of the mean values and their 99% confidence intervals.",
+      "strategy": "The policy is trained for 2,000,000 timesteps. Evaluation consists of 1000 negotiation games against each opponent. The entire process is repeated for 10 random seeds."
+    },
+    "experiment_2": {
+      "experiment_description": "To test the generalizability of the proposed GNN-based policy, it is trained and evaluated on randomly generated negotiation problems that are never seen before during evaluation. The experiment is conducted against two sets of opponents: a smaller set of baseline agents and a larger, more challenging set of competition agents from the ANAC 2022 competition.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Episodic return",
+        "Average obtained utility"
+      ],
+      "statistics": "Mean and 99% confidence interval over 10 random seeds.",
+      "data": [
+        "Randomly generated negotiation problems with baseline opponents",
+        "Randomly generated negotiation problems with competition opponents"
+      ],
+      "results": {
+        "Randomly generated negotiation problems with baseline opponents": {
+          "Episodic return": "During training, the episodic return converges to approximately 0.9 (Figure 4).",
+          "Average obtained utility": "The agent performs well, achieving high utility scores against all baseline agents (e.g., ~0.9 against BoulwareAgent and ConcederAgent), similar to its performance on the fixed problem (Figure 5a)."
+        },
+        "Randomly generated negotiation problems with competition opponents": {
+          "Episodic return": "During training against the harder set of opponents, the episodic return converges to a lower value of approximately 0.8 (Figure 4).",
+          "Average obtained utility": "The agent's performance is significantly lower and more varied against the full set of opponents. While it still outperforms some, its average utility against many competitive agents is in the 0.6-0.7 range, and its performance against the baseline agents is also reduced compared to when trained only against them (Figure 5b)."
+        }
+      },
+      "test": "Visual comparison of the mean values and their 99% confidence intervals.",
+      "strategy": "The policy is trained for 2,000,000 timesteps, with a new negotiation problem and opponent randomly selected for each episode. Evaluation consists of 1000 negotiation games against each opponent on newly generated random problems. The entire process is repeated for 10 random seeds."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results support the first clause of the hypothesis. The authors state on p. 7, 'We can see in Figure 3 that our method performs similarly to the method proposed by Higa et al. (2023). This result is mostly a sanity check that our method can successfully learn to negotiate in a relatively simple setup despite being more complex and broadly usable.' The empirical results show that the proposed GNN-based method is as effective as a specialized state-of-the-art method on a fixed negotiation problem."
+    },
+    "interpretation_2": {
+      "experiment": "experiment_2",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results support the second clause of the hypothesis, albeit with limitations. The agent demonstrates that it can learn a policy that generalizes to negotiate on never-before-seen problems. As stated on p. 7, 'our method performs well against all baseline agents while negotiating on various structured negotiation problems it has never seen before. It is promising that an end-to-end learned GNN-based policy appears to generalise over such different problems.' However, the authors also note a key limitation: performance drops significantly against a broad set of highly competitive agents (p. 8). This suggests that while the principle of generalization is proven, the quality of the generalized strategy leaves 'room for improvement' against more complex opponents, which the authors attribute to the current feature design's limited ability to adapt to opponent strategies."
+    }
+  }
+}

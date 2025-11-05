@@ -1,7 +1,6 @@
 """Compiles the LLM output into a review file."""
 from pathlib import Path
 import json
-import pandas as pd
 import sys
 
 general_template = Path("review_template/review_general.md").open().read()
@@ -49,26 +48,8 @@ for key in llm_output["Experiment"]:
     test = ", ".join(test) if isinstance(test, list) else test
     exp_o = exp_o.replace("@@@EXPERIMENT_TEST@@@", test)
 
-    experiment_table = []
-    placed_value = False
-    for result in llm_output["Experiment"][key]["results"]:
-        row = []
-        for metric in llm_output["Experiment"][key]["metrics"]:
-            if metric not in llm_output["Experiment"][key]["results"][result]:
-                row.append("-")
-            else:
-                placed_value = True
-                metric_out = llm_output["Experiment"][key]["results"][result][metric]
-                if isinstance(metric_out, dict):
-                    row.append(", ".join([f"{metric_out[key]} ({key})" for key in metric_out]))
-                else:
-                    row.append(llm_output["Experiment"][key]["results"][result][metric])
-        experiment_table.append(row)
-    if not placed_value:  # Place the JSON results directly, too difficult to parse to table
-        exp_o = exp_o.replace("@@@EXPERIMENT_RESULTS_TABLE@@@", json.dumps(llm_output["Experiment"][key]["results"], indent=4, ensure_ascii=False))
-    else:
-        experiment_table = pd.DataFrame(experiment_table, columns=llm_output["Experiment"][key]["metrics"], index=llm_output["Experiment"][key]["results"])
-        exp_o = exp_o.replace("@@@EXPERIMENT_RESULTS_TABLE@@@", experiment_table.to_markdown())
+    # We concatenate the raw JSON instead, due to the volatility of this output.
+    exp_o = exp_o.replace("@@@EXPERIMENT_RESULTS_TABLE@@@", json.dumps(llm_output["Experiment"][key]["results"], indent=4, ensure_ascii=False))
     experiment_sections.append(exp_o)
 
 for key in llm_output["Interpretation"]:

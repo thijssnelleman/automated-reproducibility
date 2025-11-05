@@ -1,0 +1,81 @@
+
+{
+  "Meta": {
+    "title": "Trajectory-based Algorithm Selection with Warm-starting",
+    "authors": [
+      "Anja Jankovic",
+      "Diederick Vermetten",
+      "Ana Kostovska",
+      "Jacob de Nobel",
+      "Tome Eftimov",
+      "Carola Doerr"
+    ],
+    "year": 2022,
+    "venue": "arXiv"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that a trajectory-based algorithm selector, which uses landscape features computed from an initial optimization run to select and warm-start a subsequent algorithm, can outperform any single algorithm from the portfolio in a dynamic, per-run switching context.",
+      "reason": "The hypothesis is implied from the Abstract and Introduction. The abstract states the problem of costly feature extraction in traditional landscape-aware algorithm selection and proposes a trajectory-based approach to circumvent this. The authors state: 'In this new context, we show promising performance of the trajectory-based per-run algorithm selection with warm-starting.' (Abstract, p.1). The introduction further elaborates on this, extending a previous approach '[...] to a portfolio of five widely used black-box optimization algorithms, and we consider that we can switch between the algorithms once during the optimization process.' (p.1). The expected outcome is that this selector will be effective, which in the context of algorithm selection means outperforming the single best solver."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The experiment evaluates a trajectory-based algorithm selection model on a portfolio of five optimization algorithms (BFGS, CMA-ES, DE, MLSL, PSO). An initial algorithm (CMA-ES) runs for 154 function evaluations, during which landscape features are collected. Based on these features, a Random Forest regression model predicts the performance of each of the five algorithms for a subsequent run with a given budget. The algorithm with the best predicted performance is selected and warm-started to continue the optimization. The performance of this algorithm selector is then compared to the performance of each individual algorithm in the portfolio across various budgets for the second part of the search. The evaluation is performed in two scenarios: with the full portfolio, and with a portfolio where the dominant BFGS algorithm is excluded.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "R-squared score",
+        "Loss (log-performance difference)"
+      ],
+      "statistics": [
+        "Mean",
+        "Distribution (via boxplots showing median and quartiles)"
+      ],
+      "data": [
+        "BBOB noiseless testbed (COCO environment)"
+      ],
+      "results": {
+        "BBOB noiseless testbed (COCO environment)": {
+          "R-squared score": [
+            {
+              "comment": "R-squared scores for regression models trained on log-target precision for A2 budget of 900 (from Table III, p.4).",
+              "BFGS": 0.757,
+              "CMAES": 0.7894,
+              "DE": 0.6669,
+              "MLSL": 0.8688,
+              "PSO": 0.8745
+            }
+          ],
+          "Loss (log-performance difference)": [
+            {
+              "comment": "Mean loss for the portfolio excluding BFGS, with an A2 budget of 200 (from text on p.6).",
+              "Selector": 0.14,
+              "CMA-ES": 0.17
+            },
+            {
+              "comment": "Mean loss for the portfolio excluding BFGS, with an A2 budget of 900 (from text on p.6).",
+              "Selector": 0.21,
+              "CMA-ES": 0.45
+            },
+            {
+              "comment": "For the full portfolio with A2 budget 100, the selector performs slightly worse than the single best solver, BFGS (from text on p.5)."
+            }
+          ]
+        }
+      },
+      "test": "Direct comparison of the mean and distribution of the 'Loss' metric between the proposed algorithm selector and the individual algorithms in the portfolio.",
+      "strategy": "Leave-one-group-out cross-validation (groups are problem instance IDs 1-5) for training regression models. The optimization runs have a fixed budget, split into an initial 154 evaluations for feature extraction and a subsequent budget for the selected algorithm (tested budgets: {100, 200, 300, 500, 700, 900})."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The authors conclude that the hypothesis is supported, but with the important condition that there must be sufficient performance complementarity among the algorithms in the portfolio. When one algorithm (BFGS) dominates the portfolio, the selector does not provide a benefit and can perform slightly worse (p.5). However, when this dominant algorithm is removed, the performance complementarity increases, and the selector clearly outperforms the remaining individual algorithms. The conclusion states: 'We have shown that the trajectory-based selection is able to outperform all of the individual algorithms in this portfolio, given that there is sufficient complementarity in their performance.' (p.7, Section VI). This is quantitatively supported by the mean loss comparison for the portfolio excluding BFGS, where the selector's mean loss is lower than that of the best single solver in that subset (e.g., 0.21 vs. 0.45 for budget 900, p.6)."
+    }
+  }
+}

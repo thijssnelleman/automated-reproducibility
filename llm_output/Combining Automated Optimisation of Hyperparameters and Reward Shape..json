@@ -1,0 +1,80 @@
+
+{
+  "Meta": {
+    "title": "Combining Automated Optimisation of Hyperparameters and Reward Shape",
+    "authors": [
+      "Julian Dierkes",
+      "Emma Cramer",
+      "Holger H. Hoos",
+      "Sebastian Trimpe"
+    ],
+    "year": 2024,
+    "venue": "RLC 2024"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the combined, simultaneous optimisation of an RL algorithm's hyperparameters and its reward function parameters will match or outperform the individual optimisation of either component alone, especially in complex environments.",
+      "reason": "The hypothesis is implied in the Abstract and Introduction. The Abstract states: \"We demonstrate empirically that an RL algorithm's hyperparameter configurations and reward function are often mutually dependent, meaning neither can be fully optimised without appropriate values for the other. We then propose a methodology for the combined optimisation of hyperparameters and the reward function.\" The expected outcome is also in the Abstract: \"Our results show that combined optimisation significantly improves over baseline performance in half of the environments and achieves competitive performance in the others... This suggests that combined optimisation should be best practice.\" Contribution 1 on page 2 further clarifies this: \"We show that combined optimisation can match the performance of individual optimisation with the same compute budget despite the larger search space; furthermore, we show that it can yield significant improvement in challenging environments, such as Humanoid and Wipe.\""
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that including a variance penalty in the optimisation objective (multi-objective optimisation) will improve the stability (i.e., reduce the performance variance) of the learned policies, while achieving similar or better expected performance compared to single-objective optimisation.",
+      "reason": "This hypothesis is stated in the Abstract: \"Furthermore, we include a variance penalty as an optimisation objective to improve the stability of learned policies.\" It is also listed as the second key contribution on page 2: \"We demonstrate that including a variance penalty for multi-objective optimisation can obtain hyperparameter settings and reward shapes that substantially improve performance variance of a trained policy while achieving similar or better expected performance.\""
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The authors compare the performance of combined hyperparameter and reward shape optimisation against several baselines: a default baseline configuration, optimising only hyperparameters, and optimising only reward parameters. This comparison is performed for two RL algorithms (PPO and SAC) across four different environments. The evaluation is conducted for both a single-objective performance metric and a multi-objective metric that includes a variance penalty.",
+      "hypothesis": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "metrics": [
+        "Task Performance",
+        "Coefficient of Variation"
+      ],
+      "statistics": "Median performance and median coefficient of variation. Each experiment consists of five optimisation runs, and the incumbent from each run is evaluated over ten training runs. The final reported value is the median of the five median performances.",
+      "data": [
+        "Gymnasium LunarLander",
+        "Google Brax Ant",
+        "Google Brax Humanoid",
+        "Robosuite Wipe"
+      ],
+      "results": {
+        "Gymnasium LunarLander": {
+          "Task Performance": "PPO Single-Obj: base 273, rpo-DEHB 287, hpo-DEHB 265, combined-RS 262, combined-DEHB 234. PPO Multi-Obj: rpo-DEHB 223, hpo-DEHB 277, combined-DEHB 227. SAC Single-Obj: base 208, rpo-DEHB 175, hpo-DEHB 194, combined-RS 171, combined-DEHB 177. SAC Multi-Obj: rpo-DEHB 174, hpo-DEHB 186, combined-RS 193, combined-DEHB 182.",
+          "Coefficient of Variation": "PPO Single-Obj: base 11%, rpo-DEHB 31%, hpo-DEHB 27%, combined-RS 38%, combined-DEHB 25%. PPO Multi-Obj: rpo-DEHB 10%, hpo-DEHB 11%, combined-DEHB 15%. SAC Single-Obj: base 27%, rpo-DEHB 14%, hpo-DEHB 23%, combined-RS 15%, combined-DEHB 23%. SAC Multi-Obj: rpo-DEHB 13%, hpo-DEHB 15%, combined-RS 18%, combined-DEHB 21%."
+        },
+        "Google Brax Ant": {
+          "Task Performance": "PPO Single-Obj: base 6785, rpo-DEHB 6706, hpo-DEHB 8111, combined-RS 8013, combined-DEHB 8049. PPO Multi-Obj: rpo-DEHB 6663, hpo-DEHB 7842, combined-DEHB 7923. SAC Single-Obj: base 8054, rpo-DEHB 7927, hpo-DEHB 8282, combined-RS 8064, combined-DEHB 8199. SAC Multi-Obj: rpo-DEHB 7994, hpo-DEHB 8216, combined-DEHB 8169.",
+          "Coefficient of Variation": "PPO Single-Obj: base 16%, rpo-DEHB 17%, hpo-DEHB 14%, combined-RS 16%, combined-DEHB 12%. PPO Multi-Obj: rpo-DEHB 14%, hpo-DEHB 6%, combined-DEHB 6%. SAC Single-Obj: base 28%, rpo-DEHB 32%, hpo-DEHB 21%, combined-RS 21%, combined-DEHB 23%. SAC Multi-Obj: rpo-DEHB 29%, hpo-DEHB 13%, combined-DEHB 18%."
+        },
+        "Google Brax Humanoid": {
+          "Task Performance": "PPO Single-Obj: base 4196, rpo-DEHB 4464, hpo-DEHB 4826, combined-RS 5112, combined-DEHB 5433. PPO Multi-Obj: rpo-DEHB 4472, hpo-DEHB 4719, combined-DEHB 5485. SAC Single-Obj: base 3273, rpo-DEHB 5284, hpo-DEHB 4881, combined-RS 5913, combined-DEHB 6033. SAC Multi-Obj: rpo-DEHB 5208, hpo-DEHB 4466, combined-DEHB 6103.",
+          "Coefficient of Variation": "PPO Single-Obj: base <1%, rpo-DEHB <1%, hpo-DEHB 1%, combined-RS 2%, combined-DEHB 7%. PPO Multi-Obj: rpo-DEHB <1%, hpo-DEHB <1%, combined-DEHB 1%. SAC Single-Obj: base 11%, rpo-DEHB 11%, hpo-DEHB 18%, combined-RS 17%, combined-DEHB 12%. SAC Multi-Obj: rpo-DEHB 8%, hpo-DEHB 15%, combined-DEHB 1%."
+        },
+        "Robosuite Wipe": {
+          "Task Performance": "SAC Single-Obj: base 101, rpo-DEHB 108, hpo-DEHB 132, combined-RS 134, combined-DEHB 136. SAC Multi-Obj: rpo-DEHB 114, hpo-DEHB 131, combined-DEHB 130.",
+          "Coefficient of Variation": "SAC Single-Obj: base 24%, rpo-DEHB 24%, hpo-DEHB 10%, combined-RS 10%, combined-DEHB 8%. SAC Multi-Obj: rpo-DEHB 20%, hpo-DEHB 11%, combined-DEHB 10%."
+        }
+      },
+      "test": "Linear mixed-effects model analysis (significance level = 0.05)",
+      "strategy": "Optimisation is performed using DEHB over a budget of 133 (PPO) or 80 (SAC) full training runs. Each optimisation experiment is conducted with 5 random seeds. The final incumbent configuration from each is evaluated by training with 10 additional random seeds."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results in Table 1 support the hypothesis. The authors state in Section 5.2: \"Our results show that simultaneously optimising hyperparameters and reward parameters consistently matches or outperforms individual optimisation... Significant performance gains are observed in the complex Humanoid and Wipe environments, while the simpler Ant and LunarLander environments, which are mostly solved using baseline parameter settings, generally show no additional improvements from joint optimisation.\" For example, in the complex Humanoid environment with PPO, the combined optimisation (5433) significantly outperforms both reward-only (4464) and hyperparameter-only (4826) optimisation. Similarly, for SAC on Wipe, combined optimisation (136) outperforms the individual approaches (108 and 132). The authors conclude that even when performance only matches, \"joint optimisation still offers the advantage of not requiring hand-tuning, while addressing the mutual dependencies of hyperparameter and reward parameters.\""
+    },
+    "interpretation_2": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_2",
+      "support": true,
+      "reason": "The results in Table 1 support the hypothesis. The authors state in Section 5.3: \"From Table 1, we conclude that multi-objective optimisation can improve policy stability by including a penalty for large standard deviation in performance. These improvements come with only marginal performance loss and sometimes even achieve slight gains\". For instance, in the Google Brax Ant environment with SAC, the multi-objective hyperparameter-only optimisation achieves a much lower Coefficient of Variation (13%) compared to its single-objective counterpart (21%) while achieving comparable task performance (8216 vs 8282). Similarly, for Humanoid with SAC, the combined multi-objective optimisation achieves a CV of 1% versus 12% for the single-objective version, with a slight performance increase (6103 vs 6033). This demonstrates that the variance penalty successfully improves policy stability."
+    }
+  }
+}
