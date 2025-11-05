@@ -1,0 +1,46 @@
+
+{
+  "Meta": {
+    "title": "Regularized Feature Selection Landscapes: An Empirical Study of Multimodality",
+    "authors": [
+      "Xavier F. C. Sánchez-Díaz",
+      "Corentin Masson",
+      "Ole Jakob Mengshoel"
+    ],
+    "year": 2024,
+    "venue": "Parallel Problem Solving from Nature – PPSN XVIII"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that as regularization strength increases, the multimodality of the feature selection fitness landscape decreases, but a substantial level of multimodality persists.",
+      "reason": "This hypothesis is implied from the abstract on page 1. The authors state their focus is on 'the impact of regularization on the landscape induced by feature selection' and summarize their findings as: 'With increasing regularization, the degree of multimodality generally drops off but remains substantial.' This summary of results directly reflects the central claim they aimed to test empirically."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The experiment consists of a fitness landscape analysis of feature selection for decision tree models. The analysis is performed on ten different datasets, studying how the landscape's multimodality changes as the level of regularization is varied. The analysis is conducted using local optima networks.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Degree of multimodality"
+      ],
+      "statistics": "Not specified on page 1.",
+      "data": [
+        "Ten datasets (names not specified on page 1)"
+      ],
+      "results": "Specific metric values are not provided on page 1.",
+      "test": "The paper describes a general trend ('generally drops off'), but specific statistical tests are not mentioned on page 1.",
+      "strategy": "The learning method is decision trees. The specific experimental strategy (e.g., data splitting, cross-validation) is not specified on page 1."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "Based on the abstract on page 1, the results support the hypothesis. The authors state: 'In the ten datasets studied, we find a high degree of multimodality when there is no regularization. With increasing regularization, the degree of multimodality generally drops off but remains substantial.' This directly confirms both clauses of the implied hypothesis."
+    }
+  }
+}
