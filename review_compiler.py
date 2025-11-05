@@ -45,7 +45,9 @@ for key in llm_output["Experiment"]:
     statistics = ", ".join(statistics) if isinstance(statistics, list) else statistics
     exp_o = exp_o.replace("@@@EXPERIMENT_STATISTICS@@@", statistics)
     exp_o = exp_o.replace("@@@EXPERIMENT_STRATEGY@@@", llm_output["Experiment"][key]["strategy"])
-    exp_o = exp_o.replace("@@@EXPERIMENT_TEST@@@", llm_output["Experiment"][key]["test"])
+    test = llm_output["Experiment"][key]["test"]
+    test = ", ".join(test) if isinstance(test, list) else test
+    exp_o = exp_o.replace("@@@EXPERIMENT_TEST@@@", test)
 
     experiment_table = []
     placed_value = False
