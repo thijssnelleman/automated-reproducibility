@@ -12,7 +12,7 @@ The answer of the LLM is structured into three parts; Hypothesis, experiments an
 
 The LLM has been tasked to extract a hypothesis **including an expected outcome**. This may not always be the case for each study; it should be interpreted as a post-hoc hypothesis.
 
-Please answer the following questions:
+Please answer the questions in the  following sections.
 
 ## Hypotheses
 
