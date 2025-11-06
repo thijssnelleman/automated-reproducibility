@@ -10,11 +10,11 @@ Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework 
 
 Robustness Distributions in Neural Network Verification
 
-# Andreas Paraskeva
+# Andreas Paraskeva ✅
 
 Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 
-# Hadar Shavit 
+# Hadar Shavit ✅
 
 Revisiting SATZilla Features in 2024
 
@@ -34,7 +34,7 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
-# Marie Anastacio
+# Marie Anastacio ✅
 
 Instance selection for configuration performance comparison
 
@@ -42,11 +42,11 @@ Instance selection for configuration performance comparison
 
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
 
-# Bram Renting
+# Bram Renting ✅
 
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 
-# Guus Toussaint
+# Guus Toussaint ✅
 
 EDC: Equation Discovery for Classification paper
 
@@ -84,4 +84,6 @@ Hyperparameters in Reinforcement Learning and How To Tune Them
 
 Link to research: https://arxiv.org/pdf/2306.01324
 
+# Lukas Fehring
 
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
