@@ -1,0 +1,130 @@
+
+{
+  "Meta": {
+    "title": "carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks",
+    "authors": [
+      "Carolin Benjamins",
+      "Helena Graf",
+      "Sarah Segel",
+      "Difan Deng",
+      "Tim Ruhkopf",
+      "Leona Hennig",
+      "Soham Basu",
+      "Neeratyoy Mallik",
+      "Edward Bergman",
+      "Deyao Chen",
+      "François Clément",
+      "Alexander Tornede",
+      "Matthias Feurer",
+      "Katharina Eggensperger",
+      "Frank Hutter",
+      "Carola Doerr",
+      "Marius Lindauer"
+    ],
+    "year": 2023,
+    "venue": "arXiv"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that the representative subsets of HPO benchmark tasks, created by minimizing the star discrepancy in the performance space, will yield consistent relative performance rankings of HPO optimizers across the disjoint development and test sets.",
+      "reason": "The paper proposes a method to create representative subsets of HPO tasks to make benchmarking more efficient and less biased. A key feature is the creation of disjoint development (dev) and test sets (Abstract, Section 7). The authors then empirically validate this methodology by comparing the performance of optimizers across these sets. The implied hypothesis is that if the subsets are truly representative and useful, the relative performance of optimizers should be stable between the dev and test sets. This validation is explicitly mentioned in Appendix H.2: 'In order to validate that the ranking remains consistent across the subsets, we calculate the rank the same way as described in Section 8.1 for each task type and then determine the order. The following tables [...] show that the ranking is consistent across the subsets for each task type.' This shows a clear intent to empirically test the consistency of rankings between the created subsets."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "A selection of representative HPO optimizers are run on the proposed development and test subsets for four different HPO task types (blackbox, multi-fidelity, multi-objective, and multi-fidelity-multi-objective). The final performance of each optimizer on each task is recorded. These performances are then used to compute the mean rank of each optimizer across the tasks within each subset. Finally, the rank ordering of optimizers is compared between the development and test set for each task type to assess consistency.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "mean rank"
+      ],
+      "statistics": [
+        "mean rank"
+      ],
+      "data": [
+        "carps blackbox dev subset",
+        "carps blackbox test subset",
+        "carps multi-fidelity dev subset",
+        "carps multi-fidelity test subset",
+        "carps multi-objective dev subset",
+        "carps multi-objective test subset",
+        "carps multi-fidelity-objective dev subset",
+        "carps multi-fidelity-objective test subset"
+      ],
+      "results": {
+        "carps blackbox dev subset": {
+          "mean rank": {
+            "Nevergrad-CMA-ES": 1.65,
+            "SMAC3-BlackBoxFacade": 1.65,
+            "RandomSearch": 2.70
+          }
+        },
+        "carps blackbox test subset": {
+          "mean rank": {
+            "SMAC3-BlackBoxFacade": 1.50,
+            "Nevergrad-CMA-ES": 1.82,
+            "RandomSearch": 2.67
+          }
+        },
+        "carps multi-fidelity dev subset": {
+          "mean rank": {
+            "SMAC3-MultiFidelityFacade": 1.35,
+            "DEHB": 2.23,
+            "SMAC3-Hyperband": 2.42
+          }
+        },
+        "carps multi-fidelity test subset": {
+          "mean rank": {
+            "SMAC3-MultiFidelityFacade": 1.57,
+            "DEHB": 2.15,
+            "SMAC3-Hyperband": 2.27
+          }
+        },
+        "carps multi-objective dev subset": {
+          "mean rank": {
+            "Optuna-MO-TPE": 1.30,
+            "Nevergrad-DE": 2.20,
+            "RandomSearch": 2.50
+          }
+        },
+        "carps multi-objective test subset": {
+          "mean rank": {
+            "Nevergrad-DE": 1.70,
+            "Optuna-MO-TPE": 1.80,
+            "RandomSearch": 2.50
+          }
+        },
+        "carps multi-fidelity-objective dev subset": {
+          "mean rank": {
+            "SMAC3-MOMF-GP": 1.56,
+            "RandomSearch": 1.78,
+            "Nevergrad-DE": 2.67
+          }
+        },
+        "carps multi-fidelity-objective test subset": {
+          "mean rank": {
+            "SMAC3-MOMF-GP": 1.44,
+            "RandomSearch": 2.00,
+            "Nevergrad-DE": 2.56
+          }
+        }
+      },
+      "test": [
+        "Friedman test",
+        "Nemenyi test (α = 0.05)",
+        "Qualitative comparison of rank ordering"
+      ],
+      "strategy": "Each optimizer is run on each task for 20 random seeds. The optimization budget is n_trials = [20 + 40 * sqrt(d)], where d is the dimensionality of the task's configuration space."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The authors conclude that the rankings are consistent across the development and test subsets, thus supporting the hypothesis. Their reasoning, presented in Appendix H.2 and Section 8.2, is that for most task types, the rank ordering of optimizers remains stable. For example, for the multi-fidelity task type (Table 6), the rank order is identical between the dev and test sets. The authors acknowledge that for some task types, like multi-objective, the ranks of the top two optimizers flip (Table 8). However, they argue this does not invalidate the result because the statistical tests (Friedman/Nemenyi) show that the performance differences between these optimizers on the test set are not significant (Table 8, 'significant' column is 'no'). Therefore, they conclude that where ranks are stable, the hypothesis is supported, and where they are not, the underlying performance differences are negligible, meaning the subsets are still behaving as expected."
+    }
+  }
+}

@@ -50,25 +50,31 @@ Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 
 EDC: Equation Discovery for Classification paper
 
-### [Odd Erik Gundersen](odderik@ntnu.no)
+# [Odd Erik Gundersen](odderik@ntnu.no)
 
 The Unreasonable Effectiveness of Open Science in AI: A Replication Study
 
-### [Xavier Fernando Cuauhtémoc Sánchez Díaz](xavier.sanchezdz@ntnu.no)
+# [Xavier Fernando Cuauhtémoc Sánchez Díaz](xavier.sanchezdz@ntnu.no)
 
 Regularized Feature Selection Landscapes An Empirical Study of Multimodality
 
 Link to research: https://rdcu.be/eM9hG
 
-### [Aleksandra Jekic](aleksander.jekic@ntnu.no)
+# [Aleksandra Jekic](aleksander.jekic@ntnu.no)
 
 Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
 
-### [Keith Downing](keithd@ntnu.no)
+# [Keith Downing](keithd@ntnu.no)
 
 The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents
 
-### [Pauline C Haddow](pauline@ntnu.no)
+# [Pauline C Haddow](pauline@ntnu.no)
 
 Currently awaiting research paper per email.
+
+# Caro Benjamins
+
+carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks
+
+Link to research: https://arxiv.org/abs/2506.06143
 
