@@ -268,8 +268,69 @@ The results of the experiment are as follows:
         "Goodness-of-fit to a log-normal distribution": "The log-normal hypothesis was not rejected for 11 out of 12 networks.",
         "Difference between training and testing distributions": "No statistically significant difference was found for any of the 12 networks.",
         "Spearman correlation coefficient (rs) of ẽ* values": "Average rs = 0.55 for training data; Average rs = 0.39 for testing data."
+    },
+    "MNIST: Comparison of the efficiency of finding epsilon using 𝑘-binary search with different values of 𝑘.": {
+        "k = 1": {
+            "number of queries per instance": {
+                "Minimum": 7,
+                "Maximum": 74,
+                "Average": 12.68
+            },
+            "Time (1h time-out)": {
+                "Average CPU time per instance [s]": 10162,
+                "Average wallclock time per instance [s]": 9781,
+                "Average number of time-outs per instance": 0.10
+            }
+        },
+        "k = 2": {
+            "number of queries per instance": {
+                "Minimum": 4,
+                "Maximum": 19,
+                "Average": 11.78
+            },
+            "Time (1h time-out)": {
+                "Average CPU time per instance [s]": 12750,
+                "Average wallclock time per instance [s]": 6717,
+                "Average number of time-outs per instance": 0.17
+            }
+        },
+        "k = 4": {
+            "number of queries per instance": {
+                "Minimum": 7,
+                "Maximum": 31,
+                "Average": 11.78
+            },
+            "Time (1h time-out)": {
+                "Average CPU time per instance [s]": 19582,
+                "Average wallclock time per instance [s]": 5574,
+                "Average number of time-outs per instance": 1.07
+            }
+        },
+        "k = 8": {
+            "number of queries per instance": {
+                "Minimum": 15,
+                "Maximum": 54,
+                "Average": 28.51
+            },
+            "Time (1h time-out)": {
+                "Average CPU time per instance [s]": 27234,
+                "Average wallclock time per instance [s]": 4433,
+                "Average number of time-outs per instance": 1.46
+            }
+        },
+        "k = 16": {
+            "number of queries per instance": {
+                "Minimum": 4,
+                "Maximum": 54,
+                "Average": 22.46
+            },
+            "Time (1h time-out)": {
+                "Average CPU time per instance [s]": 15657,
+                "Average wallclock time per instance [s]": 5878,
+                "Average number of time-outs per instance": 0.19
+            }
+        }
     }
-    TODO Table 1
 }
 
 #### General
@@ -428,7 +489,7 @@ Experiment outcomes are analysed and interpreted to determine whether the experi
 
 The LLM has found the following interpretations of the experiment outcomes;
 
-## interpretation_1
+### interpretation_1
 
 This interpretation has the following description/reasoning:
 The authors find that for 11 out of 12 conventionally trained fully-connected MNIST networks, the hypothesis that the critical ε distributions follow a log-normal distribution is not rejected by a Kolmogorov-Smirnov test at a 0.05 significance level. They state: 'we found evidence that the robustness distributions for the networks considered could be characterised well by log-normal distributions, except for net-256x4' (Section 4.4, Page 14).
@@ -458,7 +519,7 @@ Your corrected answer (empty if correct):
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
 
-## interpretation_2
+### interpretation_2
 
 This interpretation has the following description/reasoning:
 Using a two-sample Kolmogorov-Smirnov test (α=0.05), the authors found no statistically significant differences between the critical ε distributions derived from training data and those from testing data for the 12 networks. They conclude: 'This suggests that finding the robustness distribution for a given training set is sufficient for analysing the overall robustness of a network in a supervised learning scenario.' (Section 4.4, Page 14).
@@ -490,7 +551,7 @@ Your corrected answer (empty if correct):
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
 
-## interpretation_3
+### interpretation_3
 
 This interpretation has the following description/reasoning:
 The authors calculate the Spearman correlation coefficient (rs) for ẽ* values across pairs of networks. For training data, they find correlations ranging from 'slight' (rs=0.18) to 'strong' (rs=0.82), with an average of 0.55. For testing data, the correlation is weaker (average rs=0.39) but still present. This supports the hypothesis of a positive correlation. (Section 4.5, Pages 15-16).
@@ -520,7 +581,7 @@ Your corrected answer (empty if correct):
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
 
-## interpretation_4
+### interpretation_4
 
 This interpretation has the following description/reasoning:
 The results from experiments on both fully-connected and convolutional networks consistently show that adversarial training increases robustness. The CDF plots and mean ẽ* values demonstrate a shift towards higher critical ε values for adversarially trained models compared to conventionally trained ones. The paper states, 'Figure 8 shows that adversarial training increases the robustness of the networks we studied in almost all cases.' (Section 5.3, Page 21). While the improvement is clear for most fully-connected networks, for some CNNs the improvement was less significant, which the authors attribute to the low quality of the obtained distributions (Section 6.3, Page 24).
@@ -550,7 +611,7 @@ Your corrected answer (empty if correct):
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
 
-## interpretation_5
+### interpretation_5
 
 This interpretation has the following description/reasoning:
 The authors find that for MNIST fully-connected networks, adversarial training changes the distributions so they no longer follow a log-normal pattern, in contrast to their conventionally trained counterparts. They state: 'Interestingly, we observed that although the robustness distributions of the standardly trained MNIST neural networks appear to follow a log-normal distribution, adversarial training changes this' (Section 5.3, Page 21). This supports the hypothesis. However, the results for other datasets and architectures are more complex; for GTSRB fully-connected networks, the opposite effect was observed. For most CNNs, the distributions did not follow a log-normal pattern regardless of training method. This suggests that while the hypothesis holds for the simplest case, the relationship is dependent on the dataset and architecture.

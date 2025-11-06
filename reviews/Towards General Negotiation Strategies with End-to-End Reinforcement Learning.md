@@ -205,7 +205,7 @@ Experiment outcomes are analysed and interpreted to determine whether the experi
 
 The LLM has found the following interpretations of the experiment outcomes;
 
-## interpretation_1
+### interpretation_1
 
 This interpretation has the following description/reasoning:
 The results support the first clause of the hypothesis. The authors state on p. 7, 'We can see in Figure 3 that our method performs similarly to the method proposed by Higa et al. (2023). This result is mostly a sanity check that our method can successfully learn to negotiate in a relatively simple setup despite being more complex and broadly usable.' The empirical results show that the proposed GNN-based method is as effective as a specialized state-of-the-art method on a fixed negotiation problem.
@@ -237,7 +237,7 @@ Your corrected answer (empty if correct):
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
 
-## interpretation_2
+### interpretation_2
 
 This interpretation has the following description/reasoning:
 The results support the second clause of the hypothesis, albeit with limitations. The agent demonstrates that it can learn a policy that generalizes to negotiate on never-before-seen problems. As stated on p. 7, 'our method performs well against all baseline agents while negotiating on various structured negotiation problems it has never seen before. It is promising that an end-to-end learned GNN-based policy appears to generalise over such different problems.' However, the authors also note a key limitation: performance drops significantly against a broad set of highly competitive agents (p. 8). This suggests that while the principle of generalization is proven, the quality of the generalized strategy leaves 'room for improvement' against more complex opponents, which the authors attribute to the current feature design's limited ability to adapt to opponent strategies.

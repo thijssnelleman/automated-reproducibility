@@ -196,7 +196,7 @@ Experiment outcomes are analysed and interpreted to determine whether the experi
 
 The LLM has found the following interpretations of the experiment outcomes;
 
-## interpretation_1
+### interpretation_1
 
 This interpretation has the following description/reasoning:
 The authors conclude that the results support their hypothesis. For hypothesis clause (1), they show that TSRC-trained models achieve significantly better performance in both external (ARI) and internal (CHI) clustering evaluations. As stated on p. 25, there is an "overall improvement (on average 11.18%) in student model performance in terms of ranking in the external cluster evaluation" and an "average improvement of 68.04%" in internal cluster evaluation. For hypothesis clause (2), they demonstrate improved transferability, as TSRC-trained models achieve "similar or better classification performance" (p. 27) and an average rank improvement of 14.02% (p. 29). For hypothesis clause (3), the interpretability is supported by the architecture itself; the resulting models are encoder-decoder models, which are "inherently interpretable" (p. 29) because the decoder allows for the reconstruction and visualization of the learned representations, as illustrated in Figure 1b.

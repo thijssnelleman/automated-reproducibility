@@ -152,7 +152,7 @@ Experiment outcomes are analysed and interpreted to determine whether the experi
 
 The LLM has found the following interpretations of the experiment outcomes;
 
-## interpretation_1
+### interpretation_1
 
 This interpretation has the following description/reasoning:
 The hypothesis is supported, but with significant caveats regarding the comparison to Xu et al. [25].
