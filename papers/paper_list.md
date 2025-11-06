@@ -78,3 +78,10 @@ carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks
 
 Link to research: https://arxiv.org/abs/2506.06143
 
+# Theresa Eimer
+
+Hyperparameters in Reinforcement Learning and How To Tune Them
+
+Link to research: https://arxiv.org/pdf/2306.01324
+
+

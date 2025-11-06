@@ -1,0 +1,96 @@
+
+{
+  "Meta": {
+    "title": "Hyperparameters in Reinforcement Learning and How To Tune Them",
+    "authors": [
+      "Theresa Eimer",
+      "Marius Lindauer",
+      "Roberta Raileanu"
+    ],
+    "year": 2023,
+    "venue": "Proceedings of the 40th International Conference on Machine Learning, Honolulu, Hawaii, USA. PMLR 202, 2023."
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that principled Hyperparameter Optimization (HPO) methods from AutoML are capable of producing better performing, more stable, and more easily comparable RL agents than traditional manual tuning or grid search, while using significantly fewer computational resources.",
+      "reason": "This hypothesis is implied from claims made in the abstract and introduction. The abstract states, \"we show that HPO approaches often have higher performance and lower compute overhead.\" On page 2, the authors state more strongly: \"we demonstrate that compared to tuning hyperparameters by hand, existing HPO tools are capable of producing better performing, more stable, and more easily comparable RL agents, while using fewer computational resources.\" This is the central claim investigated throughout the paper, especially in Section 5."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that failing to separate tuning seeds from testing seeds in Reinforcement Learning leads to overfitting and unreliable performance evaluations, making this separation a crucial best practice for reproducibility.",
+      "reason": "This hypothesis is implied from the abstract, which proposes adopting \"established best practices from AutoML, such as the separation of tuning and testing seeds\". Section 4.3, \"How Do We Account for Noise?\", is dedicated to investigating this issue. The authors state on page 6, \"The performance difference between tuning and testing is significant in many cases... This presents a challenge for reproducibility given that currently it is almost impossible to know what seeds were used for tuning or evaluation.\" This suggests a core belief that this separation is necessary and that its absence is a major problem."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The authors investigate the sensitivity of RL algorithms (PPO, SAC) to various hyperparameters and random seeds on simple continuous control tasks. They then compare the performance of different HPO methods (Random Search, DEHB, PB2) against a comprehensive sweep. Finally, they vary the number of seeds used for tuning to analyze the effect on generalization to unseen test seeds.",
+      "hypothesis": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "metrics": [
+        "Negative Evaluation Reward"
+      ],
+      "statistics": "Mean and standard deviation across tuning runs or seeds.",
+      "data": [
+        "Acrobot",
+        "Pendulum"
+      ],
+      "results": {
+        "Acrobot": {
+          "Negative Evaluation Reward": "For the full search space (Table 1), the best incumbent rewards were: DEHB: 71 ± 3, PB2: 305 ± 186, RS: 83 ± 5. The best single seed from the sweep achieved 81. For the seed generalization analysis (Table 2), the test performance for DEHB with 1 tuning seed was 341.3 ± 183.1, while with 10 tuning seeds it was 464.8 ± 36.5, showing a large gap between incumbent and test performance."
+        },
+        "Pendulum": {
+          "Negative Evaluation Reward": "For the full search space (Table 1), the best incumbent rewards were: DEHB: 112 ± 24, PB2: 78 ± 19, RS: 144 ± 48. The best single seed from the sweep achieved 117. For the seed generalization analysis (Table 2), the test performance for DEHB with 1 tuning seed was 150.5 ± 13.4, while with 10 tuning seeds it was 318.6 ± 281.3, again showing a large generalization gap."
+        }
+      },
+      "test": "Comparison of mean values and their standard deviations.",
+      "strategy": "HPO methods are run with a budget of 10 full RL runs. The sweep baseline consists of 125 runs per environment. For the noise analysis, tuning is performed on 1, 3, 5, or 10 seeds, and the resulting best configuration is evaluated on 10 separate, unseen test seeds."
+    },
+    "experiment_2": {
+      "experiment_description": "The authors compare several HPO methods (DEHB, BGT, RS) against the published, manually-tuned hyperparameters for state-of-the-art RL algorithms on challenging benchmark environments (Brax and Procgen).",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Mean Evaluation Reward"
+      ],
+      "statistics": "Mean and 98% confidence interval across 3 tuning runs.",
+      "data": [
+        "Brax (Ant, Halfcheetah, Humanoid)",
+        "Procgen (Bigfish, Climber, Plunder)"
+      ],
+      "results": {
+        "Brax (Ant, Halfcheetah, Humanoid)": {
+          "Mean Evaluation Reward": "With a 64-run budget (Table 8), DEHB Test performance was: Ant: 4696 ± 1252 (Baseline: 3448 ± 343), Halfcheetah: 8039 ± 636 (Baseline: 6904 ± 377), Humanoid: 5205 ± 2781 (Baseline: 3235 ± 758)."
+        },
+        "Procgen (Bigfish, Climber, Plunder)": {
+          "Mean Evaluation Reward": "With a 64-run budget (Table 9), DEHB Test performance was: Bigfish: 9.4 ± 2.5 (Baseline: 6.8 ± 3.2), Climber: 3.9 ± 1.9 (Baseline: 4.1 ± 1.4), Plunder: 8.7 ± 0.7 (Baseline: 11.8 ± 5.5)."
+        }
+      },
+      "test": "Comparison of mean values and their confidence intervals. The authors also compute and compare the mean ranks of the methods across all environments within a benchmark.",
+      "strategy": "HPO methods are given a budget of 16 or 64 full algorithm runs. The IDAAC baseline on Procgen uses a budget of 810 runs. Tuning is performed across 5 seeds, and the best-found configuration is tested on 10 unseen seeds. The entire tuning process is repeated 3 times for statistical robustness."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results in Table 1 show that even with a small budget of 10 runs, HPO methods can find configurations that perform as well as or better than the best configuration found in a much larger sweep. The authors state: \"On this small budget, they are able to match or outperform the single best seeds in all our sweep runs which use a total of 125 runs per environment.\" (Page 5)."
+    },
+    "interpretation_2": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_2",
+      "support": true,
+      "reason": "Table 2 demonstrates a significant performance drop when configurations tuned on a set of seeds are evaluated on a separate, unseen set of test seeds. This gap indicates overfitting to the tuning seeds. The authors highlight this by stating, \"we can see e.g. on Acrobot that the best incumbent configurations, found by DEHB, perform more than four times worse on test seeds. We can find this effect in all tuning methods, especially on Pendulum. This presents a challenge for reproducibility...\" (Page 6). This strongly supports the hypothesis that separating tuning and test seeds is critical for obtaining reliable results."
+    },
+    "interpretation_3": {
+      "experiment": "experiment_2",
+      "hypothesis": "hypothesis_1",
+      "support": true,
+      "reason": "The results in Figures 5 & 6 and Tables 8 & 9 show that HPO methods, particularly DEHB, consistently match or outperform the highly-tuned baselines on both Brax and Procgen, while using a fraction of the computational budget. The authors summarize this on page 7: \"On Brax, DEHB outperforms the baseline with a mean rank of 1.3 compared to 1.7 for the 16 run budget and a rank of 1.0 compared to the baselines's 1.3 with 64 runs.\" They conclude on page 8: \"Overall, we see that even computationally cheap methods with small tuning budgets can generally match or outperform painstakingly hand-tuned configurations that use orders of magnitude more compute.\""
+    }
+  }
+}
