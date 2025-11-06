@@ -3,6 +3,11 @@
 This interpretation has the following description/reasoning:
 @@@REASON@@@
 
+Based on the LLMs answer, would you like to improve the answer to more accurately capture the interpretation?
+- If you wish to change nothing, leave blank.
+- If you wish to improve the answer, please copy the original answer and adapt it below.
+- If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
+
 This interpretation is for the outcome of the following experiment: @@@EXPERIMENT_ID@@@
 Your corrected answer (empty if correct):
 
