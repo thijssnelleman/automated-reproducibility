@@ -51,7 +51,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-
+The authors hypothesise that their proposed Time Series Representations Classroom (TSRC) framework, which uses knowledge distillation and curriculum learning to train a reconstruction-based student model with guidance from a pre-trained contrastive-based teacher model, will bridge the gap between the performance of the inferior student model and a superior teacher model in downstream tasks by teaching the student model to improve the rank order of similarities in the embodying space. The resulted representations have (1) better rank order of similarities in the embedding space, (2) and are interpretable (reconstruction-based methods are inherently interpretable).
 
 ### General Hypothesis questions
 
