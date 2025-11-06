@@ -72,6 +72,12 @@ The Evolution of Conformity, Malleability, and Influence in Simulated Online Age
 
 Currently awaiting research paper per email.
 
+# [Christine Clock](kristine.klock.fleten@aneo.com)
+
+Applying and benchmarking a stochastic programming-based bidding strategy for day-ahead hydropower scheduling
+
+Link: https://link.springer.com/article/10.1007/s10287-024-00525-y
+
 # Caro Benjamins
 
 carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks
