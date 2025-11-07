@@ -1,0 +1,52 @@
+
+{
+  "Meta": {
+    "title": "AutoMergeNet: AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies",
+    "authors": [
+      "Julia Wąsala",
+      "Joannes D. Maasakkers",
+      "Berend J. Schuit",
+      "Gijs Leguijt",
+      "Ilse Aben",
+      "Rochelle Schneider",
+      "Holger Hoos",
+      "Mitra Baratchi"
+    ],
+    "year": 2025,
+    "venue": "IEEE JOURNAL OF SELECTED TOPICS IN APPLIED EARTH OBSERVATIONS AND REMOTE SENSING"
+  },
+  "Hypothesis": {
+    "hypothesis_1": {
+      "explicit": false,
+      "hypothesis": "The authors hypothesise that their proposed framework, AutoMergeNet, which uses neural architecture search for satellite image data fusion, will outperform existing baseline methods on multimodal classification problems.",
+      "reason": "The abstract states that existing approaches 'cannot be transferred to other related problems, as they rely on expert-selected features and manual pipeline design.' The paper then proposes AutoMergeNet as a general framework. The abstract concludes by stating the outcome of their evaluation: 'AutoMergeNet performs strongly and consistently on these two multimodal classification problems, outperforming six baseline methods'. This implies a hypothesis that their proposed method is superior to the baselines."
+    }
+  },
+  "Experiment": {
+    "experiment_1": {
+      "experiment_description": "The performance of the proposed AutoMergeNet framework is evaluated against six baseline methods on two multimodal classification tasks: methane plume detection and carbon monoxide plume detection.",
+      "hypothesis": [
+        "hypothesis_1"
+      ],
+      "metrics": [
+        "Not specified in the provided text."
+      ],
+      "statistics": "Not specified in the provided text.",
+      "data": [
+        "a methane plume detection dataset from the literature",
+        "carbon monoxide plume detection dataset (This work)"
+      ],
+      "results": {},
+      "test": "Not specified in the provided text.",
+      "strategy": "Not specified in the provided text."
+    }
+  },
+  "Interpretation": {
+    "interpretation_1": {
+      "experiment": "experiment_1",
+      "hypothesis": "hypothesis_1",
+      "support": null,
+      "reason": "The provided text (the first page of the paper) does not contain the results, discussion, or conclusion sections. Therefore, it is not possible to determine the authors' interpretation of the experimental outcomes or whether they support the hypothesis based on the provided information."
+    }
+  }
+}
