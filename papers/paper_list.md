@@ -6,7 +6,7 @@ Edge-Based Graph Component Pooling
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
-# Annelot Bosman
+# Annelot Bosman ✅
 
 Robustness Distributions in Neural Network Verification
 
@@ -30,7 +30,7 @@ Trajectory-based algorithm selection with warm-starting
 
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music
 
-# Julian Dierkes 
+# Julian Dierkes ✅
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
@@ -38,7 +38,7 @@ Combining Automated Optimisation of Hyperparameters and Reward Shape
 
 Instance selection for configuration performance comparison
 
-# Aaron Berger
+# Aaron Berger ✅
 
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
 
@@ -68,7 +68,7 @@ Link to research: https://rdcu.be/eM9hG
 
 Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
 
-# [Keith Downing](keithd@ntnu.no)
+# [Keith Downing](keithd@ntnu.no) ✅
 
 The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents
 
@@ -88,12 +88,12 @@ carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks
 
 Link to research: https://arxiv.org/abs/2506.06143
 
-# Theresa Eimer
+# Theresa Eimer ✅
 
 Hyperparameters in Reinforcement Learning and How To Tune Them
 
 Link to research: https://arxiv.org/pdf/2306.01324
 
-# Lukas Fehring
+# Lukas Fehring ✅
 
 Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
