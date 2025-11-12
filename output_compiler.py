@@ -5,7 +5,7 @@ import pandas as pd
 import re
 
 integer_pattern = r"\[(?P<integer>-?\d+)\]"
-x_pattern = r"\[[^\]]*\](\s*([^\s]+)\s*)"
+x_pattern = r"^\s*\[[xX]\]"
 
 
 df = []
@@ -148,7 +148,7 @@ def process_experiment(lines: list[str], df: list):
             wrong += 1
 
     df.append([review.stem, experiment_id, "Experiment Description Likert Score", description_score])
-    df.append([review.stem, experiment_id, "Experiment Detail Likert Score", detail_score])
+    df.append([review.stem, experiment_id, "Experiment Details Likert Score", detail_score])
     df.append([review.stem, experiment_id, "Experiment Description Score Reason", description_score_reason])
     df.append([review.stem, experiment_id, "Experiment Corrected Hypotheses", corrected_hypotheses])
     df.append([review.stem, experiment_id, "Experiment Corrected Metrics", corrected_metrics])
@@ -270,10 +270,10 @@ for review in Path("reviews").glob("*.md"):
         for index, line in enumerate(review_text[general_section_index:end_index]):
             if line.startswith("Please write the amount of hypothesis you had for the study:"):
                 match = re.search(integer_pattern, line)
-                print()
                 hp_count = int(match.group(1))
-                #print("HP count:", hp_count)
-                # TODO: Add this value to the DF
+                if hp_count > len(llm_output["Hypothesis"]):
+                    for i in range(len(llm_output["Hypothesis"]), hp_count):
+                        df.append([review.stem, f"hypothesis_{i+1}", "Hypothesis Likert Score", 8])
             if line.startswith("If this amount does not overlap with the LLMs answer, feel free to specify reasons below;"):
                 reasoning = True
             if reasoning:
@@ -308,8 +308,15 @@ for review in Path("reviews").glob("*.md"):
             if line.startswith("Please write the amount of experiments you had for the study"):
                 match = re.search(integer_pattern, line)
                 exp_count = int(match.group(1))
-                #print("Exp count:", exp_count)
-                # TODO: Add this value to the DF
+                # The following papers would seperate experiments, but do not think experiments are missing (See reason in the review)
+                excluded_papers = ["Robustness Distributions in Neural Network Verification",
+                                   "Combining Automated Optimisation of Hyperparameters and Reward Shape",
+                                   "Hyperparameters in Reinforcement Learning and How To Tune Them",
+                                   "Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning",
+                                   ]
+                if exp_count > len(llm_output["Experiment"]) and review.stem not in excluded_papers:
+                    for i in range(len(llm_output["Experiment"]), exp_count):
+                        df.append([review.stem, f"experiment_{i+1}", "Experiment Description Likert Score", 6])
             if line.startswith("If this amount does not overlap with the LLMs answer, feel free to specify reasons below;"):
                 reason = True
             if reason:
@@ -328,10 +335,7 @@ for review in Path("reviews").glob("*.md"):
             if line.startswith("### interpretation_"):
                 section_starts.append(index)
         section_starts.append(len(review_text)-1)
-        #print(section_starts)
         for index, section_start in enumerate(section_starts[:-1]):
-            #print(review_text[section_start:section_starts[index+1]])
-            #input()
             process_interpretation(review_text[section_start:section_starts[index+1]], df)
     #break
 

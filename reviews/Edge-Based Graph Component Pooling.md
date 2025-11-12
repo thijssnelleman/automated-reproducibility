@@ -219,9 +219,9 @@ The results of the experiment are as follows:
 The LLM has overall captured the experiment details...
 
 [] Very well (No major mistakes and/or missing information)
-[X] Well (Some missing information and/or minor mistakes)
-[] Okay (Substantial missing information and/or mistakes)
-[] Poorly (Severe missing information and/or mistakes)
+[X] Well (Missing some information and/or minor mistakes)
+[] Okay (Missing important information and/or substantial mistakes)
+[] Poorly (Missing crucial information and/or severe mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
 
 
