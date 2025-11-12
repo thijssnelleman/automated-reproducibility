@@ -129,20 +129,24 @@ def process_experiment(lines: list[str], df: list):
                     break
                 current_left = current_left[subkey]
                 current_right = current_right[subkey]
-            if current_left != current_right:
+            if isinstance(current_left, list) and isinstance(current_right, list):
+                for item in current_left:
+                    if item not in current_right:
+                        missing += 1
+                    else:
+                        correct += 1
+                for item in current_right:
+                    if item not in current_left:
+                        wrong += 1
+            elif current_left != current_right:
                 wrong += 1
             else:
                 correct += 1
-        # elif results_corrected[key.split(".")] != results_original[key]:
-        #     wrong += 1
-        # elif results_corrected[key] == results_original[key]:
-        #     correct += 1
 
     for key in keys_original:
         if key not in keys_corrected:
-            wrong += 1         
-    
-    # TODO Calculate some differences over the json provided by the author and the one provided in llm_output
+            wrong += 1
+
     df.append([review.stem, experiment_id, "Experiment Description Likert Score", description_score])
     df.append([review.stem, experiment_id, "Experiment Detail Likert Score", detail_score])
     df.append([review.stem, experiment_id, "Experiment Description Score Reason", description_score_reason])
