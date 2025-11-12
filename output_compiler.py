@@ -7,12 +7,14 @@ import re
 integer_pattern = r"\[(?P<integer>-?\d+)\]"
 x_pattern = r"\[[^\]]*\](\s*([^\s]+)\s*)"
 
-df = pd.DataFrame()
 
-def process_hypothesis(lines: list[str], df: pd.DataFrame):
+df = []
+#df.concat( ["a", "b", "c", "d"])
+
+def process_hypothesis(lines: list[str], df: list):
     score = None
     corrected_hypothesis = None
-    hypothesis_id = lines[0].split(" ")[1]
+    hypothesis_id = lines[0].split(" ")[1].strip()
     for line_n, line in enumerate(lines):
         if not score:
             match = re.search(x_pattern, line)
@@ -31,19 +33,19 @@ def process_hypothesis(lines: list[str], df: pd.DataFrame):
                     score = 6
                 elif "has stated a hypothesis of lesser quality than described above: " in line:
                     score = 7
-                else:
-                    raise ValueError(f"No box marked in {hypothesis_id} of {review}")
         
         if line.startswith("- If you consider the answer completely wrong, feel free to rephrase completely in your own wording."):
             corrected_hypothesis = "\n".join([v.strip() for v in lines[line_n+1:] if v.strip() != ""])
             break
+    if not score:    
+        raise ValueError(f"No box marked in {hypothesis_id} of {review}")
     # TODO: add score and corrected hypothesis under the hypothesis id
-    #print(score)
-    #print(corrected_hypothesis)
+    df.append([review.stem, hypothesis_id, "Hypothesis Likert Score", score])
+    df.append([review.stem, hypothesis_id, "Hypothesis corrected", corrected_hypothesis])
     return
 
-def process_experiment(lines: list[str], df: pd.DataFrame):
-    experiment_id = lines[0].split(" ")[1]
+def process_experiment(lines: list[str], df: list):
+    experiment_id = lines[0].split(" ")[1].strip()
     lines = lines[1:]
     description_score = None
     detail_score = None
@@ -83,7 +85,6 @@ def process_experiment(lines: list[str], df: pd.DataFrame):
             elif "Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)" in line:
                 detail_score = 5
         elif line.startswith("Your corrected "):
-            #print(line)
             if "This experiment is used for the following hypotheses" in lines[line_idx-1]:
                 corrected_hypotheses = line.strip("Your corrected list (empty if correct):").strip()
             elif "The measured metrics in this experiment are" in lines[line_idx-1]:
@@ -100,19 +101,69 @@ def process_experiment(lines: list[str], df: pd.DataFrame):
             json_start = line_idx + 1
         elif line.startswith("#### General"):
             json_end = line_idx - 1
+    results_original = llm_output["Experiment"][experiment_id]["results"]
+    #print("".join(lines[json_start:json_end]))
     results_corrected = json.loads("".join(lines[json_start:json_end]))
-    # TODO Calculate some stuff over the json
-    # TODO add values to df
+    missing, wrong, correct = 0, 0, 0
+    
+    def get_keys(d, curr_key=[]):
+        for k, v in d.items():
+            if isinstance(v, dict):
+                yield from get_keys(v, curr_key + [k])
+            elif isinstance(v, list):
+                for i in v:
+                    yield from get_keys(i, curr_key + [k])
+            else:
+                yield '-KEYSEP-'.join(curr_key + [k])
+
+    keys_corrected = set(get_keys(results_corrected))
+    keys_original = set(get_keys(results_original))
+
+    for key in keys_corrected:
+        if key not in keys_original:
+            missing += 1
+        else:
+            current_left, current_right = results_corrected, results_original
+            for subkey in key.split("-KEYSEP-"):
+                if not isinstance(current_left, dict) or not isinstance(current_right, dict):
+                    break
+                current_left = current_left[subkey]
+                current_right = current_right[subkey]
+            if current_left != current_right:
+                wrong += 1
+            else:
+                correct += 1
+        # elif results_corrected[key.split(".")] != results_original[key]:
+        #     wrong += 1
+        # elif results_corrected[key] == results_original[key]:
+        #     correct += 1
+
+    for key in keys_original:
+        if key not in keys_corrected:
+            wrong += 1         
+    
+    # TODO Calculate some differences over the json provided by the author and the one provided in llm_output
+    df.append([review.stem, experiment_id, "Experiment Description Likert Score", description_score])
+    df.append([review.stem, experiment_id, "Experiment Detail Likert Score", detail_score])
+    df.append([review.stem, experiment_id, "Experiment Description Score Reason", description_score_reason])
+    df.append([review.stem, experiment_id, "Experiment Corrected Hypotheses", corrected_hypotheses])
+    df.append([review.stem, experiment_id, "Experiment Corrected Metrics", corrected_metrics])
+    df.append([review.stem, experiment_id, "Experiment Corrected Statistics", corrected_statistics])
+    df.append([review.stem, experiment_id, "Experiment Corrected Strategy", corrected_strategy])
+    df.append([review.stem, experiment_id, "Experiment Corrected Test Description", corrected_test_description])
+    df.append([review.stem, experiment_id, "Experiment Results Missing", missing])
+    df.append([review.stem, experiment_id, "Experiment Results Wrong", wrong])
+    df.append([review.stem, experiment_id, "Experiment Results Correct", correct])
     return
 
-def process_interpretation(lines: list[str], df: pd.DataFrame):
+def process_interpretation(lines: list[str], df: list):
     interpretation_id = lines[0].split(" ")[1].strip()
     lines = lines[1:]
     interpretation_score = None
     interpretation_corrected = None
-    interpretation_hypothesis_corrected = None
-    interpretation_experiment_corrected = None
-    interpretation_support_corrected = None
+    interpretation_hypothesis_corrected = ""
+    interpretation_experiment_corrected = ""
+    interpretation_support_corrected = ""
     interpretation_hallucination_explanation = None
     lines = [l for l in lines if l.strip() != ""]
     for l_index, line in enumerate(lines):
@@ -152,14 +203,12 @@ def process_interpretation(lines: list[str], df: pd.DataFrame):
                 interpretation_support_corrected = line.strip("Your corrected answer (empty if correct):").strip()
             else:
                 raise ValueError(f"Unclear correction line {interpretation_id} of {review}: {l_index}, {lines[l_index-1]}, {line}")
-    # TODO add values to the DF
-    print(interpretation_id)
-    print(interpretation_score)
-    print(interpretation_corrected)
-    print(interpretation_hypothesis_corrected)
-    print(interpretation_experiment_corrected)
-    print(interpretation_support_corrected)
-    print(interpretation_hallucination_explanation)
+    df.append([review.stem, interpretation_id, "Interpretation Likert Score", interpretation_score])
+    df.append([review.stem, interpretation_id, "Interpretation corrected", interpretation_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation hypothesis corrected", interpretation_hypothesis_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation experiment corrected", interpretation_experiment_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation support corrected", interpretation_support_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation hallucination explanation", interpretation_hallucination_explanation])
     return
 
 
@@ -173,6 +222,24 @@ for review in Path("reviews").glob("*.md"):
 
     title = review.stem
     authors = llm_output["Meta"]["authors"]
+
+    # Add LLM responses
+    for hypothesis_id in llm_output["Hypothesis"]:
+        df.append([review.stem, hypothesis_id, "Hypothesis", llm_output["Hypothesis"][hypothesis_id]["hypothesis"]])
+        df.append([review.stem, hypothesis_id, "Explicit", llm_output["Hypothesis"][hypothesis_id]["explicit"]])
+
+    for experiment_id in llm_output["Experiment"]:
+        df.append([review.stem, experiment_id, "Hypotheses", llm_output["Experiment"][experiment_id]["hypothesis"]])
+        df.append([review.stem, experiment_id, "Metrics", llm_output["Experiment"][experiment_id]["metrics"]])
+        df.append([review.stem, experiment_id, "Statistics", llm_output["Experiment"][experiment_id]["statistics"]])
+        df.append([review.stem, experiment_id, "Strategy", llm_output["Experiment"][experiment_id]["strategy"]])
+        df.append([review.stem, experiment_id, "Test", llm_output["Experiment"][experiment_id]["test"]])
+
+    for interpretation_id in llm_output["Interpretation"]:
+        df.append([review.stem, interpretation_id, "Interpretation", llm_output["Interpretation"][interpretation_id]["reason"]])
+        df.append([review.stem, interpretation_id, "Support", llm_output["Interpretation"][interpretation_id]["support"]])
+        df.append([review.stem, interpretation_id, "Hypothesis", llm_output["Interpretation"][interpretation_id]["hypothesis"]])
+        df.append([review.stem, interpretation_id, "Experiment", llm_output["Interpretation"][interpretation_id]["experiment"]])
 
     # 1. Extract all hypothesis answers
     if review_text[0].startswith("## Hypotheses"):
@@ -199,6 +266,7 @@ for review in Path("reviews").glob("*.md"):
         for index, line in enumerate(review_text[general_section_index:end_index]):
             if line.startswith("Please write the amount of hypothesis you had for the study:"):
                 match = re.search(integer_pattern, line)
+                print()
                 hp_count = int(match.group(1))
                 #print("HP count:", hp_count)
                 # TODO: Add this value to the DF
@@ -261,4 +329,8 @@ for review in Path("reviews").glob("*.md"):
             #print(review_text[section_start:section_starts[index+1]])
             #input()
             process_interpretation(review_text[section_start:section_starts[index+1]], df)
-    break
+    #break
+
+df = pd.DataFrame(columns=["Paper", "section", "field", "value"], data=df)
+df.to_csv("output.csv", index=False)
+print(df)
