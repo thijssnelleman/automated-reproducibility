@@ -90,35 +90,35 @@ Robustness Distributions in Neural Network Verification,experiment_3,Experiment 
 Robustness Distributions in Neural Network Verification,experiment_3,Experiment Results Wrong,1
 Robustness Distributions in Neural Network Verification,experiment_3,Experiment Results Correct,5
 Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Likert Score,1
-Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation corrected,[]
-Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation hypothesis corrected,
-Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation experiment corrected,
-Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation support corrected,
-Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation hallucination explanation,
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Corrected,[]
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Corrected Hypotheses,
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Corrected Experiments,
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Corrected Support,
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Hallucination Explanation,
 Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Likert Score,2
-Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation corrected,"[""Using a two-sample Kolmogorov-Smirnov test (p < 0.05), the authors found no statistically significant differences between the critical ε distributions derived from training data and those from testing data for the 12 networks. They conclude: 'This suggests that finding the robustness distribution for a given training set is sufficient for analysing the overall robustness of a network in a supervised learning scenario.' (Section 4.4, Page 14).""]"
-Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation hypothesis corrected,
-Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation experiment corrected,
-Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation support corrected,
-Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation hallucination explanation,
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Corrected,"[""Using a two-sample Kolmogorov-Smirnov test (p < 0.05), the authors found no statistically significant differences between the critical ε distributions derived from training data and those from testing data for the 12 networks. They conclude: 'This suggests that finding the robustness distribution for a given training set is sufficient for analysing the overall robustness of a network in a supervised learning scenario.' (Section 4.4, Page 14).""]"
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Corrected Hypotheses,
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Corrected Experiments,
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Corrected Support,
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Hallucination Explanation,
 Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Likert Score,1
-Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation corrected,[]
-Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation hypothesis corrected,
-Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation experiment corrected,
-Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation support corrected,
-Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation hallucination explanation,
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Corrected,[]
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Corrected Hypotheses,
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Corrected Experiments,
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Corrected Support,
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Hallucination Explanation,
 Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Likert Score,3
-Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation corrected,[]
-Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation hypothesis corrected,
-Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation experiment corrected,"experiment_2, experiment_3"
-Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation support corrected,
-Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation hallucination explanation,
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Corrected,[]
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Corrected Hypotheses,
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Corrected Experiments,"experiment_2, experiment_3"
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Corrected Support,
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Hallucination Explanation,
 Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Likert Score,3
-Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation corrected,[]
-Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation hypothesis corrected,
-Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation experiment corrected,"experiment_2, experiment_3"
-Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation support corrected,
-Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation hallucination explanation,
+Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Corrected,[]
+Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Corrected Hypotheses,
+Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Corrected Experiments,"experiment_2, experiment_3"
+Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Corrected Support,
+Robustness Distributions in Neural Network Verification,interpretation_5,Interpretation Hallucination Explanation,
 Instance selection for configuration performance comparison,hypothesis_1,Hypothesis,"The authors hypothesise that using intelligent instance selection methods, adapted from algorithm selection and active learning, can significantly reduce the computational time required to accurately compare the performance of two configurations of the same algorithm, compared to the standard random sampling approach used in configurators."
 Instance selection for configuration performance comparison,hypothesis_1,Explicit,False
 Instance selection for configuration performance comparison,experiment_1,Hypotheses,['hypothesis_1']
@@ -164,17 +164,17 @@ Instance selection for configuration performance comparison,experiment_2,Experim
 Instance selection for configuration performance comparison,experiment_2,Experiment Results Wrong,0
 Instance selection for configuration performance comparison,experiment_2,Experiment Results Correct,30
 Instance selection for configuration performance comparison,interpretation_1,Interpretation Likert Score,2
-Instance selection for configuration performance comparison,interpretation_1,Interpretation corrected,[]
-Instance selection for configuration performance comparison,interpretation_1,Interpretation hypothesis corrected,
-Instance selection for configuration performance comparison,interpretation_1,Interpretation experiment corrected,
-Instance selection for configuration performance comparison,interpretation_1,Interpretation support corrected,
-Instance selection for configuration performance comparison,interpretation_1,Interpretation hallucination explanation,
+Instance selection for configuration performance comparison,interpretation_1,Interpretation Corrected,[]
+Instance selection for configuration performance comparison,interpretation_1,Interpretation Corrected Hypotheses,
+Instance selection for configuration performance comparison,interpretation_1,Interpretation Corrected Experiments,
+Instance selection for configuration performance comparison,interpretation_1,Interpretation Corrected Support,
+Instance selection for configuration performance comparison,interpretation_1,Interpretation Hallucination Explanation,
 Instance selection for configuration performance comparison,interpretation_2,Interpretation Likert Score,2
-Instance selection for configuration performance comparison,interpretation_2,Interpretation corrected,[]
-Instance selection for configuration performance comparison,interpretation_2,Interpretation hypothesis corrected,
-Instance selection for configuration performance comparison,interpretation_2,Interpretation experiment corrected,
-Instance selection for configuration performance comparison,interpretation_2,Interpretation support corrected,
-Instance selection for configuration performance comparison,interpretation_2,Interpretation hallucination explanation,
+Instance selection for configuration performance comparison,interpretation_2,Interpretation Corrected,[]
+Instance selection for configuration performance comparison,interpretation_2,Interpretation Corrected Hypotheses,
+Instance selection for configuration performance comparison,interpretation_2,Interpretation Corrected Experiments,
+Instance selection for configuration performance comparison,interpretation_2,Interpretation Corrected Support,
+Instance selection for configuration performance comparison,interpretation_2,Interpretation Hallucination Explanation,
 Edge-Based Graph Component Pooling,hypothesis_1,Hypothesis,"The authors hypothesise that their proposed edge-based graph component pooling operator (1) improves performance and is more computationally efficient in terms of trainable parameters compared to the original edge contraction pooling method by Diehl et al., and (2) achieves comparable or better performance without significant information loss compared to a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al., while being more parameter-efficient."
 Edge-Based Graph Component Pooling,hypothesis_1,Explicit,False
 Edge-Based Graph Component Pooling,experiment_1,Hypotheses,['hypothesis_1']
@@ -206,11 +206,11 @@ Edge-Based Graph Component Pooling,experiment_1,Experiment Results Missing,0
 Edge-Based Graph Component Pooling,experiment_1,Experiment Results Wrong,1
 Edge-Based Graph Component Pooling,experiment_1,Experiment Results Correct,47
 Edge-Based Graph Component Pooling,interpretation_1,Interpretation Likert Score,1
-Edge-Based Graph Component Pooling,interpretation_1,Interpretation corrected,[]
-Edge-Based Graph Component Pooling,interpretation_1,Interpretation hypothesis corrected,
-Edge-Based Graph Component Pooling,interpretation_1,Interpretation experiment corrected,
-Edge-Based Graph Component Pooling,interpretation_1,Interpretation support corrected,
-Edge-Based Graph Component Pooling,interpretation_1,Interpretation hallucination explanation,
+Edge-Based Graph Component Pooling,interpretation_1,Interpretation Corrected,[]
+Edge-Based Graph Component Pooling,interpretation_1,Interpretation Corrected Hypotheses,
+Edge-Based Graph Component Pooling,interpretation_1,Interpretation Corrected Experiments,
+Edge-Based Graph Component Pooling,interpretation_1,Interpretation Corrected Support,
+Edge-Based Graph Component Pooling,interpretation_1,Interpretation Hallucination Explanation,
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Hypothesis,"The authors hypothesise that the combined, simultaneous optimisation of an RL algorithm's hyperparameters and its reward function parameters will match or outperform the individual optimisation of either component alone, especially in complex environments."
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Explicit,False
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_2,Hypothesis,"The authors hypothesise that including a variance penalty in the optimisation objective (multi-objective optimisation) will improve the stability (i.e., reduce the performance variance) of the learned policies, while achieving similar or better expected performance compared to single-objective optimisation."
@@ -244,17 +244,17 @@ Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Results Wrong,8
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Results Correct,0
 Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Likert Score,1
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation corrected,[]
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation hypothesis corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation experiment corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation support corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation hallucination explanation,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Corrected,[]
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Corrected Hypotheses,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Corrected Experiments,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Corrected Support,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_1,Interpretation Hallucination Explanation,
 Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Likert Score,1
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation corrected,[]
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation hypothesis corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation experiment corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation support corrected,
-Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation hallucination explanation,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Corrected,[]
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Corrected Hypotheses,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Corrected Experiments,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Corrected Support,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Interpretation Hallucination Explanation,
 Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_1,Hypothesis,"The authors hypothesise that principled Hyperparameter Optimization (HPO) methods from AutoML are capable of producing better performing, more stable, and more easily comparable RL agents than traditional manual tuning or grid search, while using significantly fewer computational resources."
 Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_1,Explicit,False
 Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_2,Hypothesis,"The authors hypothesise that failing to separate tuning seeds from testing seeds in Reinforcement Learning leads to overfitting and unreliable performance evaluations, making this separation a crucial best practice for reproducibility."
@@ -308,23 +308,23 @@ Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_2,Expe
 Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_2,Experiment Results Wrong,0
 Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_2,Experiment Results Correct,2
 Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Likert Score,1
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation corrected,[]
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation hypothesis corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation experiment corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation support corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation hallucination explanation,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Corrected,[]
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Corrected Hypotheses,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Corrected Experiments,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Corrected Support,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_1,Interpretation Hallucination Explanation,
 Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Likert Score,4
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation corrected,"['Figures 5 and 6 demonstrate a significant performance drop when configurations tuned on a set of seeds are evaluated on a separate, unseen set of test seeds. This gap indicates overfitting to the tuning seeds. The authors highlight this by stating, ""we can see e.g. on Acrobot that the best incumbent configurations, found by DEHB, perform more than four times worse on test seeds. We can find this effect in all tuning methods, especially on Pendulum. This presents a challenge for reproducibility..."" (Page 6). This strongly supports the hypothesis that separating tuning and test seeds is critical for obtaining reliable results.']"
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation hypothesis corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation experiment corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation support corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation hallucination explanation,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Corrected,"['Figures 5 and 6 demonstrate a significant performance drop when configurations tuned on a set of seeds are evaluated on a separate, unseen set of test seeds. This gap indicates overfitting to the tuning seeds. The authors highlight this by stating, ""we can see e.g. on Acrobot that the best incumbent configurations, found by DEHB, perform more than four times worse on test seeds. We can find this effect in all tuning methods, especially on Pendulum. This presents a challenge for reproducibility..."" (Page 6). This strongly supports the hypothesis that separating tuning and test seeds is critical for obtaining reliable results.']"
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Corrected Hypotheses,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Corrected Experiments,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Corrected Support,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_2,Interpretation Hallucination Explanation,
 Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Likert Score,1
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation corrected,[]
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation hypothesis corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation experiment corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation support corrected,
-Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation hallucination explanation,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Corrected,[]
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Corrected Hypotheses,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Corrected Experiments,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Corrected Support,
+Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Interpretation Hallucination Explanation,
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_1,Hypothesis,"The authors hypothesise that adversarial attack methods can yield computationally efficient and tight upper bounds for robustness distributions, comparable in quality to those obtained from a state-of-the-art complete verifier, while highlighting complementarities where attacks achieve near-optimal bounds at a significantly reduced computational cost."
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_1,Explicit,False
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_1,Hypotheses,['hypothesis_1']
@@ -356,11 +356,11 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_1,Experiment Results Correct,39
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_2,Experiment Description Likert Score,6
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Likert Score,2
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation corrected,"[""The results show a trade-off. While the verifier provides formal guarantees, attacks provide fast and accurate estimations. The paper highlights that neither method is strictly dominant in finding the smallest perturbation in all cases: 'AutoAttack found a smaller p* for 4.3% of the instances and for 6.3% of the instances α, β-CROWN found a smaller p*' (Page 10). This demonstrates the complementarity and the value of attacks for large-scale analysis where verification is infeasible. Further, for the other attacks, α, β-CROWN strictly dominate the attacks in terms of accuracy, but require longer computation times.""]"
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation hypothesis corrected,
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation experiment corrected,
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation support corrected,
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation hallucination explanation,
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Corrected,"[""The results show a trade-off. While the verifier provides formal guarantees, attacks provide fast and accurate estimations. The paper highlights that neither method is strictly dominant in finding the smallest perturbation in all cases: 'AutoAttack found a smaller p* for 4.3% of the instances and for 6.3% of the instances α, β-CROWN found a smaller p*' (Page 10). This demonstrates the complementarity and the value of attacks for large-scale analysis where verification is infeasible. Further, for the other attacks, α, β-CROWN strictly dominate the attacks in terms of accuracy, but require longer computation times.""]"
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Corrected Hypotheses,
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Corrected Experiments,
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Corrected Support,
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Interpretation Hallucination Explanation,
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,hypothesis_1,Hypothesis,"The authors hypothesise that by using a dynamic prediction model based on static and dynamic instance features to terminate Branch-and-Bound-based neural network verification runs early, it is possible to significantly reduce the total computational running time while maintaining a comparable number of successfully verified instances compared to the standard verification procedure."
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,hypothesis_1,Explicit,False
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Hypotheses,['hypothesis_1']
@@ -386,11 +386,11 @@ Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verifica
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Experiment Results Wrong,0
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Experiment Results Correct,135
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Likert Score,2
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation corrected,[]
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation hypothesis corrected,
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation experiment corrected,
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation support corrected,
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation hallucination explanation,
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Corrected,[]
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Corrected Hypotheses,
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Corrected Experiments,
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Corrected Support,
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Interpretation Hallucination Explanation,
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Hypothesis,The authors hypothesise that modifying an evolutionary algorithm for polyphonic music approximation by using spectral information to initialise populations with probable pitches will result in significantly faster convergence speed and slightly improved pitch and instrument detection errors compared to the baseline algorithm with random initialisation.
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Explicit,False
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Hypotheses,['hypothesis_1']
@@ -436,17 +436,17 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_2,Experiment Results Wrong,3
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_2,Experiment Results Correct,0
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Likert Score,4
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation corrected,"[""The results support the hypothesis regarding faster convergence. The authors state that 'the slopes in the first few thousand generations are steeper in our modified algorithm,' which means the error decreases faster. They conclude, 'In cases where there is not ample time to run the algorithm for the full 10000 generations, using our proposed method will provide better detection upon early termination.' (Section 6.1, page 9). While the final errors are described as 'comparable', the significant improvement in convergence speed supports a key part of the hypothesis.""]"
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation hypothesis corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation experiment corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation support corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation hallucination explanation,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Corrected,"[""The results support the hypothesis regarding faster convergence. The authors state that 'the slopes in the first few thousand generations are steeper in our modified algorithm,' which means the error decreases faster. They conclude, 'In cases where there is not ample time to run the algorithm for the full 10000 generations, using our proposed method will provide better detection upon early termination.' (Section 6.1, page 9). While the final errors are described as 'comparable', the significant improvement in convergence speed supports a key part of the hypothesis.""]"
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Corrected Hypotheses,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Corrected Experiments,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Corrected Support,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_1,Interpretation Hallucination Explanation,
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Likert Score,4
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation corrected,"[""The results support both parts of the hypothesis. The authors observe 'lower initial errors for all three error classes' and 'a slight improvement in errors after convergence for the modified algorithm' (Section 6.2, page 11). The slightly lower final errors support the 'slightly improved detection errors' claim. The authors conclude that 'even its slight improvements in converged errors makes it a useful addition regardless.' (Section 6.2, page 11).""]"
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation hypothesis corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation experiment corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation support corrected,
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation hallucination explanation,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Corrected,"[""The results support both parts of the hypothesis. The authors observe 'lower initial errors for all three error classes' and 'a slight improvement in errors after convergence for the modified algorithm' (Section 6.2, page 11). The slightly lower final errors support the 'slightly improved detection errors' claim. The authors conclude that 'even its slight improvements in converged errors makes it a useful addition regardless.' (Section 6.2, page 11).""]"
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Corrected Hypotheses,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Corrected Experiments,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Corrected Support,
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Interpretation Hallucination Explanation,
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Hypothesis,"The authors hypothesise that when pre-training small language models on small, curated datasets: (1) the open-domain, human-written BabyLM dataset will lead to better formal linguistic competence and more consistent performance (lower variance) compared to the synthetic, narrative-based TinyStories dataset; (2) the performance gap will be smaller for functional linguistic competence; and (3) performance on small data samples will be representative of the model's ultimate performance, enabling data-efficient model selection."
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Explicit,False
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Hypotheses,['hypothesis_1']
@@ -475,11 +475,11 @@ Data Efficient Pre-training for Language Models An Empirical Study of Compute Ef
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Results Wrong,1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Results Correct,3
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Likert Score,2
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation corrected,"[""The authors' findings support all clauses of the hypothesis."", '1. **Formal Linguistic Competence and Consistency**: The results show that models trained on BabyLM consistently achieve higher accuracy on the BLiMP benchmark and exhibit lower variance across runs compared to models trained on TinyStories. The authors state, ""Our findings indicate that models trained with the BabyLM dataset outperform models trained with the TinyStories dataset on formal linguistic competence... pre-training with BabyLM yields more consistent improvements across different dataset sizes, with lower variance across repetitions."" (Page 10, Conclusions). This is visually confirmed by the learning curves in Figure 2.', '2. **Functional Linguistic Competence**: The performance gap on GLUE tasks is much smaller, with TinyStories-trained models achieving comparable, though slightly lower, performance. The authors note, ""The gap in functional linguistic competence is less pronounced, with models trained on TinyStories achieving comparable performance"" (Page 10, Conclusions). This is shown in Figure 4, where the performance curves are closer together.', '3. **Early Prediction**: The smooth and predictable learning curves, particularly for BabyLM, demonstrate that performance on smaller data samples is indicative of final performance. The authors conclude, ""These insights support the usage of BabyLM for pre-training language models in resource-constrained settings, where performance on small dataset samples can reliably predict the final achieved performance"" (Page 10, Conclusions).']"
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation hypothesis corrected,
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation experiment corrected,
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation support corrected,
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation hallucination explanation,
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Corrected,"[""The authors' findings support all clauses of the hypothesis."", '1. **Formal Linguistic Competence and Consistency**: The results show that models trained on BabyLM consistently achieve higher accuracy on the BLiMP benchmark and exhibit lower variance across runs compared to models trained on TinyStories. The authors state, ""Our findings indicate that models trained with the BabyLM dataset outperform models trained with the TinyStories dataset on formal linguistic competence... pre-training with BabyLM yields more consistent improvements across different dataset sizes, with lower variance across repetitions."" (Page 10, Conclusions). This is visually confirmed by the learning curves in Figure 2.', '2. **Functional Linguistic Competence**: The performance gap on GLUE tasks is much smaller, with TinyStories-trained models achieving comparable, though slightly lower, performance. The authors note, ""The gap in functional linguistic competence is less pronounced, with models trained on TinyStories achieving comparable performance"" (Page 10, Conclusions). This is shown in Figure 4, where the performance curves are closer together.', '3. **Early Prediction**: The smooth and predictable learning curves, particularly for BabyLM, demonstrate that performance on smaller data samples is indicative of final performance. The authors conclude, ""These insights support the usage of BabyLM for pre-training language models in resource-constrained settings, where performance on small dataset samples can reliably predict the final achieved performance"" (Page 10, Conclusions).']"
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Corrected Hypotheses,
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Corrected Experiments,
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Corrected Support,
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Hallucination Explanation,
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Hypothesis,"The authors hypothesise that incrementally growing a neural network's depth during deep reinforcement learning training leads to better agent performance compared to training a static network of the same final size from the start, particularly for networks that are otherwise difficult to train."
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Explicit,False
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Hypotheses,['hypothesis_1']
@@ -505,11 +505,11 @@ Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Results Wrong,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Results Correct,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Likert Score,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation corrected,"[""The results support the hypothesis. On both MiniHack and Ant environments, the GrowNN agents with deeper final networks significantly outperformed their static counterparts. As stated in Section 4, on MiniHack, for deeper networks, 'GrowNN is superior to statically trained networks with drastically higher solution rates of over 50% compared to 0%.' On Ant, 'the GrowNN agents learn policies in which the ant actively moves forward with an improvement of 65% in terms of final reward' over baselines that failed to learn a well performing policy. The authors conclude in Section 5 that 'the incremental depth increase benefits learning on MiniHack and Ant'. A minor contradictory finding is that for the simplest network (depth 1) on MiniHack, the static baseline performed better, suggesting the benefit of growing is most pronounced for larger networks that are difficult to train from scratch.""]"
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation hypothesis corrected,
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation experiment corrected,
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation support corrected,
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation hallucination explanation,
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Corrected,"[""The results support the hypothesis. On both MiniHack and Ant environments, the GrowNN agents with deeper final networks significantly outperformed their static counterparts. As stated in Section 4, on MiniHack, for deeper networks, 'GrowNN is superior to statically trained networks with drastically higher solution rates of over 50% compared to 0%.' On Ant, 'the GrowNN agents learn policies in which the ant actively moves forward with an improvement of 65% in terms of final reward' over baselines that failed to learn a well performing policy. The authors conclude in Section 5 that 'the incremental depth increase benefits learning on MiniHack and Ant'. A minor contradictory finding is that for the simplest network (depth 1) on MiniHack, the static baseline performed better, suggesting the benefit of growing is most pronounced for larger networks that are difficult to train from scratch.""]"
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Corrected Hypotheses,
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Corrected Experiments,
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Corrected Support,
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Hallucination Explanation,
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_1,Hypothesis,"The authors hypothesise that the representative subsets of HPO benchmark tasks, created by minimizing the star discrepancy in the performance space, will yield consistent relative performance rankings of HPO optimizers across the disjoint development and test sets."
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_1,Explicit,False
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,experiment_1,Hypotheses,['hypothesis_1']
@@ -537,11 +537,11 @@ carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,exp
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,experiment_1,Experiment Results Correct,24
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,experiment_2,Experiment Description Likert Score,6
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Likert Score,1
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation corrected,[]
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation hypothesis corrected,
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation experiment corrected,
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation support corrected,
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation hallucination explanation,
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Corrected,[]
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Corrected Hypotheses,
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Corrected Experiments,
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Corrected Support,
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Interpretation Hallucination Explanation,
 Revisiting SATZilla Features in 2024,hypothesis_1,Hypothesis,"The authors hypothesise that their new version of the SATZilla feature extraction tool (SATZilla 2024) is more effective than the previous version (SATZilla 2012), specifically that it can extract features from a broader range of instances and that the extracted features lead to improved performance on the downstream tasks of satisfiability prediction, running time prediction, and algorithm selection."
 Revisiting SATZilla Features in 2024,hypothesis_1,Explicit,False
 Revisiting SATZilla Features in 2024,experiment_1,Hypotheses,['hypothesis_1']
@@ -627,29 +627,29 @@ Revisiting SATZilla Features in 2024,experiment_4,Experiment Results Missing,0
 Revisiting SATZilla Features in 2024,experiment_4,Experiment Results Wrong,0
 Revisiting SATZilla Features in 2024,experiment_4,Experiment Results Correct,4
 Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Likert Score,1
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation corrected,[]
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation hypothesis corrected,
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation experiment corrected,
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation support corrected,
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation hallucination explanation,
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Corrected,[]
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Corrected Hypotheses,
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Corrected Experiments,
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Corrected Support,
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Hallucination Explanation,
 Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Likert Score,1
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation corrected,[]
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation hypothesis corrected,
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation experiment corrected,
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation support corrected,
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation hallucination explanation,
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Corrected,[]
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Corrected Hypotheses,
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Corrected Experiments,
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Corrected Support,
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Hallucination Explanation,
 Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Likert Score,1
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation corrected,[]
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation hypothesis corrected,
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation experiment corrected,
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation support corrected,
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation hallucination explanation,
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Corrected,[]
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Corrected Hypotheses,
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Corrected Experiments,
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Corrected Support,
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Hallucination Explanation,
 Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Likert Score,1
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation corrected,[]
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation hypothesis corrected,
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation experiment corrected,
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation support corrected,
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation hallucination explanation,
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Corrected,[]
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Corrected Hypotheses,
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Corrected Experiments,
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Corrected Support,
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Hallucination Explanation,
 Trajectory-based algorithm selection with warm-starting,hypothesis_1,Hypothesis,"The authors hypothesise that a trajectory-based algorithm selector, which uses landscape features computed from an initial optimization run to select and warm-start a subsequent algorithm, can outperform any single algorithm from the portfolio in a dynamic, per-run switching context."
 Trajectory-based algorithm selection with warm-starting,hypothesis_1,Explicit,False
 Trajectory-based algorithm selection with warm-starting,experiment_1,Hypotheses,['hypothesis_1']
@@ -675,11 +675,11 @@ Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment 
 Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment Results Wrong,9
 Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment Results Correct,0
 Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Likert Score,1
-Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation corrected,[]
-Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation hypothesis corrected,
-Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation experiment corrected,
-Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation support corrected,
-Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation hallucination explanation,
+Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Corrected,[]
+Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Corrected Hypotheses,
+Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Corrected Experiments,
+Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Corrected Support,
+Trajectory-based algorithm selection with warm-starting,interpretation_1,Interpretation Hallucination Explanation,
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,hypothesis_1,Hypothesis,"The authors hypothesise that their end-to-end reinforcement learning method, using a graph representation and Graph Neural Networks (GNNs), can (1) effectively learn to negotiate in a fixed negotiation problem, performing comparably to existing specialized methods, and (2) learn a general negotiation strategy that successfully negotiates on diverse, never-before-seen negotiation problems."
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,hypothesis_1,Explicit,False
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_1,Hypotheses,['hypothesis_1']
@@ -725,17 +725,17 @@ Towards General Negotiation Strategies with End-to-End Reinforcement Learning,ex
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_2,Experiment Results Wrong,4
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_2,Experiment Results Correct,0
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation corrected,"[""The results support the first clause of the hypothesis. The authors state on p. 7, 'We can see in Figure 3 that our method performs similarly to the method proposed by Higa et al. (2023). This result is mostly a sanity check that our method can successfully learn to negotiate in a relatively simple setup despite being more complex and broadly usable.' The empirical results show that the proposed GNN-based method is as effective as a recent method on a fixed negotiation problem.""]"
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation hypothesis corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation experiment corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation support corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation hallucination explanation,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Corrected,"[""The results support the first clause of the hypothesis. The authors state on p. 7, 'We can see in Figure 3 that our method performs similarly to the method proposed by Higa et al. (2023). This result is mostly a sanity check that our method can successfully learn to negotiate in a relatively simple setup despite being more complex and broadly usable.' The empirical results show that the proposed GNN-based method is as effective as a recent method on a fixed negotiation problem.""]"
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Corrected Hypotheses,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Corrected Experiments,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Corrected Support,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Hallucination Explanation,
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Likert Score,1
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation corrected,[]
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation hypothesis corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation experiment corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation support corrected,
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation hallucination explanation,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Corrected,[]
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Corrected Hypotheses,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Corrected Experiments,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Corrected Support,
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Hallucination Explanation,
 "The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents",hypothesis_1,Hypothesis,"The authors hypothesise that local, peer-to-peer interactions can drive a population towards reduced diversity (polarization or homogeneity), but only when assimilative forces (homophily) dominate repulsive ones, and even then, complete homogeneity is not guaranteed."
 "The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents",hypothesis_1,Explicit,False
 "The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents",hypothesis_2,Hypothesis,"The authors hypothesise that a global matchmaker system, akin to a collaborative filter, that strategically pairs most-similar agents will lead to polarization (multiple stable clusters) rather than complete homogeneity, but the addition of random interactions can break these clusters and drive the population to full conformity."
@@ -814,17 +814,17 @@ EDC: Equation Discovery for Classification paper,experiment_2,Experiment Results
 EDC: Equation Discovery for Classification paper,experiment_2,Experiment Results Wrong,9
 EDC: Equation Discovery for Classification paper,experiment_2,Experiment Results Correct,0
 EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Likert Score,1
-EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation corrected,[]
-EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation hypothesis corrected,
-EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation experiment corrected,
-EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation support corrected,
-EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation hallucination explanation,
+EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Corrected,[]
+EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Corrected Hypotheses,
+EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Corrected Experiments,
+EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Corrected Support,
+EDC: Equation Discovery for Classification paper,interpretation_1,Interpretation Hallucination Explanation,
 EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Likert Score,1
-EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation corrected,[]
-EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation hypothesis corrected,
-EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation experiment corrected,
-EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation support corrected,
-EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation hallucination explanation,
+EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Corrected,[]
+EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Corrected Hypotheses,
+EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Corrected Experiments,
+EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Corrected Support,
+EDC: Equation Discovery for Classification paper,interpretation_2,Interpretation Hallucination Explanation,
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Hypothesis,"The authors hypothesise that their proposed Time Series Representations Classroom (TSRC) framework, which uses knowledge distillation and curriculum learning to train a reconstruction-based student model with guidance from a pre-trained contrastive-based teacher model, will produce time series representations that (1) have higher quality in preserving similarities between instances compared to the student model trained alone, (2) are more transferable to downstream tasks, and (3) retain the interpretability inherent to reconstruction-based methods."
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Explicit,False
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Hypotheses,['hypothesis_1']
@@ -850,11 +850,11 @@ Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework f
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Results Wrong,0
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Results Correct,27
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Likert Score,1
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation corrected,[]
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation hypothesis corrected,
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation experiment corrected,
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation support corrected,
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation hallucination explanation,
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Corrected,[]
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Corrected Hypotheses,
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Corrected Experiments,
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Corrected Support,
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Interpretation Hallucination Explanation,
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_1,Hypothesis,"The authors hypothesise that transforming conventional, single-branch image classification networks into multibranch networks improves the performance of multimodal image data fusion for satellite image classification compared to early fusion approaches."
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_1,Explicit,False
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_2,Hypothesis,The authors hypothesise that using a unimodal auxiliary classifier to enforce an implicit focus on the primary data modality improves the performance of multimodal image data fusion for satellite image classification.
@@ -913,20 +913,20 @@ AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmosph
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,experiment_2,Experiment Results Wrong,0
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,experiment_2,Experiment Results Correct,6
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Likert Score,1
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation corrected,[]
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation hypothesis corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation experiment corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation support corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation hallucination explanation,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Corrected,[]
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Corrected Hypotheses,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Corrected Experiments,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Corrected Support,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_1,Interpretation Hallucination Explanation,
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Likert Score,1
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation corrected,[]
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation hypothesis corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation experiment corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation support corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation hallucination explanation,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Corrected,[]
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Corrected Hypotheses,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Corrected Experiments,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Corrected Support,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_2,Interpretation Hallucination Explanation,
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Likert Score,1
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation corrected,[]
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation hypothesis corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation experiment corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation support corrected,
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation hallucination explanation,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Corrected,[]
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Corrected Hypotheses,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Corrected Experiments,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Corrected Support,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Interpretation Hallucination Explanation,
