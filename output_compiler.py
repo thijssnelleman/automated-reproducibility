@@ -208,11 +208,11 @@ def process_interpretation(lines: list[str], df: list):
             else:
                 raise ValueError(f"Unclear correction line {interpretation_id} of {review}: {l_index}, {lines[l_index-1]}, {line}")
     df.append([review.stem, interpretation_id, "Interpretation Likert Score", interpretation_score])
-    df.append([review.stem, interpretation_id, "Interpretation corrected", interpretation_corrected])
-    df.append([review.stem, interpretation_id, "Interpretation hypothesis corrected", interpretation_hypothesis_corrected])
-    df.append([review.stem, interpretation_id, "Interpretation experiment corrected", interpretation_experiment_corrected])
-    df.append([review.stem, interpretation_id, "Interpretation support corrected", interpretation_support_corrected])
-    df.append([review.stem, interpretation_id, "Interpretation hallucination explanation", interpretation_hallucination_explanation])
+    df.append([review.stem, interpretation_id, "Interpretation Corrected", interpretation_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation Corrected Hypotheses", interpretation_hypothesis_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation Corrected Experiments", interpretation_experiment_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation Corrected Support", interpretation_support_corrected])
+    df.append([review.stem, interpretation_id, "Interpretation Hallucination Explanation", interpretation_hallucination_explanation])
     return
 
 
