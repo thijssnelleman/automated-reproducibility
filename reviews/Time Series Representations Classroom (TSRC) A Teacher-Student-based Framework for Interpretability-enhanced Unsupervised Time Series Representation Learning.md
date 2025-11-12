@@ -114,7 +114,7 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-"results": {
+{
     "UCR Archive": {
         "Adjusted Rand Index (ARI)": [
         {

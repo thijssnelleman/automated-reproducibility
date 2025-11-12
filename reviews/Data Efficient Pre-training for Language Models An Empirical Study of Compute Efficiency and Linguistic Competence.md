@@ -121,8 +121,8 @@ The results of the experiment are as follows:
     "TinyStories (Eldan & Li, 2023)": {
         "BLiMP Accuracy": "For the 91M model trained on 160M tokens, the average accuracy is approximately 0.62 (Figure 2).",
         "Average GLUE Accuracy/F1": "For the 91M model trained on 160M tokens, the average score is approximately 0.68 (Figure 4)."
-    }
-    {
+    },
+    "big table": {
         "GLUE": {
             "Accuracy": {
                 "babylm-17m-160": {
@@ -132,7 +132,7 @@ The results of the experiment are as follows:
                     "qnli": 0.782,
                     "qqp": 0.858,
                     "rte": 0.510,
-                    "sst2": 0.852,
+                    "sst2": 0.852
                 },
                 "babylm-58m-160": {
                     "cola": 0.717,
@@ -141,7 +141,7 @@ The results of the experiment are as follows:
                     "qnli": 0.812,
                     "qqp": 0.875,
                     "rte": 0.574,
-                    "sst2": 0.864,
+                    "sst2": 0.864
                 },
                 "babylm-91m-160": {
                     "cola": 0.710,
@@ -150,7 +150,7 @@ The results of the experiment are as follows:
                     "qnli": 0.817,
                     "qqp": 0.874,
                     "rte": 0.563,
-                    "sst2": 0.868,
+                    "sst2": 0.868
                 },
                 "tinystories-17m-160": {
                     "cola": 0.710,
@@ -159,7 +159,7 @@ The results of the experiment are as follows:
                     "qnli": 0.775,
                     "qqp": 0.858,
                     "rte": 0.529,
-                    "sst2": 0.837,
+                    "sst2": 0.837
                 },
                 "tinystories-58m-160": {
                     "cola": 0.683,
@@ -168,7 +168,7 @@ The results of the experiment are as follows:
                     "qnli": 0.809,
                     "qqp": 0.873,
                     "rte": 0.525,
-                    "sst2": 0.849,
+                    "sst2": 0.849
                 },
                 "tinystories-91m-160": {
                     "cola": 0.680,
@@ -177,10 +177,10 @@ The results of the experiment are as follows:
                     "qnli": 0.806,
                     "qqp": 0.875,
                     "rte": 0.555,
-                    "sst2": 0.865,
-                },
+                    "sst2": 0.865
+                }
             }
-        }
+        },
         "BLiMP": {
             "babylm-17m-160": {
                 "blimp": 0.71,

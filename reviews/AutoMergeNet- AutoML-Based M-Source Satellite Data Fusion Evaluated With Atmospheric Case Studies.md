@@ -266,7 +266,7 @@ The results of the experiment are as follows:
             }
         }
     },
-    "Carbon Monoxide Plume Detection Dataset (This work)": { TABLE V, TODO CHECK
+    "Carbon Monoxide Plume Detection Dataset (This work)": {
         "With auxiliary classifier": {
             "Accuracy": {
                 "BANet [9]": "0.87±0.02",
@@ -351,17 +351,17 @@ The results of the experiment are as follows:
                 "CNN": 23,
                 "CvT": 0,
                 "EPSANet": 0,
-                "MobileNetv2: 0,
+                "MobileNetv2": 0,
                 "ResNet": 2
             }
-        }
+        },
         "Carbon Monoxide Plume Detection Dataset (This work)": {
             "Count": {
                 "BANet": 1,
                 "CNN": 23,
                 "CvT": 0,
                 "EPSANet": 1,
-                "MobileNetv2: 0,
+                "MobileNetv2": 0,
                 "ResNet": 0
             }
         }

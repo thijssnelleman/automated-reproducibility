@@ -135,25 +135,25 @@ The results of the experiment are as follows:
     },
     "Gaussian clusters (This work)": {
         "AUC": "0.965 ± 0.043"
-    }
+    },
     "Gaussian clusters (MLP)": {
         "AUC": "0.972 ± 0.034"
-    }
+    },
     "Gaussian clusters (SVM)": {
         "AUC": "0.970 ± 0.038"
-    }
+    },
     "Gaussian clusters (RF)": {
         "AUC": "0.967 ± 0.037"
-    }
+    },
     "Gaussian clusters (Tree)": {
         "AUC": "0.899 ± 0.079"
-    }
+    },
     "Gaussian clusters (M4GP)": {
         "AUC": "0.894 ± 0.082"
-    }
+    },
     "Gaussian clusters (LDA)": {
         "AUC": "0.811 ± 0.139"
-    }
+    },
     "Gaussian clusters (AMAXSC)": {
         "AUC": "0.802 ± 0.181"
     }
@@ -219,7 +219,7 @@ The results of the experiment are as follows:
             "Tree" : 0.730,
             "MLP" : 0.901,
             "RF" : 0.880,
-            "SVM" : 0.898,
+            "SVM" : 0.898
         }
     },
     "BANKNOTE [18]": {
@@ -231,7 +231,7 @@ The results of the experiment are as follows:
             "Tree" : 0.979, 
             "MLP" : 1.000,
             "RF" : 1.000,
-            "SVM" : 1.000,
+            "SVM" : 1.000
         }
     },
     "BREAST [28]": {
@@ -243,7 +243,7 @@ The results of the experiment are as follows:
             "Tree" : 0.590, 
             "MLP" : 0.701,
             "RF" : 0.683,
-            "SVM" : 0.709,
+            "SVM" : 0.709
         }
     },
     "CREDIT [22]": {
@@ -255,7 +255,7 @@ The results of the experiment are as follows:
             "Tree" : 0.812, 
             "MLP" : 0.910,
             "RF" : 0.935,
-            "SVM" : 0.920,
+            "SVM" : 0.920
         }
     },
     "CYLINDER [9]": {
@@ -267,7 +267,7 @@ The results of the experiment are as follows:
             "Tree" : 0.594, 
             "MLP" : 0.844,
             "RF" : 0.870,
-            "SVM" : 0.759,
+            "SVM" : 0.759
         }
     },
     "DIABETES": {
@@ -279,7 +279,7 @@ The results of the experiment are as follows:
             "Tree" : 0.673, 
             "MLP" : 0.843,
             "RF" : 0.826,
-            "SVM" : 0.836,
+            "SVM" : 0.836
         }
     },
     "IONOSPHERE [25]": {
@@ -291,7 +291,7 @@ The results of the experiment are as follows:
             "Tree" : 0.892, 
             "MLP" : 0.985,
             "RF" : 0.979,
-            "SVM" : 0.979,
+            "SVM" : 0.979
         }
     },
     "OCCUPANCY [6]": {
@@ -303,7 +303,7 @@ The results of the experiment are as follows:
             "Tree" : 0.989, 
             "MLP" : 0.997,
             "RF" : 0.999,
-            "SVM" : 0.993,
+            "SVM" : 0.993
         }
     },
     "SONAR [24]": {
@@ -315,9 +315,9 @@ The results of the experiment are as follows:
             "Tree" : 0.731, 
             "MLP" : 0.927,
             "RF" : 0.917,
-            "SVM" : 0.916,
+            "SVM" : 0.916
         }
-    }
+    },
     "Average Score": {
         "Ours": 0.857,
         "AMAXSC" : 0.810,
@@ -326,8 +326,8 @@ The results of the experiment are as follows:
         "Tree" : 0.777,
         "MLP" : 0.901,
         "RF" : 0.899,
-        "SVM" : 0.890,
-    }
+        "SVM" : 0.890
+    },
     "Average Rank": {
         "Ours": 4.00,
         "AMAXSC" : 6.44,
@@ -336,7 +336,7 @@ The results of the experiment are as follows:
         "Tree" : 7.67, 
         "MLP" : 1.89,
         "RF" : 2.78,
-        "SVM" : 2.78,
+        "SVM" : 2.78
     }
 }
 

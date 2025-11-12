@@ -115,7 +115,7 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-{ TODO:
+{
     "BBOB noiseless testbed (COCO environment) Actual Target Precision": {
         "R-squared score": {
             "A2 budget 100": {
@@ -206,7 +206,7 @@ The results of the experiment are as follows:
                 "PSO": 0.8745
             }
         },
-        "Loss (log-performance difference)": [ TODO: Attempt reading figure 5?
+        "Loss (log-performance difference)": [
             {
                 "comment": "Mean loss for the portfolio excluding BFGS, with an A2 budget of 200 (from text on p.6).",
                 "Selector": 0.14,
@@ -221,7 +221,7 @@ The results of the experiment are as follows:
                 "comment": "For the full portfolio with A2 budget 100, the selector performs slightly worse than the single best solver, BFGS (from text on p.5)."
             }
         ]
-    }
+    },
     "Figure 2": {
         "Best-switch": {
             "A2 budget 100": {
@@ -280,7 +280,7 @@ The results of the experiment are as follows:
                 "CMAES": 154,
                 "DE": 35,
                 "PSO": 3,
-                "MLSL": 11,
+                "MLSL": 11
             },
             "A2 budget 300": {
                 "BFGS": 878,
@@ -360,7 +360,7 @@ The results of the experiment are as follows:
             "CMAES": 699,
             "DE": 394,
             "PSO": 9,
-            "MLSL": 98,
+            "MLSL": 98
         },
         "A2 budget 300": {
             "CMAES": 754,
@@ -398,7 +398,7 @@ The results of the experiment are as follows:
             "CMAES": 606,
             "DE": 468,
             "PSO": 74,
-            "MLSL": 178,
+            "MLSL": 178
         },
         "A2 budget 300": {
             "CMAES": 590,
@@ -425,6 +425,7 @@ The results of the experiment are as follows:
             "MLSL": 197
         }
     }
+}
 }
 
 #### General

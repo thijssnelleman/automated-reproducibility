@@ -258,93 +258,93 @@ The results of the experiment are as follows:
 
 {
     "2022 SAT Competition solvers' running times": {
-        "description": ""For all 10 best solvers shown in Figure 4a, the RMSE is lower with the new tool's features. For example, for Kissat_MAB-HyWalk, RMSE decreased from 0.77 to 0.68.",
+        "description": "For all 10 best solvers shown in Figure 4a, the RMSE is lower with the new tool's features. For example, for Kissat_MAB-HyWalk, RMSE decreased from 0.77 to 0.68.",
         "Root Mean Square Error (RMSE)": {
             "Kissat_MAB-HyWalk": {
                 "new": 0.68,
-                "old": 0.77,
-            }
+                "old": 0.77
+            },
             "Kissat_MAB_ESA" : {
                 "new": 0.72,
-                "old": 0.80,
-            }
+                "old": 0.80
+            },
             "Kissat_MAB_MOSS": {
                 "new": 0.69,
-                "old": 0.79,
-            }
+                "old": 0.79
+            },
             "Kissat_MAB_UCB": {
                 "new": 0.70,
-                "old": 0.78,
-            }
+                "old": 0.78
+            },
             "ekissat-mab-db-v1": {
                 "new": 0.69,
-                "old": 0.78,
-            }
+                "old": 0.78
+            },
             "ekissat-mab-db-v2": {
                 "new": 0.70,
-                "old": 0.78,
-            }
+                "old": 0.78
+            },
             "ekissat-mab-gb-db": {
                 "new": 0.65,
-                "old": 0.76,
-            }
+                "old": 0.76
+            },
             "kissat-mab-gb": {
                 "new": 0.70,
-                "old": 0.78,
-            }
+                "old": 0.78
+            },
             "kissat_inc": {
                 "new": 0.66,
-                "old": 0.76,
-            }
+                "old": 0.76
+            },
             "kissat_pre": {
                 "new": 0.67,
-                "old": 0.76,
+                "old": 0.76
             }
         }
 
     },
     "2023 SAT Competition solvers' running times": {
-        "description": "For all 10 best solvers shown in Figure 4b, the RMSE is lower with the new tool's features. For example, for Kissat_MAB_prop-no_sym, RMSE decreased from 0.93 to 0.72."
+        "description": "For all 10 best solvers shown in Figure 4b, the RMSE is lower with the new tool's features. For example, for Kissat_MAB_prop-no_sym, RMSE decreased from 0.93 to 0.72.",
         "Root Mean Square Error (RMSE)": {
             "Kissat_MAB_prop": {
                 "new": 0.71,
-                "old": 0.89,
-            }
+                "old": 0.89
+            },
             "Kissat_MAB_prop-no_sym": {
                 "new": 0.72,
-                "old": 0.93,
-            }
+                "old": 0.93
+            },
             "Kissat_MAB_prop_pr-no_sym": {
                 "new": 0.68,
-                "old": 0.83,
-            }
+                "old": 0.83
+            },
             "MapleCaDiCaL_LBD-990_275": {
                 "new": 0.71,
-                "old": 0.81,
-            }
+                "old": 0.81
+            },
             "MapleCaDiCaL_LBD-990_500": {
                 "new": 0.72,
-                "old": 0.84,
-            }
+                "old": 0.84
+            },
             "MapleCaDiCaL_PPD-500_500": {
                 "new": 0.71,
-                "old": 0.82,
-            }
+                "old": 0.82
+            },
             "MapleCaDiCaL_PPD-950_950": {
                 "new": 0.73,
-                "old": 0.84,
-            }
+                "old": 0.84
+            },
             "PReLearn-kissat-PReLearn-kissat.sh": {
                 "new": 0.54,
-                "old": 0.66,
-            }
+                "old": 0.66
+            },
             "SBVA-sbva_cadical": {
                 "new": 0.55,
-                "old": 0.74,
-            }
+                "old": 0.74
+            },
             "SBVA-sbva_kissat": {
                 "new": 0.65,
-                "old": 0.78,
+                "old": 0.78
             }
         }
     }
