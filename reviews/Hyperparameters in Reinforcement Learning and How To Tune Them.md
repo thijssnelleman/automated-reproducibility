@@ -157,8 +157,111 @@ The results of the experiment are as follows:
     },
     "Pendulum": {
         "Negative Evaluation Reward": "For the full search space (Table 1), the best incumbent rewards were: DEHB: 112 ± 24, PB2: 78 ± 19, RS: 144 ± 48. The best single seed from the sweep achieved 117. For the seed generalization analysis (Table 2), the test performance for DEHB with 1 tuning seed was 150.5 ± 13.4, while with 10 tuning seeds it was 318.6 ± 281.3, again showing a large generalization gap."
+    },
+    "table 2": {
+        "Acrobot 1 Seed": {
+            "DEHB Inc.": "70.6 ± 3.4",
+            "DEHB Test": "341.3 ± 183.1",
+            "PB2 Inc.": "305.3 ± 185.5",
+            "PB2 Test": "353.7 ± 134.5",
+            "RS Inc.": "77.8 ± 4.9",
+            "RS Test": "136.8 ± 70.5"
+        },
+        "Acrobot 3 Seeds": {
+            "DEHB Inc.": "76.2 ± 0.9",
+            "DEHB Test": "381.1 ± 127.6",
+            "PB2 Inc.": "301.2 ± 128.0",
+            "PB2 Test": "411.3 ± 117.9",
+            "RS Inc.": "88.2 ± 5.7",
+            "RS Test": "98.8 ± 16.3"
+        },
+        "Acrobot 5 Seeds": {
+            "DEHB Inc.": "79.3 ± 1.2",
+            "DEHB Test": "465.1 ± 24.6",
+            "PB2 Inc.": "228.5 ± 149.5",
+            "PB2 Test": "471.8 ± 19.1",
+            "RS Inc.": "89.2 ± 10.4",
+            "RS Test": "116.8 ± 43.3"
+        },
+        "Acrobot 10 Seeds": {
+            "DEHB Inc.": "156.0 ± 24.5",
+            "DEHB Test": "464.8 ± 36.5",
+            "PB2 Inc.": "404.9 ± 53.3",
+            "PB2 Test": "474.4 ± 23.5",
+            "RS Inc.": "108.3 ± 28.2",
+            "RS Test": "100.1 ± 20.0"
+        },
+        "Pendulum 1 Seed": {
+            "DEHB Inc.": "111.5 ± 23.6",
+            "DEHB Test": "150.5 ± 13.4",
+            "PB2 Inc.": "77.8 ± 19.0",
+            "PB2 Test": "840.7 ± 580.1",
+            "RS Inc.": "88.6 ± 24.9",
+            "RS Test": "168.3 ± 46.4"
+        },
+        "Pendulum 3 Seeds": {
+            "DEHB Inc.": "125.0 ± 23.2",
+            "DEHB Test": "144.8 ± 9.0",
+            "PB2 Inc.": "133.3 ± 14.7",
+            "PB2 Test": "171.0 ± 35.5",
+            "RS Inc.": "150.7 ± 13.9",
+            "RS Test": "159.0 ± 21.6"
+        },
+        "Pendulum 5 Seeds": {
+            "DEHB Inc.": "127.3 ± 11.5",
+            "DEHB Test": "350.2 ± 418.2",
+            "PB2 Inc.": "134.0 ± 22.1",
+            "PB2 Test": "661.3 ± 586.2",
+            "RS Inc.": "134.8 ± 9.8",
+            "RS Test": "397.8 ± 485.5"
+        },
+        "Pendulum 10 Seeds": {
+            "DEHB Inc.": "742.4 ± 498.8",
+            "DEHB Test": "318.6 ± 281.3",
+            "PB2 Inc.": "282.0 ± 252.9",
+            "PB2 Test": "468.6 ± 437.9",
+            "RS Inc.": "144.5 ± 17.9",
+            "RS Test": "150.2 ± 4.8"
+        }
+    },
+    "table 1": {
+        "Acrobot LR Only": {
+            "DEHB Inc.": "71 ± 1",
+            "PB2 Inc.": "94 ± 22",
+            "RS Inc.": "78 ± 5",
+            "Sweep": "81"
+        },
+        "Acrobot Small": {
+            "DEHB Inc.": "72 ± 1",
+            "PB2 Inc.": "193 ± 160",
+            "RS Inc.": "80 ± 6",
+            "Sweep": null
+        },
+        "Acrobot Full": {
+            "DEHB Inc.": "71 ± 3",
+            "PB2 Inc.": "305 ± 186",
+            "RS Inc.": "83 ± 5",
+            "Sweep": null
+        },
+        "Pendulum LR Only": {
+            "DEHB Inc.": "71 ± 12",
+            "PB2 Inc.": "207 ± 126",
+            "RS Inc.": "89 ± 25",
+            "Sweep": "117"
+        },
+        "Pendulum Small": {
+            "DEHB Inc.": "119 ± 12",
+            "PB2 Inc.": "106 ± 12",
+            "RS Inc.": "401 ± 363",
+            "Sweep": null
+        },
+        "Pendulum Full": {
+            "DEHB Inc.": "112 ± 24",
+            "PB2 Inc.": "78 ± 19",
+            "RS Inc.": "144 ± 48",
+            "Sweep": null
+        }
     }
-    TODO: Add full table 1 and table 2
 }
 
 #### General
@@ -212,12 +315,17 @@ The results of the experiment are as follows:
 
 {
     "Brax (Ant, Halfcheetah, Humanoid)": {
-        "Mean Evaluation Reward": "With a 64-run budget (Table 8), DEHB Test performance was: Ant: 4696 ± 1252 (Baseline: 3448 ± 343), Halfcheetah: 8039 ± 636 (Baseline: 6904 ± 377), Humanoid: 5205 ± 2781 (Baseline: 3235 ± 758)."
+        "Mean Evaluation Reward": "With a 64-run budget (Table 8), DEHB Test performance was: Ant: 4696 ± 1252 (Baseline: 3448 ± 343), Halfcheetah: 8039 ± 636 (Baseline: 6904 ± 377), Humanoid: 5205 ± 2781 (Baseline: 3235 ± 758).",
+        "Mean Rank": {
+            "DEHB": 1.3
+        }
     },
     "Procgen (Bigfish, Climber, Plunder)": {
-        "Mean Evaluation Reward": "With a 64-run budget (Table 9), DEHB Test performance was: Bigfish: 9.4 ± 2.5 (Baseline: 6.8 ± 3.2), Climber: 3.9 ± 1.9 (Baseline: 4.1 ± 1.4), Plunder: 8.7 ± 0.7 (Baseline: 11.8 ± 5.5)."
+        "Mean Evaluation Reward": "With a 64-run budget (Table 9), DEHB Test performance was: Bigfish: 9.4 ± 2.5 (Baseline: 6.8 ± 3.2), Climber: 3.9 ± 1.9 (Baseline: 4.1 ± 1.4), Plunder: 8.7 ± 0.7 (Baseline: 11.8 ± 5.5).",
+        "Mean Rank": {
+            "DEHB": 1.0
+        }
     }
-    TODO: Ranks are missing
 }
 
 #### General

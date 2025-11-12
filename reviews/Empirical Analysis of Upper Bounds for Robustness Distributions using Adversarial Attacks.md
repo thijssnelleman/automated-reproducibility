@@ -141,7 +141,6 @@ The results of the experiment are as follows:
             "untargeted_fab": 0.058
         },
         "Relative Marginal Contribution (RMC)": {
-            "VBA": -,
             "abcrown": 0.066,
             "autoattack": 0.028,
             "fgsm": 0.0,
@@ -150,7 +149,7 @@ The results of the experiment are as follows:
             "targeted_fab": 0.0,
             "untargeted_fab": 0.003
         },
-        "Ratio to the best p* (RB-p*)": {
+        " p* (RB-p*)": {
             "VBA": 1.000,
             "abcrown": 1.005,
             "autoattack": 1.006,
@@ -164,7 +163,6 @@ The results of the experiment are as follows:
     "MNIST (Complete test set)": {
         "Average running time": {
             "VBA": 7.316,
-            "abcrown": -,
             "autoattack": 19.999,
             "fgsm": 0.046,
             "pgd_40": 0.14,
@@ -174,7 +172,6 @@ The results of the experiment are as follows:
         },
         "Average minimal adversarial perturbation size (p*)": {
             "VBA": 0.063,
-            "abcrown": -,
             "autoattack": 0.063,
             "fgsm": 0.107,
             "pgd_40": 0.089,
@@ -183,8 +180,6 @@ The results of the experiment are as follows:
             "untargeted_fab": 0.069
         },
         "Relative Marginal Contribution (RMC)": {
-            "VBA": -,
-            "abcrown": -,
             "autoattack": 0.214,
             "fgsm": 0.0,
             "pgd_40": 0.002,
@@ -192,9 +187,8 @@ The results of the experiment are as follows:
             "targeted_fab": 0.0,
             "untargeted_fab": 0.003
         },
-        "Ratio to the best p* (RB-p*)": {
+        " p* (RB-p*)": {
             "VBA": 1.000,
-            "abcrown": -,
             "autoattack": 1.002,
             "fgsm": 1.695,
             "pgd_40": 1.407,

@@ -311,13 +311,13 @@ The results of the experiment are as follows:
                 "Single Obj.": {
                     "Task Performance": 8013,
                     "Coefficient of Variance": "16%"
-                },
+                }
             },
             "SAC": {
                 "Single Obj.": {
                     "Task Performance": 8064,
                     "Coefficient of Variance": "21%"
-                },
+                }
             }
         },
         "DEHB (Ours)": {
@@ -403,13 +403,13 @@ The results of the experiment are as follows:
                 "Single Obj.": {
                     "Task Performance": 5112,
                     "Coefficient of Variance": "2%"
-                },
+                }
             },
             "SAC": {
                 "Single Obj.": {
                     "Task Performance": 5913,
                     "Coefficient of Variance": "17%"
-                },
+                }
             }
         },
         "DEHB (Ours)": {
@@ -471,7 +471,7 @@ The results of the experiment are as follows:
                 "Single Obj.": {
                     "Task Performance": 134,
                     "Coefficient of Variance": "10%"
-                },
+                }
             }
         },
         "DEHB (Ours)": {
