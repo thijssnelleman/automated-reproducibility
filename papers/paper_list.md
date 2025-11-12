@@ -42,7 +42,7 @@ Instance selection for configuration performance comparison
 
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
 
-# Julia Wasala
+# Julia Wasala ✅
 
 AutoMergeNet: AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies
 
