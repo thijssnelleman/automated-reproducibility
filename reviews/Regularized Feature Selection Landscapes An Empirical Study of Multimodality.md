@@ -1,18 +1,19 @@
 # Automatic Extraction of Hypothesis: Regularized Feature Selection Landscapes: An Empirical Study of Multimodality
-*Xavier F. C. Sánchez-Díaz, Corentin Masson, Ole Jakob Mengshoel*
 
+_Xavier F. C. Sánchez-Díaz, Corentin Masson, Ole Jakob Mengshoel_
 
 You will be presented with the output of an LLM which was tasked to extract the hypothesis from your paper, including the experiment used to test the hypothesis and the interpretation of the outcome of the experiment.
 
 We ask you to **open your PDF** that was presented to the LLM, to reflect upon the LLM's answer with your paper.
 
 The answer of the LLM is structured into three parts; Hypothesis, experiments and interpretation (of experiment outcome).
+
 - For each experiment the LLM has linked it to one or more hypothesis
 - For each interpretation, the LLM has linked it to **one** experiment and **one** hypothesis.
 
 The LLM has been tasked to extract a hypothesis **including an expected outcome**. This may not always be the case for each study; it should be interpreted as a post-hoc hypothesis.
 
-Please answer the questions in the  following sections.
+Please answer the questions in the following sections.
 
 ## Hypotheses
 
@@ -30,7 +31,7 @@ Please grade the hypothesis stated from the following options:
 
 The LLM ...
 
-[] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 
 [] has stated a hypothesis capturing the general spirit of our work.
 
@@ -44,36 +45,35 @@ The LLM ...
 
 [] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
 
-
-
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
+
 - If you wish to change nothing, leave blank.
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
-
-
 
 ### General Hypothesis questions
 
 The LLM has provided you with one or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
+In the experiments part another hypothesis emerges. "The modifications of the landscape also effects the _big valley hypothesis_". It is not studied in the paper.
 
 ## Experiments
 
-The LLM has found one or more experiment that were used for the empirical evaluation of your hypotheses. 
+The LLM has found one or more experiment that were used for the empirical evaluation of your hypotheses.
 
 In each subsection one of the experiments is listed, with key details that describe it.
 For each detail, please correct the LLM if necessary;
+
 - You can leave the correction field empty if no corrections are necessary.
 - If any changes are required:
-    - [!] Copy the output of the LLM into your answer field
-    - If an element is partially incorrect, update it there
-    - If an element is wrong, remove it from the list
-    - If an element is missing, add it at the end
+  - [!] Copy the output of the LLM into your answer field
+  - If an element is partially incorrect, update it there
+  - If an element is wrong, remove it from the list
+  - If an element is missing, add it at the end
 
 ### experiment_1
 
@@ -83,30 +83,38 @@ The experiment consists of a fitness landscape analysis of feature selection for
 The LLM ...
 [] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
-[] has described the experiment but has introduced false information or made mistakes
+[X] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
 
-
+Completely false: _The analysis is conducted using local optima networks._
 
 #### Hypothesis list
+
 This experiment is used for the following hypotheses: hypothesis_1
 Your corrected list (empty if correct):
 
 #### Metrics list
+
 The measured metrics in this experiment are: Degree of multimodality
 Your corrected list (empty if correct):
+Number of local optima, connectedness of the landscape, distribution of the local optiman across the landscape, degree of regularization
+
+> Degree of multimodality is measured through the four values in the corrected list.
 
 #### Statistics
+
 The statistics for the metrics used are: Not specified on page 1.
-Your corrected list (empty if correct):
+Your corrected list (empty if correct): Accuracy
 
 #### Strategy and Test
+
 The experiment strategy is summarised as: The learning method is decision trees. The specific experimental strategy (e.g., data splitting, cross-validation) is not specified on page 1.
 Your corrected answer (empty if correct):
+The experiment strategy is summarised as: The learning method is decision trees with the defauklt parameters of a specific package. The data splitting is 70/30 (train/test). No cross-validation.
 
 The experiment test is summarised as: The paper describes a general trend ('generally drops off'), but specific statistical tests are not mentioned on page 1.
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): The paper describes a general trend ('generally drops off'), but specific statistical tests are not mentioned.
 
 #### Results
 
@@ -124,21 +132,20 @@ The LLM has overall captured the experiment details...
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
-[] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
-
+[X] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
 
 ### General Experiment Questions
 
 The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of experiments you had for the study: []
+Please write the amount of experiments you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
-
+The LLM finds only the first experiment of the paper.
 
 ## Interpretation
 
-Experiment outcomes are analysed and interpreted to determine whether the experiment supports the hypothesis or not. 
+Experiment outcomes are analysed and interpreted to determine whether the experiment supports the hypothesis or not.
 
 The LLM has found the following interpretations of the experiment outcomes;
 
@@ -148,6 +155,7 @@ This interpretation has the following description/reasoning:
 Based on the abstract on page 1, the results support the hypothesis. The authors state: 'In the ten datasets studied, we find a high degree of multimodality when there is no regularization. With increasing regularization, the degree of multimodality generally drops off but remains substantial.' This directly confirms both clauses of the implied hypothesis.
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the interpretation?
+
 - If you wish to change nothing, leave blank.
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
@@ -157,19 +165,15 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
-[] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
-
-
 This interpretation is to support (or not) the following hypothesis: hypothesis_1
 Your corrected answer (empty if correct):
 
 This interpretation supports the hypothesis: True
 Your corrected answer (empty if correct):
-
-
