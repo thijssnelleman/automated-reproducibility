@@ -188,7 +188,7 @@ The LLM has found results for the experiment and they are summarised in a table 
 The results of the experiment are as follows:
 
 {
-    "Methane Plume Detection Dataset (Schuit et al. 2023)": { TABLE IV TODO CHECK
+    "Methane Plume Detection Dataset (Schuit et al. 2023)": {
         "With auxiliary classifier": {
             "Accuracy": {
                 "BANet [9]": "0.88±0.02",
@@ -343,9 +343,29 @@ The results of the experiment are as follows:
                 "AutoMergeNet": "0.82±0.04"
             }
         }
+    },
+    "Figure 5": {
+        "Methane Plume Detection Dataset (Schuit et al. 2023)": {
+            "Count": {
+                "BANet": 3,
+                "CNN": 23,
+                "CvT": 0,
+                "EPSANet": 0,
+                "MobileNetv2: 0,
+                "ResNet": 2
+            }
+        }
+        "Carbon Monoxide Plume Detection Dataset (This work)": {
+            "Count": {
+                "BANet": 1,
+                "CNN": 23,
+                "CvT": 0,
+                "EPSANet": 1,
+                "MobileNetv2: 0,
+                "ResNet": 0
+            }
+        }
     }
-    TODO: Figure 5
-    TODO: Figure 6
 }
 
 #### General
@@ -397,7 +417,7 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-{  # TODO Check text Section V subsection C.
+{
     "TROPOMI methane data (25-31 October 2021)": {
         "Number of detected plumes": {
             "AutoMergeNet": 73,
