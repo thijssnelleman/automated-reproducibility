@@ -22,7 +22,7 @@ Revisiting SATZilla Features in 2024
 
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification
 
-# Anja Jankovic
+# Anja Jankovic ✅
 
 Trajectory-based algorithm selection with warm-starting
 
@@ -82,7 +82,7 @@ Applying and benchmarking a stochastic programming-based bidding strategy for da
 
 Link: https://link.springer.com/article/10.1007/s10287-024-00525-y
 
-# Caro Benjamins
+# Caro Benjamins ✅
 
 carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks
 

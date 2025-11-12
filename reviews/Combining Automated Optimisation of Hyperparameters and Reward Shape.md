@@ -152,24 +152,341 @@ The results of the experiment are as follows:
 
 {
     "Gymnasium LunarLander": {
-        "Task Performance": "PPO Single-Obj: base 273, rpo-DEHB 287, hpo-DEHB 265, combined-RS 262, combined-DEHB 234. PPO Multi-Obj: rpo-DEHB 223, hpo-DEHB 277, combined-DEHB 227. SAC Single-Obj: base 208, rpo-DEHB 175, hpo-DEHB 194, combined-RS 171, combined-DEHB 177. SAC Multi-Obj: rpo-DEHB 174, hpo-DEHB 186, combined-RS 193, combined-DEHB 182.",
-        "Coefficient of Variation": "PPO Single-Obj: base 11%, rpo-DEHB 31%, hpo-DEHB 27%, combined-RS 38%, combined-DEHB 25%. PPO Multi-Obj: rpo-DEHB 10%, hpo-DEHB 11%, combined-DEHB 15%. SAC Single-Obj: base 27%, rpo-DEHB 14%, hpo-DEHB 23%, combined-RS 15%, combined-DEHB 23%. SAC Multi-Obj: rpo-DEHB 13%, hpo-DEHB 15%, combined-RS 18%, combined-DEHB 21%."
+        "base": {
+            "PPO": {
+                "Task Performance": 273,
+                "Coefficient of Variance": "11%"
+            },
+            "SAC": {
+                "Task Performance": 208,
+                "Coefficient of Variance": "27%"
+            }
+        },
+        "base_DEHB": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 287,
+                    "Coefficient of Variance": "31%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 223,
+                    "Coefficient of Variance": "10%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 175,
+                    "Coefficient of Variance":  "14%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 174,
+                    "Coefficient of Variance": "13%"
+                }
+            }
+        },
+        "DEHB_base": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 265,
+                    "Coefficient of Variance": "27%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 277,
+                    "Coefficient of Variance": "11%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 194,
+                    "Coefficient of Variance": "23%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 186,
+                    "Coefficient of Variance": "15%"
+                }
+            }
+        },
+        "DEHB_RS": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 262,
+                    "Coefficient of Variance": "38%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 252,
+                    "Coefficient of Variance": "24%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 171,
+                    "Coefficient of Variance": "15%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 193,
+                    "Coefficient of Variance": "18%"
+                }
+            }
+        },
+        "DEHB (Ours)": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 234,
+                    "Coefficient of Variance": "25%" 
+                },
+                "Multi Obj.": {
+                    "Task Performance": 227,
+                    "Coefficient of Variance": "15%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 177,
+                    "Coefficient of Variance": "23%" 
+                },
+                "Multi Obj.": {
+                    "Task Performance": 182,
+                    "Coefficient of Variance": "21%"
+                }
+            }
+        }           
     },
     "Google Brax Ant": {
-        "Task Performance": "PPO Single-Obj: base 6785, rpo-DEHB 6706, hpo-DEHB 8111, combined-RS 8013, combined-DEHB 8049. PPO Multi-Obj: rpo-DEHB 6663, hpo-DEHB 7842, combined-DEHB 7923. SAC Single-Obj: base 8054, rpo-DEHB 7927, hpo-DEHB 8282, combined-RS 8064, combined-DEHB 8199. SAC Multi-Obj: rpo-DEHB 7994, hpo-DEHB 8216, combined-DEHB 8169.",
-        "Coefficient of Variation": "PPO Single-Obj: base 16%, rpo-DEHB 17%, hpo-DEHB 14%, combined-RS 16%, combined-DEHB 12%. PPO Multi-Obj: rpo-DEHB 14%, hpo-DEHB 6%, combined-DEHB 6%. SAC Single-Obj: base 28%, rpo-DEHB 32%, hpo-DEHB 21%, combined-RS 21%, combined-DEHB 23%. SAC Multi-Obj: rpo-DEHB 29%, hpo-DEHB 13%, combined-DEHB 18%."
+        "base": {
+            "PPO": {
+                "Task Performance": 6785,
+                "Coefficient of Variance": "16%"
+            },
+            "SAC": {
+                "Task Performance": 8054,
+                "Coefficient of Variance": "28%"
+            }
+        },
+        "base_DEHB": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 6706,
+                    "Coefficient of Variance": "17%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 6663,
+                    "Coefficient of Variance": "14%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 7927,
+                    "Coefficient of Variance": "32%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 7994,
+                    "Coefficient of Variance": "29%"
+                }
+            }
+        },
+        "DEHB_base": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 8111,
+                    "Coefficient of Variance": "14%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 7842,
+                    "Coefficient of Variance": "6%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 8282,
+                    "Coefficient of Variance": "21%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 8216,
+                    "Coefficient of Variance": "13%"
+                }
+            }
+        },
+        "DEHB_RS": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 8013,
+                    "Coefficient of Variance": "16%"
+                },
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 8064,
+                    "Coefficient of Variance": "21%"
+                },
+            }
+        },
+        "DEHB (Ours)": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 8049,
+                    "Coefficient of Variance": "12%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 7923,
+                    "Coefficient of Variance": "6%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 8199,
+                    "Coefficient of Variance": "23%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 8169,
+                    "Coefficient of Variance": "18%"
+                }
+            }
+        }           
     },
     "Google Brax Humanoid": {
-        "Task Performance": "PPO Single-Obj: base 4196, rpo-DEHB 4464, hpo-DEHB 4826, combined-RS 5112, combined-DEHB 5433. PPO Multi-Obj: rpo-DEHB 4472, hpo-DEHB 4719, combined-DEHB 5485. SAC Single-Obj: base 3273, rpo-DEHB 5284, hpo-DEHB 4881, combined-RS 5913, combined-DEHB 6033. SAC Multi-Obj: rpo-DEHB 5208, hpo-DEHB 4466, combined-DEHB 6103.",
-        "Coefficient of Variation": "PPO Single-Obj: base <1%, rpo-DEHB <1%, hpo-DEHB 1%, combined-RS 2%, combined-DEHB 7%. PPO Multi-Obj: rpo-DEHB <1%, hpo-DEHB <1%, combined-DEHB 1%. SAC Single-Obj: base 11%, rpo-DEHB 11%, hpo-DEHB 18%, combined-RS 17%, combined-DEHB 12%. SAC Multi-Obj: rpo-DEHB 8%, hpo-DEHB 15%, combined-DEHB 1%."
+        "base": {
+            "PPO": {
+                "Task Performance": 4196,
+                "Coefficient of Variance": "<1%"
+            },
+            "SAC": {
+                "Task Performance": 3273,
+                "Coefficient of Variance": "11%"
+            }
+        },
+        "base_DEHB": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 4464,
+                    "Coefficient of Variance": "<1%" 
+                },
+                "Multi Obj.": {
+                    "Task Performance": 4472,
+                    "Coefficient of Variance": "<1%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 5284,
+                    "Coefficient of Variance": "11%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 5208,
+                    "Coefficient of Variance": "8%"
+                }
+            }
+        },
+        "DEHB_base": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 4826,
+                    "Coefficient of Variance": "1%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 4719,
+                    "Coefficient of Variance": "<1%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 4881,
+                    "Coefficient of Variance": "18%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 4466,
+                    "Coefficient of Variance": "15%"
+                }
+            }
+        },
+        "DEHB_RS": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 5112,
+                    "Coefficient of Variance": "2%"
+                },
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 5913,
+                    "Coefficient of Variance": "17%"
+                },
+            }
+        },
+        "DEHB (Ours)": {
+            "PPO": {
+                "Single Obj.": {
+                    "Task Performance": 5433,
+                    "Coefficient of Variance": "7%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 5485,
+                    "Coefficient of Variance": "1%"
+                }
+            },
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 6033,
+                    "Coefficient of Variance": "12%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 6103,
+                    "Coefficient of Variance": "1%"
+                }
+            }
+        }
     },
     "Robosuite Wipe": {
-        "Task Performance": "SAC Single-Obj: base 101, rpo-DEHB 108, hpo-DEHB 132, combined-RS 134, combined-DEHB 136. SAC Multi-Obj: rpo-DEHB 114, hpo-DEHB 131, combined-DEHB 130.",
-        "Coefficient of Variation": "SAC Single-Obj: base 24%, rpo-DEHB 24%, hpo-DEHB 10%, combined-RS 10%, combined-DEHB 8%. SAC Multi-Obj: rpo-DEHB 20%, hpo-DEHB 11%, combined-DEHB 10%."
+        "base": {
+            "SAC": {
+                "Task Performance": 101,
+                "Coefficient of Variance": "24%"
+            }
+        },
+        "base_DEHB": {
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 108,
+                    "Coefficient of Variance": "24%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 114,
+                    "Coefficient of Variance": "20%"
+                }
+            }
+        },
+        "DEHB_base": {
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 132,
+                    "Coefficient of Variance": "10%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 131,
+                    "Coefficient of Variance": "11%"
+                }
+            }
+        },
+        "DEHB_RS": {
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 134,
+                    "Coefficient of Variance": "10%"
+                },
+            }
+        },
+        "DEHB (Ours)": {
+            "SAC": {
+                "Single Obj.": {
+                    "Task Performance": 136,
+                    "Coefficient of Variance": "8%"
+                },
+                "Multi Obj.": {
+                    "Task Performance": 130,
+                    "Coefficient of Variance": "10%"
+                }
+            }
+        }           
     }
-    TODO: Table 1 (Brackets = coefficient of variance)
-    TODO: Figure 2
-    TODO: Figure 3
 }
 
 #### General

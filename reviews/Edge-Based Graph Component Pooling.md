@@ -57,7 +57,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 
 The LLM has provided you with one or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -111,20 +111,108 @@ Your corrected answer (empty if correct):
 
 #### Results
 
-The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom.
+The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom. If a JSON structure is shown, please adapt the values behind each key if incorrect, and if values are missing add keys accordingly.
 
 The results of the experiment are as follows:
 
-|                       | Accuracy                                                             | Number of learnable parameters                         |
-|:----------------------|:---------------------------------------------------------------------|:-------------------------------------------------------|
-| Proteins [6]          | 74.7 ± 3.9 (Ours), 70.9 ± 4.6 (Diehl et al.), 73.5 ± 4.6 (Xu et al.) | 802 (Ours), 156291 (Diehl et al.), 2742 (Xu et al.)    |
-| Reddit-Binary [26]    | 89.7 ± 3.0 (Ours), 81.1 ± 5.6 (Diehl et al.), 87.8 ± 2.7 (Xu et al.) | 83459 (Ours), 149123 (Diehl et al.), 30538 (Xu et al.) |
-| Reddit-Multi-12K [26] | 48.4 ± 1.7 (Ours), 36.9 ± 2.1 (Diehl et al.), None (Xu et al.)       | 333325 (Ours), 595725 (Diehl et al.), None (Xu et al.) |
-| Collaboration [26]    | 77.9 ± 2.0 (Ours), 69.5 ± 2.7 (Diehl et al.), 78.7 ± 2.0 (Xu et al.) | 12996 (Ours), 243077 (Diehl et al.), 55584 (Xu et al.) |
-| IMDB Binary [26]      | 72.7 ± 3.9 (Ours), None (Diehl et al.), 72.7 ± 4.3 (Xu et al.)       | 18498 (Ours), None (Diehl et al.), 65638 (Xu et al.)   |
-| IMDB Multi [26]       | 49.6 ± 4.3 (Ours), None (Diehl et al.), 49.6 ± 4.3 (Xu et al.)       | 62468 (Ours), None (Diehl et al.), 54646 (Xu et al.)   |
-| NCI1 [24]             | 72.2 ± 3.5 (Ours), None (Diehl et al.), 79.5 ± 2.0 (Xu et al.)       | 38274 (Ours), None (Diehl et al.), 9294 (Xu et al.)    |
-| Reddit-Multi-5K [26]  | 52.6 ± 3.0 (Ours), None (Diehl et al.), 55.1 ± 2.4 (Xu et al.)       | 83975 (Ours), None (Diehl et al.), 31586 (Xu et al.)   |
+{
+    "Proteins [6]": {
+        "Accuracy": {
+            "Ours": "74.7 ± 3.9",
+            "Diehl et al.": "70.9 ± 4.6",
+            "Xu et al.": "73.5 ± 4.6"
+        },
+        "Number of learnable parameters": {
+            "Ours": 802,
+            "Diehl et al.": 156291,
+            "Xu et al.": 2742
+        }
+    },
+    "Reddit-Binary [26]": {
+        "Accuracy": {
+            "Ours": "89.7 ± 3.0",
+            "Diehl et al.": "81.1 ± 5.6",
+            "Xu et al.": "87.8 ± 2.7"
+        },
+        "Number of learnable parameters": {
+            "Ours": 83459,
+            "Diehl et al.": 149123,
+            "Xu et al.": 30538
+        }
+    },
+    "Reddit-Multi-12K [26]": {
+        "Accuracy": {
+            "Ours": "48.4 ± 1.7",
+            "Diehl et al.": "36.9 ± 2.1",
+            "Xu et al.": null
+        },
+        "Number of learnable parameters": {
+            "Ours": 333325,
+            "Diehl et al.": 595725,
+            "Xu et al.": null
+        }
+    },
+    "Collaboration [26]": {
+        "Accuracy": {
+            "Ours": "77.9 ± 2.0",
+            "Diehl et al.": "69.5 ± 2.7",
+            "Xu et al.": "78.7 ± 2.0"
+        },
+        "Number of learnable parameters": {
+            "Ours": 12996,
+            "Diehl et al.": 243077,
+            "Xu et al.": 55584
+        }
+    },
+    "IMDB Binary [26]": {
+        "Accuracy": {
+            "Ours": "72.7 ± 3.9",
+            "Diehl et al.": "69.5 ± 2.7",
+            "Xu et al.": "72.7 ± 4.3"
+        },
+        "Number of learnable parameters": {
+            "Ours": 18498,
+            "Diehl et al.": null,
+            "Xu et al.": 65638
+        }
+    },
+    "IMDB Multi [26]": {
+        "Accuracy": {
+            "Ours": "49.6 ± 4.3",
+            "Diehl et al.": null,
+            "Xu et al.": "49.6 ± 4.3"
+        },
+        "Number of learnable parameters": {
+            "Ours": 62468,
+            "Diehl et al.": null,
+            "Xu et al.": 54646
+        }
+    },
+    "NCI1 [24]": {
+        "Accuracy": {
+            "Ours": "72.2 ± 3.5",
+            "Diehl et al.": null,
+            "Xu et al.": "79.5 ± 2.0"
+        },
+        "Number of learnable parameters": {
+            "Ours": 38274,
+            "Diehl et al.": null,
+            "Xu et al.": 9294
+        }
+    },
+    "Reddit-Multi-5K [26]": {
+        "Accuracy": {
+            "Ours": "52.6 ± 3.0",
+            "Diehl et al.": null,
+            "Xu et al.": "55.1 ± 2.4"
+        },
+        "Number of learnable parameters": {
+            "Ours": 83975,
+            "Diehl et al.": null,
+            "Xu et al.": 31586
+        }
+    }
+}
 
 #### General
 
@@ -173,10 +261,10 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
-[] Representative
-[X] Adequate
-[] Acceptable
-[] (Partially) Incorrect
+[X] Correct
+[] Almost correct (few and minor misinterpretations or mistakes)
+[] Acceptable (some misinterpretations or mistakes)
+[] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
