@@ -390,7 +390,7 @@ The LLM has overall captured the experiment details...
 
 The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of experiments you had for the study: []
+Please write the amount of experiments you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 

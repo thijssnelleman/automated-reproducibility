@@ -115,9 +115,13 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-|                                         | Jaccard error for instrument classes (Ji)                                                              | Jaccard error for pitch classes (Jp)                                                                                                                                 | Jaccard error for joint instrument-pitch tuples (Jip)                                                  |
-|:----------------------------------------|:-------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------|
-| Ground Truth Search Dataset (This work) | Baseline converges to ~0.21. Modified converges to a similar value but with a steeper initial descent. | Baseline converges to ~0.18. Modified starts much lower (~0.65 vs ~1.0), has a small initial increase, then converges to a similar value as the baseline but faster. | Baseline converges to ~0.23. Modified converges to a similar value but with a steeper initial descent. |
+{
+    "Ground Truth Search Dataset (This work)": {
+        "Jaccard error for instrument classes (Ji)": "Baseline converges to ~0.21. Modified converges to a similar value but with a steeper initial descent.",
+        "Jaccard error for pitch classes (Jp)": "Baseline converges to ~0.18. Modified starts much lower (~0.65 vs ~1.0), has a small initial increase, then converges to a similar value as the baseline but faster.",
+        "Jaccard error for joint instrument-pitch tuples (Jip)": "Baseline converges to ~0.23. Modified converges to a similar value but with a steeper initial descent."
+    }
+}
 
 #### General
 
@@ -168,9 +172,13 @@ The LLM has found results for the experiment and they are summarised in a table 
 
 The results of the experiment are as follows:
 
-|                                                 | Jaccard error for instrument classes (Ji)                                                                                           | Jaccard error for pitch classes (Jp)                                                                                                | Jaccard error for joint instrument-pitch tuples (Jip)                                                                               |
-|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|
-| Artificial Audio Multitracks (AAM) dataset [30] | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. | Modified algorithm shows lower initial error and slightly lower final error compared to baseline. |
+{
+    "Artificial Audio Multitracks (AAM) dataset [30]": {
+        "Jaccard error for instrument classes (Ji)": "Modified algorithm shows lower initial error and slightly lower final error compared to baseline.",
+        "Jaccard error for pitch classes (Jp)": "Modified algorithm shows lower initial error and slightly lower final error compared to baseline.",
+        "Jaccard error for joint instrument-pitch tuples (Jip)": "Modified algorithm shows lower initial error and slightly lower final error compared to baseline."
+    }
+}
 
 #### General
 
