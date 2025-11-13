@@ -1,6 +1,5 @@
 # Automatic Extraction of Hypothesis: Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
-
-_Aleksandra Jekic, Afroditi Natsaridou, Signe Riemer-Sørensen, Helge Langseth, Odd Erik Gundersen_
+*Aleksandra Jekic, Afroditi Natsaridou, Signe Riemer-Sørensen, Helge Langseth, Odd Erik Gundersen*
 
 You will be presented with the output of an LLM which was tasked to extract the hypothesis from your paper, including the experiment used to test the hypothesis and the interpretation of the outcome of the experiment.
 
@@ -46,7 +45,6 @@ The LLM ...
 [] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
-
 - If you wish to change nothing, leave blank.
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
@@ -84,7 +82,6 @@ The LLM ...
 [] has stated a hypothesis of lesser quality than described above: If it is an hallucination, please explain below.
 
 Based on the LLMs answer, would you like to improve the answer to more accurately capture the hypothesis?
-
 - If you wish to change nothing, leave blank.
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
@@ -158,16 +155,16 @@ Your corrected answer (empty if correct): Visual and numerical comparison of mea
 
 The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom. If a JSON structure is shown, please adapt the values behind each key if incorrect, and if values are missing add keys accordingly.
 
+Author comment: Missing reward hacking phenomena. The results are superficial and lacking in detail.
+
 The results of the experiment are as follows:
 
 {
-"1D Burgers' equation data (Raissi et al. 2019)": {
-"Prediction accuracy (RMSE)": "Without noise (σ=0), PINN slightly outperforms the FEM-based models. With increasing noise, FEM/SLSQP generally has a lower mean RMSE, but the authors state the difference is not significant as the standard deviations overlap (Figure 1, Page 10).",
-"Parameter accuracy": "FEM/SLSQP tends to estimate higher than the ground truth. PINN on average estimates lower up to σ=3. For most noise levels, FEM/SLSQP is closer to the ground truth on average (Figure 1, Page 10)."
+    "1D Burgers' equation data (Raissi et al. 2019)": {
+        "Prediction accuracy (RMSE)": "Without noise (σ=0), PINN slightly outperforms the FEM-based models. With increasing noise, FEM/SLSQP generally has a lower mean RMSE, but the authors state the difference is not significant as the standard deviations overlap (Figure 1, Page 10).",
+        "Parameter accuracy": "FEM/SLSQP tends to estimate higher than the ground truth. PINN on average estimates lower up to σ=3. For most noise levels, FEM/SLSQP is closer to the ground truth on average (Figure 1, Page 10)."
+    }
 }
-}
-
-Missing reward hacking phenomena. The results are superficial and lacking in detail.
 
 #### General
 
@@ -220,16 +217,16 @@ Your corrected answer (empty if correct): Visual and numerical comparison of mea
 
 The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom. If a JSON structure is shown, please adapt the values behind each key if incorrect, and if values are missing add keys accordingly.
 
+Author comment: The results are superficial and lacking in detail.
+
 The results of the experiment are as follows:
 
 {
-"2D Taylor-Green vortex data (This work)": {
-"Prediction accuracy (RMSE)": "The FEM/SLSQP model consistently outperforms both PINN models (pure PINN and PINN/FEM) across all tested noise levels (Figure 3, Page 13).",
-"Parameter accuracy": "The FEM/SLSQP model provides estimates that are much closer to the ground truth and more stable. PINN models show a tendency to estimate a lower viscosity, and their performance degrades significantly with higher noise (Figure 3, Page 13)."
+    "2D Taylor-Green vortex data (This work)": {
+        "Prediction accuracy (RMSE)": "The FEM/SLSQP model consistently outperforms both PINN models (pure PINN and PINN/FEM) across all tested noise levels (Figure 3, Page 13).",
+        "Parameter accuracy": "The FEM/SLSQP model provides estimates that are much closer to the ground truth and more stable. PINN models show a tendency to estimate a lower viscosity, and their performance degrades significantly with higher noise (Figure 3, Page 13)."
+    }
 }
-}
-
-The results are superficial and lacking in detail.
 
 #### General
 
@@ -282,16 +279,16 @@ Your corrected answer (empty if correct): Visual and numerical comparison of mea
 
 The LLM has found results for the experiment and they are summarised in a table below. For each cell in the table, please update the values if they are incorrect. If values are missing or should be seperated, please add new rows at the bottom. If a JSON structure is shown, please adapt the values behind each key if incorrect, and if values are missing add keys accordingly.
 
+Author comment: The results are superficial and lacking in detail.
+
 The results of the experiment are as follows:
 
 {
-"3D Taylor-Green vortex data (This work)": {
-"Prediction accuracy (RMSE)": "FEM/SLSQP is overall better than PINN, but the performance gap is smaller compared to the 2D experiment. The results even out more as noise is added (Figure 5, Page 17).",
-"Parameter accuracy": "FEM/SLSQP is generally closer to the ground truth. The PINN model still has a tendency to estimate the viscosity as lower than the ground truth (Figure 5, Page 17)."
+    "3D Taylor-Green vortex data (This work)": {
+        "Prediction accuracy (RMSE)": "FEM/SLSQP is overall better than PINN, but the performance gap is smaller compared to the 2D experiment. The results even out more as noise is added (Figure 5, Page 17).",
+        "Parameter accuracy": "FEM/SLSQP is generally closer to the ground truth. The PINN model still has a tendency to estimate the viscosity as lower than the ground truth (Figure 5, Page 17)."
+    }
 }
-}
-
-The results are superficial and lacking in detail.
 
 #### General
 

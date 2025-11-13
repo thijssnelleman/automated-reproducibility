@@ -37,9 +37,8 @@ def process_hypothesis(lines: list[str], df: list):
         if line.startswith("- If you consider the answer completely wrong, feel free to rephrase completely in your own wording."):
             corrected_hypothesis = "\n".join([v.strip() for v in lines[line_n+1:] if v.strip() != ""])
             break
-    if not score:    
+    if not score:
         raise ValueError(f"No box marked in {hypothesis_id} of {review}")
-    # TODO: add score and corrected hypothesis under the hypothesis id
     df.append([review.stem, hypothesis_id, "Hypothesis Likert Score", score])
     df.append([review.stem, hypothesis_id, "Hypothesis Corrected", corrected_hypothesis])
     return
@@ -101,9 +100,16 @@ def process_experiment(lines: list[str], df: list):
             json_start = line_idx + 1
         elif line.startswith("#### General"):
             json_end = line_idx - 1
+
+    assert description_score is not None
+    assert detail_score is not None
+
     results_original = llm_output["Experiment"][experiment_id]["results"]
-    #print("".join(lines[json_start:json_end]))
-    results_corrected = json.loads("".join(lines[json_start:json_end]))
+    try:
+        results_corrected = json.loads("".join(lines[json_start:json_end]))
+    except Exception as e:
+        print("Error parsing results for experiment", experiment_id, "in", review)
+        raise e
     missing, wrong, correct = 0, 0, 0
     
     def get_keys(d, curr_key=[]):
