@@ -55,7 +55,9 @@ for key in llm_output["Experiment"]:
 for key in llm_output["Interpretation"]:
     int_o = interpretation_template.replace("@@@INTERPRETATION_ID@@@", key)
     int_o = int_o.replace("@@@REASON@@@", llm_output["Interpretation"][key]["reason"])
-    int_o = int_o.replace("@@@EXPERIMENT_ID@@@", llm_output["Interpretation"][key]["experiment"])
+    experiment_ids = llm_output["Interpretation"][key]["experiment"]
+    experiment_ids = ", ".join(llm_output["Interpretation"][key]["experiment"]) if isinstance(experiment_ids, list) else experiment_ids
+    int_o = int_o.replace("@@@EXPERIMENT_ID@@@", experiment_ids)
     int_o = int_o.replace("@@@HYPOTHESIS_ID@@@", llm_output["Interpretation"][key]["hypothesis"])
     int_o = int_o.replace("@@@SUPPORT@@@", str(llm_output["Interpretation"][key]["support"]))
     interpretation_sections.append(int_o)
