@@ -45,15 +45,15 @@ Robustness Distributions in Neural Network Verification,interpretation_5,Support
 Robustness Distributions in Neural Network Verification,interpretation_5,Hypothesis,hypothesis_5
 Robustness Distributions in Neural Network Verification,interpretation_5,Experiment,experiment_2
 Robustness Distributions in Neural Network Verification,hypothesis_1,Hypothesis Likert Score,1
-Robustness Distributions in Neural Network Verification,hypothesis_1,Hypothesis corrected,"The distribution of critical ε values of conventionally trained, fully-connected MNIST neural networks follow a log-normal distribution."
+Robustness Distributions in Neural Network Verification,hypothesis_1,Hypothesis Corrected,"The distribution of critical ε values of conventionally trained, fully-connected MNIST neural networks follow a log-normal distribution."
 Robustness Distributions in Neural Network Verification,hypothesis_2,Hypothesis Likert Score,1
-Robustness Distributions in Neural Network Verification,hypothesis_2,Hypothesis corrected,
+Robustness Distributions in Neural Network Verification,hypothesis_2,Hypothesis Corrected,
 Robustness Distributions in Neural Network Verification,hypothesis_3,Hypothesis Likert Score,1
-Robustness Distributions in Neural Network Verification,hypothesis_3,Hypothesis corrected,The authors hypothesise that there is a strong positive correlation between the critical ε values of a given input image of the MNIST dataset across different neural networks.
+Robustness Distributions in Neural Network Verification,hypothesis_3,Hypothesis Corrected,The authors hypothesise that there is a strong positive correlation between the critical ε values of a given input image of the MNIST dataset across different neural networks.
 Robustness Distributions in Neural Network Verification,hypothesis_4,Hypothesis Likert Score,2
-Robustness Distributions in Neural Network Verification,hypothesis_4,Hypothesis corrected,The authors hypothesise that adversarial training can significantly improve the critical ε distributions of neural networks compared to conventional training.
+Robustness Distributions in Neural Network Verification,hypothesis_4,Hypothesis Corrected,The authors hypothesise that adversarial training can significantly improve the critical ε distributions of neural networks compared to conventional training.
 Robustness Distributions in Neural Network Verification,hypothesis_5,Hypothesis Likert Score,1
-Robustness Distributions in Neural Network Verification,hypothesis_5,Hypothesis corrected,
+Robustness Distributions in Neural Network Verification,hypothesis_5,Hypothesis Corrected,
 Robustness Distributions in Neural Network Verification,hypothesis_6,Hypothesis Likert Score,8
 Robustness Distributions in Neural Network Verification,hypothesis_7,Hypothesis Likert Score,8
 Robustness Distributions in Neural Network Verification,experiment_1,Experiment Description Likert Score,2
@@ -140,7 +140,7 @@ Instance selection for configuration performance comparison,interpretation_2,Sup
 Instance selection for configuration performance comparison,interpretation_2,Hypothesis,hypothesis_1
 Instance selection for configuration performance comparison,interpretation_2,Experiment,experiment_2
 Instance selection for configuration performance comparison,hypothesis_1,Hypothesis Likert Score,4
-Instance selection for configuration performance comparison,hypothesis_1,Hypothesis corrected,"The authors hypothesise that using intelligent instance selection methods, adapted from active learning, can significantly reduce the computational time required to accurately compare the performance of two configurations of the same algorithm, compared to the standard random sampling approach used in configurators."
+Instance selection for configuration performance comparison,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that using intelligent instance selection methods, adapted from active learning, can significantly reduce the computational time required to accurately compare the performance of two configurations of the same algorithm, compared to the standard random sampling approach used in configurators."
 Instance selection for configuration performance comparison,experiment_1,Experiment Description Likert Score,1
 Instance selection for configuration performance comparison,experiment_1,Experiment Details Likert Score,3
 Instance selection for configuration performance comparison,experiment_1,Experiment Description Score Reason,
@@ -193,7 +193,7 @@ Edge-Based Graph Component Pooling,interpretation_1,Support,True
 Edge-Based Graph Component Pooling,interpretation_1,Hypothesis,hypothesis_1
 Edge-Based Graph Component Pooling,interpretation_1,Experiment,experiment_1
 Edge-Based Graph Component Pooling,hypothesis_1,Hypothesis Likert Score,1
-Edge-Based Graph Component Pooling,hypothesis_1,Hypothesis corrected,
+Edge-Based Graph Component Pooling,hypothesis_1,Hypothesis Corrected,
 Edge-Based Graph Component Pooling,experiment_1,Experiment Description Likert Score,2
 Edge-Based Graph Component Pooling,experiment_1,Experiment Details Likert Score,2
 Edge-Based Graph Component Pooling,experiment_1,Experiment Description Score Reason,
@@ -229,9 +229,9 @@ Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretat
 Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Hypothesis,hypothesis_2
 Combining Automated Optimisation of Hyperparameters and Reward Shape,interpretation_2,Experiment,experiment_1
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Hypothesis Likert Score,1
-Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Hypothesis corrected,
+Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Hypothesis Corrected,
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_2,Hypothesis Likert Score,2
-Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_2,Hypothesis corrected,"The authors hypothesise that including a variance penalty in the optimisation objective (multi-objective optimisation) of the simultaneous optimisation will improve the stability (i.e., reduce the performance variance) of the learned policies, while achieving similar or better expected performance compared to single-objective optimisation."
+Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_2,Hypothesis Corrected,"The authors hypothesise that including a variance penalty in the optimisation objective (multi-objective optimisation) of the simultaneous optimisation will improve the stability (i.e., reduce the performance variance) of the learned policies, while achieving similar or better expected performance compared to single-objective optimisation."
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Description Likert Score,2
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Details Likert Score,2
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Description Score Reason,
@@ -282,9 +282,9 @@ Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,
 Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Hypothesis,hypothesis_1
 Hyperparameters in Reinforcement Learning and How To Tune Them,interpretation_3,Experiment,experiment_2
 Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_1,Hypothesis Likert Score,4
-Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_1,Hypothesis corrected,"The authors hypothesise that principled Hyperparameter Optimization (HPO) methods from AutoML are capable of producing better performing RL agents than traditional manual tuning or grid search, while using significantly fewer computational resources."
+Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that principled Hyperparameter Optimization (HPO) methods from AutoML are capable of producing better performing RL agents than traditional manual tuning or grid search, while using significantly fewer computational resources."
 Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_2,Hypothesis Likert Score,1
-Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_2,Hypothesis corrected,"The authors hypothesise that failing to separate tuning seeds from testing seeds in Reinforcement Learning leads to unreliable performance evaluations, making this separation a crucial best practice for reproducibility."
+Hyperparameters in Reinforcement Learning and How To Tune Them,hypothesis_2,Hypothesis Corrected,"The authors hypothesise that failing to separate tuning seeds from testing seeds in Reinforcement Learning leads to unreliable performance evaluations, making this separation a crucial best practice for reproducibility."
 Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_1,Experiment Description Likert Score,2
 Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_1,Experiment Details Likert Score,2
 Hyperparameters in Reinforcement Learning and How To Tune Them,experiment_1,Experiment Description Score Reason,
@@ -340,7 +340,7 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Hypothesis,hypothesis_1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,interpretation_1,Experiment,experiment_1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_1,Hypothesis Likert Score,2
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_1,Hypothesis corrected,"The authors hypothesise that adversarial attack methods can yield computationally efficient and tight upper bounds for robustness distributions, comparable in quality to those obtained from a state-of-the-art complete verifier, while highlighting scenarios where attacks achieve near-optimal bounds at a significantly reduced computational cost."
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that adversarial attack methods can yield computationally efficient and tight upper bounds for robustness distributions, comparable in quality to those obtained from a state-of-the-art complete verifier, while highlighting scenarios where attacks achieve near-optimal bounds at a significantly reduced computational cost."
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_2,Hypothesis Likert Score,8
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_3,Hypothesis Likert Score,8
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_1,Experiment Description Likert Score,1
@@ -373,7 +373,7 @@ Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verifica
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Hypothesis,hypothesis_1
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,interpretation_1,Experiment,experiment_1
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,hypothesis_1,Hypothesis Likert Score,1
-Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,hypothesis_1,Hypothesis corrected,
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,hypothesis_1,Hypothesis Corrected,
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Experiment Description Likert Score,2
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Experiment Details Likert Score,1
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,experiment_1,Experiment Description Score Reason,
@@ -412,7 +412,7 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Hypothesis,hypothesis_1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,interpretation_2,Experiment,experiment_2
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Hypothesis Likert Score,2
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Hypothesis corrected,The authors hypothesise that modifying an evolutionary algorithm for polyphonic music approximation by using spectral information to initialise populations with probable pitches will result in significantly faster convergence speed and improved pitch and instrument detection errors compared to the baseline algorithm with random initialisation.
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Hypothesis Corrected,The authors hypothesise that modifying an evolutionary algorithm for polyphonic music approximation by using spectral information to initialise populations with probable pitches will result in significantly faster convergence speed and improved pitch and instrument detection errors compared to the baseline algorithm with random initialisation.
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Experiment Description Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Experiment Details Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Experiment Description Score Reason,
@@ -462,7 +462,7 @@ Data Efficient Pre-training for Language Models An Empirical Study of Compute Ef
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Hypothesis,hypothesis_1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Experiment,experiment_1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Hypothesis Likert Score,1
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Hypothesis corrected,
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Hypothesis Corrected,
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Description Likert Score,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Details Likert Score,3
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Description Score Reason,
@@ -495,7 +495,7 @@ Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Hypothesis,hypothesis_1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Experiment,experiment_1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Hypothesis Likert Score,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Hypothesis corrected,"The authors hypothesise that incrementally growing a neural network's depth during deep reinforcement learning training leads to better agent performance compared to training a static network of the same final size from the start, particularly for deeper networks that are otherwise difficult to train."
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that incrementally growing a neural network's depth during deep reinforcement learning training leads to better agent performance compared to training a static network of the same final size from the start, particularly for deeper networks that are otherwise difficult to train."
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Description Likert Score,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Details Likert Score,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Description Score Reason,
@@ -525,7 +525,7 @@ carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,int
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Hypothesis,hypothesis_1
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,interpretation_1,Experiment,experiment_1
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_1,Hypothesis Likert Score,3
-carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_1,Hypothesis corrected,"The authors hypothesise that the representative subsets of HPO benchmark tasks, created by minimizing the star discrepancy in the performance space, will yield consistent relative performance rankings of HPO optimizers across the disjoint development and test sets. The design criterium for the subsets selection of different hyperparameters itself is to yield the same performance rankings across the subsets of the optimisers producing the data; any optimiser comparison will show the same ranking on those sets."
+carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that the representative subsets of HPO benchmark tasks, created by minimizing the star discrepancy in the performance space, will yield consistent relative performance rankings of HPO optimizers across the disjoint development and test sets. The design criterium for the subsets selection of different hyperparameters itself is to yield the same performance rankings across the subsets of the optimisers producing the data; any optimiser comparison will show the same ranking on those sets."
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,hypothesis_2,Hypothesis Likert Score,8
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,experiment_1,Experiment Description Likert Score,2
 carps- A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks,experiment_1,Experiment Details Likert Score,3
@@ -584,7 +584,7 @@ Revisiting SATZilla Features in 2024,interpretation_4,Support,True
 Revisiting SATZilla Features in 2024,interpretation_4,Hypothesis,hypothesis_1
 Revisiting SATZilla Features in 2024,interpretation_4,Experiment,experiment_4
 Revisiting SATZilla Features in 2024,hypothesis_1,Hypothesis Likert Score,1
-Revisiting SATZilla Features in 2024,hypothesis_1,Hypothesis corrected,
+Revisiting SATZilla Features in 2024,hypothesis_1,Hypothesis Corrected,
 Revisiting SATZilla Features in 2024,experiment_1,Experiment Description Likert Score,2
 Revisiting SATZilla Features in 2024,experiment_1,Experiment Details Likert Score,1
 Revisiting SATZilla Features in 2024,experiment_1,Experiment Description Score Reason,
@@ -665,7 +665,7 @@ Trajectory-based algorithm selection with warm-starting,interpretation_1,Support
 Trajectory-based algorithm selection with warm-starting,interpretation_1,Hypothesis,hypothesis_1
 Trajectory-based algorithm selection with warm-starting,interpretation_1,Experiment,experiment_1
 Trajectory-based algorithm selection with warm-starting,hypothesis_1,Hypothesis Likert Score,3
-Trajectory-based algorithm selection with warm-starting,hypothesis_1,Hypothesis corrected,"The authors hypothesise that a trajectory-based algorithm selector, which uses landscape features computed from an initial optimization run to select and warm-start a subsequent algorithm, can outperform static selection (not only any single algorithm from the portfolio, but even simple selection on top) in a dynamic, per-run switching context."
+Trajectory-based algorithm selection with warm-starting,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that a trajectory-based algorithm selector, which uses landscape features computed from an initial optimization run to select and warm-start a subsequent algorithm, can outperform static selection (not only any single algorithm from the portfolio, but even simple selection on top) in a dynamic, per-run switching context."
 Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment Description Likert Score,1
 Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment Details Likert Score,2
 Trajectory-based algorithm selection with warm-starting,experiment_1,Experiment Description Score Reason,
@@ -704,7 +704,7 @@ Towards General Negotiation Strategies with End-to-End Reinforcement Learning,in
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Hypothesis,hypothesis_1
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Experiment,experiment_2
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,hypothesis_1,Hypothesis Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,hypothesis_1,Hypothesis corrected,"The authors hypothesise that their end-to-end reinforcement learning method, using a graph representation and Graph Neural Networks (GNNs), can (1) effectively learn to negotiate in a fixed negotiation problem, performing comparably to a recent work, and (2) learn a general negotiation strategy that successfully negotiates on diverse, never-before-seen negotiation problems."
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that their end-to-end reinforcement learning method, using a graph representation and Graph Neural Networks (GNNs), can (1) effectively learn to negotiate in a fixed negotiation problem, performing comparably to a recent work, and (2) learn a general negotiation strategy that successfully negotiates on diverse, never-before-seen negotiation problems."
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_1,Experiment Description Likert Score,1
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_1,Experiment Details Likert Score,2
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,experiment_1,Experiment Description Score Reason,
@@ -793,7 +793,7 @@ EDC: Equation Discovery for Classification paper,interpretation_2,Support,True
 EDC: Equation Discovery for Classification paper,interpretation_2,Hypothesis,hypothesis_1
 EDC: Equation Discovery for Classification paper,interpretation_2,Experiment,experiment_2
 EDC: Equation Discovery for Classification paper,hypothesis_1,Hypothesis Likert Score,2
-EDC: Equation Discovery for Classification paper,hypothesis_1,Hypothesis corrected,"The authors hypothesise that their proposed Equation Discovery for Classification (EDC) method can discover concise and interpretable analytical functions for binary classification that (a) achieve performance comparable to state-of-the-art classification algorithms, (b) outperform existing interpretable binary classification methods, and (c) can accurately reconstruct the underlying decision boundaries in both artificial and real-world data."
+EDC: Equation Discovery for Classification paper,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that their proposed Equation Discovery for Classification (EDC) method can discover concise and interpretable analytical functions for binary classification that (a) achieve performance comparable to state-of-the-art classification algorithms, (b) outperform existing interpretable binary classification methods, and (c) can accurately reconstruct the underlying decision boundaries in both artificial and real-world data."
 EDC: Equation Discovery for Classification paper,experiment_1,Experiment Description Likert Score,1
 EDC: Equation Discovery for Classification paper,experiment_1,Experiment Details Likert Score,3
 EDC: Equation Discovery for Classification paper,experiment_1,Experiment Description Score Reason,
@@ -840,7 +840,7 @@ Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework f
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Hypothesis,hypothesis_1
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,interpretation_1,Experiment,experiment_1
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Hypothesis Likert Score,2
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Hypothesis corrected,"The authors hypothesise that their proposed Time Series Representations Classroom (TSRC) framework, which uses knowledge distillation and curriculum learning to train a reconstruction-based student model with guidance from a pre-trained contrastive-based teacher model, will bridge the gap between the performance of the inferior student model and a superior teacher model in downstream tasks by teaching the student model to improve the rank order of similarities in the embodying space. The resulted representations have (1) better rank order of similarities in the embedding space, (2) and are interpretable (reconstruction-based methods are inherently interpretable)."
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that their proposed Time Series Representations Classroom (TSRC) framework, which uses knowledge distillation and curriculum learning to train a reconstruction-based student model with guidance from a pre-trained contrastive-based teacher model, will bridge the gap between the performance of the inferior student model and a superior teacher model in downstream tasks by teaching the student model to improve the rank order of similarities in the embodying space. The resulted representations have (1) better rank order of similarities in the embedding space, (2) and are interpretable (reconstruction-based methods are inherently interpretable)."
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Description Likert Score,1
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Details Likert Score,2
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Description Score Reason,
@@ -887,11 +887,11 @@ AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmosph
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Hypothesis,hypothesis_3
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,interpretation_3,Experiment,experiment_2
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_1,Hypothesis Likert Score,2
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_1,Hypothesis corrected,"The authors hypothesise that transforming conventional, single-branch image classification networks into multibranch networks improves the performance of multimodal image data fusion for satellite image classification compared to early fusion approaches, as they struggle to converge."
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_1,Hypothesis Corrected,"The authors hypothesise that transforming conventional, single-branch image classification networks into multibranch networks improves the performance of multimodal image data fusion for satellite image classification compared to early fusion approaches, as they struggle to converge."
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_2,Hypothesis Likert Score,1
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_2,Hypothesis corrected,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_2,Hypothesis Corrected,
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_3,Hypothesis Likert Score,1
-AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_3,Hypothesis corrected,
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_3,Hypothesis Corrected,
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,hypothesis_4,Hypothesis Likert Score,8
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,experiment_1,Experiment Description Likert Score,1
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,experiment_1,Experiment Details Likert Score,3

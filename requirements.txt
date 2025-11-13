@@ -34,3 +34,4 @@ urllib3==2.5.0
 websockets==15.0.1
 matplotlib==3.10.7
 seaborn==0.13.2
+nltk==3.9.2

@@ -41,7 +41,7 @@ def process_hypothesis(lines: list[str], df: list):
         raise ValueError(f"No box marked in {hypothesis_id} of {review}")
     # TODO: add score and corrected hypothesis under the hypothesis id
     df.append([review.stem, hypothesis_id, "Hypothesis Likert Score", score])
-    df.append([review.stem, hypothesis_id, "Hypothesis corrected", corrected_hypothesis])
+    df.append([review.stem, hypothesis_id, "Hypothesis Corrected", corrected_hypothesis])
     return
 
 def process_experiment(lines: list[str], df: list):
