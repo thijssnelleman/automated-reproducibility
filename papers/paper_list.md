@@ -64,7 +64,7 @@ Regularized Feature Selection Landscapes An Empirical Study of Multimodality
 
 Link to research: https://rdcu.be/eM9hG
 
-# [Aleksandra Jekic](aleksander.jekic@ntnu.no)
+# [Aleksandra Jekic](aleksander.jekic@ntnu.no) ✅
 
 Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
 
@@ -76,7 +76,7 @@ The Evolution of Conformity, Malleability, and Influence in Simulated Online Age
 
 Currently awaiting research paper per email.
 
-# [Christine Clock](kristine.klock.fleten@aneo.com)
+# [Christine Clock](kristine.klock.fleten@aneo.com) ✅
 
 Applying and benchmarking a stochastic programming-based bidding strategy for day-ahead hydropower scheduling
 
