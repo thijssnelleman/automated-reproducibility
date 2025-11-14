@@ -30,7 +30,7 @@ Please grade the hypothesis stated from the following options:
 
 The LLM ...
 
-[] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 
 [] has stated a hypothesis capturing the general spirit of our work.
 
@@ -68,7 +68,7 @@ The LLM ...
 
 [] captures the hypothesis (nearly) perfectly.
 
-[] has stated a hypothesis capturing the general spirit of our work.
+[X] has stated a hypothesis capturing the general spirit of our work.
 
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 
@@ -87,15 +87,17 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-
+The hypothesis is correct, however the relation to the first hypothesis is not emphasized. (Sub-hypothesis)
 
 ### General Hypothesis questions
 
 The LLM has provided you with one or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
+
+Lacking one hypothesis regarding benchmarking metod.
 
 
 ## Experiments
@@ -118,7 +120,7 @@ A rolling horizon benchmark is conducted over approximately four months to compa
 
 The LLM ...
 [] has described the experiment (nearly) perfectly
-[] has described the experiment but is lacking information
+[X] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
@@ -131,11 +133,11 @@ Your corrected list (empty if correct):
 
 #### Metrics list
 The measured metrics in this experiment are: Daily grand total (relative change), Day-ahead revenues (relative change), Start-up costs (relative change), Change in reservoir value (relative change), Energy score, Integrated distance
-Your corrected list (empty if correct):
+Your corrected list (empty if correct): Daily grand total (absolute and relative change), Day-ahead revenues (absolute and relative change), Start-up costs (absolute and relative change), Change in reservoir value (absolute and relative change), Energy score, Integrated distance
 
 #### Statistics
 The statistics for the metrics used are: Aggregated sums over two-week periods and the whole test period, presented as a relative difference to the operator result. For price input metrics, mean and standard deviation are reported.
-Your corrected list (empty if correct):
+Your corrected list (empty if correct): Aggregated sums over two-week periods and the whole test period, presented as a relative difference to the operator result. These sums are done per metric. For price input metrics, mean and standard deviation are reported.
 
 #### Strategy and Test
 The experiment strategy is summarised as: Rolling horizon benchmark over a test period from September 7, 2023, to January 10, 2024. The experiment is run for consecutive two-week periods, with initial conditions being reset at the start of each period.
@@ -185,7 +187,7 @@ The results of the experiment are as follows:
 
 The LLM has overall captured the experiment details...
 
-[] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -196,7 +198,7 @@ The LLM has overall captured the experiment details...
 
 The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of experiments you had for the study: []
+Please write the amount of experiments you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -223,13 +225,13 @@ Your corrected answer (empty if correct):
 Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
 [] Correct
-[] Almost correct (few and minor misinterpretations or mistakes)
+[X] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
-
+The us of "x% improvement" is wrong. 
 
 This interpretation is to support (or not) the following hypothesis: hypothesis_1
 Your corrected answer (empty if correct):
@@ -254,12 +256,12 @@ Answer this question about the (possibly **corrected!**) experiment_id.
 This interpretation of the experiment outcome is ...
 [] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
-[] Acceptable (some misinterpretations or mistakes)
+[X] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
-
+Missing a metric: integrated distance
 
 This interpretation is to support (or not) the following hypothesis: hypothesis_2
 Your corrected answer (empty if correct):
