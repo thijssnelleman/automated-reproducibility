@@ -74,7 +74,7 @@ The Evolution of Conformity, Malleability, and Influence in Simulated Online Age
 
 # [Pauline C Haddow](pauline@ntnu.no)
 
-Currently awaiting research paper per email.
+Exploring the Integration of Spatial Information into a Spectral Clustering Approach to Unsupervised Band Selection
 
 # [Christine Clock](kristine.klock.fleten@aneo.com) ✅
 
