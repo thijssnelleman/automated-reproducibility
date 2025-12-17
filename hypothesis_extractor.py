@@ -30,7 +30,7 @@ for paper_path in papers:
     if output_path.exists():  # Continue, do not replace responses anymore
         continue
     prompt = Path("hypothesis_prompt.yaml").open().read()
-    response = response = client.models.generate_content(
+    response = client.models.generate_content(
         model=model,
         contents=[
             types.Part.from_bytes(
