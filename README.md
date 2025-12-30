@@ -32,4 +32,9 @@ Run `python review_compiler.py path/to/the/output.json` and find the result in `
 
 ## How to Cite
 
-TBA
+@article{snelleman2026automatedreproducibility,
+  title={Automated Reproducibility Has a Problem Statement Problem},
+  author={Snelleman, Thijs and Lundestad Lawrence, Peter and Hoos, Holger H and Gundersen, Odd Erik},
+  booktitle={Reproducible AI Workshop at the Fortieth AAAI Conference on Artificial Intelligence},
+  year={2026}
+}
