@@ -97,3 +97,7 @@ Link to research: https://arxiv.org/pdf/2306.01324
 # Lukas Fehring ✅
 
 Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
+
+# Marcel Wever
+
+HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimization
