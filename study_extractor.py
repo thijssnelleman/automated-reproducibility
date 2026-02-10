@@ -29,7 +29,7 @@ for paper_path in papers:
     output_path = Path("llm_output") / f"{paper_path.stem}.json"
     if output_path.exists():  # Continue, do not replace responses anymore
         continue
-    prompt = Path("hypothesis_prompt.yaml").open().read()
+    prompt = Path("study_prompt.yaml").open().read()
     response = client.models.generate_content(
         model=model,
         contents=[

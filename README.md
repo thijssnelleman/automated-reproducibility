@@ -12,8 +12,8 @@ This repository accompanies our paper "Automated Reproducibility Has a Problem S
 
 Furthermore:
 - `analysis.ipynb` contains the code to generate our tables and figures.
-- `hypothesis_extractor.py` is the main entry point of our code to generate LLM output
-- `hypothesis_prompt.yaml` contains the prompt accompanying the paper for the LLM
+- `study_extractor.py` is the main entry point of our code to generate LLM output
+- `study_prompt.yaml` contains the prompt accompanying the paper for the LLM
 - `output_compiler.py` creates the `output.csv` dataset from the reviews
 - `review_compiler.py` creates a review from an LLM output JSON and the templates
 - `tokencalc.py` was used to determine how many tokens each LLM API call uses

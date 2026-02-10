@@ -25,7 +25,7 @@ else:
 
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
-    prompt = Path("hypothesis_prompt.yaml").open().read()
+    prompt = Path("study_prompt.yaml").open().read()
     response = client.models.count_tokens(
         model=model,
         contents=[
