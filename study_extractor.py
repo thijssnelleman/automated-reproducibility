@@ -9,7 +9,7 @@ import time
 load_dotenv()
 
 client = genai.Client()
-model = "gemini-2.5-pro"  # Alternative: "gemini-2.5-flash", 
+model = "gemini-3-pro-preview"  # Alternative: "gemini-2.5-pro", 
 
 def encode_pdf(file_path: Path):
     """PDF Loader."""
@@ -28,7 +28,9 @@ for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
     output_path = Path("llm_output") / f"{paper_path.stem}.json"
     if output_path.exists():  # Continue, do not replace responses anymore
-        continue
+        print(f"Output already exists for paper {paper_path}. Do you wish to replace it? (y/n): ", end="")
+        if input().lower() != "y":
+            continue
     prompt = Path("study_prompt.yaml").open().read()
     response = client.models.generate_content(
         model=model,

@@ -8,7 +8,7 @@ import sys
 load_dotenv()
 
 client = genai.Client()
-model = "gemini-2.5-pro"  # Alternative: "gemini-2.5-flash", 
+model = "gemini-3-preview"  # Alternative: "gemini-2.5-pro", 
 
 def encode_pdf(file_path: Path):
     """PDF Loader."""

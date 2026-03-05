@@ -11,142 +11,280 @@
     "year": 2024,
     "venue": "ECML PKDD 2024"
   },
-  "Hypothesis": {
-    "hypothesis_1": {
+  "Research Questions": {
+    "research_question_1": {
       "explicit": false,
-      "hypothesis": "The authors hypothesise that their proposed edge-based graph component pooling operator (1) improves performance and is more computationally efficient in terms of trainable parameters compared to the original edge contraction pooling method by Diehl et al., and (2) achieves comparable or better performance without significant information loss compared to a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al., while being more parameter-efficient.",
-      "reason": "The hypothesis is implied and constructed from several claims in the Abstract and the list of main contributions on page 2. The abstract states: \"We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool... while reducing time complexity and the number of trainable parameters by 70.6% on average.\" and \"Compared to another maximally powerful method named Graph Isomporhic Network, we show that we outperform them on two popular benchmark datasets while reducing the number of learnable parameters on average by 60.9%.\" The contributions on page 2 further clarify these goals: \"We show that our operator improves performance compared to edge contraction pooling while being substantially more computationally efficient.\" and \"We show that our operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes.\""
+      "value": "How can a graph pooling operator be designed to merge nodes without causing data loss while remaining conceptually simple and computationally inexpensive?",
+      "reason": "Abstract: 'We propose a pooling operator that merges nodes so as not to cause data loss but is also conceptually simple and computationally inexpensive.' Introduction (Page 2): 'In this work, we aim to bridge this gap and create a relatively efficient graph pooling operator that does not drop nodes and thus reduces information loss.'"
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Does the proposed edge-based graph component pooling operator outperform existing edge contraction pooling methods in terms of predictive performance and computational efficiency?",
+      "reason": "Abstract: 'We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity...'"
+    },
+    "research_question_3": {
+      "explicit": false,
+      "value": "Can the proposed pooling operator achieve performance comparable to maximally powerful message-passing networks (such as Graph Isomorphism Networks) while reducing the number of learnable parameters?",
+      "reason": "Abstract: 'Compared to another maximally powerful method named Graph Isomporhic Network, we show that we outperform them on two popular benchmark datasets while reducing the number of learnable parameters on average by 60.9%.'"
     }
   },
-  "Experiment": {
-    "experiment_1": {
-      "experiment_description": "The authors evaluate their proposed pooling operator on a graph classification task across eight benchmark datasets. They compare its performance and parameter count against two key baselines: the original edge contraction pooling method by Diehl et al. [5] and a powerful non-pooling Graph Isomorphism Network (GIN) by Xu et al. [25].",
-      "hypothesis": [
-        "hypothesis_1"
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": true,
+      "value": "The proposed pooling operator performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters.",
+      "questions": [
+        "research_question_2"
       ],
+      "reason": "Abstract: 'We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters by 70.6% on average.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that their operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes (specifically Graph Isomorphism Networks).",
+      "questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "reason": "Introduction (Page 2): 'We show that our operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "The authors evaluate the proposed pooling operator on a graph classification task across multiple benchmark datasets. They compare their method (CPCL/CCPCCPCLL architectures) against Edge Pool (Diehl et al.) and Graph Isomorphism Networks (Xu et al.).",
+      "strategy": "10-fold cross-validation repeated 10 times (100 total runs). Random split (train = 0.8, validation = 0.1, test = 0.1).",
+      "data": [
+        "Proteins (Borgwardt et al. 2005 / Morris et al. [19])",
+        "Reddit-Binary (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
+        "Reddit-Multi-12K (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
+        "Collaboration (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
+        "IMDB Binary (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
+        "IMDB Multi (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
+        "NCI1 (Wale et al. 2008 / Morris et al. [19])",
+        "Reddit-Multi-5K (Yanardag & Vishwanathan 2015 / Morris et al. [19])"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the classification accuracy of the proposed method against baselines.",
       "metrics": [
-        "Accuracy",
+        "Accuracy"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard Deviation"
+      ],
+      "test": "Comparison of means",
+      "results": {
+        "Tables": {
+          "Table 3": {
+            "caption": "Results on benchmark datasets [19]; we report means and standard deviations over 100 test scores.",
+            "reason": "Shows the accuracy performance of Ours vs Diehl et al. vs Xu et al.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [],
+            "test": []
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "Boxplot visualization of the test set results shown in Table 3, with accuracy on the y-axis.",
+            "reason": "Visualizes the distribution of accuracy scores.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [],
+            "data": [],
+            "test": []
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To determine if the performance differences are statistically significant.",
+      "metrics": [
+        "p-value"
+      ],
+      "statistics": [],
+      "test": "Two-tailed t-test (p < 0.05)",
+      "results": {
+        "Tables": {
+          "Table 4": {
+            "caption": "p-values from the statistical significance test on performance differences between our results on benchmark datasets from Table 3 and the works of Diehl et al. [5] and Xu et al [25].",
+            "reason": "Reports the statistical significance of the results.",
+            "metrics": [
+              "p-value"
+            ],
+            "statistics": [],
+            "data": [],
+            "test": [
+              "Two-tailed t-test"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the model complexity in terms of learnable parameters.",
+      "metrics": [
         "Number of learnable parameters"
       ],
-      "statistics": "Mean with standard deviations over 100 runs.",
-      "data": [
-        "Proteins [6]",
-        "Reddit-Binary [26]",
-        "Reddit-Multi-12K [26]",
-        "Collaboration [26]",
-        "IMDB Binary [26]",
-        "IMDB Multi [26]",
-        "NCI1 [24]",
-        "Reddit-Multi-5K [26]"
+      "statistics": [
+        "Percentage change"
       ],
+      "test": "Comparison of counts",
       "results": {
-        "Proteins [6]": {
-          "Accuracy": {
-            "Ours": "74.7 ± 3.9",
-            "Diehl et al.": "70.9 ± 4.6",
-            "Xu et al.": "73.5 ± 4.6"
-          },
-          "Number of learnable parameters": {
-            "Ours": 802,
-            "Diehl et al.": 156291,
-            "Xu et al.": 2742
+        "Tables": {
+          "Table 5": {
+            "caption": "Number of learnable parameters in each neural network architecture, per benchmark dataset [19] of our models versus Xu et al [25].",
+            "reason": "Quantifies the efficiency of the model in terms of parameters.",
+            "metrics": [
+              "Number of learnable parameters"
+            ],
+            "statistics": [
+              "Percentage change"
+            ],
+            "data": [],
+            "test": []
           }
         },
-        "Reddit-Binary [26]": {
-          "Accuracy": {
-            "Ours": "89.7 ± 3.0",
-            "Diehl et al.": "81.1 ± 5.6",
-            "Xu et al.": "87.8 ± 2.7"
-          },
-          "Number of learnable parameters": {
-            "Ours": 83459,
-            "Diehl et al.": 149123,
-            "Xu et al.": 30538
+        "Figures": {
+          "Figure 3": {
+            "caption": "Bar graph of the number of learnable parameters used per model, per benchmark, as seen in Table 5.",
+            "reason": "Visual comparison of parameter counts.",
+            "metrics": [
+              "Number of learnable parameters"
+            ],
+            "statistics": [],
+            "data": [],
+            "test": []
           }
         },
-        "Reddit-Multi-12K [26]": {
-          "Accuracy": {
-            "Ours": "48.4 ± 1.7",
-            "Diehl et al.": "36.9 ± 2.1",
-            "Xu et al.": null
-          },
-          "Number of learnable parameters": {
-            "Ours": 333325,
-            "Diehl et al.": 595725,
-            "Xu et al.": null
-          }
-        },
-        "Collaboration [26]": {
-          "Accuracy": {
-            "Ours": "77.9 ± 2.0",
-            "Diehl et al.": null,
-            "Xu et al.": "78.7 ± 2.0"
-          },
-          "Number of learnable parameters": {
-            "Ours": 12996,
-            "Diehl et al.": 243077,
-            "Xu et al.": 55584
-          }
-        },
-        "IMDB Binary [26]": {
-          "Accuracy": {
-            "Ours": "72.7 ± 3.9",
-            "Diehl et al.": "69.5 ± 2.7",
-            "Xu et al.": "72.7 ± 4.3"
-          },
-          "Number of learnable parameters": {
-            "Ours": 18498,
-            "Diehl et al.": null,
-            "Xu et al.": 65638
-          }
-        },
-        "IMDB Multi [26]": {
-          "Accuracy": {
-            "Ours": "49.6 ± 4.3",
-            "Diehl et al.": null,
-            "Xu et al.": "49.6 ± 4.3"
-          },
-          "Number of learnable parameters": {
-            "Ours": 62468,
-            "Diehl et al.": null,
-            "Xu et al.": 54646
-          }
-        },
-        "NCI1 [24]": {
-          "Accuracy": {
-            "Ours": "72.2 ± 3.5",
-            "Diehl et al.": null,
-            "Xu et al.": "79.5 ± 2.0"
-          },
-          "Number of learnable parameters": {
-            "Ours": 38274,
-            "Diehl et al.": null,
-            "Xu et al.": 9294
-          }
-        },
-        "Reddit-Multi-5K [26]": {
-          "Accuracy": {
-            "Ours": "52.6 ± 3.0",
-            "Diehl et al.": null,
-            "Xu et al.": "55.1 ± 2.4"
-          },
-          "Number of learnable parameters": {
-            "Ours": 83975,
-            "Diehl et al.": null,
-            "Xu et al.": 31586
-          }
-        }
-      },
-      "test": "Two-tailed t-test (p < 0.05)",
-      "strategy": "Random split (train = 0.8, validation = 0.1, test = 0.1), repeated 100 times."
+        "Text": {}
+      }
     }
   },
-  "Interpretation": {
+  "Interpretations": {
     "interpretation_1": {
-      "experiment": "experiment_1",
-      "hypothesis": "hypothesis_1",
-      "support": true,
-      "reason": "The hypothesis is supported, but with significant caveats regarding the comparison to Xu et al. [25].\n\n1. **Comparison with Diehl et al. [5]:** This part of the hypothesis is strongly supported. The authors' method shows a \"substantial improvement... on every benchmark dataset\" (Page 9), with all differences being statistically significant (Table 4). Furthermore, the claim of being more parameter-efficient is supported, with the authors noting their models use \"70.6% fewer learnable parameters compared to the original method\" (Page 11), a figure consistent with the data in Table 5.\n\n2. **Comparison with Xu et al. [25]:** This part of the hypothesis is only partially supported, and some claims are inconsistent.\n   - **Performance:** The results are mixed. The proposed method is statistically significantly better on two datasets, significantly worse on three, and shows no significant difference on two (Page 9, Table 4). The authors interpret this comparable performance as evidence that their \"operator does not cause information loss\" (Page 11), which is a reasonable interpretation of this specific goal.\n   - **Efficiency:** The results for parameter efficiency are also mixed. The proposed model is substantially more efficient on three datasets but significantly less efficient on three others (Page 10). The claim in the abstract of \"reducing the number of learnable parameters on average by 60.9%\" is not supported by the data in Table 5, which shows an average increase in parameters across the seven common datasets. The body of the paper provides a more accurate, nuanced assessment of these mixed results than the abstract."
+      "analyses": [
+        "analysis_1",
+        "analysis_2"
+      ],
+      "value": "The authors observe a 'substantial improvement using our method compared to the work of Diehl et al. [5] on every benchmark dataset'. They find their results are significantly different from Diehl et al. [5] on all datasets.",
+      "reason": "Section 4.3 Results (Page 9 and 10)."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1",
+        "analysis_2"
+      ],
+      "value": "Compared to Xu et al. [25], the authors observe 'an accuracy score improvement for Proteins and the Reddit-Binary benchmark' (significantly better). However, they see a 'decrease in performance on the NCI1 and Reddit-Multi-5K datasets' (significantly worse). Results are tied for IMDB datasets.",
+      "reason": "Section 4.3 Results (Page 9 and 10)."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "The authors state that 'on average, our models use 70.6% fewer learnable parameters compared to the original method of Diehl et al. [5]'. Compared to Xu et al., they see a substantial decrease in three datasets (70.8% to 76.6%) but a substantial increase in three others, averaging a 60.9% reduction overall (Abstract) or noting struggles in specific categories (Section 4.3).",
+      "reason": "Abstract and Section 4.3 Results (Page 10 and 11)."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that their operator 'achieves substantially better accuracy than that of Diehl et al. [5]' and highlights the efficacy of the pooling operator by showing it uses '70.6% fewer learnable parameters compared to the original method of Diehl et al. [5]'.",
+      "reason": "Section 5 Conclusions & Future Work (Page 10) and Section 4.3 (Page 11)."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that the 'comparable performance indicates that our operator does not cause information loss while having the benefit of reducing the number of required parameters through graph coarsening.' They note statistically significant improvement on two benchmarks and comparable performance on others, despite being outperformed on three.",
+      "reason": "Section 4.3 Results (Page 11)."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How would the proposed operator perform in node-based tasks, such as in an adapted graph U-Net structure?",
+        "note": "Section 4.3 Results (Page 11)",
+        "reason": "The authors implemented a reverse operator allowing for node-based tasks but did not evaluate it in this work."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Would a learned global pool operator, which pools entire graphs through learned edge weights, perform well?",
+        "note": "Section 4.3 Results (Page 12)",
+        "reason": "The authors suggest that instead of averaging all node features for global pooling, their operator could be adapted to pool the entire graph based on learned weights."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that including edge features in the scoring method would allow edge features to have a direct impact on the features of the newly created node.",
+        "note": "Section 4.3 Results (Page 11)",
+        "reason": "The authors note they did not consider edge features but suggest it as a trivial extension."
+      },
+      "suggested_hypothesis_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that using top-k pool or edge pool selection strategies instead of a threshold might better align with user objectives regarding the number of merged edges.",
+        "note": "Section 4.3 Results (Page 11)",
+        "reason": "The current method uses a threshold leading to an unknown number of merges; alternative selection strategies could control this."
+      }
     }
   }
 }
