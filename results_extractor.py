@@ -5,6 +5,7 @@ from google import genai
 from google.genai import types
 import sys
 import time
+import json
 
 load_dotenv()
 
@@ -24,14 +25,35 @@ if len(sys.argv) == 2:
 else:
     papers = Path("papers").glob("*.pdf")
 
-prompt = Path("study_prompt.yaml").open().read()
+prompt = Path("results_prompt.yaml").open().read()
 for paper_path in papers:
     pdf_encoded = encode_pdf(paper_path)
-    output_path = Path("llm_output") / f"{paper_path.stem}.json"
+    # Load the extracted study representation
+    study_json = Path("llm_output") / f"{paper_path.stem}.json"
+    if not study_json.exists():
+        print(f"Study representation not found for {paper_path} at {study_json}. Skipping...")
+        continue
+    study_representation = json.loads(study_json.open().read())
+    output_path = Path("llm_output/extracted_results") / f"{paper_path.stem}.json"
     if output_path.exists():  # Continue, do not replace responses anymore
         print(f"Output already exists for paper {paper_path}. Do you wish to replace it? (y/n): ", end="")
         if input().lower() != "y":
             continue
+
+    # Modify the prompt to extract the specific information for this study
+    figures = set()
+    tables = set()
+    for a_key, analysis in study_representation["Analyses"].items():
+        for figure in analysis["results"]["Figures"]:
+            figures.add(figure)
+        for table in analysis["results"]["Tables"]:
+            tables.add(table)
+
+    specific_prompt = prompt.replace("$$paper_figures$$", ", ".join(figures))
+    specific_prompt = specific_prompt.replace("$$paper_tables$$", ", ".join(tables))
+
+    print(specific_prompt)
+
     response = client.models.generate_content(
         model=model,
         contents=[

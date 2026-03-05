@@ -1,0 +1,269 @@
+
+{
+  "Table 3": {
+    "note": "Results on benchmark datasets reporting means and standard deviations over 100 test scores. Accuracy in percentage.",
+    "Proteins": {
+      "Ours": "74.7 ± 3.9",
+      "Diehl et al.": "70.9 ± 4.6",
+      "Xu et al.": "73.5 ± 4.6"
+    },
+    "Reddit-Binary": {
+      "Ours": "89.7 ± 3.0",
+      "Diehl et al.": "81.1 ± 5.6",
+      "Xu et al.": "87.8 ± 2.7"
+    },
+    "Reddit-Multi 12K": {
+      "Ours": "48.4 ± 1.7",
+      "Diehl et al.": "36.9 ± 2.1"
+    },
+    "Collaboration": {
+      "Ours": "77.9 ± 2.0",
+      "Diehl et al.": "69.5 ± 2.7",
+      "Xu et al.": "78.7 ± 2.0"
+    },
+    "IMDB Binary": {
+      "Ours": "72.7 ± 3.9",
+      "Xu et al.": "72.7 ± 4.3"
+    },
+    "IMDB Multi": {
+      "Ours": "49.6 ± 4.3",
+      "Xu et al.": "49.6 ± 4.3"
+    },
+    "NCI1": {
+      "Ours": "72.2 ± 3.5",
+      "Xu et al.": "79.5 ± 2.0"
+    },
+    "Reddit-Multi 5K": {
+      "Ours": "52.6 ± 3.0",
+      "Xu et al.": "55.1 ± 2.4"
+    }
+  },
+  "Table 5": {
+    "note": "Number of learnable parameters in each neural network architecture per benchmark dataset.",
+    "Proteins": {
+      "Diehl et al.": 156291,
+      "Xu et al.": 2742,
+      "Ours": 802
+    },
+    "Reddit-Binary": {
+      "Diehl et al.": 149123,
+      "Xu et al.": 30538,
+      "Ours": 83459
+    },
+    "Reddit-Multi 12K": {
+      "Diehl et al.": 595725,
+      "Ours": 333325
+    },
+    "Collaboration": {
+      "Diehl et al.": 243077,
+      "Xu et al.": 55584,
+      "Ours": 12996
+    },
+    "IMDB Binary": {
+      "Xu et al.": 65638,
+      "Ours": 18498
+    },
+    "IMDB Multi": {
+      "Xu et al.": 54646,
+      "Ours": 62468
+    },
+    "NCI1": {
+      "Xu et al.": 9294,
+      "Ours": 38274
+    },
+    "Reddit-Multi 5K": {
+      "Xu et al.": 31586,
+      "Ours": 83975
+    }
+  },
+  "Figure 2": {
+    "note": "Boxplot visualization of the test set results (accuracy) over 100 test scores. Values are estimated from the plot.",
+    "Proteins": {
+      "Ours": {
+        "median": 0.75,
+        "q1": 0.72,
+        "q3": 0.77,
+        "min": 0.66,
+        "max": 0.83
+      },
+      "Diehl et al.": {
+        "median": 0.71,
+        "q1": 0.68,
+        "q3": 0.74,
+        "min": 0.61,
+        "max": 0.81
+      },
+      "Xu et al.": {
+        "median": 0.74,
+        "q1": 0.70,
+        "q3": 0.77,
+        "min": 0.63,
+        "max": 0.85
+      }
+    },
+    "Reddit-Binary": {
+      "Ours": {
+        "median": 0.90,
+        "q1": 0.88,
+        "q3": 0.92,
+        "min": 0.86,
+        "max": 0.96
+      },
+      "Diehl et al.": {
+        "median": 0.82,
+        "q1": 0.77,
+        "q3": 0.85,
+        "min": 0.70,
+        "max": 0.90
+      },
+      "Xu et al.": {
+        "median": 0.88,
+        "q1": 0.86,
+        "q3": 0.90,
+        "min": 0.81,
+        "max": 0.94
+      }
+    },
+    "Reddit-Multi 12K": {
+      "Ours": {
+        "median": 0.48,
+        "q1": 0.47,
+        "q3": 0.50,
+        "min": 0.44,
+        "max": 0.52
+      },
+      "Diehl et al.": {
+        "median": 0.37,
+        "q1": 0.35,
+        "q3": 0.38,
+        "min": 0.32,
+        "max": 0.42
+      }
+    },
+    "Collaboration": {
+      "Ours": {
+        "median": 0.78,
+        "q1": 0.76,
+        "q3": 0.79,
+        "min": 0.73,
+        "max": 0.82
+      },
+      "Diehl et al.": {
+        "median": 0.69,
+        "q1": 0.68,
+        "q3": 0.71,
+        "min": 0.63,
+        "max": 0.75
+      },
+      "Xu et al.": {
+        "median": 0.79,
+        "q1": 0.77,
+        "q3": 0.80,
+        "min": 0.74,
+        "max": 0.83
+      }
+    },
+    "IMDB Binary": {
+      "Ours": {
+        "median": 0.73,
+        "q1": 0.70,
+        "q3": 0.76,
+        "min": 0.61,
+        "max": 0.81
+      },
+      "Xu et al.": {
+        "median": 0.73,
+        "q1": 0.70,
+        "q3": 0.76,
+        "min": 0.61,
+        "max": 0.84
+      }
+    },
+    "IMDB Multi": {
+      "Ours": {
+        "median": 0.49,
+        "q1": 0.47,
+        "q3": 0.53,
+        "min": 0.40,
+        "max": 0.59
+      },
+      "Xu et al.": {
+        "median": 0.49,
+        "q1": 0.47,
+        "q3": 0.53,
+        "min": 0.41,
+        "max": 0.58
+      }
+    },
+    "NCI1": {
+      "Ours": {
+        "median": 0.72,
+        "q1": 0.70,
+        "q3": 0.75,
+        "min": 0.66,
+        "max": 0.78
+      },
+      "Xu et al.": {
+        "median": 0.80,
+        "q1": 0.78,
+        "q3": 0.81,
+        "min": 0.75,
+        "max": 0.84
+      }
+    },
+    "Reddit-Multi 5K": {
+      "Ours": {
+        "median": 0.53,
+        "q1": 0.51,
+        "q3": 0.55,
+        "min": 0.45,
+        "max": 0.59
+      },
+      "Xu et al.": {
+        "median": 0.55,
+        "q1": 0.53,
+        "q3": 0.57,
+        "min": 0.50,
+        "max": 0.61
+      }
+    }
+  },
+  "Figure 3": {
+    "note": "Bar graph of the number of learnable parameters used per model. Values are taken from Table 5 as referenced in the figure caption.",
+    "Proteins": {
+      "Ours": 802,
+      "Diehl et al.": 156291,
+      "Xu et al.": 2742
+    },
+    "Reddit-Binary": {
+      "Ours": 83459,
+      "Diehl et al.": 149123,
+      "Xu et al.": 30538
+    },
+    "Reddit-Multi 12K": {
+      "Ours": 333325,
+      "Diehl et al.": 595725
+    },
+    "Collaboration": {
+      "Ours": 12996,
+      "Diehl et al.": 243077,
+      "Xu et al.": 55584
+    },
+    "IMDB Binary": {
+      "Ours": 18498,
+      "Xu et al.": 65638
+    },
+    "IMDB Multi": {
+      "Ours": 62468,
+      "Xu et al.": 54646
+    },
+    "NCI1": {
+      "Ours": 38274,
+      "Xu et al.": 9294
+    },
+    "Reddit-Multi 5K": {
+      "Ours": 83975,
+      "Xu et al.": 31586
+    }
+  }
+}

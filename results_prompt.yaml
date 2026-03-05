@@ -1,0 +1,14 @@
+Your task is to extract the results from a paper's figures and tables. We will provide you with a PDF and the label of each table/figure that we need to extract.
+You are expected to return the results in a JSON format, where each figure/table is a key in the JSON structure.
+
+We need the following figures from the paper: $$paper_figures$$
+
+We need the following tables from the paper:  $$paper_tables$$
+
+The found metric values per input data per metric. Create a JSON structure with a key for each input data, that contains a key for each metric. Make sure that the **keys** of data and metric match **exactly** the ones reported earlier under **data** and **metrics**.
+    - Start with giving each result a key that identifies its location, e.g. "figure_i", "table_j", or "section_n_paragraph_m", and its value will be another JSON structure.
+    - Add to the JSON structure a note key with a string value that provides a brief description on the type of figure or on the table.
+    - Add a JSON structure as the value of this key where each metric is a key, and below it is a value that is the metric value. For each "data" key below (that is applicable), provide the corresponding values.
+    - These values may be multi-dimensional, for example if the authors state a mean and standard deviation, or if they provide a box plot with median and quantiles.
+      In this case, make sure to provide each value **seperately** for each dimension; for example, if the authors provide a line plot with a shaded area, provide the value of the line point, the lower point of the shaded area and the upper point for the shaded area.
+    - In case the value comes from a figure, try to estimate the values for each x coordinate, but do not be too granular in terms of x values considered in case of line plots for example such that we can **remake the graph on our own**.

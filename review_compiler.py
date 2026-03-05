@@ -131,7 +131,7 @@ for key in llm_output["Future Work"]["Suggested Hypotheses"]:
     frq = future_work_template.replace("@@@SUGGESTED_ID@@@", key))
     frq = frq.replace("@@@SUGGESTED_VALUE@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["value"])
     frq = frq.replace("@@@SUGGESTION_NOTE@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["note"])
-    frq = frq.replace("@@@SUGGESTION_REASON@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["note"])
+    frq = frq.replace("@@@SUGGESTION_REASON@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["reason"])
     frq = frq.replace("@@@CONCLUSION_IDS@@@", ", ".join(llm_output["Future Work"]["Suggested Hypotheses"][key]["conclusions"]))
     future_work_sections_h.append(frq)
 
