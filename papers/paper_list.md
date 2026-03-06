@@ -1,4 +1,4 @@
-# Thijs Snelleman ✅ -> ❌
+# Thijs Snelleman ✅ -> ✅
 
 Edge-Based Graph Component Pooling
 
@@ -26,7 +26,7 @@ Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verifica
 
 Trajectory-based algorithm selection with warm-starting
 
-# Justin Dettmer ✅ -> ❌ ❌
+# Justin Dettmer ✅ -> ✅ ❌
 
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music
 
