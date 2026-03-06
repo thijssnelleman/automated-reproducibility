@@ -121,6 +121,7 @@ for key in llm_output["Conclusions"]:
 for key in llm_output["Future Work"]["Suggested Research Questions"]:
     frq = future_work_template.replace("@@@SUGGESTED_ID@@@", key)
     frq = frq.replace("@@@SUGGESTED_VALUE@@@", llm_output["Future Work"]["Suggested Research Questions"][key]["value"])
+    frq = frq.replace("@@@SUGGESTED_TYPE@@@", "research question")
     frq = frq.replace("@@@SUGGESTION_NOTE@@@", llm_output["Future Work"]["Suggested Research Questions"][key]["note"])
     frq = frq.replace("@@@SUGGESTION_REASON@@@", llm_output["Future Work"]["Suggested Research Questions"][key]["note"])
     frq = frq.replace("@@@CONCLUSION_IDS@@@", ", ".join(llm_output["Future Work"]["Suggested Research Questions"][key]["conclusions"]))
@@ -128,8 +129,9 @@ for key in llm_output["Future Work"]["Suggested Research Questions"]:
 
 # Hypothesis future_work
 for key in llm_output["Future Work"]["Suggested Hypotheses"]:
-    frq = future_work_template.replace("@@@SUGGESTED_ID@@@", key))
+    frq = future_work_template.replace("@@@SUGGESTED_ID@@@", key)
     frq = frq.replace("@@@SUGGESTED_VALUE@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["value"])
+    frq = frq.replace("@@@SUGGESTED_TYPE@@@", "hypothesis")
     frq = frq.replace("@@@SUGGESTION_NOTE@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["note"])
     frq = frq.replace("@@@SUGGESTION_REASON@@@", llm_output["Future Work"]["Suggested Hypotheses"][key]["reason"])
     frq = frq.replace("@@@CONCLUSION_IDS@@@", ", ".join(llm_output["Future Work"]["Suggested Hypotheses"][key]["conclusions"]))

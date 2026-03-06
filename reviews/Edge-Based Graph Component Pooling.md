@@ -256,7 +256,7 @@ Your corrected list (empty if correct):
 The statistics for the metrics used are: Mean, Standard Deviation
 Your corrected list (empty if correct):
 
-#### Experiment Test
+#### Analysis Test
 
 The analysis test is summarised as: Comparison of means
 Your corrected answer (empty if correct):
@@ -327,7 +327,7 @@ Your corrected list (empty if correct):
 The statistics for the metrics used are: 
 Your corrected list (empty if correct):
 
-#### Experiment Test
+#### Analysis Test
 
 The analysis test is summarised as: Two-tailed t-test (p < 0.05)
 Your corrected answer (empty if correct):
@@ -387,7 +387,7 @@ Your corrected list (empty if correct):
 The statistics for the metrics used are: Percentage change
 Your corrected list (empty if correct):
 
-#### Experiment Test
+#### Analysis Test
 
 The analysis test is summarised as: Comparison of counts
 Your corrected answer (empty if correct):
@@ -676,6 +676,13 @@ Please grade the suggestion below:
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
 [] The LLM has stated a future research direction that was not stated or implied in our work; the LLM has hallucinated this information.
 
+#### Suggested Research Questions General
+
+The LLM has provided you with one or more Suggested Research Questions from your work. Is this amount of Suggested Research Questions the same as the amount you specified?
+
+Please write the amount of Suggested Research Questions you had for the study: [2]
+
+If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
 ### Suggested Hypotheses
 
@@ -717,3 +724,10 @@ Please grade the suggestion below:
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
 [] The LLM has stated a future research direction that was not stated or implied in our work; the LLM has hallucinated this information.
 
+#### Suggested Hypotheses General
+
+The LLM has provided you with one or more Suggested Hypotheses from your work. Is this amount of Suggested Hypotheses the same as the amount you specified?
+
+Please write the amount of Suggested Hypotheses you had for the study: [2]
+
+If this amount does not overlap with the LLMs answer, feel free to specify reasons below;

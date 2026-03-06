@@ -21,7 +21,7 @@ Your corrected list (empty if correct):
 The statistics for the metrics used are: @@@ANALYSIS_STATISTICS@@@
 Your corrected list (empty if correct):
 
-#### Experiment Test
+#### Analysis Test
 
 The analysis test is summarised as: @@@ANALYSIS_TEST@@@
 Your corrected answer (empty if correct):

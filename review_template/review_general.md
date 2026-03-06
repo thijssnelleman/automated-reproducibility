@@ -123,6 +123,23 @@ The LLM has also found possible future work directions in terms of research ques
 
 @@@SUGGESTED_RQS_SECTIONS@@@
 
+#### Suggested Research Questions General
+
+The LLM has provided you with one or more Suggested Research Questions from your work. Is this amount of Suggested Research Questions the same as the amount you specified?
+
+Please write the amount of Suggested Research Questions you had for the study: []
+
+If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
+
+
 ### Suggested Hypotheses
 
 @@@SUGGESTED_HYPOTHESES_SECTIONS@@@
+
+#### Suggested Hypotheses General
+
+The LLM has provided you with one or more Suggested Hypotheses from your work. Is this amount of Suggested Hypotheses the same as the amount you specified?
+
+Please write the amount of Suggested Hypotheses you had for the study: []
+
+If this amount does not overlap with the LLMs answer, feel free to specify reasons below;

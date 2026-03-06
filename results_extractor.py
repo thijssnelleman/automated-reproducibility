@@ -44,15 +44,18 @@ for paper_path in papers:
     figures = set()
     tables = set()
     for a_key, analysis in study_representation["Analyses"].items():
-        for figure in analysis["results"]["Figures"]:
-            figures.add(figure)
-        for table in analysis["results"]["Tables"]:
-            tables.add(table)
+        if "Figures" in analysis["results"]:
+            for figure in analysis["results"]["Figures"]:
+                figures.add(figure)
+        if "Tables" in analysis["results"]:
+            for table in analysis["results"]["Tables"]:
+                tables.add(table)
 
     specific_prompt = prompt.replace("$$paper_figures$$", ", ".join(figures))
     specific_prompt = specific_prompt.replace("$$paper_tables$$", ", ".join(tables))
 
-    print(specific_prompt)
+    print("Requesting Figures: ", ", ".join(figures))
+    print("Requesting Tables: ", ", ".join(tables))
 
     response = client.models.generate_content(
         model=model,
