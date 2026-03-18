@@ -1,0 +1,213 @@
+
+{
+  "Meta": {
+    "title": "Towards Consistent and Efficient Decision-based Attacks",
+    "authors": [
+      "Henning Duwe",
+      "Anna Münz",
+      "Holger H. Hoos"
+    ],
+    "year": "Not explicitly stated",
+    "venue": "Not explicitly stated"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can we develop a decision-based adversarial attack that performs consistently across different neural network architectures while being highly efficient in terms of both query budget and running time?",
+      "reason": "In the abstract and introduction (Section 1), the authors state that previous decision-based attacks either perform inconsistently across different networks or are resource-intensive concerning running time. They motivate their work by addressing these limitations to make attacks applicable to real-world settings."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How can the Covariance Matrix Adaptation Evolutionary Strategy (CMA-ES) be adapted to overcome its inherently high query demand and effectively navigate the rugged loss landscapes of decision-based adversarial attacks?",
+      "reason": "In Sections 1, 3.2, and 4, the authors discuss that CMA-ES has a naturally high query demand and that decision-based settings have rugged loss landscapes. They aim to address this by developing a selective query approach and an Initial Search Strategy (ISS)."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that their proposed method, DACES (Decision-based Attack via CMA-ES), which incorporates a novel Initial Search Strategy and a selective query approach, will achieve a better average performance in creating minimal adversarial perturbations across various network architectures compared to state-of-the-art decision-based attacks.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In the abstract and introduction, the authors propose DACES to address the inconsistencies and inefficiencies of prior methods, implying it will outperform them in minimizing perturbations across different networks."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that DACES will be significantly faster in terms of running time compared to existing decision-based attacks, making it more applicable to real-world settings.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In the abstract and introduction, the authors emphasize running time as a critical constraint in real-world scenarios and claim their method is more than three times as fast as any other attack on ImageNet."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "The authors evaluate DACES against four baseline decision-based attacks (HSJA, TA, CGBA, (1+1)-CMA-ES) on multiple neural network architectures (ResNet-50, ResNet-101, VGG-16, ViT, and robust variants) using the ImageNet and CIFAR-100 datasets. They measure the median l2-norm perturbation over a budget of 30,000 queries and record the running time.",
+      "strategy": "Run each attack for 30,000 queries. Average performances over ten runs using different seeds. Evaluate on 200 correctly classified images selected uniformly at random without replacement from the testing sets.",
+      "data": [
+        "ImageNet (Deng et al. 2009)",
+        "CIFAR-100 (Krizhevsky et al. 2009)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the performance of DACES against baseline attacks in terms of the cumulative perturbation cost (AUC) and running time across different network architectures.",
+      "metrics": [
+        "Area Under the Curve (AUC) of the median l2-norm perturbation",
+        "Median l2-norm perturbation",
+        "Running time (wall clock time)"
+      ],
+      "statistics": [
+        "Average (Mean)",
+        "Median"
+      ],
+      "test": "Direct comparison of average AUC, median distance, and average running time (lower is better).",
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Average running time of each attack in seconds. HSJA is omitted as the only CPU-based method. Running DACES on CPU to compare it to HSJA reveals an advantage of 9.5% for DACES (4 332 compared to 4 743 seconds).",
+            "reason": "Shows the running time comparison supporting hypothesis 2.",
+            "metrics": [
+              "Running time (wall clock time)"
+            ],
+            "statistics": [
+              "Average (Mean)"
+            ],
+            "data": [
+              "ImageNet (Deng et al. 2009)",
+              "CIFAR-100 (Krizhevsky et al. 2009)"
+            ],
+            "test": [
+              "Direct comparison of average running time (lower is better)"
+            ]
+          },
+          "Table 2": {
+            "caption": "AUC over 200 images (per network) from the ImageNet testing set (lower is better).",
+            "reason": "Shows the AUC performance of all attacks on ImageNet models, supporting hypothesis 1.",
+            "metrics": [
+              "Area Under the Curve (AUC) of the median l2-norm perturbation"
+            ],
+            "statistics": [
+              "Average (Mean)"
+            ],
+            "data": [
+              "ImageNet (Deng et al. 2009)"
+            ],
+            "test": [
+              "Direct comparison of average AUC (lower is better)"
+            ]
+          },
+          "Table 3": {
+            "caption": "AUC over 200 images (per network) from CIFAR-100 testing set (lower is better).",
+            "reason": "Shows the AUC performance of all attacks on CIFAR-100 models, supporting hypothesis 1.",
+            "metrics": [
+              "Area Under the Curve (AUC) of the median l2-norm perturbation"
+            ],
+            "statistics": [
+              "Average (Mean)"
+            ],
+            "data": [
+              "CIFAR-100 (Krizhevsky et al. 2009)"
+            ],
+            "test": [
+              "Direct comparison of average AUC (lower is better)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "Median distance versus number of model queries/time over 200 images from the ImageNet testing set (lower is better). For better readability, we concentrate on the better-performing DACES-NNI and neglect DACES-BI. DACES-NNI shows a consistently good performance over the ResNets, the VGG-16 and ViT architectures.",
+            "reason": "Visualizes the median l2-norm perturbation over queries and time, supporting both hypotheses.",
+            "metrics": [
+              "Median l2-norm perturbation",
+              "Running time (wall clock time)"
+            ],
+            "statistics": [
+              "Median"
+            ],
+            "data": [
+              "ImageNet (Deng et al. 2009)"
+            ],
+            "test": [
+              "Direct comparison of median distance (lower is better)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.2": {
+            "value": "Across all ImageNet networks, DACES-NNI was observed to obtain the best average AUC, followed by DACES-BI, HSJA, TA, (1+1)-CMA-ES and last CGBA. On CIFAR-100, HSJA performs best, followed by CGBA and DACES.",
+            "reason": "Summarizes the main findings from the tables regarding the AUC metric.",
+            "metrics": [
+              "Area Under the Curve (AUC) of the median l2-norm perturbation"
+            ],
+            "statistics": [
+              "Average (Mean)"
+            ],
+            "data": [
+              "ImageNet (Deng et al. 2009)",
+              "CIFAR-100 (Krizhevsky et al. 2009)"
+            ],
+            "test": [
+              "Direct comparison of average AUC (lower is better)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that DACES-NNI is the fastest attack on ImageNet, being 3 times faster on average than the next quickest attack, CGBA. They state these results show that DACES is specifically suitable for attacking large ImageNet networks in a setting where not only the query budget but also the time is constrained (Section 5.2).",
+      "reason": "This interpretation directly addresses the running time results from Table 1 and Figure 2, linking them to real-world applicability."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors note that DACES-NNI obtains the best average AUC across all ImageNet networks, including robustly trained models. However, they acknowledge that on CIFAR-100, HSJA performs best, followed by CGBA and DACES (Section 5.2).",
+      "reason": "This interpretation summarizes the performance metrics from Tables 2 and 3, showing where the proposed method excels and where it falls short."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that DACES achieves the best average performance on various neural networks for ImageNet and CIFAR-100, successfully utilizing a novel initial search strategy and query strategy. They also conclude that DACES fully utilizes modern GPUs, making it 3 times faster than the next quickest attack on ImageNet, thus supporting their hypotheses regarding efficiency and performance (Section 6).",
+      "reason": "Found in Section 6 (Conclusion), where the authors explicitly state these points as the main takeaways of their study, confirming their initial claims."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {},
+    "Suggested Hypotheses": {}
+  }
+}

@@ -1,0 +1,174 @@
+
+{
+  "table_1": {
+    "note": "Average running time of each attack in seconds.",
+    "ImageNet": {
+      "DACES": 25.0,
+      "CGBA": 75.2,
+      "TA": 126.0,
+      "(1+1)-CMA-ES": 300.5
+    },
+    "CIFAR-100": {
+      "DACES": 23.6,
+      "CGBA": 23.8,
+      "TA": 107.6,
+      "(1+1)-CMA-ES": 169.2
+    }
+  },
+  "table_2": {
+    "note": "AUC over 200 images (per network) from the ImageNet testing set (lower is better).",
+    "DACES-BI": {
+      "ResNet-50": 122402,
+      "ResNet-101": 128560,
+      "VGG-16": 118100,
+      "ViT": 222011,
+      "Robust RN-50": 221207,
+      "Robust RN-101": 215883,
+      "Robust VGG-16": 173201,
+      "Average": 171623
+    },
+    "DACES-NNI": {
+      "ResNet-50": 107729,
+      "ResNet-101": 114174,
+      "VGG-16": 90308,
+      "ViT": 214425,
+      "Robust RN-50": 170432,
+      "Robust RN-101": 185084,
+      "Robust VGG-16": 142120,
+      "Average": 146325
+    },
+    "HSJA": {
+      "ResNet-50": 122970,
+      "ResNet-101": 129996,
+      "VGG-16": 85002,
+      "ViT": 218035,
+      "Robust RN-50": 244118,
+      "Robust RN-101": 363201,
+      "Robust VGG-16": 139026,
+      "Average": 186050
+    },
+    "CGBA": {
+      "ResNet-50": 377780,
+      "ResNet-101": 435364,
+      "VGG-16": 78872,
+      "ViT": 103177,
+      "Robust RN-50": 286838,
+      "Robust RN-101": 714723,
+      "Robust VGG-16": 128073,
+      "Average": 303547
+    },
+    "TA": {
+      "ResNet-50": 191133,
+      "ResNet-101": 203052,
+      "VGG-16": 161763,
+      "ViT": 380992,
+      "Robust RN-50": 305901,
+      "Robust RN-101": 334938,
+      "Robust VGG-16": 222726,
+      "Average": 257215
+    },
+    "(1+1)-CMA-ES": {
+      "ResNet-50": 213668,
+      "ResNet-101": 217533,
+      "VGG-16": 161167,
+      "ViT": 379982,
+      "Robust RN-50": 331156,
+      "Robust RN-101": 292567,
+      "Robust VGG-16": 190376,
+      "Average": 255207
+    }
+  },
+  "table_3": {
+    "note": "AUC over 200 images (per network) from CIFAR-100 testing set (lower is better).",
+    "DACES": {
+      "ResNet-50": 21241,
+      "ResNet-34": 20484,
+      "VGG-16": 20212,
+      "ViT": 101338,
+      "Average": 40819
+    },
+    "HSJA": {
+      "ResNet-50": 5535,
+      "ResNet-34": 5470,
+      "VGG-16": 6338,
+      "ViT": 127058,
+      "Average": 36100
+    },
+    "CGBA": {
+      "ResNet-50": 25140,
+      "ResNet-34": 26766,
+      "VGG-16": 24065,
+      "ViT": 52114,
+      "Average": 32021
+    },
+    "TA": {
+      "ResNet-50": 67023,
+      "ResNet-34": 56819,
+      "VGG-16": 60979,
+      "ViT": 156501,
+      "Average": 85331
+    },
+    "(1+1)-CMA-ES": {
+      "ResNet-50": 17672,
+      "ResNet-34": 17950,
+      "VGG-16": 19719,
+      "ViT": 307931,
+      "Average": 90818
+    }
+  },
+  "figure_2": {
+    "note": "Median distance versus number of model queries/time over 200 images from the ImageNet testing set. Values are estimated from the log-scale plots at specific x-coordinates.",
+    "ResNet-50_Queries": {
+      "CGBA": {"x_10000": 30.0, "x_30000": 15.0},
+      "HSJA": {"x_10000": 6.0, "x_30000": 3.0},
+      "TA": {"x_10000": 5.0, "x_30000": 2.5},
+      "(1+1)-CMA-ES": {"x_10000": 12.0, "x_30000": 6.0},
+      "DACES-NNI": {"x_10000": 3.0, "x_30000": 1.5}
+    },
+    "ResNet-50_Seconds": {
+      "CGBA": {"x_5": 40.0, "x_15": 20.0},
+      "TA": {"x_5": 10.0, "x_15": 5.0},
+      "(1+1)-CMA-ES": {"x_5": 80.0, "x_15": 40.0},
+      "DACES-NNI": {"x_5": 3.0, "x_15": 1.5}
+    },
+    "ResNet-101_Queries": {
+      "CGBA": {"x_10000": 40.0, "x_30000": 20.0},
+      "HSJA": {"x_10000": 7.0, "x_30000": 3.5},
+      "TA": {"x_10000": 5.0, "x_30000": 2.5},
+      "(1+1)-CMA-ES": {"x_10000": 12.0, "x_30000": 6.0},
+      "DACES-NNI": {"x_10000": 3.5, "x_30000": 1.8}
+    },
+    "ResNet-101_Seconds": {
+      "CGBA": {"x_5": 50.0, "x_15": 25.0},
+      "TA": {"x_5": 12.0, "x_15": 6.0},
+      "(1+1)-CMA-ES": {"x_5": 90.0, "x_15": 45.0},
+      "DACES-NNI": {"x_5": 3.5, "x_15": 1.8}
+    },
+    "VGG-16_Queries": {
+      "CGBA": {"x_10000": 2.0, "x_30000": 1.0},
+      "HSJA": {"x_10000": 4.0, "x_30000": 2.0},
+      "TA": {"x_10000": 4.0, "x_30000": 2.0},
+      "(1+1)-CMA-ES": {"x_10000": 8.0, "x_30000": 4.0},
+      "DACES-NNI": {"x_10000": 2.5, "x_30000": 1.5}
+    },
+    "VGG-16_Seconds": {
+      "CGBA": {"x_5": 2.5, "x_15": 1.2},
+      "TA": {"x_5": 8.0, "x_15": 4.0},
+      "(1+1)-CMA-ES": {"x_5": 60.0, "x_15": 30.0},
+      "DACES-NNI": {"x_5": 2.5, "x_15": 1.5}
+    },
+    "ViT_Queries": {
+      "CGBA": {"x_10000": 2.0, "x_30000": 1.0},
+      "HSJA": {"x_10000": 15.0, "x_30000": 8.0},
+      "TA": {"x_10000": 12.0, "x_30000": 6.0},
+      "(1+1)-CMA-ES": {"x_10000": 25.0, "x_30000": 12.0},
+      "DACES-NNI": {"x_10000": 6.0, "x_30000": 3.0}
+    },
+    "ViT_Seconds": {
+      "CGBA": {"x_5": 2.5, "x_15": 1.2},
+      "TA": {"x_5": 25.0, "x_15": 12.0},
+      "(1+1)-CMA-ES": {"x_5": 80.0, "x_15": 40.0},
+      "DACES-NNI": {"x_5": 6.0, "x_15": 3.0}
+    }
+  }
+}
