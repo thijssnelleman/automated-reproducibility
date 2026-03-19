@@ -40,7 +40,7 @@ Combining Automated Optimisation of Hyperparameters and Reward Shape
 
 Instance selection for configuration performance comparison
 
-# Henning Duwe ❌ -> ❌
+# Henning Duwe ❌ -> ✅
 
 Towards Consistent and Efficient Decision-based Attacks
 
