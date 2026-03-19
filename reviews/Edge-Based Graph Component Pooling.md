@@ -125,6 +125,9 @@ The LLM has provided the following reasoning with this hypothesis:
 
 Abstract: 'We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters by 70.6% on average.'
 
+The LLM has linked the hypothesis to the following research questions: research_question_2
+Your corrected list (empty if correct):
+
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
@@ -153,6 +156,9 @@ The authors hypothesise that their operator does not suffer information loss by 
 The LLM has provided the following reasoning with this hypothesis:
 
 Introduction (Page 2): 'We show that our operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes.'
+
+The LLM has linked the hypothesis to the following research questions: research_question_1, research_question_3
+Your corrected list (empty if correct):
 
 Please grade the hypothesis stated from the following options:
 
