@@ -71,6 +71,7 @@ for key in llm_output["Hypotheses"]:
     hypo_o = hypothesis_template.replace("@@@HYPOTHESIS_ID@@@", key)
     explicit_type = "explicit" if llm_output["Hypotheses"][key]["explicit"] else "implied"
     hypo_o = hypo_o.replace("@@@HYPOTHESIS_TYPE@@@", explicit_type)
+    hypo_o = hypo_o.replace("@@@RESEARCH_QUESTIONS@@@", ", ".join(llm_output["Hypotheses"][key]["links"]))
     hypo_o = hypo_o.replace("@@@HYPOTHESIS_VALUE@@@", llm_output["Hypotheses"][key]["value"])
     hypo_o = hypo_o.replace("@@@HYPOTHESIS_REASON@@@", llm_output["Hypotheses"][key]["reason"])
     hypothesis_sections.append(hypo_o)

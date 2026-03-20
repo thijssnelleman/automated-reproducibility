@@ -8,6 +8,9 @@ The LLM has provided the following reasoning with this hypothesis:
 
 @@@HYPOTHESIS_REASON@@@
 
+The LLM has linked the hypothesis to the following research questions: @@@RESEARCH_QUESTIONS@@@
+Your corrected list (empty if correct):
+
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
