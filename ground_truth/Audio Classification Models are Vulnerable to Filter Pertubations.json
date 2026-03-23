@@ -1,0 +1,289 @@
+
+{
+  "Meta": {
+    "title": "AUDIO CLASSIFICATION MODELS ARE VULNERABLE TO FILTER PERTURBATIONS",
+    "authors": [
+      "Justin Dettmer",
+      "Annelot Bosman",
+      "Igor Vatolkin",
+      "Holger Hoos"
+    ],
+    "year": "2024",
+    "venue": "RWTH Aachen University / Leiden University"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "Are state-of-the-art audio classification models robust against adversarially created band-pass filter perturbations?",
+      "reason": "In the Abstract and Introduction, the authors state: 'We demonstrate that state-of-the-art audio classifiers lack robustness against these adversarially-created filters', implying the investigation of this robustness is a primary research question."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Can a gradient-based adversarial attack method (Filter-based PGD) effectively generate realistic filter perturbations compared to random search?",
+      "reason": "In the Introduction (Section 1), the authors state: 'We show that our modification of the well-established Projected Gradient Descent (PGD) attack [4] outperforms random search at finding filter-based adversarial examples.'"
+    },
+    "research_question_3": {
+      "explicit": false,
+      "value": "Can adversarial training with filter-based perturbations mitigate the vulnerability of audio models to these attacks?",
+      "reason": "In the Abstract and Introduction, the authors mention: 'we show that adversarial training with our attack method can help mitigate this effect'."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that the proposed Filter-based PGD attack will be significantly more effective at reducing model accuracy than random search within the same perturbation constraints.",
+      "links": [
+        "research_question_2"
+      ],
+      "reason": "In Section 1, the authors claim: 'We show that our modification of the well-established Projected Gradient Descent (PGD) attack [4] outperforms random search at finding filter-based adversarial examples.' This implies the hypothesis that gradient-based search is superior to random search for this task."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that state-of-the-art audio classifiers are highly susceptible to filter-based perturbations.",
+      "links": [
+        "research_question_1"
+      ],
+      "reason": "In Section 1, the authors state: 'We further demonstrate that state-of-the-art audio classifiers are highly susceptible to these filter-based perturbations.'"
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that adversarial training using filter-based perturbations will improve the robustness of audio models against such attacks.",
+      "links": [
+        "research_question_3"
+      ],
+      "reason": "In Section 1, the authors state: 'Finally, we apply adversarial training in order to improve the robustness of our models...'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluation of baseline models (PaSST and CNN14) against Filter-based PGD attacks and Random Search attacks across varying epsilon values to measure classification accuracy degradation.",
+      "strategy": "Comparison of attack methods (Filter-PGD vs Random Search) over a range of epsilon values (0 to 1). Statistical significance tested via Wilcoxon signed-rank test. For every dataset, we trained five models each on different random seeds, and early stopping based on the accuracy on the validation set with a patience period of ten epochs.",
+      "data": [
+        "ESC-50 (Piczak 2015)",
+        "SpeechCommands (Warden 2018)",
+        "NSynth (Engel et al. 2017)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Application of adversarial training to the PaSST model using Filter-based PGD with different epsilon values, followed by evaluation against the attack on the test set.",
+      "strategy": "Adversarial training with epsilon values in range (0, 1] in steps of 0.1. Evaluation on test sets using the same Filter-based PGD attack.",
+      "data": [
+        "ESC-50 (Piczak 2015)",
+        "SpeechCommands (Warden 2018)",
+        "NSynth (Engel et al. 2017)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the efficacy of Filter-based PGD against Random Search and establish the vulnerability of baseline models.",
+      "metrics": [
+        "Classification Accuracy"
+      ],
+      "statistics": [
+        "Mean",
+        "95% Confidence Interval"
+      ],
+      "test": "One-sided Wilcoxon signed-rank test (p < 0.05)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 1": {
+            "caption": "Mean test accuracy aggregated for five trained models against filter-based PGD and random search. 95% confidence intervals are shown around the plotted means for all three datasets.",
+            "reason": "Figure 1 visualizes the drop in accuracy for both attack methods across epsilon values.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [
+              "Mean",
+              "Confidence Interval"
+            ],
+            "data": [
+              "ESC-50",
+              "SpeechCommands",
+              "NSynth"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.1": {
+            "value": "Using a one-sided Wilcoxon signed-rank test, we confirmed statistical significance (p < 0.05) for all model and dataset combinations except for CNN14 on NSynth",
+            "reason": "Statistical confirmation of the hypothesis that PGD outperforms random search.",
+            "metrics": [],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [],
+            "test": [
+              "Wilcoxon signed-rank test"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To evaluate the effectiveness of adversarial training in improving robustness.",
+      "metrics": [
+        "Test Accuracy"
+      ],
+      "statistics": [],
+      "test": "Comparison of accuracy curves",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Test accuracies of PaSST models against filter-based PGD after adversarial training with different epsilon values.",
+            "reason": "Shows the robustness of models trained with different epsilon values against attacks of varying strength.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [],
+            "data": [
+              "ESC-50",
+              "SpeechCommands",
+              "NSynth"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.2": {
+            "value": "adversarial training creates models that show much better accuracy against filter-based PGD, even when trained with very small epsilon values.",
+            "reason": "Textual summary of the results observed in Figure 2.",
+            "metrics": [],
+            "statistics": [],
+            "data": [],
+            "test": []
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "For all three datasets, it is clear that the trained baseline models are highly susceptible to filter-based adversarial attacks, even for small epsilon values.",
+      "reason": "Section 5.1, interpreting the steep drop in accuracy in Figure 1."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Filter-based PGD performs significantly better than random search at finding adversarial examples... This shows that the loss information of individual spectrogram values successfully propagates across the summation of signs... and that it shifts the search into more promising regions.",
+      "reason": "Section 5.1, explaining why PGD outperforms random search based on the statistical tests."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Adversarial training creates models that show much better accuracy against filter-based PGD... There is a slight trade-off between the adversarial accuracy at higher epsilon values and the accuracy on the unperturbed test set.",
+      "reason": "Section 5.2, interpreting the results of the adversarial training experiment."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Attacks on the ESC-50 dataset remain the most successful among the three datasets we tested. This may be correlated with the comparatively small size of the dataset",
+      "reason": "Section 5.2, discussing dataset-specific performance differences."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that state-of-the-art deep learning classifiers are highly vulnerable to slightly filtered mel spectrograms. They also conclude that their filter-based PGD method outperforms random search, validating the effectiveness of the attack method.",
+      "reason": "Section 6 (Conclusion): 'With our filter-based method, we were able to show that state-of-the-art deep learning classifiers are highly vulnerable to slightly filtered mel spectrograms...'"
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that adversarial training can partially mitigate the vulnerability to filter-based perturbations, though it comes with a minor trade-off in accuracy on unperturbed data.",
+      "reason": "Section 6 (Conclusion): 'We further showed that, through adversarial training, this problem can be partially mitigated, albeit at the cost of a minor trade-off in accuracy on the unperturbed test set.'"
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How does the robustness of models change when adversarial filters are restricted to a discrete set specifically crafted to model particular recording devices or acoustic environments?",
+        "note": "Section 6 (Conclusion)",
+        "reason": "To get a better idea of the effect of real-world filters."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How perceptible are filter-based perturbations compared to noise-based attacks to human subjects?",
+        "note": "Section 6 (Conclusion)",
+        "reason": "The authors believe a human study would provide valuable insight into perceptibility."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors suggest that bounding the attack by using the signal-to-noise ratio (SNR) may make sense to comapre it to noise-based attacks.",
+        "note": "Section 6 (Conclusion)",
+        "reason": "Suggested as a modification to the approach to align with common practices in noise-based attacks."
+      },
+      "suggested_hypothesis_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors suggest that neural network verification tools could provide robustness guarantees with regards to filters.",
+        "note": "Section 6 (Conclusion)",
+        "reason": "Adversarial robustness alone gives only an upper bound on accuracy; verification would provide guarantees."
+      }
+    }
+  }
+}
