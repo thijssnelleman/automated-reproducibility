@@ -96,6 +96,9 @@ The LLM has provided the following reasoning with this hypothesis:
 
 In the abstract and introduction, the authors propose DACES to address the inconsistencies and inefficiencies of prior methods, implying it will outperform them in minimizing perturbations across different networks.
 
+The LLM has linked the hypothesis to the following research questions: research_question_1, research_question_2
+Your corrected list (empty if correct):
+
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
@@ -123,6 +126,9 @@ The authors hypothesise that DACES will be significantly faster in terms of runn
 The LLM has provided the following reasoning with this hypothesis:
 
 In the abstract and introduction, the authors emphasize running time as a critical constraint in real-world scenarios and claim their method is more than three times as fast as any other attack on ImageNet.
+
+The LLM has linked the hypothesis to the following research questions:  research_question_1
+Your corrected list (empty if correct):
 
 Please grade the hypothesis stated from the following options:
 
