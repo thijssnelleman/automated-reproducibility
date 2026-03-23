@@ -126,6 +126,9 @@ The LLM has provided the following reasoning with this hypothesis:
 
 Implied in Section 1 (Introduction) and Section 4 (Initialisation with Pitch Probabilities). The authors state: 'We present a modification... that uses spectral information to initialise populations with probable pitches' and expect 'significantly faster convergence speed and slightly improved pitch and instrument detection errors'.
 
+The LLM has linked the hypothesis to the following research questions: research_question_1
+Your corrected list (empty if correct):
+
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
@@ -153,6 +156,9 @@ The authors hypothesise that the COSH distance fitness function assigns better (
 The LLM has provided the following reasoning with this hypothesis:
 
 This is the underlying assumption of using the EA for this task. It is implicitly tested in Section 6.3 (Page 13) where they investigate 'Error-Fitness Correlation' to see if the fitness function is a bottleneck.
+
+The LLM has linked the hypothesis to the following research questions: research_question_2
+Your corrected list (empty if correct):
 
 Please grade the hypothesis stated from the following options:
 
