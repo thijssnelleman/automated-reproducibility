@@ -1,0 +1,372 @@
+{
+  "Meta": {
+    "title": "Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks",
+    "authors": [
+      "Nick Kocher",
+      "Christian Wassermann",
+      "Leona Hennig",
+      "Jonas Seng",
+      "Holger Hoos",
+      "Kristian Kersting",
+      "Marius Lindauer",
+      "Matthias Müller"
+    ],
+    "year": 2025,
+    "venue": "2025 IEEE 25th International Symposium on Cluster, Cloud and Internet Computing Workshops (CCGridW)"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How reliable are the power measurements in existing energy-aware NAS benchmarks, specifically when using tools like Nvidia SMI compared to an external power meter?",
+      "reason": "In Section I, the authors introduce the design principle of 'reliable power measurements' and state they analyse EA-HAS-Bench based on these principles, finding that the choice of GPU measurement API has a large impact on the quality of results."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Does the search space of current energy-aware NAS benchmarks allow for a wide range of GPU usage to represent diverse hardware constraints?",
+      "reason": "In Section I, the authors introduce the design principle of allowing a 'wide range of GPU usage' and note that a search using only 100W on an 800W GPU wastes resources, motivating an investigation into the GPU usage range of current benchmarks."
+    },
+    "research_question_3": {
+      "explicit": false,
+      "value": "How accurate are holistic energy reporting tools like Code Carbon in estimating total node energy consumption during NAS, and how can their accuracy be improved?",
+      "reason": "In Section I, the authors introduce the design principle of 'holistic cost reporting' and propose calibration experiments over assumptions made in popular tools like Code Carbon to improve reporting accuracy."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that Nvidia SMI produces poor correlation to external power meter measurements on a per-epoch basis due to insufficient sampling in low-power epochs.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In Section I (Main contributions), the authors state their findings that SMI produces poor correlation and insufficient samples in low-power epochs, which serves as the underlying hypothesis tested in their validation study."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that holistic energy measurement tools like Code Carbon underestimate energy consumption during training, but an offline calibration of non-measured consumption can significantly reduce this inaccuracy.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "In Section I (Main contributions), the authors state that Code Carbon underestimates energy consumption and propose a method for offline calibration to reduce the maximum inaccuracy, which they test in their main study."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "A large-scale validation study mimicking the EA-HAS-Bench data collection scheme to understand the accuracy of the underlying data collection. Architectures are sampled and trained on a single GPU while measuring energy with Nvidia SMI, RAPL, and an external power meter.",
+      "strategy": "Random sampling of 500 architectures, sequential training",
+      "data": [
+        "RegNet search space (Xu et al. 2023)",
+        "Tiny Imagenet (Russakovsky et al. 2015)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Three follow-up experiments to enrich the data collection using additional power measurement tools and training procedures: 1) Single GPU adding Code Carbon; 2) Multi-GPU distributed training with SMI, power meter, and Code Carbon; 3) Single GPU replacing SMI with pyNVML.",
+      "strategy": "Random sampling of 20 architectures per experiment",
+      "data": [
+        "RegNet search space (Xu et al. 2023)",
+        "Tiny Imagenet (Russakovsky et al. 2015)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1",
+        "experiment_2"
+      ],
+      "reason": "Compare SMI and pyNVML measurements to the external power meter to evaluate the reliability of power measurements on a per-epoch and full-training basis.",
+      "metrics": [
+        "Energy (J)",
+        "Power (W)"
+      ],
+      "statistics": [
+        "Pearson correlation coefficient",
+        "Spearman correlation coefficient"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov (KS) test (alpha = 0.05)"
+      ],
+      "results": {
+        "tables": {
+          "Table I": {
+            "caption": "Correlation of measurements obtained via different tools with the power meter measurements.",
+            "reason": "Presents the statistical correlation and KS test results comparing SMI, NVML, and Code Carbon to the power meter.",
+            "metrics": [
+              "Energy (J)",
+              "Power (W)"
+            ],
+            "statistics": [
+              "Pearson correlation coefficient",
+              "Spearman correlation coefficient"
+            ],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (KS) test (alpha = 0.05)"
+            ]
+          }
+        },
+        "figures": {
+          "Figure 2": {
+            "caption": "eCDF of the power meter measurements and the SMI sampled power estimates for an example model training on one GPU.",
+            "reason": "Visualizes the plateau of non-measured power states due to the low sampling rate in SMI.",
+            "metrics": [
+              "Power (W)"
+            ],
+            "statistics": [],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": [
+              "Empirical cumulative distribution function (eCDF) comparison"
+            ]
+          }
+        },
+        "text": {
+          "Section V.B": {
+            "value": "Epochs measured in this way exhibit a poor energy correlation with the power meter, with a Pearson correlation coefficient of 0.64.",
+            "reason": "States the exact correlation result for SMI per-epoch measurements.",
+            "metrics": [
+              "Energy (J)"
+            ],
+            "statistics": [
+              "Pearson correlation coefficient"
+            ],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": [
+              "Pearson correlation"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_1",
+        "experiment_2"
+      ],
+      "reason": "Analyze the range of GPU power draw and its correlation with GPU usage and memory usage to determine if the search space utilizes the hardware effectively.",
+      "metrics": [
+        "GPU power (W)",
+        "GPU utilisation (%)",
+        "GPU Mem utilisation (%)"
+      ],
+      "statistics": [
+        "Minimum",
+        "Maximum",
+        "Pearson correlation coefficient"
+      ],
+      "test": [
+        "Linear correlation comparison"
+      ],
+      "results": {
+        "tables": {},
+        "figures": {
+          "Figure 5": {
+            "caption": "Top left: GPU power consumption vs GPU utilisation for single-GPU training. Bottom left: GPU power consumption vs GPU memory utilisation for single-GPU training. Top right: GPU power consumption vs GPU utilisation for multi-GPU training. Bottom right: GPU power consumption vs GPU memory utilisation for multi-GPU training.",
+            "reason": "Visualizes the narrow range of GPU power consumption and its correlation with utilization.",
+            "metrics": [
+              "GPU power (W)",
+              "GPU utilisation (%)",
+              "GPU Mem utilisation (%)"
+            ],
+            "statistics": [],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": [
+              "Linear correlation comparison"
+            ]
+          }
+        },
+        "text": {
+          "Section VI.C": {
+            "value": "The range of different power draws on the GPU is relatively narrow, with 146 W to 305 W compared to the base consumption of the GPU of 75 W and the maximum consumption of 800 W. The GPU was never fully used, with maximum usage around 40%.",
+            "reason": "Explicitly states the narrow range of power draw and maximum usage observed during the experiments.",
+            "metrics": [
+              "GPU power (W)",
+              "GPU utilisation (%)"
+            ],
+            "statistics": [
+              "Minimum",
+              "Maximum"
+            ],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": []
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Evaluate the accuracy of Code Carbon for holistic energy reporting and test the proposed bounded calibration approach against the external power meter.",
+      "metrics": [
+        "Power (W)",
+        "Inaccuracy (%)"
+      ],
+      "statistics": [
+        "Maximum inaccuracy",
+        "Median inaccuracy"
+      ],
+      "test": [
+        "Comparison of percentage inaccuracy"
+      ],
+      "results": {
+        "tables": {},
+        "figures": {
+          "Figure 8": {
+            "caption": "Boxplot with differences in energy measurements between Code Carbon and the power meter for single-GPU training.",
+            "reason": "Visualizes the reduction in inaccuracy when using the proposed bounded calibration approach compared to base Code Carbon.",
+            "metrics": [
+              "Power (W)"
+            ],
+            "statistics": [
+              "Median inaccuracy"
+            ],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": []
+          }
+        },
+        "text": {
+          "Section VI.D": {
+            "value": "The base Code Carbon approach is 10.3% off the power meter, while the bounds given are 8.9 to -3.6 %. The load estimation via prime number calculation already improves the upper bound to 6.6%.",
+            "reason": "States the quantitative improvement in maximum inaccuracy achieved by the proposed calibration method.",
+            "metrics": [
+              "Inaccuracy (%)"
+            ],
+            "statistics": [
+              "Maximum inaccuracy"
+            ],
+            "data": [
+              "RegNet search space (Xu et al. 2023)",
+              "Tiny Imagenet (Russakovsky et al. 2015)"
+            ],
+            "test": [
+              "Comparison of percentage inaccuracy"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "SMI exhibits poor energy correlation with the power meter on a per-epoch basis (Pearson 0.64) due to low sampling rates in 39% of epochs. However, using the underlying pyNVML library fixes this issue, achieving high correlation (0.99) and passing the KS test.",
+      "reason": "Based on Section V.B and VI.B, the authors interpret the correlation results and eCDF plots to conclude that the SMI command-line utility is the bottleneck, while pyNVML provides reliable measurements."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The range of different power draws on the GPU is relatively narrow (146W to 305W) and the GPU was never fully used (max usage around 40%), indicating that the RegNet search space is not ideal for the H100 GPU.",
+      "reason": "Based on Section VI.C, the authors interpret the narrow power draw and low utilization as a sign that the search space fails to fully utilize the hardware."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Code Carbon consistently underestimates power consumption due to inaccurate memory power assumptions, but the proposed bounded approach based on empirical idle/busy power estimations reduces the maximum inaccuracy from 10.3% to 6.6%.",
+      "reason": "Based on Section VI.D, the authors interpret the constant power difference between Code Carbon and the power meter, and show that their empirical calibration provides tighter bounds."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that energy-aware benchmarks must be built upon reliable power measurements. They confirm that the SMI command-line utility is flawed for short epochs, but the underlying pyNVML library (used in EA-HAS-Bench's original data collection) is reliable.",
+      "reason": "In Section VII, the authors state that benchmarks should be built upon reliable power measurements and highlight the comparison between SMI and NVML as a key finding."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "The authors conclude that current benchmarks like EA-HAS-Bench do not fully utilize high-end GPUs, violating the design principle of allowing a wide range of device usage.",
+      "reason": "In Section VII, the authors reiterate the need for a wide range of device usage, reflecting on the narrow usage found in their study."
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that holistic energy cost reporting tools should be based on evidence-based foundations (empirical calibration of off-socket load) rather than assumptions about memory consumption.",
+      "reason": "In Section VII, the authors state they enhance reproducibility by basing holistic energy cost reporting tools on evidence-based foundations rather than assumptions."
+    }
+  },
+  "Future Work": {
+        "Suggested Research Questions": {
+            "suggested_research_question_1": {
+            "conclusions": [
+                "conclusion_2"
+            ],
+            "value": "How can energy-aware NAS benchmarks sample from a more device-agnostic search space and provide transferability towards hardware-constrained devices?",
+            "note": "Section VII (Conclusions, Limitations and Future Work)",
+            "reason": "The authors explicitly suggest this as a future direction to address the narrow GPU usage and hardware bias observed in their study."
+            },
+            "suggested_research_question_2": {
+            "conclusions": [
+                "conclusion_3"
+            ],
+            "value": "How can the off-socket load on a device be found a priori to provide tighter bounds during energy cost reporting?",
+            "note": "Section VII (Conclusions, Limitations and Future Work)",
+            "reason": "The authors explicitly state this is an interesting direction for further investigation to improve holistic energy reporting without relying on external power meters."
+            }
+        },
+        "Suggested Hypotheses": {}
+    }
+}
