@@ -32,7 +32,7 @@
     "hypothesis_1": {
       "explicit": true,
       "value": "The proposed pooling operator performs statistically significantly better than edge pool while reducing time complexity and the number of trainable parameters.",
-      "questions": [
+      "research_questions": [
         "research_question_2"
       ],
       "reason": "Abstract: 'We empirically demonstrate that the proposed pooling operator performs statistically significantly better than edge pool on four popular benchmark datasets while reducing time complexity and the number of trainable parameters by 70.6% on average.'"
@@ -40,7 +40,7 @@
     "hypothesis_2": {
       "explicit": false,
       "value": "The authors hypothesise that their operator does not suffer information loss by obtaining comparable performance to an expensive graph neural network that does not pool nodes (specifically Graph Isomorphism Networks).",
-      "questions": [
+      "research_questions": [
         "research_question_1",
         "research_question_3"
       ],

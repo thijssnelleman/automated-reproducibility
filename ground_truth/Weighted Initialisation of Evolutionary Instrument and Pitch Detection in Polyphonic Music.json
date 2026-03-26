@@ -26,7 +26,7 @@
     "hypothesis_1": {
       "explicit": false,
       "value": "The authors hypothesise that initializing the evolutionary algorithm with a probability distribution of pitches derived from the Constant-Q Transform (CQT) of the target signal will exclude unlikely pitches, resulting in faster convergence and reduced detection errors compared to uniform random initialization.",
-      "linked_research_questions": [
+      "research_questions": [
         "research_question_1"
       ],
       "reason": "Implied in Section 1 (Introduction) and Section 4 (Initialisation with Pitch Probabilities). The authors state: 'We present a modification... that uses spectral information to initialise populations with probable pitches' and expect 'significantly faster convergence speed and slightly improved pitch and instrument detection errors'."
@@ -34,7 +34,7 @@
     "hypothesis_2": {
       "explicit": false,
       "value": "The authors hypothesise that the COSH distance fitness function assigns worse (higher) fitness values to individuals that correctly match the ground truth instrument-pitch tuples compared to incorrect individuals.",
-      "linked_research_questions": [
+      "research_questions": [
         "research_question_2"
       ],
       "reason": "This is the underlying assumption of using the EA for this task. It is implicitly tested in Section 6.3 (Page 13) where they investigate 'Error-Fitness Correlation' to see if the fitness function is a bottleneck."

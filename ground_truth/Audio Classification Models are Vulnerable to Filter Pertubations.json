@@ -32,7 +32,7 @@
     "hypothesis_1": {
       "explicit": false,
       "value": "The authors hypothesise that the proposed Filter-based PGD attack will be significantly more effective at reducing model accuracy than random search within the same perturbation constraints.",
-      "links": [
+      "research_questions": [
         "research_question_2"
       ],
       "reason": "In Section 1, the authors claim: 'We show that our modification of the well-established Projected Gradient Descent (PGD) attack [4] outperforms random search at finding filter-based adversarial examples.' This implies the hypothesis that gradient-based search is superior to random search for this task."
@@ -40,7 +40,7 @@
     "hypothesis_2": {
       "explicit": false,
       "value": "The authors hypothesise that state-of-the-art audio classifiers are highly susceptible to filter-based perturbations.",
-      "links": [
+      "research_questions": [
         "research_question_1"
       ],
       "reason": "In Section 1, the authors state: 'We further demonstrate that state-of-the-art audio classifiers are highly susceptible to these filter-based perturbations.'"
@@ -48,7 +48,7 @@
     "hypothesis_3": {
       "explicit": false,
       "value": "The authors hypothesise that adversarial training using filter-based perturbations will improve the robustness of audio models against such attacks.",
-      "links": [
+      "research_questions": [
         "research_question_3"
       ],
       "reason": "In Section 1, the authors state: 'Finally, we apply adversarial training in order to improve the robustness of our models...'"
