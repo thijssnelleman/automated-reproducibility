@@ -10,7 +10,7 @@ Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework 
 
 Robustness Distributions in Neural Network Verification
 
-# Andreas Paraskeva ✅ -> ❌
+# Andreas Paraskeva ✅ -> ✅
 
 Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 

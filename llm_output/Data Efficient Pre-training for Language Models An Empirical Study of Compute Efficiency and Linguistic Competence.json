@@ -1,0 +1,334 @@
+
+{
+  "Meta": {
+    "title": "DATA EFFICIENT PRE-TRAINING FOR LANGUAGE MODELS: AN EMPIRICAL STUDY OF COMPUTE EFFICIENCY AND LINGUISTIC COMPETENCE",
+    "authors": [
+      "Andreas Paraskeva",
+      "Max Johannes van Duijn",
+      "Maarten de Rijke",
+      "Suzan Verberne",
+      "Jan N. van Rijn"
+    ],
+    "year": 2025,
+    "venue": "2nd DATA-FM workshop @ ICLR 2025"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How do dataset size, complexity, and sampled domains (specifically narrative vs. open-domain) influence formal and functional linguistic competence when pre-training small language models?",
+      "reason": "Implied in the Introduction and Section 1 (Contributions): 'These contributions amount to a better understanding of how dataset size, complexity, and sampled domains influence linguistic competence when pre-training language models...'"
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How do these dataset differences impact the compute efficiency and practical deployment of the models?",
+      "reason": "Implied in the Introduction and Section 1 (Contributions): '...and how they impact practical applications of compute efficiency and model deployment.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that pre-training small language models on diverse, open-domain data (BabyLM) yields better formal and functional linguistic competence and more consistent performance than pre-training on simple, synthetic narrative data (TinyStories).",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied from the experimental setup comparing the two datasets and the statement in the contributions (Section 1): 'We show that models trained on BabyLM achieve significantly higher performance on formal linguistic competence and show lower variance...'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that early performance metrics on small data samples (token-based anchors) are representative of a model's ultimate performance, enabling early discarding of unpromising candidate models.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied from the contributions (Section 1): 'We demonstrate that early performance metrics can be used in model selection, allowing us to discard unpromising candidate models.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Pre-training Llama-based decoder-only models of three sizes (17M, 58M, 91M) from scratch on progressively larger token-based anchors of the BabyLM and TinyStories datasets, and evaluating them on the BLiMP benchmark without fine-tuning to assess formal linguistic competence.",
+      "strategy": "Token-based anchors using a geometric sampling scheme ([2, 4, 8, 16, 32, 64, 96, 128, 160] million tokens). 3 repetitions per anchor-model-dataset combination.",
+      "data": [
+        "BabyLM-100m (Choshen et al., 2024)",
+        "TinyStories (Eldan & Li, 2023)",
+        "BLiMP benchmark (Warstadt et al., 2020)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Pre-training the same Llama-based models on the same token-based anchors of BabyLM and TinyStories, followed by supervised fine-tuning on individual tasks from a subset of the GLUE benchmark to assess functional linguistic competence.",
+      "strategy": "Token-based anchors using a geometric sampling scheme ([2, 4, 8, 16, 32, 64, 96, 128, 160] million tokens). 3 repetitions per anchor-model-dataset combination. Fine-tuning on individual GLUE tasks.",
+      "data": [
+        "BabyLM-100m (Choshen et al., 2024)",
+        "TinyStories (Eldan & Li, 2023)",
+        "GLUE benchmark subset (Wang et al., 2019b)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the formal linguistic competence of models trained on BabyLM vs TinyStories across different model sizes and data scales.",
+      "metrics": [
+        "Accuracy (BLiMP)"
+      ],
+      "statistics": [
+        "Average",
+        "Variance / Standard Deviation",
+        "Median",
+        "Distribution (Boxplots)"
+      ],
+      "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Learning curves (on three repetitions) for BLiMP performance comparing model sizes (17M, 58M and 91M) on two datasets: BabyLM and TinyStories. Dashed lines represent the performance on the full dataset for each model-dataset combination, following the same colouration.",
+            "reason": "Shows the average BLiMP accuracy across token anchors to evaluate formal linguistic competence.",
+            "metrics": [
+              "Accuracy (BLiMP)"
+            ],
+            "statistics": [
+              "Average",
+              "Variance / Standard Deviation"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "BLiMP benchmark (Warstadt et al., 2020)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          },
+          "Figure 3": {
+            "caption": "Heatmap of average accuracy scores (for three repetitions) across models (17M, 58M, and 91M) and all BLiMP tasks on two datasets: BabyLM and TinyStories, with 160M tokens (this being the largest anchor that occurs in both datasets). Each cell reports the score of a given fine-tuned model on a specific task. The background colour gives a row-wise indication of how the specific model performed, with yellow colours indicating better performance. The boxplot on the right depicts the distributions of performances across the BLiMP tasks.",
+            "reason": "Shows task-specific performance and distribution of scores for formal linguistic competence.",
+            "metrics": [
+              "Accuracy (BLiMP)"
+            ],
+            "statistics": [
+              "Average",
+              "Median",
+              "Distribution (Boxplots)"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "BLiMP benchmark (Warstadt et al., 2020)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          }
+        },
+        "Text": {
+          "Section 4.1": {
+            "value": "Comparing the two datasets indicates that models trained with the BabyLM dataset achieve higher overall BLiMP accuracy across the whole learning curve. Moreover, the models trained on TinyStories show slower improvement and reach a performance plateau at around 64 million sampled tokens for all model sizes.",
+            "reason": "Describes the main findings from the BLiMP evaluation.",
+            "metrics": [
+              "Accuracy (BLiMP)"
+            ],
+            "statistics": [
+              "Average"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "BLiMP benchmark (Warstadt et al., 2020)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To compare the functional linguistic competence of models trained on BabyLM vs TinyStories across different model sizes and data scales.",
+      "metrics": [
+        "Accuracy/F1 (GLUE)"
+      ],
+      "statistics": [
+        "Average",
+        "Variance / Standard Deviation",
+        "Median",
+        "Distribution (Boxplots)"
+      ],
+      "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Learning curves (on three repetitions) for a subset of GLUE tasks comparing model sizes (17m, 58M and 91M) on two datasets: BabyLM and TinyStories. Dashed lines represent the performance on the full dataset for each model-dataset combination, following the same colouration.",
+            "reason": "Shows the average GLUE performance across token anchors to evaluate functional linguistic competence.",
+            "metrics": [
+              "Accuracy/F1 (GLUE)"
+            ],
+            "statistics": [
+              "Average",
+              "Variance / Standard Deviation"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "GLUE benchmark subset (Wang et al., 2019b)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          },
+          "Figure 5": {
+            "caption": "Heatmap of average accuracy scores (for three repetitions) across models (17M, 58M, and 91M) and GLUE tasks on two datasets: BabyLM and TinyStories, with 160M tokens (this being the largest anchor that occurs in both datasets). Each cell reports the score of a given fine-tuned model on a specific task. The background colour gives a row-wise indication of how the specific model performed, with yellow colours indicating better performance. The boxplot on the right depicts the distributions of performances across the GLUE tasks.",
+            "reason": "Shows task-specific performance and distribution of scores for functional linguistic competence.",
+            "metrics": [
+              "Accuracy/F1 (GLUE)"
+            ],
+            "statistics": [
+              "Average",
+              "Median",
+              "Distribution (Boxplots)"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "GLUE benchmark subset (Wang et al., 2019b)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          }
+        },
+        "Text": {
+          "Section 4.2": {
+            "value": "Similar to the BLiMP evaluation (see Section 4.1), model–variants of all sizes perform better when trained on the BabyLM dataset compared to the TinyStories. The performance gap here is less pronounced but still evident.",
+            "reason": "Describes the main findings from the GLUE evaluation.",
+            "metrics": [
+              "Accuracy/F1 (GLUE)"
+            ],
+            "statistics": [
+              "Average"
+            ],
+            "data": [
+              "BabyLM-100m (Choshen et al., 2024)",
+              "TinyStories (Eldan & Li, 2023)",
+              "GLUE benchmark subset (Wang et al., 2019b)"
+            ],
+            "test": "Simple comparison (greater than, less than, visual inspection of learning curves and boxplots)"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Possibly, the TinyStories dataset lacks rich linguistic features due to its vocabulary that was kept simple by design... In addition, since the dataset is synthetic, there is little variation in the structure of the stories. These factors could likely explain the inability of models trained on TinyStories to reach higher accuracy on BLiMP, with clear stagnation around the 64 million tokens.",
+      "reason": "Explains why BabyLM outperforms TinyStories on formal competence and why TinyStories plateaus early, found in Section 4.1."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Notably, unlike for the BLiMP results, using the full TinyStories dataset beyond 160M tokens (dashed lines in Figure 4) substantially improves performance. This suggests that the underlying data in TinyStories, despite being limited in vocabulary and complex grammatical structure, does enable the models to effectively capture fundamental linguistic patterns and structures needed for language use and understanding.",
+      "reason": "Explains the value of narrative datasets for functional competence despite their simplicity, found in Section 4.2."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_1",
+        "analysis_2"
+      ],
+      "value": "We demonstrate that early performance metrics can be used in model selection, allowing us to discard unpromising candidate models.",
+      "reason": "Interprets the learning curves as a reliable proxy for final performance, found in Section 1 and supported by the learning curve analyses."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "Our findings indicate that models trained with the BabyLM dataset outperform models trained with the TinyStories dataset on formal linguistic competence... These insights support the usage of BabyLM for pre-training language models in resource-constrained settings, where performance on small dataset samples can reliably predict the final achieved performance (such as mixture of experts (MoE) development).",
+      "reason": "Concludes on the superiority of BabyLM for formal competence and its utility for compute-efficient model selection, found in Section 6."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The gap in functional linguistic competence is less pronounced, with models trained on TinyStories achieving comparable performance but showing smaller deviations across model sizes... These empirical findings suggest that TinyStories lacks certain rich linguistic features, likely due to its simpler vocabulary and synthetic origin, yet still supports the idea that narrative structures could contribute to functional linguistic competence.",
+      "reason": "Concludes on the specific utility of narrative datasets for functional competence, found in Section 6."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_2"
+        ],
+        "value": "How does child-directed speech (e.g., TinyDialogues) compare to the datasets analysed here (BabyLM and TinyStories) in terms of linguistic competence and computational efficiency?",
+        "note": "Section 5 (Limitations and Future Work)",
+        "reason": "Explicitly stated as a future direction to compare another dataset type."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_2"
+        ],
+        "value": "How do these findings generalize to a greater variety of model architectures, larger model sizes, tokeniser vocabulary sizes, and other training paradigms (e.g., model distillation and reinforcement learning)?",
+        "note": "Section 5 (Limitations and Future Work)",
+        "reason": "Explicitly stated as a future direction to test generalizability."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "Can curriculum learning, incorporating progressively complex data sourced from other domains or more complex narrative samples, enrich vocabulary and improve performance?",
+        "note": "Section 6 (Conclusions)",
+        "reason": "Suggested application based on the findings regarding narrative data."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_2"
+        ],
+        "value": "The authors hypothesise that optimising the hyperparameters to all specific downstream tasks would provide more reliable results for the ultimate performance of the various models.",
+        "note": "Section 5 (Limitations and Future Work)",
+        "reason": "The authors suggest that hyperparameter optimization, which was skipped due to cost, would yield more reliable ultimate performance results."
+      }
+    }
+  }
+}
