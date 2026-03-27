@@ -1,0 +1,327 @@
+{
+  "Meta": {
+    "title": "AutoMergeNet: AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies",
+    "authors": [
+      "Julia Wąsala",
+      "Joannes D. Maasakkers",
+      "Berend J. Schuit",
+      "Gijs Leguijt",
+      "Ilse Aben",
+      "Rochelle Schneider",
+      "Holger Hoos",
+      "Mitra Baratchi"
+    ],
+    "year": 2025,
+    "venue": "IEEE JOURNAL OF SELECTED TOPICS IN APPLIED EARTH OBSERVATIONS AND REMOTE SENSING"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "Does transforming conventional, single-branch image classification networks into multibranch networks improve the results of multimodal image data fusion for satellite image classification?",
+      "reason": "Explicitly stated in Section IV. EMPIRICAL EVALUATION SETUP, page 5, as the first question the empirical evaluation aims to answer."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "Does enforcing implicit focus on the primary modality (using a unimodal auxiliary classifier) improve the results of multimodal image data fusion for satellite image classification?",
+      "reason": "Explicitly stated in Section IV. EMPIRICAL EVALUATION SETUP, page 5, as the second question the empirical evaluation aims to answer."
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "How do AutoMergeNet-created models compare to domain-specific methods when applied in an operational scenario?",
+      "reason": "Explicitly stated in Section IV. EMPIRICAL EVALUATION SETUP, page 5, as the third question the empirical evaluation aims to answer."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that transforming conventional, single-branch image classification networks into multibranch networks using their NAS framework (AutoMergeNet) improves the results of multimodal image data fusion for satellite image classification.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied from the introduction and the formulation of research question 1. The authors propose AutoMergeNet to automatically design multibranch networks to overcome the limitations of single-branch early fusion networks."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that enforcing implicit focus on the primary modality using a unimodal auxiliary classifier improves the precision and overall results of multimodal image data fusion by filtering out clear negative images.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied from Section III.B, where the authors introduce the auxiliary classifier as a simple solution to the problem of supporting data layers overwhelming features extracted from the primary layer, thereby reducing false positives."
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that AutoMergeNet-created models can achieve competitive performance compared to highly specialized, domain-specific methods when applied in an operational scenario.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Implied from the introduction and the formulation of research question 3. The authors aim to show that their automated framework can replace manual feature engineering and domain-specific pipelines."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluating AutoMergeNet against six early-fusion baseline architectures (Early fusion CNN, ResNet18, EPSANet, BANet, MobileNetV2, CvT) on two multimodal datasets (methane and carbon monoxide plumes), both with and without the auxiliary unimodal classifier.",
+      "strategy": "5 independent HPO runs for baselines (100 trials each), 30 independent NAS runs for AutoMergeNet (200 samples each). Bootstrapping with 1000 samples to simulate selecting the single best model based on validation loss. Data split: Methane (64% train, 16% val, 20% test), CO (80% train, 20% val for remaining after location-based test set extraction).",
+      "data": [
+        "Methane plume dataset (Schuit et al. 2023)",
+        "Carbon Monoxide plume dataset (This work)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Applying the best AutoMergeNet model (with auxiliary classifier) to a previously unseen testing set of one week of TROPOMI methane data over land to detect plumes, and comparing the detections (plumes, nonplumes, inconclusive) to the operational model by Schuit et al.",
+      "strategy": "Sliding window crop (32x32, offset 16), duplicate removal via binary pixel plume masks, manual labeling by experts.",
+      "data": [
+        "1 week of TROPOMI methane data (Oct 25-31, 2021) (Schuit et al. 2023)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To determine if AutoMergeNet multibranch networks and the auxiliary classifier improve classification performance over baselines.",
+      "metrics": [
+        "Accuracy",
+        "Precision",
+        "Recall",
+        "F1"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": "Wilcoxon signed rank test (p-value < 0.05)",
+      "results": {
+        "Tables": {
+          "Table IV": {
+            "caption": "MEAN AND STANDARD DEVIATION OF THE TEST RESULTS ON THE METHANE DATASET OBTAINED FROM 5 INDEPENDENT HPO RUNS FOR EACH BASELINE AND 30 INDEPENDENT NAS RUNS FOR AUTOMERGENET",
+            "reason": "Shows the performance metrics for the methane dataset.",
+            "metrics": [
+              "Accuracy",
+              "Precision",
+              "Recall",
+              "F1"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Methane plume dataset (Schuit et al. 2023)"
+            ],
+            "test": "Wilcoxon signed rank test (p-value < 0.05)"
+          },
+          "Table V": {
+            "caption": "MEAN AND STANDARD DEVIATION OF THE TEST RESULTS ON THE CARBON MONOXIDE DATASET OBTAINED FROM FIVE INDEPENDENT HPO RUNS FOR EACH BASELINE, AND 30 INDEPENDENT NAS RUNS FOR AUTOMERGENET",
+            "reason": "Shows the performance metrics for the CO dataset.",
+            "metrics": [
+              "Accuracy",
+              "Precision",
+              "Recall",
+              "F1"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Carbon Monoxide plume dataset (This work)"
+            ],
+            "test": "Wilcoxon signed rank test (p-value < 0.05)"
+          }
+        },
+        "Figures": {
+          "Fig. 5": {
+            "caption": "AutoMergeNet strongly favoured the CNN over the larger models as a backbone for both methane (a) and carbon monoxide plume detection (b).",
+            "reason": "Shows the frequency of selected backbones by the NAS.",
+            "metrics": [],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "Methane plume dataset (Schuit et al. 2023)",
+              "Carbon Monoxide plume dataset (This work)"
+            ],
+            "test": "Direct comparison"
+          },
+          "Fig. 6": {
+            "caption": "Boxplots of bootstrapped accuracy, precision, and recall of the baselines and AutoMergeNet (both with auxiliary classifier).",
+            "reason": "Visualizes the distribution of performance metrics.",
+            "metrics": [
+              "Accuracy",
+              "Precision",
+              "Recall"
+            ],
+            "statistics": [
+              "Boxplots (median, quartiles)"
+            ],
+            "data": [
+              "Methane plume dataset (Schuit et al. 2023)",
+              "Carbon Monoxide plume dataset (This work)"
+            ],
+            "test": "Direct comparison"
+          }
+        },
+        "Text": {
+          "Section V.A": {
+            "value": "We found that on both datasets, AutoMergeNet outperformed all baselines by significant margins in terms of accuracy, precision, and recall, with and without the auxiliary classifier.",
+            "reason": "States the main finding of the comparison.",
+            "metrics": [
+              "Accuracy",
+              "Precision",
+              "Recall"
+            ],
+            "statistics": [],
+            "data": [
+              "Methane plume dataset (Schuit et al. 2023)",
+              "Carbon Monoxide plume dataset (This work)"
+            ],
+            "test": "Wilcoxon signed rank test (p-value < 0.05)"
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To compare the practical operational performance of AutoMergeNet against a domain-specific expert model.",
+      "metrics": [
+        "Number of detected plumes",
+        "Number of nonplumes (false positives)",
+        "Number of inconclusive cases"
+      ],
+      "statistics": [
+        "Counts"
+      ],
+      "test": "Direct comparison",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Fig. 7": {
+            "caption": "Methane detections of the single best AutoMergeNet model with filtering after detections were labeled by a domain expert: 73 detected plumes (left) and 67 detected false positives (right).",
+            "reason": "Shows the geographical distribution of true and false positives.",
+            "metrics": [
+              "Number of detected plumes",
+              "Number of nonplumes (false positives)"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "1 week of TROPOMI methane data (Oct 25-31, 2021) (Schuit et al. 2023)"
+            ],
+            "test": "Direct comparison"
+          }
+        },
+        "Text": {
+          "Section V.C": {
+            "value": "Our methods found 73 plumes, 67 nonplumes, and 46 inconclusive cases, compared to 85 plumes, 20 nonplumes, and 48 inconclusive cases found by Schuit et al.",
+            "reason": "Provides the exact counts of detections for comparison.",
+            "metrics": [
+              "Number of detected plumes",
+              "Number of nonplumes (false positives)",
+              "Number of inconclusive cases"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "1 week of TROPOMI methane data (Oct 25-31, 2021) (Schuit et al. 2023)"
+            ],
+            "test": "Direct comparison"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "AutoMergeNet outperformed all baselines by significant margins in terms of accuracy, precision, and recall, with and without the auxiliary classifier. Multibranch networks of any depth achieve higher performance for methane and carbon monoxide plume detection than early fusion networks. The auxiliary classifier substantially increased the precision and accuracy of all approaches by discarding detections that are clearly empty based on the primary channel.",
+      "reason": "The authors explicitly state these findings in Sections V.A and V.B, confirming the superiority of multibranch networks and the auxiliary classifier."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The model automatically created by AutoMergeNet is competitive with the expert-designed pipeline in terms of detecting plumes (73 vs 85), although it does produce relatively more false positives (67 vs 20). The false detections suggest the model is not robust to false positives caused by albedo variation in the desert.",
+      "reason": "The authors interpret the operational results in Section V.C, noting the competitive true positive rate but acknowledging the higher false positive rate and its likely cause."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that transforming widely used image classification networks into multi-branch fusion networks via NAS successfully models complex multimodal EO satellite data. Furthermore, introducing an auxiliary unimodal classifier effectively addresses the high dimensionality of the data and the relative dearth of labels, greatly improving the precision of the pipeline.",
+      "reason": "Summarized from Section VI (Conclusion), directly answering RQ1 and RQ2 and supporting H1 and H2."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that their automated and adaptable framework achieves results comparable to a highly specialized state-of-the-art baseline in terms of plume detection in a real-life use case. This demonstrates the potential of designing AutoML solutions for tracking events impacting the environment, making ML more accessible to domain experts without needing manual feature engineering.",
+      "reason": "Summarized from Section VI (Conclusion), directly answering RQ3 and supporting H3."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How can we identify the causes of the generalisation gap between the testing results and the use case application?",
+        "note": "Section VI. Conclusion",
+        "reason": "The authors explicitly state this as a goal for future work to address the higher false positive rate observed in the operational scenario."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "The authors hypothesise that adding more training examples of specific terrain types (e.g., desert) or adding additional data layers will improve the model's robustness to false positives caused by albedo variations and reduce the generalisation gap.",
+        "note": "Section V.C and Section VI",
+        "reason": "The authors suggest adding more training examples of desert terrain or adding additional layers faster as potential solutions to the false positives observed in the operational use case."
+      }
+    }
+  }
+}
