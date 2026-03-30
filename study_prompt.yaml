@@ -85,8 +85,8 @@ Introduction:
   - "test": The tests used to determine differences between outcomes. This can be a simple comparison (e.g. greater than, less than), in which case state how this is compared. This can also be statistical test, in which case report the name of the test, with possible parameters names and their values used such as the significance level for the p-value between brackets (e.g. "T-test (p < 0.05)" or "Permutation Test (p < 0.05, permutations = 10000)").
   - "results": |
     The authors will provide their results throughout the paper. Here you state three keys; "Tables", "Figures" and "Text". For each key, provide a JSON structure with the following information: |
-    - For each table, state the label of the table (e.g. 'Table 1') as the key under "tables". Here you provide the value "caption" with the caption of the table.
-    - For each figure, state the label of the table (e.g. 'Figure 1') as the key under "figures". Here you provide the value "caption" with the caption of the figure.
+    - For each table, state the label of the table (e.g. 'Table 1') as the key under "Tables". Here you provide the value "caption" with the caption of the table.
+    - For each figure, state the label of the table (e.g. 'Figure 1') as the key under "Figures". Here you provide the value "caption" with the caption of the figure.
     - Results may also be found in the text. In this case, state the section where you find this in (e.g. 'Section 1.1') as the key under "text". Here you provide the value "value", with the part of text that states a result.
     - Provide for each value you are specifying (tables, figures or text) a key "reason" where you state your reason why this is linked to this experiment.
       Furthermore, provide lists of "metrics", "statistics", "data" and "test" for each, which are subsets of the previous respective keys.
