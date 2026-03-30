@@ -1,0 +1,566 @@
+{
+  "Meta": {
+    "title": "Exploring the Integration of Spatial Information into a Spectral Clustering Approach to Unsupervised Band Selection",
+    "authors": [
+      "Håvard Hjelmeseth",
+      "Sofie Olsvik Johansen",
+      "Pauline C. Haddow"
+    ],
+    "year": 2025,
+    "venue": "2025 IEEE Symposium on Computational Intelligence in Image, Signal Processing and Synthetic Media (CISM)"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can spatial information be effectively integrated into the PSO-FCM spectral clustering approach to improve unsupervised band selection in hyperspectral images?",
+      "reason": "Found in the Abstract and Introduction. The authors state that existing approaches like PSO-FCM do not exploit available spatial information, motivating their proposal of Superpixel-enhanced PSO-FCM (SPPF) to exploit both spectral and spatial redundancy."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "What is the impact of pre-removing noisy or uninformative bands on the performance of the clustering-based band selection?",
+      "reason": "Found in Section II (Motivation) and Section IV (Exp1). The authors note that 'bands known to be uninformative or noisy can be removed a priori; to improve performance. However, the performance impact is not commonly addressed.'"
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "How do various superpixel-enhanced distance metrics and superpixel-adapted cluster representative selection techniques affect the optimization of the SPPF model for given datasets?",
+      "reason": "Found in Section I (Introduction). The authors explicitly state: 'To optimise SPPF for given datasets, various superpixel enhanced distance metrics are proposed and applied as part of the objective function. Various superpixel-adapted cluster selection methods are also investigated in the light of such distance metrics.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that integrating spatial information via superpixels into the PSO-FCM algorithm (SPPF) will yield higher classification accuracy compared to the original PSO-FCM model.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied in the Abstract and Introduction. The authors propose SPPF to address the limitation of PSO-FCM ignoring spatial properties, expecting it to show 'the promise of this spatial-spectral BS solution' through improved performance."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the pre-removal of noisy bands (NBR) will improve the overall classification performance of the SPPF model.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied in Section II and tested in Exp1. The authors mention that removing noisy bands a priori is meant 'to improve performance', which they subsequently test."
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that adapting distance metrics and cluster selection methods to exploit local spatial context will optimize SPPF performance, with different metrics and methods excelling depending on the specific spatial and spectral characteristics of the dataset.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Implied in Section I and Section III. The authors propose multiple distance metrics (Sp-ED, Sp-KL, Sp-DI, Sp-KL-L1) and selection methods (HE, CT, WS, Rank) to 'ensure more optimal exploitation of the local spatial context' and evaluate them 'in the light of different datasets'."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Exp1: Pre-removal of noisy bands. Investigates the effect of pre-removing noisy bands (NBR) on the classification performance (OA and AA) of the SPPF model.",
+      "strategy": "10 runs applying the SPPF model; stopping criteria is 100 generations or 15 generations without improvement. SVM classifier with radial basis function kernel, 5-fold cross-validation for kernel parameter tuning.",
+      "data": [
+        "Indian Pines (IPds) (Grana et al. 2014)",
+        "Salina (Sds) (Grana et al. 2014)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Exp2: Cluster representative selection. Evaluates the performance of different cluster representative selection methods (HE, CT, WS, Rank) across four different superpixel-enhanced distance metrics.",
+      "strategy": "10 runs applying the SPPF model; stopping criteria is 100 generations or 15 generations without improvement. SVM classifier with radial basis function kernel, 5-fold cross-validation for kernel parameter tuning.",
+      "data": [
+        "Indian Pines (IPds) (Grana et al. 2014)",
+        "Salina (Sds) (Grana et al. 2014)",
+        "Pavia Center (PCds) (Grana et al. 2014)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Exp3: Distance Measures. Studies how the proposed superpixel-enhanced distance metrics (Sp-ED, Sp-KL, Sp-DI, Sp-KL-L1) affect classification performance and computational efficiency across varying numbers of selected bands.",
+      "strategy": "10 runs applying the SPPF model; stopping criteria is 100 generations or 15 generations without improvement. SVM classifier with radial basis function kernel, 5-fold cross-validation for kernel parameter tuning.",
+      "data": [
+        "Indian Pines (IPds) (Grana et al. 2014)",
+        "Salina (Sds) (Grana et al. 2014)",
+        "Pavia Center (PCds) (Grana et al. 2014)"
+      ]
+    },
+    "experiment_4": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Exp4: SPPF Comparison with PSO-FCM. Compares the proposed SPPF model against the baseline PSO-FCM model in terms of classification accuracy, stability (standard deviation), and runtime efficiency.",
+      "strategy": "10 runs applying the SPPF model and PSO-FCM; stopping criteria is 100 generations or 15 generations without improvement. SVM classifier with radial basis function kernel, 5-fold cross-validation for kernel parameter tuning.",
+      "data": [
+        "Indian Pines (IPds) (Grana et al. 2014)",
+        "Salina (Sds) (Grana et al. 2014)",
+        "Pavia Center (PCds) (Grana et al. 2014)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analyzes the impact of NBR on Overall Accuracy (OA) and Average Accuracy (AA) for different numbers of selected bands.",
+      "metrics": [
+        "Overall Accuracy (OA)",
+        "Average Accuracy (AA)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard Deviation (SD)"
+      ],
+      "test": "Simple comparison (greater than / less than)",
+      "results": {
+        "Tables": {
+          "Table VII": {
+            "caption": "Exp1. NBR effect on performance",
+            "reason": "Shows the OA and AA with and without NBR for all runs and runs with n >= 15.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation (SD)"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "Exp1. NBR performance on IPds",
+            "reason": "Visualizes the OA and AA across different numbers of selected bands with and without NBR.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Analyzes the performance of HE, CT, WS, and Rank selection methods across the four distance metrics.",
+      "metrics": [
+        "Overall Accuracy (OA)",
+        "Average Accuracy (AA)"
+      ],
+      "statistics": [
+        "Mean"
+      ],
+      "test": "Simple comparison (highest value)",
+      "results": {
+        "Tables": {
+          "Table IX": {
+            "caption": "Exp2a. Sp Euclidean Distance",
+            "reason": "Shows OA and AA for the selection methods using Sp-ED.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Table X": {
+            "caption": "Exp2b. Sp KL-Divergence",
+            "reason": "Shows OA and AA for the selection methods using Sp-KL.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Table XI": {
+            "caption": "Exp2c. Sp Disjoint Information",
+            "reason": "Shows OA and AA for the selection methods using Sp-DI.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Table XII": {
+            "caption": "Exp2d. Sp KL Divergence-L1Norm",
+            "reason": "Shows OA and AA for the selection methods using Sp-KL-L1.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Figures": {},
+        "Text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Analyzes the classification accuracy, entropy of selected bands, and computational runtime/overhead of the four distance metrics.",
+      "metrics": [
+        "Overall Accuracy (OA)",
+        "Average Accuracy (AA)",
+        "Average Entropy",
+        "Runtime (s)",
+        "Overheads"
+      ],
+      "statistics": [
+        "Mean"
+      ],
+      "test": "Simple comparison",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "Exp3a. Accuracy on IPds",
+            "reason": "Shows OA and AA across different numbers of bands for the 4 distance metrics on IPds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 5": {
+            "caption": "Exp3b. Accuracy on Sds",
+            "reason": "Shows OA and AA across different numbers of bands for the 4 distance metrics on Sds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Salina (Sds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 6": {
+            "caption": "Exp3c. Accuracy on PCds",
+            "reason": "Shows OA and AA across different numbers of bands for the 4 distance metrics on PCds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 7": {
+            "caption": "Exp3d. Comparison of Entropy on PCds",
+            "reason": "Compares the average entropy of selected bands between Sp-ED and Sp-KL-L1.",
+            "metrics": [
+              "Average Entropy"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 8": {
+            "caption": "Exp3e. SPPF Efficiency",
+            "reason": "Shows the mean runtime and overheads for the distance metrics.",
+            "metrics": [
+              "Runtime (s)",
+              "Overheads"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_4"
+      ],
+      "reason": "Compares the classification accuracy, stability, and efficiency of SPPF against PSO-FCM, including statistical significance testing.",
+      "metrics": [
+        "Overall Accuracy (OA)",
+        "Average Accuracy (AA)",
+        "Runtime (s)",
+        "McNemar's |Z| value"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard Deviation (SD)"
+      ],
+      "test": "McNemar's test (p <= 0.05, |Z| >= 1.96)",
+      "results": {
+        "Tables": {
+          "Table XV": {
+            "caption": "Exp4d. McNemar's test",
+            "reason": "Provides the McNemar's test Z-values comparing SPPF and PSO-FCM across datasets and number of bands.",
+            "metrics": [
+              "McNemar's |Z| value"
+            ],
+            "statistics": [],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "McNemar's test (p <= 0.05, |Z| >= 1.96)"
+          }
+        },
+        "Figures": {
+          "Figure 9": {
+            "caption": "Exp4a. Accuracy on IPds",
+            "reason": "Shows OA and AA with standard deviation shading for SPPF vs PSO-FCM on IPds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation (SD)"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 10": {
+            "caption": "Exp4b. Accuracy on Sds",
+            "reason": "Shows OA and AA with standard deviation shading for SPPF vs PSO-FCM on Sds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation (SD)"
+            ],
+            "data": [
+              "Salina (Sds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 11": {
+            "caption": "Exp4c. Accuracy on PCds",
+            "reason": "Shows OA and AA with standard deviation shading for SPPF vs PSO-FCM on PCds.",
+            "metrics": [
+              "Overall Accuracy (OA)",
+              "Average Accuracy (AA)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation (SD)"
+            ],
+            "data": [
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          },
+          "Figure 12": {
+            "caption": "Exp4d: Efficiency",
+            "reason": "Compares the runtime efficiency of SPPF and PSO-FCM.",
+            "metrics": [
+              "Runtime (s)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Text": {
+          "Section IV.A.4": {
+            "value": "However, the overall trend (90 trials) is that SPPF significantly outperforms PSO-FCM on 56 trials; is significantly outperformed on 7 and for 30 trials there is no significant difference.",
+            "reason": "Summarizes the statistical significance results from the McNemar's test across all trials.",
+            "metrics": [
+              "McNemar's |Z| value"
+            ],
+            "statistics": [],
+            "data": [
+              "Indian Pines (IPds) (Grana et al. 2014)",
+              "Salina (Sds) (Grana et al. 2014)",
+              "Pavia Center (PCds) (Grana et al. 2014)"
+            ],
+            "test": "McNemar's test (p <= 0.05, |Z| >= 1.96)"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "For a lower number of bands selected (n <= 15), the results are inconclusive. However, for Sds, the disadvantage of NBR was clearer... However, there was a positive advantage on IDds and Sds when n > 15. Inclusion or omission of a singular high-entropy band to a cluster has a more significant impact when n is low.",
+      "reason": "The authors interpret the NBR results, noting that while it helps for larger numbers of bands, it can be detrimental or inconclusive for smaller subsets due to the high impact of single bands."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "It is clear that CT and WS exhibit good performance across all distance metrics, suggesting the importance of a similarity within the metric.",
+      "reason": "The authors conclude from Exp2 that Central Tendency (CT) and Weighted-sun Criterion (WS) are the most robust selection methods, highlighting the need to consider similarity."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Sp-KL-L1 shows superior and more stable performance compared to Sp-KL, highlighting the advantage of considering the relative entropy of the SPs between bands rather than the aggregated mean values... the overhead of the Sp-ED is relatively low and the mean runtime competes with the SP-DI. As such, the Sp-ED seems more efficient whilst the SP-KL-L1 shows best performance.",
+      "reason": "The authors interpret the trade-offs between the distance metrics, finding Sp-KL-L1 best for accuracy but Sp-ED best for efficiency."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "SPPF significantly outperforms PSO-FCM for IPds, particularly for n = 20, 30... the overall trend (90 trials) is that SPPF significantly outperforms PSO-FCM on 56 trials... it is clear that PSO-FCM is on average more efficient across all 3 datasets with the difference more significant for datasets with a higher number of pixels, despite the introduction of Sps.",
+      "reason": "The authors interpret the final comparison, confirming that SPPF generally provides better and more stable classification accuracy than PSO-FCM, though at the cost of computational efficiency."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_2",
+        "hypothesis_3"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The results highlighted the benefits of removing noisy bands, different distance measures and different cluster-representative selection techniques.",
+      "reason": "The authors conclude in Section V that their investigations into NBR, distance metrics, and selection techniques successfully demonstrated benefits for the band selection process, supporting their hypotheses."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "Further, SPPF enhanced performance over PSO-FCM but was less efficient.",
+      "reason": "The authors conclude in Section V that integrating spatial information via SPPF successfully improves classification performance over the baseline PSO-FCM, supporting H1, while acknowledging the efficiency trade-off."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How can the efficiency and scalability of the SPPF method be improved?",
+        "note": "Section V. Conclusion",
+        "reason": "The authors explicitly state that future work will focus on 'improving efficiency' and 'particularly with respect to scalability', addressing the main drawback found in their study."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How does the SPPF method compare with other State-of-the-Art band selection methods on a wider variety of datasets?",
+        "note": "Section V. Conclusion",
+        "reason": "The authors state that future work will include 'testing on further datasets and comparison with other State-of-the-Art BS methods'."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

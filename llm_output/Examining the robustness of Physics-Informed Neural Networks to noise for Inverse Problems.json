@@ -1,0 +1,408 @@
+
+{
+  "Meta": {
+    "title": "Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems",
+    "authors": [
+      "Aleksandra Jekic",
+      "Afroditi Natsaridou",
+      "Signe Riemer-Sørensen",
+      "Helge Langseth",
+      "Odd Erik Gundersen"
+    ],
+    "year": 2025,
+    "venue": "arXiv"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How does the performance of Physics-Informed Neural Networks (PINNs) compare to a traditional approach using the finite element method (FEM) combined with a numerical optimizer in solving inverse problems with varying levels of noise and data availability?",
+      "reason": "Found in the Abstract and Section 1.1: 'We compare the performance of PINNs in solving inverse problems with that of a traditional approach using the finite element method combined with a numerical optimizer. The models are tested on a series of increasingly difficult fluid mechanics problems, with and without noise.'"
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "What are the common failures and limitations of PINNs when trained on noisy inverse problems?",
+      "reason": "Found in the Abstract and Section 1.1: 'We identify common failures during training to be addressed if the performance of PINNs on noisy inverse problems is to become more competitive.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that Physics-Informed Neural Networks (PINNs) are effective at solving inverse problems and are robust to noisy or incomplete data compared to traditional standard methods.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Found in Section 1.1: 'We explore the claim that PINNs are effective at inverse problems... Our purpose is to compare PINNs to a similarly easily accessible but reasonable choice of standard methods, without extensive tuning.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the relative performance of PINNs improves with higher dimensional problems and with increased amounts of training data available.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Found in Section 1.1 (Contributions): 'We find that the relative performance of PINNs appears to improve with higher dimensional problems... and with increased amounts of training data available.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Comparing PINN, PINN/FEM, and FEM/SLSQP models on estimating the viscosity parameter in the 1D Burgers' equation with varying levels of Gaussian noise.",
+      "strategy": "Random split (train = 0.10, validation = 0.02, test = 0.88) with 30 random initializations per model.",
+      "data": [
+        "1D Burgers' equation dataset (Raissi et al. 2019)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Comparing PINN, PINN/FEM, and FEM/SLSQP models on estimating the viscosity parameter in the 2D Navier-Stokes equations (Taylor-Green Vortex) with varying levels of Gaussian noise.",
+      "strategy": "Random split (train = 0.0126, validation = 0.0025, test = 0.9849) with 5 random initializations per model.",
+      "data": [
+        "2D Taylor-Green Vortex analytical solution data (This work)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Comparing PINN, PINN/FEM, and FEM/SLSQP models on estimating the viscosity parameter in the 3D Navier-Stokes equations (Taylor-Green Vortex) with varying levels of Gaussian noise.",
+      "strategy": "Random split (train = 0.2727, validation = 0.091, test = 0.6364) with 5 random initializations per model.",
+      "data": [
+        "3D Taylor-Green Vortex data generated using Nektar++ (Cantwell et al. 2015)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluate the prediction accuracy and parameter discovery accuracy of the models on the 1D Burgers' equation across different noise levels, and analyze the loss history during training.",
+      "metrics": [
+        "RMSE",
+        "Parameter value (viscosity)",
+        "Data loss",
+        "Physics loss",
+        "Validation loss",
+        "Test loss"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": "Simple comparison (visual inspection of mean and standard deviation bounds)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 1": {
+            "caption": "Results for 1D Burgers’ equation on test set based on 30 runs of each model. Top left: Prediction accuracies, σ ∈ [0, 2]. Top right: Prediction accuracies, σ ∈ [3, 25]. Bottom left: Parameter accuracies, σ ∈ [0, 3]. Bottom right: Parameter accuracies, σ ∈ [5, 7].",
+            "reason": "Shows the prediction and parameter accuracies for the 1D Burgers' equation experiment.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "1D Burgers' equation dataset (Raissi et al. 2019)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          },
+          "Figure 2": {
+            "caption": "1D Burgers’ equation loss history from training and parameter history from training. Note that the validation data, like the training data, has noise added to it which can explain the similar performance of their losses on high noise levels. Top left: Loss history during PINN training, σ = 0. Top right left: Loss history for σ = 1. Bottom left: Loss history for σ = 7. Bottom right: Parameter learning history for σ = 1.",
+            "reason": "Shows the loss history and parameter learning history to identify training failures.",
+            "metrics": [
+              "Data loss",
+              "Physics loss",
+              "Validation loss",
+              "Test loss",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [],
+            "data": [
+              "1D Burgers' equation dataset (Raissi et al. 2019)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        },
+        "Text": {
+          "Section 4.1.2": {
+            "value": "Despite many of our tests being on extreme levels of noise, we can still observe that FEM/SLSQP generally outperforms both PINN and PINN/FEM. However for σ > 0, FEM/SLSQP and PINN/FEM are always within each other’s standard deviation.",
+            "reason": "Describes the statistical overlap and general performance trend between the models.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "1D Burgers' equation dataset (Raissi et al. 2019)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Evaluate the prediction accuracy and parameter discovery accuracy on the 2D Taylor-Green Vortex across different noise levels, and analyze the loss history.",
+      "metrics": [
+        "RMSE",
+        "Parameter value (viscosity)",
+        "Data loss",
+        "Physics loss",
+        "Validation loss",
+        "Test loss"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": "Simple comparison (visual inspection of mean and standard deviation bounds)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "Results for 2D Taylor-Green vortex. Top left: Prediction accuracies, σ ∈ [0, 0.05]. Top right: Prediction accuracies, σ ∈ [0.1, 1]. Bottom left: Parameter accuracies, σ ∈ [0, 0.05]. Bottom right: Parameter accuracies, σ ∈ [0.05, 1].",
+            "reason": "Shows the prediction and parameter accuracies for the 2D Taylor-Green Vortex experiment.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "2D Taylor-Green Vortex analytical solution data (This work)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          },
+          "Figure 4": {
+            "caption": "2D Taylor-Green vortex training history. Note that the validation data may contain noise which can explain bad validation loss performance. Top left: Loss history during PINN training, σ = 0. Top right: Loss history for σ = 1. Bottom left: Parameter learning history, σ = 0. Bottom right: Parameter learning history, σ = 1.",
+            "reason": "Shows the loss history and parameter learning history to identify training failures in 2D.",
+            "metrics": [
+              "Data loss",
+              "Physics loss",
+              "Validation loss",
+              "Test loss",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [],
+            "data": [
+              "2D Taylor-Green Vortex analytical solution data (This work)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        },
+        "Text": {
+          "Section 4.2.2": {
+            "value": "Figure 3 shows that FEM outperforms and is more reliable than any of the two PINN models for all tested noise levels for 2D Taylor-Green Vortex. In this case, it is much clearer that FEM/SLSQP is best than it was for 1D Burgers’ equation.",
+            "reason": "Describes the clear outperformance of FEM over PINN in the 2D case.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "2D Taylor-Green Vortex analytical solution data (This work)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Evaluate the prediction accuracy and parameter discovery accuracy on the 3D Taylor-Green Vortex across different noise levels, and analyze the loss history.",
+      "metrics": [
+        "RMSE",
+        "Parameter value (viscosity)",
+        "Data loss",
+        "Physics loss",
+        "Validation loss",
+        "Test loss"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": "Simple comparison (visual inspection of mean and standard deviation bounds)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 5": {
+            "caption": "Results for 3D Taylor-Green vortex. Top left: Prediction accuracies, σ ∈ [0, 0.01]. Top right: Prediction accuracies, σ ∈ [0.05, 1]. Bottom left: Parameter accuracies, σ ∈ [0, 0.1]. Bottom right: Parameter accuracies, σ ∈ [0.05, 1].",
+            "reason": "Shows the prediction and parameter accuracies for the 3D Taylor-Green Vortex experiment.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "3D Taylor-Green Vortex data generated using Nektar++ (Cantwell et al. 2015)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          },
+          "Figure 6": {
+            "caption": "3D Taylor-Green vortex training histories. Note that the validation data may contain noise which can explain bad validation loss performance. Left: Loss history for PINN, σ = 1 Right: Parameter learning history, σ = 1.",
+            "reason": "Shows the loss history and parameter learning history to identify training failures in 3D.",
+            "metrics": [
+              "Data loss",
+              "Physics loss",
+              "Validation loss",
+              "Test loss",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [],
+            "data": [
+              "3D Taylor-Green Vortex data generated using Nektar++ (Cantwell et al. 2015)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        },
+        "Text": {
+          "Section 4.3.2": {
+            "value": "Relative to FEM/SLSQP, PINN performs better with higher noise in 3D. This is likely due to the much larger amount of training data.",
+            "reason": "Describes the relative improvement of PINN in 3D compared to 2D.",
+            "metrics": [
+              "RMSE",
+              "Parameter value (viscosity)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "3D Taylor-Green Vortex data generated using Nektar++ (Cantwell et al. 2015)"
+            ],
+            "test": "Simple comparison (visual inspection of mean and standard deviation bounds)"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The FEM/SLSQP baseline generally outperforms PINNs on the 1D Burgers' equation with noisy data. PINNs exhibit a 'reward hacking' phenomenon where they underestimate the viscosity to artificially lower the physics loss, converging to a suboptimal solution.",
+      "reason": "Based on Section 4.1.2 and Section 5.1, where the authors note FEM's superiority and describe how PINNs decrease the loss significantly by making the unknown viscosity smaller, leading to an incorrect differential equation."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "In the 2D Taylor-Green Vortex, FEM/SLSQP clearly and reliably outperforms PINNs across all noise levels. With increasing noise, the adaptive weighting algorithm causes the physics loss to explode, failing to constrain the noise.",
+      "reason": "Based on Section 4.2.2 and Section 5.2, where the authors observe that PINNs disregard the physics loss and let it grow by several magnitudes due to the adaptive weight algorithm."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "In the 3D Taylor-Green Vortex, PINNs perform relatively better with high noise compared to the 2D case, likely due to the larger amount of training data available, which counteracts some of the issues seen in 2D.",
+      "reason": "Based on Section 4.3.2 and Section 5.3, where the authors note that PINN performs better with high noise in 3D than 2D, hypothesizing that the higher amount of data counteracts the issues."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        false
+      ],
+      "value": "The authors conclude that a simple baseline using FEM and an optimizer largely outperforms PINNs on noisy inverse problems, contradicting the claim that PINNs are highly effective for noisy data without extensive tuning. However, PINNs require less manual labor and specialized knowledge.",
+      "reason": "Found in Section 6 (Conclusion): 'Through three different experiments, we have observed that a simple baseline using FEM and an optimizer, largely outperforms PINNs on noisy inverse problems.'"
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "The authors identify two main difficulties limiting PINN performance on noisy inverse problems: 'reward hacking' where parameter learning is biased by the optimization process, and the breakdown of adaptive weighting with noisy training data, causing the physics loss to fail to constrain noise.",
+      "reason": "Found in Section 6 (Conclusion): 'We have identified two difficulties which appear to limit the performance of PINNs on noisy inverse problems. There is a \"reward hacking\" phenomenon... Adaptive weighting also tends to break down with noisy training data.'"
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that PINNs scale better with more difficult problems and that loss-based physics regularization works better when more training data is available.",
+      "reason": "Found in Section 6 (Conclusion): 'We have also found that relative to the baseline, the loss-based physics regularization appears to work better when more training data is available and that PINNs scale better with more difficult problems.'"
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How can we identify the best PINN model during training on noisy inverse problems without relying on a test loss?",
+        "note": "Suggested in Section 5.1 (Discussion).",
+        "reason": "The authors state: 'Finding a way without a test loss to identify this point from the relationship between the losses, may allow for developing early stopping approaches tailored for PINNs...'"
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "The authors hypothesise that developing new early stopping strategies tailored for PINNs will make the models more competitive on noisy inverse problems.",
+        "note": "Suggested in Section 6 (Conclusion).",
+        "reason": "The authors state: 'Developing new early stopping strategies for PINNs may be crucial to make the models more competitive on noisy inverse problems.'"
+      }
+    }
+  }
+}

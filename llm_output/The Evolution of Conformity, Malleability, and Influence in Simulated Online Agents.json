@@ -1,0 +1,369 @@
+
+{
+  "Meta": {
+    "title": "The Evolution of Conformity, Malleability, and Influence in Simulated Online Agents",
+    "authors": [
+      "Keith L. Downing"
+    ],
+    "year": 2023,
+    "venue": "Artificial Life"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How do local forces of peer-to-peer persuasion, alone and in combination with systems of wider scope like recommenders and predictors, affect the emergence of global conformity and polarization?",
+      "reason": "In Section 1 (Introduction, p. 396), the author states: 'This article presents a very abstract model of social influence in an attempt to explore the emergence of global conformity from the local forces of peer-to-peer persuasion, alone and in combination with systems of wider scope: recommenders and predictors.'"
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Does the combination of basic agents and a self-interested AI predictor yield an emergent positive feedback loop that drives the agent population to complete conformity?",
+      "reason": "In the Abstract (p. 394) and Section 1, the author motivates the study by focusing on the 'emerging positive feedback loop and the compliance that fuels it', specifically asking if a predictor AI can drive the population to conformity."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that collaborative filtering (matchmakers) exerts a weaker homogenizing force than expected, leading to polarization (multiple poles) rather than complete homogeneity, unless coupled with random peer interactions.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In the Abstract (p. 394), the author notes 'collaborative filtering exerts a weaker homogenizing force than expected.' In Section 5 (p. 408), the author contrasts the 'naive assumption' that matchmakers easily drive populations to homogeneity with the model's actual outcome of stable diversity (cliques)."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the presence of a predictive AI agent creates a positive feedback loop where declining diversity simplifies the predictor's learning problem, thereby increasing its influence and further reducing diversity toward complete conformity.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In Section 6 and 7 (p. 415), the author describes the positive feedback loop (Figure 10) where 'declining diversity simplifies the learning problem of the predictor, which can then exert a stronger influence on the population... reducing diversity even more'."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [],
+      "experiment_description": "Simulation of a basic model of social influence involving purely local, peer-to-peer interactions to observe the emergence of diversity, polarization, or conformity based on similarity and difference trigger proximities.",
+      "strategy": "Simulation (T = 250,000 timesteps, P = 50 agents, 25 runs per scenario)",
+      "data": [
+        "Randomly initialized attribute and behavior vectors (This work)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Simulation of a matchmaker enhancement where a global recommender system selects the influencer most similar to the source using K-nearest-neighbor matching, with varying levels of stochasticity (chance of random pairings).",
+      "strategy": "Simulation (T = 250,000 timesteps, P = 50 agents, 25 runs per scenario, K=1 or 8, epsilon=0 or 0.05)",
+      "data": [
+        "Randomly initialized attribute and behavior vectors (This work)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Simulation of a predictor agent that uses a neural network to map attributes to behaviors, caching training cases from encounters, and influencing agents toward its static goal vector based on its predictive accuracy.",
+      "strategy": "Simulation (T = 250,000 timesteps, P = 50 agents including 1 predictor, 25 runs per scenario, varying learning rates and trigger proximities)",
+      "data": [
+        "Randomly initialized attribute and behavior vectors (This work)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analyze the time series of population diversity and the onset of positive/negative peer influence under different trigger proximities in the basic peer-to-peer model.",
+      "metrics": [
+        "Population diversity (Δp)",
+        "Number of positive/negative peer influences per epoch"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Visual comparison of time series graphs"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Time series of population diversity (Δp) averaged over 25 runs for three different scenarios of the basic model of social influence.",
+            "reason": "Shows the emergent diversity, multimodal polarity, or perfect homogeneity based on the basic peer-to-peer model parameters.",
+            "metrics": [
+              "Population diversity (Δp)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          },
+          "Figure 3": {
+            "caption": "For the divergent (top left) diagram of Figure 2... the fall, then rise of diversity correlates with the onset of (left) positive peer influence, followed later by that of (right) negative peer influence.",
+            "reason": "Illustrates the underlying dynamics of positive and negative peer influence over time.",
+            "metrics": [
+              "Number of positive/negative peer influences per epoch"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Analyze the effect of K-nearest-neighbor matching and stochasticity on population diversity in the matchmaker model.",
+      "metrics": [
+        "Population diversity (Δp)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Visual comparison of time series graphs"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Time series of population diversity (Δp) averaged over 25 runs for three different scenarios of the matchmaker-enhanced influence model.",
+            "reason": "Demonstrates that strict matchmaking leads to stable diversity (cliques), while adding stochasticity (epsilon = 0.05) leads to full convergence.",
+            "metrics": [
+              "Population diversity (Δp)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Analyze the effect of a predictor agent's learning rate and peer influence triggers on population diversity, prediction error, and peer influence counts.",
+      "metrics": [
+        "Population diversity (Δp)",
+        "Prediction error (E)",
+        "Number of positive/negative peer influences per epoch"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Visual comparison of time series graphs"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 6": {
+            "caption": "A collection of 25-run averages of diversity for predictor-model runs with θ2 = 27◦, θ1 ∈ {9◦, 18◦, 27◦}, and λ ∈ {0.01, 0.1}.",
+            "reason": "Shows how the presence of a predictor agent affects population diversity under various parameter settings.",
+            "metrics": [
+              "Population diversity (Δp)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          },
+          "Figure 7": {
+            "caption": "A collection of 25-run averages of prediction error for predictor-model runs...",
+            "reason": "Demonstrates the learning progress (error reduction) of the predictor agent over time.",
+            "metrics": [
+              "Prediction error (E)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          },
+          "Figure 8": {
+            "caption": "The 25-run averages of positive and negative peer influence for the first two scenarios summarized in the upper rows of Figures 6 and 7.",
+            "reason": "Shows the interplay between positive and negative peer influences when a predictor is present.",
+            "metrics": [
+              "Number of positive/negative peer influences per epoch"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          },
+          "Figure 9": {
+            "caption": "The 25-run averages of positive and negative peer influence for the third and fourth scenarios summarized in the lower rows of Figures 6 and 7.",
+            "reason": "Shows how a higher learning rate for the predictor restrains negative peer influence.",
+            "metrics": [
+              "Number of positive/negative peer influences per epoch"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Randomly initialized attribute and behavior vectors (This work)"
+            ],
+            "test": [
+              "Visual comparison of time series graphs"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Local interactions between basic agents can decrease diversity to either polarization or complete homogeneity, but only when the positive forces of peer influence (homophily) outweigh the negative (repulsion).",
+      "reason": "In Section 4 (p. 406-407), the author interprets the basic model results, noting that homophily must dominate repulsion for conformity to emerge, and even then, complete homogeneity is not guaranteed."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Automated systems that algorithmically select influencers for maximum match (matchmakers) do not produce homogeneity on their own; instead, they form multiple islands of similarity. However, when coupled with normal random interactions (stochasticity), these clusters merge into complete homogeneity.",
+      "reason": "In Section 5 (p. 409), the author interprets the matchmaker results, stating that strict matching resists mergers, but adding a small probability of random interaction (epsilon) successfully combats the trend toward diversity."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "The predictor agent tips the scales in favor of convergence. A stronger predictor (higher learning rate) can beat negative influence to the punch, establishing a sustainable level of conformity. Declining diversity simplifies the predictor's learning problem, allowing it to exert stronger influence.",
+      "reason": "In Section 6 (p. 414-415), the author notes that the predictor pulls CCVs toward the same target, abating conflict. The results suggest a positive feedback loop where declining diversity aids the predictor's learning, which in turn drives further conformity."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that recommender systems and other forms of personalization do not necessarily lead to polarization or homogeneity on their own. Instead, they combine with normal human social tendencies (random peer interactions) to promote conformity. Neither force can do it all alone except in highly unlikely scenarios.",
+      "reason": "In Section 7 (p. 416-417), the author reflects on the matchmaker results, supporting the hypothesis that collaborative filtering is a weaker homogenizing force than expected unless combined with random interactions."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that the combination of multi-directional peer influence and goal-driven, predictor-based nudges provides an abstract example of 'the Loop'. The positive feedback loop emerges as declining diversity simplifies prediction, which enhances influence, further reducing diversity.",
+      "reason": "In Section 7 (p. 415), the author explicitly states that the results provide good evidence that the causal influences work in both directions, producing an abstract example of the Loop and its emergence, supporting the second hypothesis."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How does the introduction of temporality into prediction (e.g., predicting future minute-by-minute actions) affect the dynamics of influence and diversity?",
+        "note": "Suggested in Section 7 (Conclusion), p. 417.",
+        "reason": "The author suggests that adding temporality to prediction would allow goal-directed agents to ascertain and exploit future behaviors, requiring a shift in granularity to minute-by-minute actions."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_2"
+        ],
+        "value": "How does the incorporation of spatial dimensions or explicit graph models (networks) constrain the exposure of the predictor and affect its performance and the population's vulnerability?",
+        "note": "Suggested in Section 7 (Conclusion), p. 417.",
+        "reason": "The author notes that agent-based models often incorporate spatial dimensions to increase realism, and dynamic links based on evolving compatibilities would provide tangible evidence of clustering and constrain predictor exposure."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How do decision-making systems with both reactive (impulsive) and contemplative (reasoned) options affect the competition among multiple online entities for attentional resources?",
+        "note": "Suggested in Section 7 (Conclusion), p. 418.",
+        "reason": "The author discusses Tristan Harris's concept of the 'race to the bottom of the brainstem' and suggests modeling decision-making systems that trade off between impulsive and reasoned behavior."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "The authors hypothesise that the topology of the interaction network constrains the exposure of the predictor, such that a predictor restricted to friend links will lose global significance if agents form tight cliques with no external connections.",
+        "note": "Suggested in Section 7 (Conclusion), p. 417-418.",
+        "reason": "The author explicitly provides this as an example of what a spatially-enhanced or network-based model could reveal about the dependence of a predictor's performance upon network structure."
+      }
+    }
+  }
+}
