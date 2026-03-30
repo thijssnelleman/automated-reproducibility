@@ -103,7 +103,7 @@
         "Simple comparison (decrease in number of optima)"
       ],
       "results": {
-        "tables": {
+        "Tables": {
           "Table 1": {
             "caption": "Datasets used in this study, sorted by number of features (n). We present the number of examples m, as well as the number of local optima |L| and global optima |G| for various values of the regularization term epsilon. We highlight in bold the two datasets that we analyze further in Section 4.2.",
             "reason": "Presents the exact counts of optima for all datasets and epsilon values.",
@@ -131,7 +131,7 @@
             ]
           }
         },
-        "figures": {},
+        "Figures": {},
         "text": {
           "Section 4.1": {
             "value": "The first thing to notice is the nontrivial number of optima |L| for all datasets... As we increase the fitness penalty on the number of features in the fitness function h, we indirectly reshape the landscape since the model prefers bitstrings with fewer bits sets to 1. Although the expected behavior is a decrease in the number of optima, the decrease is quite significant but highly variable between datasets.",
@@ -169,7 +169,7 @@
         "Simple comparison (changes in optima location and energy)"
       ],
       "results": {
-        "tables": {
+        "Tables": {
           "Table 2": {
             "caption": "The tree lowest-energy optima in 4-glass and 5-heart-c datasets, for regularization values epsilon = 0 (top three rows in sub-table) and epsilon = 1/8 (bottom three rows). Redundant or unimportant features are highlighted on each group when there is a tie...",
             "reason": "Shows the specific bitstrings, energy, and accuracy for the lowest-energy optima.",
@@ -190,7 +190,7 @@
             ]
           }
         },
-        "figures": {
+        "Figures": {
           "Figure 1": {
             "caption": "Hinged bitstring map (HBM) of the 4-glass dataset with 9 features. The plot at the top illustrates the landscape with epsilon = 0, while the plot at the bottom shows the landscape when epsilon = 1/8. Local and global optima are highlighted with a blue and red outline, respectively.",
             "reason": "Visualizes the landscape changes for 4-glass.",
@@ -262,8 +262,8 @@
         "Visual inspection of distribution"
       ],
       "results": {
-        "tables": {},
-        "figures": {
+        "Tables": {},
+        "Figures": {
           "Figure 4": {
             "caption": "Hexagonal binned plot of the Hamming distance from all local optima to their closest global optimum. Each bin aggregates distance counts, where a darker shade means more local optima are at that given distance to the global optimum.",
             "reason": "Shows the distribution of Hamming distances.",

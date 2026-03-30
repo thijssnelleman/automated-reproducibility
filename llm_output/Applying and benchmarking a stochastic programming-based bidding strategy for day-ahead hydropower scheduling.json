@@ -83,7 +83,7 @@
       ],
       "test": "Direct comparison of aggregated totals and relative differences.",
       "results": {
-        "tables": {
+        "Tables": {
           "Table 1": {
             "caption": "Daily grand total: presented as the relative change with respect to the operator result, aggregated per two-week period. In the final row, Equation (5) is applied to the sum of the nine periods",
             "reason": "Shows the overall performance comparison between the methods.",
@@ -149,7 +149,7 @@
             ]
           }
         },
-        "figures": {
+        "Figures": {
           "Figure 5": {
             "caption": "Daily grand total for all days tested in the rolling horizon benchmark, including the daily average realized price. The x-axis labels indicate the start dates for each two-week period",
             "reason": "Visualizes daily performance.",
@@ -220,7 +220,7 @@
       ],
       "test": "Direct comparison of metric scores.",
       "results": {
-        "tables": {
+        "Tables": {
           "Table 5": {
             "caption": "Comparing the different price forecasts. The values shown are the mean values over all days in our test period (from 2023-09-07 to 2024-01-10). Mean(standard deviation)",
             "reason": "Presents the scenario evaluation metrics.",
@@ -243,7 +243,7 @@
             ]
           }
         },
-        "figures": {},
+        "Figures": {},
         "text": {
           "Section 5.6": {
             "value": "the ensemble forecasts have smaller energy score than the in-house method, which is consistent with our benchmarking results where the ensemble has the best performance.",
@@ -278,8 +278,8 @@
       ],
       "test": "Qualitative assessment",
       "results": {
-        "tables": {},
-        "figures": {},
+        "Tables": {},
+        "Figures": {},
         "text": {
           "Section 6": {
             "value": "During the real-time testing period, we observed that operators predominantly chose their own bids... operators ended up sometimes choosing the stochastic bids for the simpler systems (one-reservoir, one-plant) but almost never for the more complex cascades.",
