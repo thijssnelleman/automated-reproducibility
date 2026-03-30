@@ -1,0 +1,245 @@
+{
+  "Meta": {
+    "title": "The Unreasonable Effectiveness of Open Science in AI: A Replication Study",
+    "authors": [
+      "Odd Erik Gundersen",
+      "Odd Cappelen",
+      "Martin Mølna",
+      "Nicklas Grimstad Nilsen"
+    ],
+    "year": 2025,
+    "venue": "Association for the Advancement of Artificial Intelligence (AAAI)"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "What is important in ensuring the reproducibility of artificial intelligence research?",
+      "reason": "Found in the Introduction section: 'The purpose of this study is to shed light on what is important in ensuring the reproducibility of artificial intelligence research.'"
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "Which of the problems encountered during reproduction lead to irreproducible studies?",
+      "reason": "Found in the Introduction section under main contributions: '...analyzing which of the problems lead to irreproducible studies.'"
+    },
+    "research_question_3": {
+      "explicit": false,
+      "value": "What is the reproducibility rate of highly cited empirical AI research when data, or both code and data, are available?",
+      "reason": "Implied in the Introduction section under main contributions: 'We estimate the reproducibility of AI research to be 33% when data from the original experiment are available and 86% when both code and data are available.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that sharing both code and data significantly increases the reproducibility of AI research.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "reason": "Implied in the Introduction section where the authors state their contribution of 'Empirically establishing the importance of sharing both code and data to ensure the reproducibility of AI research.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the quality of data documentation has a higher correlation with reproducibility than the quality of code documentation.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "Implied in the Introduction section where they list their findings: 'We also found that the quality of the data documentation has a higher correlation with reproducibility than the quality of the code documentation.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "A systematic replication study attempting to reproduce 30 highly cited empirical AI studies from 2012, 2014, and 2016. The authors spent up to 40 hours per study to reproduce at least one experiment, classifying the studies based on the availability of code and data (R3 for data only, R4 for code and data).",
+      "strategy": "Maximum 40 hours of focused work per study. Re-implement methods and experiments from scratch using the same programming language and libraries if specified. Focus on one experiment at a time.",
+      "data": [
+        "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To determine the reproducibility rate of the studies and identify which types of problems are most relevant for distinguishing between reproducible and non-reproducible studies.",
+      "metrics": [
+        "Reproducibility success rate",
+        "True Positive Rate (TPR) of problem types",
+        "Logistic regression weights (w_i)"
+      ],
+      "statistics": [
+        "Percentages",
+        "Counts"
+      ],
+      "test": "Logistic regression (binary classification on reproducibility result)",
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Overview of the results from the reproducibility studies where Compl. is Completed, Ident. is Identical, Cons. is Consistent and Fail. is Failures. Results of the reproducibility studies can be Success (S), Partial Success (PS), Failed (F), No Result (NR), and Not Started (NS).",
+            "reason": "Shows the detailed reproducibility outcomes for the 22 attempted studies.",
+            "metrics": [
+              "Reproducibility success rate"
+            ],
+            "statistics": [
+              "Percentages"
+            ],
+            "data": [
+              "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+            ],
+            "test": [
+              "Comparison"
+            ]
+          },
+          "Table 2": {
+            "caption": "Problem ID, the source of the problem, description of the problem, how many times we encountered the problem, the true positive rate (TPR) and the weights of a logistic regression performing a binary classification on reproducibility result.",
+            "reason": "Identifies the problems encountered and their correlation with irreproducibility.",
+            "metrics": [
+              "True Positive Rate (TPR) of problem types",
+              "Logistic regression weights (w_i)"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+            ],
+            "test": [
+              "Logistic regression (binary classification on reproducibility result)"
+            ]
+          },
+          "Table 3": {
+            "caption": "Results grouped by reproducibility type: Success (S), Partial Success (PS), Failure (F), No Result (NR), Inclusive Success (IS) and Inclusive Failure (IF).",
+            "reason": "Summarizes the success rates based on whether only data (R3) or both code and data (R4) were shared.",
+            "metrics": [
+              "Reproducibility success rate"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+            ],
+            "test": [
+              "Comparison"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "Overview of the results.",
+            "reason": "Visually illustrates the reproducibility results per type and the reproducibility types per result.",
+            "metrics": [
+              "Reproducibility success rate"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+            ],
+            "test": [
+              "Comparison"
+            ]
+          }
+        },
+        "Text": {
+          "Section Results": {
+            "value": "We reproduced 11 out of 22 studies successfully (six) or partially (five), while we did not reproduce six and obtained no result for five, leading to a success rate of 50% for those we started.",
+            "reason": "States the overall reproducibility success rate.",
+            "metrics": [
+              "Reproducibility success rate"
+            ],
+            "statistics": [
+              "Percentages",
+              "Counts"
+            ],
+            "data": [
+              "30 highly cited empirical AI articles from Scopus (2012, 2014, 2016)"
+            ],
+            "test": [
+              "Comparison"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Sharing both code and data increases the chance of reproducing results immensely. For R3 studies where only data is shared, the probability of a successful reproducibility (IS) study is only 33%... while for R4 studies where both data and code is shared, reproducibility increases to 86%.",
+      "reason": "Interprets the results from Table 3 and Figure 2 regarding the effectiveness of sharing code and data, found in the Results section."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Problems with documenting the data work are the most important source of irreproducibility. This is further emphasized by the fact that both the weights of logistic regression and TPR indicate that problem types P15 and P18 characterize irreproducible research.",
+      "reason": "Interprets the logistic regression weights and TPR from Table 2 to identify the main causes of irreproducibility, found in the Results section."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Problems related to the quality of the documentation of code, whether it is partially missing or not versioned, are not important for successful replication as long as code is shared.",
+      "reason": "Interprets the lack of correlation between code documentation problems and irreproducibility, found in the Results section."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that open science is highly effective. Sharing both code and data publicly is extremely important to ensure reproducibility (86% success vs 33%). They also conclude that documenting data work is extremely important to ensure reproducibility, while documenting code is less so, as long as code is shared. They suggest that sharing both code and data should be the default expectation for published research.",
+      "reason": "Summarizes the main takeaways of the paper found in the Conclusion section, directly answering the research questions and supporting the hypotheses."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can researchers distinguish between which information is important and which is not when documenting experiments?",
+        "note": "Mentioned in the Discussion section.",
+        "reason": "The authors explicitly state this as a subject for future research because their current study does not provide further insight into it."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that the current trend of conducting experiments on Large Language Models (LLMs) without available code or training data will lead to results that are almost impossible to independently reproduce.",
+        "note": "Mentioned in the Conclusion section.",
+        "reason": "The authors express a 'worrisome trend' regarding LLMs, implying a strong hypothesis about their future irreproducibility due to closed data and code."
+      }
+    }
+  }
+}
