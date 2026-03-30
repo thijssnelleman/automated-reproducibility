@@ -56,7 +56,7 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 
 AutoMergeNet: AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies
 
-# Bram Renting ✅ -> ❌
+# Bram Renting ✅ -> ✅
 
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 

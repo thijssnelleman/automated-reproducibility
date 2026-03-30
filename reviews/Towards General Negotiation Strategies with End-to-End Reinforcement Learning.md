@@ -32,7 +32,7 @@ In Section 1 (Introduction) and Section 2 (Related Work), the authors discuss th
 Please grade the research question stated from the following options:
 
 The LLM ...
-[] captures the research question (nearly) perfectly.
+[X] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -46,13 +46,14 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
+Can a general RL-based negotiation strategy capable of dealing with various negotiation problems be learned using end-to-end reinforcement learning?
 
 
 ### General Research Questions questions
 
 The LLM has provided you with one or more research questions from your work. Is this the amount of research questions the same as the amount you specified or implied?
 
-Please write the amount of research questions you had for the study: []
+Please write the amount of research questions you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -75,7 +76,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -107,7 +108,7 @@ Please grade the hypothesis stated from the following options:
 
 The LLM ...
 [] captures the hypothesis (nearly) perfectly.
-[] has stated a hypothesis capturing the general spirit of our work.
+[X] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
 [] has stated a hypothesis similar to ours, but is far too innaccurate to consider correct.
@@ -126,7 +127,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 
 The LLM has provided you with zero or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -152,7 +153,7 @@ Compare the proposed GNN method to a recent end-to-end RL method by Higa et al. 
 The LLM ...
 [] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
-[] has described the experiment but has introduced false information or made mistakes
+[X] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
 
@@ -160,7 +161,7 @@ The LLM has found the following strategy or protocol for the experiment: Train f
 Your corrected answer (empty if correct):
 
 The LLM has found the following data (sets) used as input for the experiment: Fixed negotiation problem (This work), Baseline agents (This work), Higa et al. (2023)
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): Fixed negotiation problem (This work), Baseline agents (Lin et al., 2014)
 
 This experiment is used to answer the following research questions: research_question_1
 Your corrected list (empty if correct):
@@ -176,7 +177,7 @@ Train and evaluate the end-to-end method on randomly generated negotiation probl
 The LLM ...
 [] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
-[] has described the experiment but has introduced false information or made mistakes
+[X] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
 
@@ -184,7 +185,7 @@ The LLM has found the following strategy or protocol for the experiment: Train f
 Your corrected answer (empty if correct):
 
 The LLM has found the following data (sets) used as input for the experiment: Random negotiation problems (This work), Baseline agents (This work)
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): Random negotiation problems (This work), Baseline agents (Lin et al., 2014)
 
 This experiment is used to answer the following research questions: research_question_1
 Your corrected list (empty if correct):
@@ -200,7 +201,7 @@ Train and evaluate the end-to-end method on randomly generated negotiation probl
 The LLM ...
 [] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
-[] has described the experiment but has introduced false information or made mistakes
+[X] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
 [] Other. If it has hallucinated, please describe below.
 
@@ -208,7 +209,7 @@ The LLM has found the following strategy or protocol for the experiment: Train f
 Your corrected answer (empty if correct):
 
 The LLM has found the following data (sets) used as input for the experiment: Random negotiation problems (This work), Baseline agents (This work), ANAC 2022 agents (Aydoğan et al., 2023)
-Your corrected answer (empty if correct):
+Your corrected answer (empty if correct): Random negotiation problems (This work), Baseline agents (Lin et al., 2014), ANAC 2022 agents (Aydoğan et al., 2023)
 
 This experiment is used to answer the following research questions: research_question_1
 Your corrected list (empty if correct):
@@ -221,7 +222,7 @@ Your corrected list (empty if correct):
 
 The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of experiments you had for the study: []
+Please write the amount of experiments you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -240,7 +241,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-Corrected reason:
+Corrected reason: Compare the training curve as a sanity check and evaluation utility of the proposed method against Higa et al. (2023) on a fixed problem.
 
 This analysis is based on the following experiment(s) (outcomes): experiment_1
 Your corrected answer (empty if correct): 
@@ -305,7 +306,7 @@ The analysed results were found in the following locations:
 The LLM has overall captured the analysis details...
 
 [] Very well (No major mistakes and/or missing information)
-[] Well (Missing some information and/or minor mistakes)
+[X] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
@@ -320,7 +321,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-Corrected reason:
+Corrected reason: Evaluate the training curve as a sanity check and evaluation utility of the proposed method on random problems against baseline agents.
 
 This analysis is based on the following experiment(s) (outcomes): experiment_2
 Your corrected answer (empty if correct): 
@@ -384,7 +385,7 @@ The analysed results were found in the following locations:
 The LLM has overall captured the analysis details...
 
 [] Very well (No major mistakes and/or missing information)
-[] Well (Missing some information and/or minor mistakes)
+[X] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
@@ -399,7 +400,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-Corrected reason:
+Corrected reason: Evaluate the training curve as a sanity check and evaluation utility of the proposed method on random problems against competition agents.
 
 This analysis is based on the following experiment(s) (outcomes): experiment_3
 Your corrected answer (empty if correct): 
@@ -463,7 +464,7 @@ The analysed results were found in the following locations:
 The LLM has overall captured the analysis details...
 
 [] Very well (No major mistakes and/or missing information)
-[] Well (Missing some information and/or minor mistakes)
+[X] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
 [] Incorrect (The LLM has missed the point of the experiment and/or has hallucinated)
@@ -473,7 +474,7 @@ The LLM has overall captured the analysis details...
 
 The LLM has provided you with one or more analyses from your work. Is this amount of analyses the same as the amount you specified?
 
-Please write the amount of analyses you had for the study: []
+Please write the amount of analyses you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -504,7 +505,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -531,7 +532,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -558,7 +559,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -570,7 +571,7 @@ This interpretation of the analysis is ...
 
 The LLM has provided you with one or more interpretations from your work. Is this amount of interpretations the same as the amount you specified?
 
-Please write the amount of interpretations you had for the study: []
+Please write the amount of interpretations you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -600,7 +601,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
-[] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -631,7 +632,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 - If you wish to improve the answer, please copy the original answer and adapt it below.
 - If you consider the answer completely wrong, feel free to rephrase completely in your own wording.
 
-Corrected reason:
+Corrected reason: The authors conclude that their method has limitations when facing highly competitive agents due to information loss by capturing historical information through manual feature design in the graph encoding. They state in Section 5: 'Our agent performs well against strong baseline negotiation strategies, but leaves room for improvement when negotiating against a broad set of highly competitive agents... This manual feature design likely leads to information loss and goes against the end-to-end aim of our approach.' 
 
 This conclusion is based on the following interpretations: interpretation_3
 Your corrected answer (empty if correct):
@@ -639,7 +640,7 @@ Your corrected answer (empty if correct):
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
 [] Correct
-[] Almost correct (few and minor misinterpretations or mistakes)
+[X] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
@@ -661,7 +662,7 @@ Your corrected answer (empty if correct):
 
 The LLM has provided you with one or more conclusions from your work. Is this amount of conclusions the same as the amount you specified?
 
-Please write the amount of conclusions you had for the study: []
+Please write the amount of conclusions you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -675,7 +676,7 @@ The LLM has also found possible future work directions in terms of research ques
 #### suggested_research_question_1
 
 The LLM has found the following suggested research question: How can the designed policy be applied to larger real-world negotiation problems with huge outcome spaces, and what are the effects on performance?
-Please correct the suggestion if wrong (leave empty if correct):
+Please correct the suggestion if wrong (leave empty if correct): What are the effects on performance of applying our methodology to larger real-world negotiation problems with huge outcome spaces?
 
 The LLM has provided the following note/location on the suggestion: Section 5 (Conclusion)
 
@@ -687,7 +688,7 @@ Please correct the IDs if wrong/missing (leave empty if correct):
 Please grade the suggestion below:
 [] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
 [] The LLM has stated a future research direction that was implied by our work, but not strongly suggested.
-[] The LLM has stated a future research direction from our work that is partially correct.
+[X] The LLM has stated a future research direction from our work that is partially correct.
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
 [] The LLM has stated a future research direction that was not stated or implied in our work; the LLM has hallucinated this information.
 
@@ -704,7 +705,7 @@ The LLM has linked the suggestion to the following conclusions: conclusion_2
 Please correct the IDs if wrong/missing (leave empty if correct):
 
 Please grade the suggestion below:
-[] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
+[X] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
 [] The LLM has stated a future research direction that was implied by our work, but not strongly suggested.
 [] The LLM has stated a future research direction from our work that is partially correct.
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
@@ -723,7 +724,7 @@ The LLM has linked the suggestion to the following conclusions: conclusion_1
 Please correct the IDs if wrong/missing (leave empty if correct):
 
 Please grade the suggestion below:
-[] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
+[X] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
 [] The LLM has stated a future research direction that was implied by our work, but not strongly suggested.
 [] The LLM has stated a future research direction from our work that is partially correct.
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
@@ -734,7 +735,7 @@ Please grade the suggestion below:
 
 The LLM has provided you with one or more Suggested Research Questions from your work. Is this amount of Suggested Research Questions the same as the amount you specified?
 
-Please write the amount of Suggested Research Questions you had for the study: []
+Please write the amount of Suggested Research Questions you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -747,6 +748,6 @@ If this amount does not overlap with the LLMs answer, feel free to specify reaso
 
 The LLM has provided you with one or more Suggested Hypotheses from your work. Is this amount of Suggested Hypotheses the same as the amount you specified?
 
-Please write the amount of Suggested Hypotheses you had for the study: []
+Please write the amount of Suggested Hypotheses you had for the study: [0]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;

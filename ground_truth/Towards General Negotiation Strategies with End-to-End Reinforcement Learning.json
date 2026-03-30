@@ -1,0 +1,347 @@
+
+{
+  "Meta": {
+    "title": "Towards General Negotiation Strategies with End-to-End Reinforcement Learning",
+    "authors": [
+      "Bram M. Renting",
+      "Thomas M. Moerland",
+      "Holger H. Hoos",
+      "Catholijn M. Jonker"
+    ],
+    "year": 2024,
+    "venue": "RLC 2024"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "Can a general RL-based negotiation strategy capable of dealing with various negotiation problems be learned using end-to-end reinforcement learning?",
+      "reason": "In Section 1 (Introduction) and Section 2 (Related Work), the authors discuss the limitations of current RL methods that either fix the negotiation problem or abstract observations/actions. They state: 'We set out on the idea that a more general RL-based negotiation strategy capable of dealing with various negotiation problems is achievable and that such a strategy can be learned using end-to-end reinforcement learning without using state abstractions.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that an end-to-end RL method using graph-based representations and Graph Neural Networks (GNNs) can successfully learn to negotiate and generalize to unseen, randomly generated negotiation problems with varying observation and action spaces.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In the Abstract and Section 1, the authors propose their GNN-based method to solve the issue of changing observation and action dimensions. They imply that this method will be effective and transferable, stating: 'We show that our end-to-end method can successfully learn to negotiate with other agents and that the obtained policy still performs on unseen, randomly generated negotiation problems.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that their proposed GNN-based method performs similarly to existing end-to-end RL methods on fixed negotiation problems.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In Section 1 and Section 4.1, the authors introduce a comparison with a recent method by Higa et al. (2023) to establish a baseline of competence. They state: 'We show that our method shows similar performance to a recent end-to-end RL-based method designed to deal only with a fixed negotiation problem.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Compare the proposed GNN method to a recent end-to-end RL method by Higa et al. (2023) on a single fixed negotiation problem against baseline agents.",
+      "strategy": "Train for 2,000,000 timesteps on 10 different seeds. Evaluate in 1000 negotiation games against every opponent.",
+      "data": [
+        "Fixed negotiation problem (This work)",
+        "Baseline agents (Lin et al., 2014)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Train and evaluate the end-to-end method on randomly generated negotiation problems against baseline agents to test generalization.",
+      "strategy": "Train for 2,000,000 steps on 10 random seeds. Evaluate by running 1000 negotiation sessions on randomly generated, never-before-seen problems.",
+      "data": [
+        "Random negotiation problems (This work)",
+        "Baseline agents (Lin et al., 2014)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Train and evaluate the end-to-end method on randomly generated negotiation problems against both baseline agents and ANAC 2022 agents.",
+      "strategy": "Train for 2,000,000 steps on 10 random seeds. Evaluate by running 1000 negotiation sessions on randomly generated, never-before-seen problems.",
+      "data": [
+        "Random negotiation problems (This work)",
+        "Baseline agents (Lin et al., 2014)",
+        "ANAC 2022 agents (Aydo\u011fan et al., 2023)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Compare the training curve as a sanity check and evaluation utility of the proposed method against Higa et al. (2023) on a fixed problem.",
+      "metrics": [
+        "Episodic return",
+        "Utility"
+      ],
+      "statistics": [
+        "Mean",
+        "99% confidence interval"
+      ],
+      "test": "Simple comparison (visual overlap of confidence intervals)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Mean and 99% confidence interval of episodic return during training based on results from 10 random seeds. The results of the policy designed by Higa et al. (2023) and our policy are plotted.",
+            "reason": "This figure shows the training performance comparison for the fixed negotiation problem.",
+            "metrics": [
+              "Episodic return"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Fixed negotiation problem (This work)",
+              "Higa et al. (2023)"
+            ],
+            "test": [
+              "Simple comparison (visual overlap of confidence intervals)"
+            ]
+          },
+          "Figure 3": {
+            "caption": "Evaluation results of the policy designed by Higa et al. (2023) and our GNN-based policy. Results are obtained by evaluating each trained policy for 1000 negotiation games against the set of baseline agents. Mean and 99% confidence interval are plotted based on 10 training iterations.",
+            "reason": "This figure shows the evaluation utility comparison for the fixed negotiation problem.",
+            "metrics": [
+              "Utility"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Fixed negotiation problem (This work)",
+              "Baseline agents (This work)",
+              "Higa et al. (2023)"
+            ],
+            "test": [
+              "Simple comparison (visual overlap of confidence intervals)"
+            ]
+          }
+        },
+        "text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Evaluate the training curve as a sanity check and evaluation utility of the proposed method on random problems against baseline agents.",
+      "metrics": [
+        "Episodic return",
+        "Utility"
+      ],
+      "statistics": [
+        "Mean",
+        "99% confidence interval"
+      ],
+      "test": "Simple comparison (greater than baseline utility)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Mean and 99% confidence interval of episodic return during training of our GNN policy based on results from 10 different random seeds. The results from training against the baseline agents and training against the competition agents are plotted.",
+            "reason": "This figure shows the training performance on random problems.",
+            "metrics": [
+              "Episodic return"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Random negotiation problems (This work)",
+              "Baseline agents (This work)"
+            ],
+            "test": [
+              "Simple comparison (greater than baseline utility)"
+            ]
+          },
+          "Figure 5a": {
+            "caption": "Evaluation results of our GNN-based policy on randomly generated negotiation problem both against the set of baseline opponents (left)...",
+            "reason": "This figure shows the evaluation utility on random problems against baselines.",
+            "metrics": [
+              "Utility"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Random negotiation problems (This work)",
+              "Baseline agents (This work)"
+            ],
+            "test": [
+              "Simple comparison (greater than baseline utility)"
+            ]
+          }
+        },
+        "text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Evaluate the training curve as a sanity check and evaluation utility of the proposed method on random problems against competition agents.",
+      "metrics": [
+        "Episodic return",
+        "Utility"
+      ],
+      "statistics": [
+        "Mean",
+        "99% confidence interval"
+      ],
+      "test": "Simple comparison (less than opponent utility)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Mean and 99% confidence interval of episodic return during training of our GNN policy based on results from 10 different random seeds. The results from training against the baseline agents and training against the competition agents are plotted.",
+            "reason": "This figure shows the training performance on random problems against competition agents.",
+            "metrics": [
+              "Episodic return"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Random negotiation problems (This work)",
+              "ANAC 2022 agents (Aydo\u011fan et al., 2023)"
+            ],
+            "test": [
+              "Simple comparison (less than opponent utility)"
+            ]
+          },
+          "Figure 5b": {
+            "caption": "...and against the full set of opponents (right). Results are obtained by evaluating each trained policy for 1000 negotiation games against the set of agents. Mean and 99% confidence interval are plotted based on 10 training iterations.",
+            "reason": "This figure shows the evaluation utility on random problems against competition agents.",
+            "metrics": [
+              "Utility"
+            ],
+            "statistics": [
+              "Mean",
+              "99% confidence interval"
+            ],
+            "data": [
+              "Random negotiation problems (This work)",
+              "ANAC 2022 agents (Aydo\u011fan et al., 2023)"
+            ],
+            "test": [
+              "Simple comparison (less than opponent utility)"
+            ]
+          }
+        },
+        "text": {}
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "We can see in Figure 3 that our method performs similarly to the method proposed by Higa et al. (2023). This result is mostly a sanity check that our method can successfully learn to negotiate in a relatively simple setup despite being more complex and broadly usable.",
+      "reason": "The authors interpret the fixed problem results as a successful sanity check, confirming their method works at least as well as existing non-transferable methods."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "As seen in Figure 5a, our method performs well against all baseline agents while negotiating on various structured negotiation problems it has never seen before. It is promising that an end-to-end learned GNN-based policy appears to generalise over such different problems.",
+      "reason": "The authors interpret the random problem results against baselines as proof of successful generalization to unseen problems."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "The results show much lower performance against all opponents, including those outperformed in Section 4.2.1. Our current method of encoding the observations and design of the policy likely leads to limited capabilities of learning opponent characteristics.",
+      "reason": "The authors interpret the poor performance against competition agents as a limitation of their observation encoding and policy design, which fails to adapt to complex opponent strategies."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that they have successfully developed an end-to-end RL method capable of handling differently structured negotiation problems, performing as well as a recent fixed-problem method, and generalizing to never-before-seen problems. They state in Section 5: 'We showed that our method performs as well as a recent end-to-end method that is not transferrable beyond a single fixed negotiation problem... we have shown how an agent can learn to negotiate on diverse negotiation problems in such a way that performance generalises to never-before-seen negotiation problems.'",
+      "reason": "This conclusion directly supports their main hypotheses and answers their research question positively regarding the feasibility of a general RL-based negotiation strategy."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        false
+      ],
+      "value": "The authors conclude that their method has limitations when facing highly competitive agents due to information loss by capturing historical information through manual feature design in the graph encoding. They state in Section 5: 'Our agent performs well against strong baseline negotiation strategies, but leaves room for improvement when negotiating against a broad set of highly competitive agents... This manual feature design likely leads to information loss and goes against the end-to-end aim of our approach.'",
+      "reason": "This conclusion highlights the limitations of their approach, partially contradicting the full success of their generalization hypothesis when applied to complex opponent strategies."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "What are the effects on performance of applying our methodology to larger real-world negotiation problems with huge outcome spaces?",
+        "note": "Section 5 (Conclusion)",
+        "reason": "The authors explicitly suggest investigating the application of their policy to larger problems without increasing trainable parameters."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How can end-to-end policies be extended with additional components that learn opponent representations based on the history of observations in the current or previous encounter?",
+        "note": "Section 5 (Conclusion)",
+        "reason": "The authors suggest this to address the limitation of their current policy design in adapting to opponent characteristics."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the method be improved to handle continuous objectives to eliminate the necessity of discretizing them?",
+        "note": "Section 5 (Conclusion)",
+        "reason": "The authors mention this as a promising avenue for future work to handle continuous values directly."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}
