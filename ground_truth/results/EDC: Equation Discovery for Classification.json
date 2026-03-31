@@ -1,0 +1,217 @@
+
+{
+  "table_1": {
+    "note": "Results of the EDC algorithm on artificial datasets in terms of mean AUC with standard deviation.",
+    "Within search space": {
+      "EDC_AUC_mean": 0.999,
+      "EDC_AUC_std": 0.00,
+      "Original_DB_AUC_mean": 1.000,
+      "Original_DB_AUC_std": 0.00
+    },
+    "Within search space with noise": {
+      "EDC_AUC_mean": 0.951,
+      "EDC_AUC_std": 0.03,
+      "Original_DB_AUC_mean": 0.943,
+      "Original_DB_AUC_std": 0.03
+    },
+    "Beyond search space with noise": {
+      "EDC_AUC_mean": 0.962,
+      "EDC_AUC_std": 0.03,
+      "Original_DB_AUC_mean": 0.956,
+      "Original_DB_AUC_std": 0.03
+    }
+  },
+  "table_2": {
+    "note": "Results of the artificial Gaussian clusters experiment in terms of mean AUC with standard deviation.",
+    "MLP": {
+      "AUC_mean": 0.972,
+      "AUC_std": 0.034
+    },
+    "SVM": {
+      "AUC_mean": 0.970,
+      "AUC_std": 0.038
+    },
+    "RF": {
+      "AUC_mean": 0.967,
+      "AUC_std": 0.037
+    },
+    "EDC": {
+      "AUC_mean": 0.965,
+      "AUC_std": 0.043
+    },
+    "Tree": {
+      "AUC_mean": 0.899,
+      "AUC_std": 0.079
+    },
+    "M4GP": {
+      "AUC_mean": 0.894,
+      "AUC_std": 0.082
+    },
+    "LDA": {
+      "AUC_mean": 0.811,
+      "AUC_std": 0.139
+    },
+    "AMAXSC": {
+      "AUC_mean": 0.802,
+      "AUC_std": 0.181
+    }
+  },
+  "table_3": {
+    "note": "Results of the classifiers on the UCI datasets. All scores are the mean Area Under the Receiver Operator Curve (AUC) across 10 folds.",
+    "ADULT": {
+      "EDC": 0.889,
+      "AMAXSC": 0.807,
+      "M4GP": 0.770,
+      "LDA": 0.902,
+      "Tree": 0.730,
+      "MLP": 0.901,
+      "RF": 0.880,
+      "SVM": 0.898
+    },
+    "BANKNOTE": {
+      "EDC": 1.000,
+      "AMAXSC": 0.982,
+      "M4GP": 0.999,
+      "LDA": 1.000,
+      "Tree": 0.979,
+      "MLP": 1.000,
+      "RF": 1.000,
+      "SVM": 1.000
+    },
+    "BREAST": {
+      "EDC": 0.670,
+      "AMAXSC": 0.617,
+      "M4GP": 0.614,
+      "LDA": 0.636,
+      "Tree": 0.590,
+      "MLP": 0.701,
+      "RF": 0.683,
+      "SVM": 0.709
+    },
+    "CREDIT": {
+      "EDC": 0.918,
+      "AMAXSC": 0.896,
+      "M4GP": 0.869,
+      "LDA": 0.924,
+      "Tree": 0.812,
+      "MLP": 0.910,
+      "RF": 0.935,
+      "SVM": 0.920
+    },
+    "CYLINDER": {
+      "EDC": 0.735,
+      "AMAXSC": 0.547,
+      "M4GP": 0.703,
+      "LDA": 0.778,
+      "Tree": 0.594,
+      "MLP": 0.844,
+      "RF": 0.870,
+      "SVM": 0.759
+    },
+    "DIABETES": {
+      "EDC": 0.830,
+      "AMAXSC": 0.799,
+      "M4GP": 0.724,
+      "LDA": 0.829,
+      "Tree": 0.673,
+      "MLP": 0.843,
+      "RF": 0.826,
+      "SVM": 0.836
+    },
+    "IONOSPHERE": {
+      "EDC": 0.894,
+      "AMAXSC": 0.888,
+      "M4GP": 0.855,
+      "LDA": 0.901,
+      "Tree": 0.892,
+      "MLP": 0.985,
+      "RF": 0.979,
+      "SVM": 0.979
+    },
+    "OCCUPANCY": {
+      "EDC": 0.996,
+      "AMAXSC": 0.994,
+      "M4GP": 0.990,
+      "LDA": 0.994,
+      "Tree": 0.989,
+      "MLP": 0.997,
+      "RF": 0.999,
+      "SVM": 0.993
+    },
+    "SONAR": {
+      "EDC": 0.780,
+      "AMAXSC": 0.762,
+      "M4GP": 0.767,
+      "LDA": 0.803,
+      "Tree": 0.731,
+      "MLP": 0.927,
+      "RF": 0.917,
+      "SVM": 0.916
+    },
+    "Average Score": {
+      "EDC": 0.857,
+      "AMAXSC": 0.810,
+      "M4GP": 0.810,
+      "LDA": 0.863,
+      "Tree": 0.777,
+      "MLP": 0.901,
+      "RF": 0.899,
+      "SVM": 0.890
+    },
+    "Average Rank": {
+      "EDC": 4.00,
+      "AMAXSC": 6.44,
+      "M4GP": 6.78,
+      "LDA": 3.56,
+      "Tree": 7.67,
+      "MLP": 1.89,
+      "RF": 2.78,
+      "SVM": 2.78
+    }
+  },
+  "figure_1": {
+    "note": "Target decision boundary vs decision boundary found by EDC with noise added to the data.",
+    "Target": {
+      "AUC": 0.952
+    },
+    "EDC": {
+      "AUC": 0.978
+    }
+  },
+  "figure_2": {
+    "note": "Target decision boundary vs decision boundary found by EDC where target equation is sampled from a richer grammar.",
+    "Target": {
+      "AUC": 0.959
+    },
+    "EDC": {
+      "AUC": 0.967
+    }
+  },
+  "figure_4": {
+    "note": "Critical distance plot of the ranks for the different classifiers for the UCI datasets. Critical distance (CD) = 3.49.",
+    "MLP": {
+      "Rank": 1.9
+    },
+    "RF": {
+      "Rank": 2.8
+    },
+    "SVM (rbf)": {
+      "Rank": 2.8
+    },
+    "LDA": {
+      "Rank": 3.6
+    },
+    "EDC": {
+      "Rank": 4.0
+    },
+    "AMAXSC": {
+      "Rank": 6.4
+    },
+    "M4GP": {
+      "Rank": 6.8
+    },
+    "Tree": {
+      "Rank": 7.7
+    }
+  }
+}
