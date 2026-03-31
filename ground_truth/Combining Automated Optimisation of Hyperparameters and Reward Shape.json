@@ -1,0 +1,457 @@
+{
+  "Meta": {
+    "title": "Combining Automated Optimisation of Hyperparameters and Reward Shape",
+    "authors": [
+      "Julian Dierkes",
+      "Emma Cramer",
+      "Holger H. Hoos",
+      "Sebastian Trimpe"
+    ],
+    "year": 2024,
+    "venue": "RLC 2024"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "To what extent are an RL algorithm's hyperparameter configurations and reward function mutually dependent?",
+      "reason": "In the abstract and introduction, the authors motivate the study by stating that prior work tuned these individually, and they aim to investigate if they are mutually dependent and cannot be fully optimized without appropriate values for the other."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Can the combined optimisation of hyperparameters and reward shape match or outperform the individual optimisation of these components?",
+      "reason": "In Section 1, the authors state: 'To the best of our knowledge, ours is the first study to thoroughly investigate the effectiveness and broader applicability of jointly optimising hyperparameters and reward shape by using multiple and different environments and systematically evaluating the benefit thus obtained.'"
+    },
+    "research_question_3": {
+      "explicit": false,
+      "value": "Does including a variance penalty as an optimisation objective improve the stability of learned policies without sacrificing expected performance?",
+      "reason": "In the abstract and Section 1, the authors introduce a variance penalty as an optimization objective to improve the stability of learned policies and aim to demonstrate its effectiveness."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": true,
+      "value": "The authors hypothesise that an RL algorithm's hyperparameter configurations and reward function are mutually dependent, meaning neither can be fully optimised without appropriate values for the other.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Explicitly stated in the abstract: 'We demonstrate empirically that an RL algorithm’s hyperparameter configurations and reward function are often mutually dependent, meaning neither can be fully optimised without appropriate values for the other.'"
+    },
+    "hypothesis_2": {
+      "explicit": true,
+      "value": "The authors hypothesise that combined optimisation can match or outperform the performance of individual optimisation in challenging environments.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Explicitly stated in Section 1 (Contributions): 'We show that combined optimisation can match the performance of individual optimisation with the same compute budget despite the larger search space; furthermore, we show that it can yield significant improvement in challenging environments, such as Humanoid and Wipe.'"
+    },
+    "hypothesis_3": {
+      "explicit": true,
+      "value": "The authors hypothesise that including a variance penalty for multi-objective optimisation can obtain hyperparameter settings and reward shapes that substantially improve performance variance of a trained policy while achieving similar or better expected performance.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Explicitly stated in Section 1 (Contributions): 'We demonstrate that including a variance penalty for multi-objective optimisation can obtain hyperparameter settings and reward shapes that substantially improve performance variance of a trained policy while achieving similar or better expected performance.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "An exhaustive landscape analysis for PPO training on LunarLander, exploring pairwise combinations of a hyperparameter and a reward parameter to understand their interdependencies.",
+      "strategy": "Grid search (resolution of 100 values per parameter, averaged over 10 seeds)",
+      "data": [
+        "Gymnasium LunarLander (Towers et al., 2023)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2",
+        "hypothesis_3"
+      ],
+      "experiment_description": "Optimisation experiments using DEHB to empirically compare the performance of joint optimisation with individual optimisation of hyperparameters and reward parameters, as well as single-objective vs multi-objective (variance penalty) optimisation.",
+      "strategy": "DEHB multi-fidelity optimisation (fidelity = RL training steps, 3 budgets, 3 random seeds for RL training during optimisation, 5 random seeds for optimisation, 10 random seeds for evaluation of incumbent)",
+      "data": [
+        "Gymnasium LunarLander (Towers et al., 2023)",
+        "Google Brax Ant (Freeman et al., 2021)",
+        "Google Brax Humanoid (Freeman et al., 2021)",
+        "Robosuite Wipe (Zhu et al., 2020)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Visualizing and analyzing the parameter landscapes to observe the interdependency between hyperparameters and reward parameters.",
+      "metrics": [
+        "Average task score (single-objective task performance)"
+      ],
+      "statistics": [
+        "Mean (averaged over 10 seeds)"
+      ],
+      "test": [
+        "Visual inspection of parameter landscapes"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Landscapes depicting the average return on LunarLander for pairwise hyperparameters and reward weights over ten PPO trainings.",
+            "reason": "Shows the interdependency between hyperparameters and reward parameters.",
+            "metrics": [
+              "Average task score (single-objective task performance)"
+            ],
+            "statistics": [
+              "Mean (averaged over 10 seeds)"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)"
+            ],
+            "test": [
+              "Visual inspection of parameter landscapes"
+            ]
+          },
+          "Figure 5": {
+            "caption": "Landscapes depicting the average return on Gymnasium LunarLander for pairwise hyper- and reward parameters over ten PPO trainings.",
+            "reason": "Additional landscape plots showing the best-performing hyperparameter value for each specific reward value.",
+            "metrics": [
+              "Average task score (single-objective task performance)"
+            ],
+            "statistics": [
+              "Mean (averaged over 10 seeds)"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)"
+            ],
+            "test": [
+              "Visual inspection of parameter landscapes"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.1": {
+            "value": "We observe an interdependency of varying strength between the hyperparameters and reward parameters. In all cases, the behaviour of specific reward parameters changes with different hyperparameter values.",
+            "reason": "Describes the findings from the landscape analysis.",
+            "metrics": [
+              "Average task score (single-objective task performance)"
+            ],
+            "statistics": [
+              "Mean (averaged over 10 seeds)"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)"
+            ],
+            "test": [
+              "Visual inspection of parameter landscapes"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Comparing the median performance and coefficient of variation of the incumbent configurations found by different optimisation methods (joint vs individual, single vs multi-objective).",
+      "metrics": [
+        "Task Performance (Expected return of task objective)",
+        "Coefficient of variation (CV)"
+      ],
+      "statistics": [
+        "Median performance across 10 evaluation runs, then median of these 5 values",
+        "Median coefficient of variation"
+      ],
+      "test": [
+        "Linear mixed-effects model analysis with a Wald test (p < 0.05)",
+        "White's Lagrange multiplier test",
+        "Shapiro-Wilk test"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Median performance for our optimisation experiments. HPO and RPO show the optimisation method for hyper- and reward parameters...",
+            "reason": "Presents the main performance results comparing baseline, individual, and joint optimization.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)",
+              "Coefficient of variation (CV)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values",
+              "Median coefficient of variation"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": [
+              "Linear mixed-effects model analysis with a Wald test (p < 0.05)"
+            ]
+          },
+          "Table 5": {
+            "caption": "Results of the trained policies for each optimisation experiment evaluated on each environment’s default shaped reward function and the coefficients of variations in parenthesis.",
+            "reason": "Shows performance evaluated on the default shaped reward function.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)",
+              "Coefficient of variation (CV)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values",
+              "Median coefficient of variation"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": [
+              "Linear mixed-effects model analysis with a Wald test (p < 0.05)"
+            ]
+          },
+          "Table 10": {
+            "caption": "We show the p-values for significance in the difference of each experiment to the best-performing optimisation corresponding to the results presented in Table 1.",
+            "reason": "Provides the detailed statistical test results (p-values) for the comparisons.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": [
+              "Linear mixed-effects model analysis with a Wald test (p < 0.05)",
+              "White's Lagrange multiplier test"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 3": {
+            "caption": "Incumbent performance in terms of median optimisation objective across the five optimisation runs for the SAC experiments at each time step; shaded areas indicate min and max values.",
+            "reason": "Shows the optimization progress over time, demonstrating that joint optimization is not significantly slower.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": []
+          },
+          "Figure 7": {
+            "caption": "Boxplots for the PPO optimisation of the five median performances of each experiment’s optimisation runs. We denote by DEHB, rs and base if hyperparameters (hpo) or reward parameters (rpo) were optimised with DEHB, random search or fixed to their baseline values. The red line denotes the baseline performance.",
+            "reason": "Shows performance.",
+            "metrics": [
+              "External objective"
+            ],
+            "statistics": [
+              "Boxplot"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)"
+            ],
+            "test": []
+          },
+          "Figure 8": {
+            "caption": "Boxplots for the SAC optimisation of the five median performances of each experiment’s optimisation runs. We denote by DEHB, rs and base if hyperparameters (hpo) or reward parameters (rpo) were optimised with DEHB, random search or fixed to their baseline values. The red line denotes the baseline performance.",
+            "reason": "Shows performance.",
+            "metrics": [
+              "External objective"
+            ],
+            "statistics": [
+              "Boxplot"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": []
+          },
+          "Figure 9": {
+            "caption": "Boxplots for the PPO optimisation experiments over all 50 evaluation trainings of each experiment. We denote by DEHB, rs and base if hyperparameters (hpo) or reward parameters (rpo) were optimised with DEHB, random search or fixed to their baseline values. The red line denotes the baseline performance.",
+            "reason": "Shows performance.",
+            "metrics": [
+              "External objective"
+            ],
+            "statistics": [
+              "Boxplot"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+            ],
+            "test": []
+          },
+          "Figure 10": {
+            "caption": "Boxplots for the SAC optimisation experiments over all 50 evaluation trainings of each experiment. We denote by DEHB, rs and base if hyperparameters (hpo) or reward parameters (rpo) were optimised with DEHB, random search or fixed to their baseline values. The red line denotes the baseline performance.",
+            "reason": "Shows performance.",
+            "metrics": [
+              "External objective"
+            ],
+            "statistics": [
+              "Boxplot"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.2": {
+            "value": "Our results show that simultaneously optimising hyperparameters and reward parameters consistently matches or outperforms individual optimisation, without depending on tuned baseline parameters for non-optimised components.",
+            "reason": "Summarizes the findings from the joint optimization experiments.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": [
+              "Linear mixed-effects model analysis with a Wald test (p < 0.05)"
+            ]
+          },
+          "Section 5.3": {
+            "value": "From Table 1, we conclude that multi-objective optimisation can improve policy stability by including a penalty for large standard deviation in performance. These improvements come with only marginal performance loss and sometimes even achieve slight gains...",
+            "reason": "Summarizes the findings regarding the variance penalty.",
+            "metrics": [
+              "Task Performance (Expected return of task objective)",
+              "Coefficient of variation (CV)"
+            ],
+            "statistics": [
+              "Median performance across 10 evaluation runs, then median of these 5 values",
+              "Median coefficient of variation"
+            ],
+            "data": [
+              "Gymnasium LunarLander (Towers et al., 2023)",
+              "Google Brax Ant (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Robosuite Wipe (Zhu et al., 2020)"
+            ],
+            "test": [
+              "Linear mixed-effects model analysis with a Wald test (p < 0.05)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Overall, our results indicate that hyperparameters and reward parameters are interdependent and that finding high-performing hyperparameters necessitates well-chosen reward parameters and vice versa.",
+      "reason": "The authors interpret the landscape plots as clear evidence of mutual dependence, confirming the intuition that they should be optimized jointly."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Our results show that simultaneously optimising hyperparameters and reward parameters consistently matches or outperforms individual optimisation with the same optimisation budget, without depending on tuned baseline parameters for non-optimised components. The only outlier is the single-objective PPO Ant optimisation. Significant performance gains are observed in the complex Humanoid and Wipe environments.",
+      "reason": "The authors interpret the performance metrics and statistical tests as showing that joint optimization is at least as good as, and sometimes significantly better than, individual optimization."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "multi-objective optimisation can improve policy stability by including a penalty for large standard deviation in performance. These improvements come with only marginal performance loss and sometimes even achieve slight gains...",
+      "reason": "The authors interpret the CV metrics and performance scores of the multi-objective runs as evidence that the variance penalty successfully stabilizes policies without hurting expected performance."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "We illustrated dependencies in a simple environment, highlighting the circular dependency encountered in optimising hyperparameters and reward parameters and underscoring the need for simultaneous optimisation. Our empirical results indicate that this joint optimisation is feasible and can match or surpass the performance of individual optimisation approaches without requiring separate parameter tuning for the non-optimised component... We conclude that combined optimisation should be the best practice for RL optimisation.",
+      "reason": "The authors explicitly conclude that joint optimization is feasible, matches/surpasses individual optimization, and should be best practice, supporting H1 and H2."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "support": [
+        true
+      ],
+      "value": "Our results further indicate that including a variance penalty in a multi-objective optimisation can substantially enhance the performance variance of a given policy, with little or no reductions in performance. This emphasises the value of combined optimisation in achieving a good balance between a high average objective score and achieving this performance consistently.",
+      "reason": "The authors conclude that the variance penalty works as intended, supporting H3."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can a broader range of reward function combinations, including metrics, exponentiation, or specific functional choices like nonlinear transformations, be effectively optimized jointly with hyperparameters?",
+        "note": "Section 6 (Conclusions and Future Work)",
+        "reason": "The authors suggest expanding the scope of reward shaping beyond simple weights to more complex functional forms."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How do more sophisticated risk-averse metrics affect the trade-off between a policy's performance and stability during joint optimization?",
+        "note": "Section 6 (Conclusions and Future Work)",
+        "reason": "The authors suggest exploring other risk-averse metrics beyond the simple variance penalty used in this study."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

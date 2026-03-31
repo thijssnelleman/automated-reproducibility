@@ -32,7 +32,7 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 
 Audio Classification Models are Vulnerable to Filter Pertubations
 
-# Julian Dierkes ✅ -> ❌
+# Julian Dierkes ✅ -> ✅
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
