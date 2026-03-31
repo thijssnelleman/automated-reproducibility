@@ -60,7 +60,7 @@ AutoMergeNet: AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmosph
 
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning
 
-# Guus Toussaint ✅ -> ❌
+# Guus Toussaint ✅ -> ✅
 
 EDC: Equation Discovery for Classification paper
 

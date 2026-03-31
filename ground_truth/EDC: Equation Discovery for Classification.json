@@ -1,0 +1,338 @@
+{
+  "Meta": {
+    "title": "EDC: Equation Discovery for Classification",
+    "authors": [
+      "Guus Toussaint",
+      "Arno Knobbe"
+    ],
+    "year": 2024,
+    "venue": "Springer"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "Can Equation Discovery (ED) techniques be effectively adapted to binary classification tasks to discover concise, interpretable, and accurate analytical functions that specify the decision boundary?",
+      "reason": "In Section 1 (Introduction) and Section 2 (Related work), the authors motivate the need for interpretable models in classification and note that ED has largely been focused on regression. They imply the question of whether ED can be successfully applied to classification to yield transparent models."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How does the proposed Equation Discovery for Classification (EDC) framework compare to state-of-the-art ED-based classification methods and standard black-box classifiers in terms of predictive performance?",
+      "reason": "In the Abstract and Section 1, the authors state their intent to demonstrate how EDC outperforms current state-of-the-art ED-based methods and achieves performance comparable to state-of-the-art black-box binary classifiers."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that their proposed EDC method will outperform current state-of-the-art ED-based classification methods (such as AMAXSC and M4GP) in binary classification tasks.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "In the Abstract, the authors state: 'we demonstrate how EDC is able to discover both the structure of the target equation as well as the value of its parameters, outperforming the current state-of-the-art ED-based classification methods in binary classification'."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that EDC will achieve classification performance comparable to state-of-the-art black-box algorithms (e.g., Random Forests, MLPs) while producing more transparent and interpretable models.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In Section 1, the authors state: 'We show that a classification-oriented ED algorithm may perhaps not beat the state-of-the-art of well-balanced algorithms such as Random Forests or Multi-Layer Perceptrons but be in the same ballpark in terms of classification performance and certainly produce more transparent models'."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluation of the EDC algorithm under various conditions using four sets of artificial datasets with increasing difficulty (Within search space, Within search space with noise, Beyond search space with noise, Gaussian clusters) to test its ability to reconstruct hard-coded decision boundaries and handle noise.",
+      "strategy": "100 random equations/datasets generated per scenario",
+      "data": [
+        "Artificial datasets (This work)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluation of the EDC algorithm on real-world binary classification datasets from the UCI repository, comparing its performance against other ED-based methods (AMAXSC, M4GP), interpretable methods (Tree, LDA), and state-of-the-art black-box methods (MLP, RF, SVM).",
+      "strategy": "10-fold cross-validation",
+      "data": [
+        "ADULT (Becker & Kohavi 1996)",
+        "BANKNOTE (Lohweg 2013)",
+        "BREAST (Zwitter & Soklic 1988)",
+        "CREDIT (Quinlan)",
+        "CYLINDER (Evans 1994)",
+        "DIABETES",
+        "IONOSPHERE (Sigillito et al. 1989)",
+        "OCCUPANCY (Candanedo 2016)",
+        "SONAR (Sejnowski & Gorman 1988)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To assess EDC's ability to find the correct decision boundary structure and parameters under various artificial conditions, including noise and out-of-grammar targets.",
+      "metrics": [
+        "AUC"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Paired t-test (p < .001)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "This table shows the results of the EDC algorithm on our sets of artificial datasets. The results are presented in terms of mean AUC with the standard deviation in parentheses.",
+            "reason": "Shows the AUC scores for the first three artificial dataset scenarios.",
+            "metrics": [
+              "AUC"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": []
+          },
+          "Table 2": {
+            "caption": "This table shows the results of the artificial Gaussian clusters experiment. The results are presented in terms of mean AUC with the standard deviation in parentheses. The proposed EDC algorithm performs comparable to the state-of-the-art classification and outperforms all other explainable methods.",
+            "reason": "Shows the comparative AUC scores for the Gaussian clusters artificial datasets.",
+            "metrics": [
+              "AUC"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": []
+          }
+        },
+        "Figures": {
+          "Figure 1": {
+            "caption": "Target decision boundary (dashed red line), and decision boundary found by EDC (solid blue line). Noise is added to the data, and as a result, the target achieves a lower AUC (0.952) compared to the EDC algorithm (0.978).",
+            "reason": "Visualizes EDC's performance on the 'Within search space with noise' scenario.",
+            "metrics": [
+              "AUC"
+            ],
+            "statistics": [],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": []
+          },
+          "Figure 2": {
+            "caption": "Target decision boundary (dashed red line), and decision boundary found by EDC (solid blue line). The target equation is sampled from a richer grammar than available to EDC. The target achieves a lower AUC (0.959) compared to EDC (0.967).",
+            "reason": "Visualizes EDC's performance on the 'Beyond search space with noise' scenario.",
+            "metrics": [
+              "AUC"
+            ],
+            "statistics": [],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": []
+          },
+          "Figure 3": {
+            "caption": "The proposed decision boundary for the Gaussian clusters artificial dataset. Note that the discovered equation indicated above the figure is produced after translating the equation back to the non-normalised space. This introduces two additional constants for each feature xi.",
+            "reason": "Visualizes EDC's performance on the Gaussian clusters scenario.",
+            "metrics": [],
+            "statistics": [],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.1": {
+            "value": "When observing the results of a paired t-test for the second setting, we note a significant difference (in favour of EDC) between the original decision boundary (M = 0.9, SD = 0.03) and EDC (M = 1, SD = 0.03) AUC scores, with a t(99) = 5.4 and p < .001.",
+            "reason": "Reports the statistical significance of the performance difference on artificial data with noise.",
+            "metrics": [
+              "AUC"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Artificial datasets (This work)"
+            ],
+            "test": [
+              "Paired t-test (p < .001)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To compare EDC's performance on real-world datasets against other ED-based methods (AMAXSC, M4GP), interpretable methods (Tree, LDA), and state-of-the-art black-box methods (MLP, RF, SVM).",
+      "metrics": [
+        "AUC",
+        "Average Rank"
+      ],
+      "statistics": [
+        "Mean"
+      ],
+      "test": [
+        "Critical distance plot (CD = 3.49)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 3": {
+            "caption": "Results of the classifiers on the UCI datasets. All scores are the mean Area Under the Receiver Operator Curve (AUC) across 10 folds.",
+            "reason": "Shows the AUC scores and average ranks for all classifiers across the 9 UCI datasets.",
+            "metrics": [
+              "AUC",
+              "Average Rank"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "ADULT (Becker & Kohavi 1996)",
+              "BANKNOTE (Lohweg 2013)",
+              "BREAST (Zwitter & Soklic 1988)",
+              "CREDIT (Quinlan)",
+              "CYLINDER (Evans 1994)",
+              "DIABETES",
+              "IONOSPHERE (Sigillito et al. 1989)",
+              "OCCUPANCY (Candanedo 2016)",
+              "SONAR (Sejnowski & Gorman 1988)"
+            ],
+            "test": []
+          }
+        },
+        "Figures": {
+          "Figure 4": {
+            "caption": "Critical distance plot of the ranks for the different classifiers for the UCI datasets. The top bar shows the critical distance (CD), which in our setup equals 3.49. EDC outperforms AMAXSC, M4GP, and the decision tree, although not statistically significant. Similarly, MLP, RF, SVM, and LDA perform better but not statistically significantly.",
+            "reason": "Provides a statistical comparison of the average ranks of the classifiers over the UCI datasets.",
+            "metrics": [
+              "Average Rank"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "ADULT (Becker & Kohavi 1996)",
+              "BANKNOTE (Lohweg 2013)",
+              "BREAST (Zwitter & Soklic 1988)",
+              "CREDIT (Quinlan)",
+              "CYLINDER (Evans 1994)",
+              "DIABETES",
+              "IONOSPHERE (Sigillito et al. 1989)",
+              "OCCUPANCY (Candanedo 2016)",
+              "SONAR (Sejnowski & Gorman 1988)"
+            ],
+            "test": [
+              "Critical distance plot (CD = 3.49)"
+            ]
+          }
+        },
+        "Text": {
+            "Section 5.2": {
+                "value": "To illustrate the interpretability of our approach, one of the equations from the ADULT dataset is shown here: 0.75 − 1.27 · own-child · education-num + 3.37 · capitalgain +8.01 · exp(8.18 · married-civ-spouse)",
+                "reason": "Demonstrates the interpretability of the methodology.",
+                "metrics": [],
+                "statistics": [],
+                "data": [
+                "ADULT (Becker & Kohavi 1996)"
+                ],
+                "test": []
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that EDC can identify the correct structure of the decision boundary when it is within the search space. When noise is added, EDC finds a new decision boundary that fits the data better than the original target equation, achieving a marginally but significantly higher AUC. On Gaussian clusters, EDC performs on par with the state-of-the-art and outperforms existing explainable methods.",
+      "reason": "This interpretation is explicitly stated in Section 5.1 under 'Results', where the authors discuss the implications of the artificial dataset experiments."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The authors interpret that EDC outperforms current state-of-the-art ED-based approaches (AMAXSC, M4GP) on all 9 UCI datasets. While state-of-the-art black-box models (like Random Forest) outperform EDC on some datasets, the critical distance plot shows that current state-of-the-art classification algorithms do not significantly outperform the proposed EDC algorithm.",
+      "reason": "This interpretation is found in Section 5.2, where the authors analyze Table 3 and Figure 4, noting EDC's superiority over other ED methods and its competitive stance against black-box models."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that EDC is a highly capable binary classification algorithm that successfully discovers concise and interpretable equations. It outperforms existing ED-based methods and provides a good trade-off between accuracy and explainability, performing comparably to state-of-the-art black-box models. However, they note limitations: EDC occasionally struggles with datasets requiring a combination of many features (more than the grammar imposes) and has a considerably longer run time compared to standard algorithms.",
+      "reason": "Summarized from Section 6 (Discussion & Conclusion), where the authors reflect on the overall success of the method in answering their research questions and supporting their hypotheses, while also acknowledging its limitations regarding feature combinations and computational cost."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Can the run time of the EDC algorithm be significantly reduced by adjusting search parameters, such as the beam width, without compromising the accuracy of the discovered equations?",
+        "note": "Suggested in Section 6 (Discussion & Conclusion).",
+        "reason": "The authors explicitly mention that 'the current settings of beam width w = 10 could perhaps be reduced in favour of shorter run times' to address the limitation of long computational times."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How would the proposed EDC method perform when extended to multi-class classification?",
+        "note": "Suggested in Introduction: 'extensions to multi-class classifications are possible but outside the scope of this paper' ",
+        "reason": "The authors state that this is possible but out of scope, e.g. could be done in another work (in the future)."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that reducing the beam width (e.g., from w = 10) will decrease the run time of the EDC algorithm while maintaining its ability to focus on the most promising candidate equations.",
+        "note": "Suggested in Section 6 (Discussion & Conclusion).",
+        "reason": "The authors state that EDC's beam search is able to focus on promising candidates and suggest that reducing the beam width could yield shorter run times, implying it would still perform adequately."
+      }
+    }
+  }
+}
