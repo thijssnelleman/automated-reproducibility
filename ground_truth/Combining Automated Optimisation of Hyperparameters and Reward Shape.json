@@ -305,7 +305,7 @@
             "data": [
               "Gymnasium LunarLander (Towers et al., 2023)",
               "Google Brax Ant (Freeman et al., 2021)",
-              "Google Brax Humanoid (Freeman et al., 2021)",
+              "Google Brax Humanoid (Freeman et al., 2021)"
             ],
             "test": []
           },
