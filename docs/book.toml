@@ -1,0 +1,6 @@
+[book]
+authors = ["personal"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Automated Reproducibility Project Documentation"

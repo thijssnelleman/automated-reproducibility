@@ -1,0 +1,3 @@
+# Summary
+
+- [Architecture](./adr.md)
