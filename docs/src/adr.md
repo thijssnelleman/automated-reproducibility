@@ -20,7 +20,7 @@ sequenceDiagram
 
 ## ADR: Agent-driven reproducibility pipeline
 
-We use Python to build an object-oriented representation of each paper, then apply a three-agent pipeline to support reproducibility research.
+We use Python to build an object-oriented representation of each paper, then apply a multi-agent pipeline to support reproducibility research.
 
 1. Agent 1: Paper representation and analysis
    - Task: parse the paper and create a structured object with metadata, claims, methods, artifacts, and evaluation targets.
