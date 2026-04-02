@@ -1,0 +1,848 @@
+
+{
+  "Meta": {
+    "title": "Hyperparameters in Reinforcement Learning and How To Tune Them",
+    "authors": [
+      "Theresa Eimer",
+      "Marius Lindauer",
+      "Roberta Raileanu"
+    ],
+    "year": 2023,
+    "venue": "Proceedings of the 40th International Conference on Machine Learning (ICML)"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How do hyperparameter choices affect the final performance and sample efficiency of RL algorithms?",
+      "reason": "Found in the Abstract and Introduction: 'we show that hyperparameter choices in RL can significantly affect the agent’s final performance... and that the hyperparameter landscape can strongly depend on the tuning seed'."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Are existing Hyperparameter Optimization (HPO) tools capable of producing better performing, more stable, and more easily comparable RL agents while using fewer computational resources compared to hand-tuning?",
+      "reason": "Found in Section 1: 'In this paper, we demonstrate that compared to tuning hyperparameters by hand, existing HPO tools are capable of producing better performing, more stable, and more easily comparable RL agents, while using fewer computational resources.'"
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "Which RL Hyperparameters Should Be Tuned?",
+      "reason": "Explicitly stated as the heading for Section 4.1."
+    },
+    "research_question_4": {
+      "explicit": true,
+      "value": "Are Hyperparameters in RL Well Behaved?",
+      "reason": "Explicitly stated as the heading for Section 4.2."
+    },
+    "research_question_5": {
+      "explicit": false,
+      "value": "How do we account for the noise in the RL algorithm while tuning RL hyperparameters?",
+      "reason": "Explicitly stated as the heading for Section 4.3 but needs context from the section itself."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that hyperparameter choices in RL significantly affect the agent's final performance and sample efficiency, and that the random seed has a strong influence on tuning results.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied in the Abstract: 'we show that hyperparameter choices in RL can significantly affect...'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that existing HPO tools can produce better performing, more stable, and more easily comparable RL agents using fewer computational resources than hand-tuning.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied in Section 1: 'In this paper, we demonstrate that compared to tuning hyperparameters by hand, existing HPO tools are capable of producing better performing...'"
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that RL hyperparameter landscapes are not smooth, making it difficult to tune them effectively without RL-specific additions to the tuning algorithm.",
+      "research_questions": [
+        "research_question_4"
+      ],
+      "reason": "Implied in Section 4.2: 'we want the algorithm’s performance to be predictable... in essence, a smooth optimization landscape'."
+    },
+    "hypothesis_4": {
+      "explicit": false,
+      "value": "The authors hypothesise that evaluating configurations on multiple seeds (separating tuning and testing seeds) provides a more reliable estimate of true performance and prevents overfitting to tuning seeds.",
+      "research_questions": [
+        "research_question_5"
+      ],
+      "reason": "Implied in Section 4.3: 'it is common to evaluate a configuration on multiple seeds in order to achieve a more reliable estimate of the true performance'."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_3",
+        "research_question_4",
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_3",
+        "hypothesis_4"
+      ],
+      "experiment_description": "Sweeping over 8-11 hyperparameters for DQN, SAC, and PPO across 5 random seeds to study hyperparameter influence, landscape smoothness, and importance.",
+      "strategy": "Grid sweep over individual hyperparameters (1D sweeps), 5 random seeds per configuration.",
+      "data": [
+        "Pendulum (Brockman et al., 2016)",
+        "Acrobot (Brockman et al., 2016)",
+        "MiniGrid Empty (Chevalier-Boisvert et al., 2018)",
+        "MiniGrid DoorKey 5x5 (Chevalier-Boisvert et al., 2018)",
+        "Brax Ant (Freeman et al., 2021)",
+        "Brax Halfcheetah (Freeman et al., 2021)",
+        "Brax Humanoid (Freeman et al., 2021)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_4"
+      ],
+      "experiment_description": "Comparing HPO methods (RS, DEHB, PB2) on differently sized search spaces with a small budget of 10 full RL runs, and evaluating the effect of tuning on multiple seeds.",
+      "strategy": "HPO budget of 10 full RL runs. Tuning on 1, 3, 5, or 10 seeds. Testing on 5 or 10 unseen test seeds.",
+      "data": [
+        "Pendulum (Brockman et al., 2016)",
+        "Acrobot (Brockman et al., 2016)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Tuning state-of-the-art RL algorithms (PPO, IDAAC) on complex environments (Brax, Procgen) using HPO tools (RS, DEHB, BGT, PB2) with budgets of 16 and 64 runs, comparing to hand-tuned baselines.",
+      "strategy": "HPO budgets of 16 and 64 full algorithm runs. Tuning 3 times across 5 seeds, testing best configuration on 10 unseen test seeds.",
+      "data": [
+        "Brax Ant (Freeman et al., 2021)",
+        "Brax Halfcheetah (Freeman et al., 2021)",
+        "Brax Humanoid (Freeman et al., 2021)",
+        "Procgen Bigfish (Cobbe et al., 2020)",
+        "Procgen Climber (Cobbe et al., 2020)",
+        "Procgen Plunder (Cobbe et al., 2020)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analyzing the effect of individual hyperparameters on final performance and stability, and calculating hyperparameter importance using fANOVA.",
+      "metrics": [
+        "Average Episodic Return",
+        "Hyperparameter Importance (fANOVA)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard Deviation",
+        "Median"
+      ],
+      "test": [
+        "Visual comparison of performance curves",
+        "fANOVA importance scores"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Hyperparameter landscapes of learning rate, clip range and entropy coefficient for PPO on Brax and MiniGrid. For each hyperparameter value, we report the average final return and standard deviation across 5 seeds.",
+            "reason": "Shows the landscape smoothness and variance.",
+            "metrics": [
+              "Average Episodic Return"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Brax Ant (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Brax Humanoid (Freeman et al., 2021)",
+              "MiniGrid Empty (Chevalier-Boisvert et al., 2018)",
+              "MiniGrid DoorKey 5x5 (Chevalier-Boisvert et al., 2018)"
+            ],
+            "test": [
+              "Visual comparison of performance curves"
+            ]
+          },
+          "Figure 3": {
+            "caption": "Hyperparameter Sweeps for PPO across learning rates, entropy coefficients and clip ranges on various environments. The mean and standard deviation are computed across 5 seeds.",
+            "reason": "Shows training stability over episodes.",
+            "metrics": [
+              "Average Episodic Return"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Acrobot (Brockman et al., 2016)",
+              "MiniGrid Empty (Chevalier-Boisvert et al., 2018)",
+              "Brax Ant (Freeman et al., 2021)",
+              "MiniGrid DoorKey 5x5 (Chevalier-Boisvert et al., 2018)"
+            ],
+            "test": [
+              "Visual comparison of performance curves"
+            ]
+          },
+          "Figure 17": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 18": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 19": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 20": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 21": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 22": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 23": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 24": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 25": {
+            "caption": "PPO Hyperparameter Importances on Acrobot (left) and Pendulum (right).",
+            "reason": "Shows fANOVA importance.",
+            "metrics": [
+              "Hyperparameter Importance (fANOVA)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Acrobot (Brockman et al., 2016)",
+              "Pendulum (Brockman et al., 2016)"
+            ],
+            "test": [
+              "fANOVA importance scores"
+            ]
+          },
+          "Figure 26": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 27": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 28": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 29": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          },
+          "Figure 30": {
+            "caption": "",
+            "reason": "",
+            "metrics": [
+              ""
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "",
+              ""
+            ],
+            "test": [
+              ""
+            ]
+          }
+        },
+        "Text": {
+          "Section 4.1": {
+            "value": "In total, we observed only the worst hyperparameter choice being within the best choice’s standard deviation 7 times out of 126 settings and only 13 times the median performance dropping by less than 20%.",
+            "reason": "Quantifies the large influence of hyperparameters.",
+            "metrics": [
+              "Average Episodic Return"
+            ],
+            "statistics": [
+              "Standard Deviation",
+              "Median"
+            ],
+            "data": [
+              "Pendulum (Brockman et al., 2016)",
+              "Acrobot (Brockman et al., 2016)",
+              "MiniGrid Empty (Chevalier-Boisvert et al., 2018)",
+              "MiniGrid DoorKey 5x5 (Chevalier-Boisvert et al., 2018)",
+              "Brax Ant (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Brax Humanoid (Freeman et al., 2021)"
+            ],
+            "test": [
+              "Visual comparison of performance curves"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Comparing the performance of DEHB, PB2, and RS across different search space sizes and different numbers of tuning seeds.",
+      "metrics": [
+        "Negative evaluation reward",
+        "Test performance (mean reward)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard Deviation"
+      ],
+      "test": [
+        "Direct comparison of mean rewards"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Tuning PPO on Acrobot (top) and SAC on Pendulum (bottom) across different search space sizes (i.e. only learning rate, {learning rate, entropy coefficient, training epochs}, and full search space). Shown is the negative evaluation reward across 5 tuning runs. Lower numbers are better, best performance on each environment is highlighted. The best final performance on a single seed from our sweeps is also reported.",
+            "reason": "Shows HPO performance across search space sizes.",
+            "metrics": [
+              "Negative evaluation reward"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Acrobot (Brockman et al., 2016)",
+              "Pendulum (Brockman et al., 2016)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          },
+          "Table 2": {
+            "caption": "Tuning PPO on Acrobot (top) and SAC on Pendulum (bottom) across the full search space and different numbers of seeds. Lower numbers are better, best test performance for each method and values within its standard deviation are highlighted. Test performances are aggregated across 10 separate test seeds using the mean for each tuning run. We report mean and standard deviation of these.",
+            "reason": "Shows the effect of tuning on multiple seeds vs testing on unseen seeds.",
+            "metrics": [
+              "Test performance (mean reward)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Acrobot (Brockman et al., 2016)",
+              "Pendulum (Brockman et al., 2016)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Section 4.3": {
+            "value": "The performance difference between tuning and testing is significant in many cases and we can see e.g. on Acrobot that the best incumbent configurations, found by DEHB, perform more than four times worse on test seeds.",
+            "reason": "Highlights overfitting to tuning seeds.",
+            "metrics": [
+              "Test performance (mean reward)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Acrobot (Brockman et al., 2016)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Comparing HPO methods against hand-tuned baselines on Brax and Procgen with budgets of 16 and 64 runs.",
+      "metrics": [
+        "Mean Evaluation Reward",
+        "Rank"
+      ],
+      "statistics": [
+        "Mean",
+        "98% confidence interval",
+        "Standard Deviation"
+      ],
+      "test": [
+        "Direct comparison of mean rewards",
+        "Rank computation"
+      ],
+      "results": {
+        "Tables": {
+          "Table 8": {
+            "caption": "Tuning PPO on Brax’s Ant, Halfcheetah and Humanoid environments. Shown are tuning results across 3 runs across 5 seeds each, tested on 10 different test seeds.",
+            "reason": "Tabular results for Brax.",
+            "metrics": [
+              "Mean Evaluation Reward"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Brax Ant (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Brax Humanoid (Freeman et al., 2021)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          },
+          "Table 9": {
+            "caption": "Tuning IDAAC on Procgen’s Bigfish, Climber and Plunder. Results are across 3 runs using 5 seeds each, and tested on 10 different test seeds.",
+            "reason": "Tabular results for Procgen.",
+            "metrics": [
+              "Mean Evaluation Reward"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard Deviation"
+            ],
+            "data": [
+              "Procgen Bigfish (Cobbe et al., 2020)",
+              "Procgen Climber (Cobbe et al., 2020)",
+              "Procgen Plunder (Cobbe et al., 2020)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 5": {
+            "caption": "Tuning Results for PPO on Brax. Shown is the mean evaluation reward across 10 episodes for 3 tuning runs as well as the 98% confidence interval across tuning runs.",
+            "reason": "Visual comparison of HPO vs baseline on Brax.",
+            "metrics": [
+              "Mean Evaluation Reward"
+            ],
+            "statistics": [
+              "Mean",
+              "98% confidence interval"
+            ],
+            "data": [
+              "Brax Ant (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Brax Humanoid (Freeman et al., 2021)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          },
+          "Figure 6": {
+            "caption": "Tuning Results for IDAAC on Procgen. Shown is the mean evaluation reward across 10 episodes for 3 tuning runs as well as the 98% confidence interval across tuning runs.",
+            "reason": "Visual comparison of HPO vs baseline on Procgen.",
+            "metrics": [
+              "Mean Evaluation Reward"
+            ],
+            "statistics": [
+              "Mean",
+              "98% confidence interval"
+            ],
+            "data": [
+              "Procgen Bigfish (Cobbe et al., 2020)",
+              "Procgen Climber (Cobbe et al., 2020)",
+              "Procgen Plunder (Cobbe et al., 2020)"
+            ],
+            "test": [
+              "Direct comparison of mean rewards"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5": {
+            "value": "On Brax, DEHB outperforms the baseline with a mean rank of 1.3 compared to 1.7 for the 16 run budget and a rank of 1.0 compared to the baselines’s 1.3 with 64 runs. On Procgen the comparison is similar with 1.7 to 2 for 16 runs and 1.0 to 1.3 for 64 runs.",
+            "reason": "Summarizes the rank performance of DEHB vs baseline.",
+            "metrics": [
+              "Rank"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Brax Ant (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Brax Humanoid (Freeman et al., 2021)",
+              "Procgen Bigfish (Cobbe et al., 2020)",
+              "Procgen Climber (Cobbe et al., 2020)",
+              "Procgen Plunder (Cobbe et al., 2020)"
+            ],
+            "test": [
+              "Rank computation"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "",
+      "metrics": [
+        ""
+      ],
+      "statistics": [
+        ""
+      ],
+      "test": [
+        ""
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Individual seeds for selected clip range and entropy coefficient values of PPO across various environments.",
+            "reason": "Shows how different individual seeds behave differently for different hyperparameter values",
+            "metrics": [
+                "Average Episodic Return"
+            ],
+            "statistics": [],
+            "data": [
+              "Acrobot (Brockman et al., 2016)",
+              "Brax Humanoid (Freeman et al., 2021)",
+              "Brax Halfcheetah (Freeman et al., 2021)",
+              "Pendulum (Brockman et al., 2016)"
+            ],
+            "test": [
+              "Direct comparison of different Average Episodic Return Behaviour"
+            ]
+          }
+        },
+        "Text": {
+            "Section 4.2": {
+                "value": "We observe single seeds with crashing performance, inconsistent learning curves and also exceptionally well performing seeds that end up outperforming the best seeds of configurations which are better on average",
+                "reason": "Observation of the non-consistent behaviour across seeds in Figure 4.",
+                "metrics": [
+                    "Average Episodic Return"
+                ],
+                "statistics": [],
+                "data": [
+                    "Acrobot (Brockman et al., 2016)",
+                    "Brax Humanoid (Freeman et al., 2021)",
+                    "Brax Halfcheetah (Freeman et al., 2021)",
+                    "Pendulum (Brockman et al., 2016)"
+                ],
+                "test": [
+                    "Visual comparison of performance curves"
+                ]
+            }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Since most hyperparameters have significant influences on performance, their importance varies across environments and there are only few interference effects, we recommend tuning as many hyperparameters as possible... it should be possible to tune RL hyperparameters just as well as the ones in any other fields without RL-specific additions to the tuning algorithm since RL hyperparameter landscapes appear to be rather smooth.",
+      "reason": "Interprets the sweep and fANOVA results to conclude that landscapes are smooth but many HPs matter, supporting the use of general HPO tools."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Evaluating the configurations across multiple seeds increases the difficulty of the HPO problem substantially, even though it can help avoid overfitting.",
+      "reason": "Interprets the HPO results and how it can be used to avoid overfitting albeit at the cost of more compute."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Overall, HPO tools conceived for the AC setting, as represented by DEHB, are the most consistent and reliable within our experimental setting... even computationally cheap methods with small tuning budgets can generally match or outperform painstakingly hand-tuned configurations that use orders of magnitude more compute.",
+      "reason": "Interprets the results on Brax and Procgen, showing that DEHB outperforms baselines and other methods efficiently."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Simply reporting the performance of tuned seeds for the proposed method and that of testing seeds for the baselines is an unfair comparison which can lead to wrong conclusions.",
+      "reason": "Interprets the HPO results on small budgets and the effect of tuning vs testing seeds, highlighting the danger of overfitting to tuning seeds."
+    },
+    "interpretation_5": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "Given that we believe tuning only a few seeds of the target RL algorithm is still the norm (Schulman et al., 2017; Berner et al., 2019; Raileanu & Rockt ¨aschel, 2020;Badia et al., 2020; Hambro et al., 2022), such high variability with respect to the seed is likely a bigger difficulty factor for HPO in RL than the optimization landscape itself.",
+      "reason": "Interprets the results of analysis 4 in context of previous research."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3",
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3",
+        "research_question_4",
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2",
+        "hypothesis_4"
+      ],
+      "support": [
+        true,
+        true,
+        true
+      ],
+      "value": "Underreported tuning practices have the potential to distort algorithm evaluations while ignored hyperparameters may lead to suboptimal performance.",
+      "reason": "The authors conclude that HPO is highly beneficial, landscapes are smooth enough for general tools, and proper seed separation is crucial for reproducibility."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3",
+        "research_question_4",
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2",
+        "hypothesis_4"
+      ],
+      "support": [
+        true,
+        true,
+        true
+      ],
+      "value": "With only small budgets, we demonstrate that HPO tools like DEHB can cover large search spaces to produce better performing configurations using fewer computational resources than hyperparameter sweeps or grid searches.",
+      "reason": "The authors conclude that HPO is highly beneficial, landscapes are smooth enough for general tools, and proper seed separation is crucial for reproducibility."
+    },
+    "conclusion_3": {
+        "interpretations": ["interpretation_5"],
+        "research_questions": ["research_question_4"],
+        "hypotheses": ["hypothesis_3"],
+        "support": [false],
+        "value": "Thus, our conclusion is somewhat surprising: It should be possible to tune RL hyperparameters just as well as the ones in any other fields without RL-specific additions to the tuning algorithm since RL hyperparameter landscapes appear to be rather smooth.",
+        "reason": "Author conclude this at the end of 4.2 that the landscape is actually smooth wrt the HPs, invalidating their hypothesis."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can we develop HPO approaches tailored to the key challenges of RL, such as the high sensitivity to the random seed for a given hyperparameter configuration?",
+        "note": "Section 7 (Conclusion)",
+        "reason": "Authors explicitly state this as a promising direction for future work."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Frameworks for learnt hyperparameter policies or gradient-based optimization methods can counteract the effect of high sensitivity to random seeds by reacting dynamically to an algorithm's behaviour on a given seed.",
+        "note": "Section 7 (Conclusion)",
+        "reason": "Authors suggest this as a solution to the seed sensitivity problem."
+      },
+      "suggested_hypothesis_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Higher-level AutoRL approaches that replace hyperparameters entirely by directing the algorithm's behavior could simplify and stabilize RL algorithms in the long term.",
+        "note": "Section 7 (Conclusion)",
+        "reason": "Authors suggest this as a long-term goal for AutoRL."
+      }
+    }
+  }
+}
