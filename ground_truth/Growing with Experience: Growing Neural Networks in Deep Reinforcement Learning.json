@@ -1,0 +1,160 @@
+{
+  "Meta": {
+    "title": "Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning",
+    "authors": [
+      "Lukas Fehring",
+      "Marius Lindauer",
+      "Theresa Eimer"
+    ],
+    "year": 2025,
+    "venue": "arXiv"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can increased network capacity be enabled in Deep Reinforcement Learning while maintaining network trainability?",
+      "reason": "In the Abstract and Introduction, the authors highlight that training mid-sized networks for RL is a struggle, which limits policy complexity. They motivate their work by aiming to 'enable increased network capacity while maintaining network trainability'."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Does incrementally growing a neural network during training improve the performance of RL agents compared to using static networks of the final size of the growing network?",
+      "reason": "The authors introduce GrowNN to tackle the trade-off between small and large networks and evaluate its potential against static networks of unchanging size to see if it allows larger networks to solve previously impossible tasks."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that incrementally growing the network during training (GrowNN) enables agents to utilize deeper networks effectively, achieving higher performance than static networks of the same final size.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In the Introduction, the authors state: 'Instead, our approach GrowNN tackles this tradeoff by incrementally growing the network during training... enabling the use of appropriately sized networks...'. They expect this to allow larger networks to solve previously impossible tasks without algorithmic changes."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Evaluating the impact of network growth (GrowNN) against static network baselines using the PPO algorithm on the MiniHack Room and MuJoCo Ant environments.",
+      "strategy": "Hyperparameter optimization using a modified version of BOHB with SMAC3. A static fidelity schedule is used, and the network is grown after each fidelity. Baselines are trained with at least the same budget.",
+      "data": [
+        "MiniHack Room (Samvelyan et al., 2021)",
+        "MuJoCo Ant (Todorov et al., 2012)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Comparing the learning curves and final performance of GrowNN against static networks of various depths to determine if progressive growth yields better policies.",
+      "metrics": [
+        "Evaluation Episode Returns",
+        "Solution rates",
+        "Final reward"
+      ],
+      "statistics": [
+        "Interquartile Mean (IQM)",
+        "Confidence intervals",
+        "Percentages"
+      ],
+      "test": "Simple comparison (greater than) of final returns and solution rates.",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Training curves for static (solid lines) and GrowNN (dotted lines) networks on MiniHack Room 10x10 (left) and MuJoCo Ant (right). Dotted vertical lines show the evenly spaced growing points for the network. The number of layers for GrowNN networks refers to the final size.",
+            "reason": "This figure visually demonstrates the performance difference between the growing networks and the static baselines over the course of training.",
+            "metrics": [
+              "Evaluation Episode Returns"
+            ],
+            "statistics": [
+              "Interquartile Mean (IQM)",
+              "Confidence intervals"
+            ],
+            "data": [
+              "MiniHack Room (Samvelyan et al., 2021)",
+              "MuJoCo Ant (Todorov et al., 2012)"
+            ],
+            "test": "Simple comparison"
+          }
+        },
+        "Text": {
+          "Section 4": {
+            "value": "While on MiniHack, the baseline configured with a static depth 1 outperforms our growth approach, as soon as we increase the depth of the feature extractor, GrowNN is superior to statically trained networks with drastically higher solution rates of over 50% compared to 0%. On Ant, the effect is comparable: the baselines do not improve over a return of 1000, which the environment yields just by avoiding death states. However, the GrowNN agents learn policies in which the ant actively moves forward with an improvement of 65% in terms of final reward.",
+            "reason": "Provides the quantitative results of the comparison between GrowNN and static baselines, explicitly stating the performance gains.",
+            "metrics": [
+              "Solution rates",
+              "Final reward"
+            ],
+            "statistics": [
+              "Percentages"
+            ],
+            "data": [
+              "MiniHack Room (Samvelyan et al., 2021)",
+              "MuJoCo Ant (Todorov et al., 2012)"
+            ],
+            "test": "Simple comparison"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that GrowNN is superior to statically trained networks with drastically higher solution rates on MiniHack. On Ant, they note that GrowNN agents learn policies to actively move forward, whereas baselines only learn to avoid death states.",
+      "reason": "This interpretation directly links the observed higher returns and solution rates to the success of the GrowNN method in training deeper networks that static training fails to optimize."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that incremental depth increase benefits learning on MiniHack and Ant, and that growing the network with the agent's capabilities is a promising avenue for scaling RL. They state that GrowNN allows larger networks to solve previously hard to solve tasks without algorithmic changes.",
+      "reason": "Found in Section 5 (Conclusion) and Section 1 (Introduction), summarizing the success of the proposed method in addressing the research questions and supporting the hypothesis."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How does incremental network growth perform on other network architectures, such as Convolutional Neural Networks (CNNs)?",
+        "note": "Section 5 (Conclusion)",
+        "reason": "The authors explicitly state that 'more evaluation is necessary, especially on other network architectures like CNNs'."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that GrowNN can be successfully integrated into most deep RL methods due to its independence from algorithm choice.",
+        "note": "Section 5 (Conclusion)",
+        "reason": "They state 'GrowNN is independent of algorithm choice and can thus be integrated into most deep RL methods', implying a hypothesis for future integration and testing across different RL algorithms."
+      }
+    }
+  }
+}
