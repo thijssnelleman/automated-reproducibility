@@ -626,7 +626,7 @@ This interpretation of the analysis is ...
 
 The LLM has provided you with one or more interpretations from your work. Is this amount of interpretations the same as the amount you specified?
 
-Please write the amount of interpretations you had for the study: [x]
+Please write the amount of interpretations you had for the study: [3]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -679,7 +679,7 @@ Your corrected answer (empty if correct):
 
 The LLM has provided you with one or more conclusions from your work. Is this amount of conclusions the same as the amount you specified?
 
-Please write the amount of conclusions you had for the study: [x]
+Please write the amount of conclusions you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
