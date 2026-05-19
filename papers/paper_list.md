@@ -48,7 +48,7 @@ Towards Consistent and Efficient Decision-based Attacks
 
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks
 
-# Aaron Berger ✅ -> ❌
+# Aaron Berger ✅ -> ✅
 
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
 
