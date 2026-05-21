@@ -115,7 +115,7 @@ C3->>R: Return RE Results
 sequenceDiagram
 box lime INPUTS
     participant PL as Plan
-    participant R as Results
+    participant R as RE Results
 end
 box rgb(255,128,1) ANALYSE
     participant GM as Generate Metrics
