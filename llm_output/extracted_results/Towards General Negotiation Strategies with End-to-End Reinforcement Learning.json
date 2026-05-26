@@ -1,0 +1,170 @@
+
+{
+  "figure_2": {
+    "note": "Line plot showing mean and 99% confidence interval of episodic return during training for Higa et al. and Ours.",
+    "Episodic return": {
+      "Higa et al.": {
+        "0": {"mean": 0.1, "lower": 0.05, "upper": 0.15},
+        "0.2M": {"mean": 0.65, "lower": 0.55, "upper": 0.75},
+        "0.4M": {"mean": 0.75, "lower": 0.65, "upper": 0.85},
+        "0.6M": {"mean": 0.78, "lower": 0.7, "upper": 0.85},
+        "0.8M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "1M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "1.2M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "1.4M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "1.6M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "1.8M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "2M": {"mean": 0.8, "lower": 0.75, "upper": 0.85}
+      },
+      "Ours": {
+        "0": {"mean": 0.1, "lower": 0.05, "upper": 0.15},
+        "0.2M": {"mean": 0.7, "lower": 0.6, "upper": 0.8},
+        "0.4M": {"mean": 0.78, "lower": 0.7, "upper": 0.85},
+        "0.6M": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "0.8M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "1M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "1.2M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "1.4M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "1.6M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "1.8M": {"mean": 0.82, "lower": 0.75, "upper": 0.88},
+        "2M": {"mean": 0.82, "lower": 0.75, "upper": 0.88}
+      }
+    }
+  },
+  "figure_3": {
+    "note": "Bar charts showing evaluation results (Utility) of the policy designed by Higa et al. and Ours against baseline agents.",
+    "Utility": {
+      "Higa et al.": {
+        "BoulwareAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "ConcederAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "LinearAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "RandomAgent": {"mean": 0.5, "lower": 0.45, "upper": 0.55}
+      },
+      "Opponent (vs Higa et al.)": {
+        "BoulwareAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "ConcederAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "LinearAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "RandomAgent": {"mean": 0.6, "lower": 0.55, "upper": 0.65}
+      },
+      "Ours": {
+        "BoulwareAgent": {"mean": 0.95, "lower": 0.9, "upper": 1.0},
+        "ConcederAgent": {"mean": 0.95, "lower": 0.9, "upper": 1.0},
+        "LinearAgent": {"mean": 0.95, "lower": 0.9, "upper": 1.0},
+        "RandomAgent": {"mean": 0.5, "lower": 0.45, "upper": 0.55}
+      },
+      "Opponent (vs Ours)": {
+        "BoulwareAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "ConcederAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "LinearAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "RandomAgent": {"mean": 0.6, "lower": 0.55, "upper": 0.65}
+      }
+    }
+  },
+  "figure_4": {
+    "note": "Line plot showing mean and 99% confidence interval of episodic return during training of GNN policy against baseline and competition agents.",
+    "Episodic return": {
+      "Baseline": {
+        "0": {"mean": 0.1, "lower": 0.05, "upper": 0.15},
+        "0.2M": {"mean": 0.75, "lower": 0.65, "upper": 0.85},
+        "0.4M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "0.6M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "0.8M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "1M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "1.2M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "1.4M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "1.6M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "1.8M": {"mean": 0.8, "lower": 0.7, "upper": 0.9},
+        "2M": {"mean": 0.8, "lower": 0.7, "upper": 0.9}
+      },
+      "Competition": {
+        "0": {"mean": 0.1, "lower": 0.05, "upper": 0.15},
+        "0.2M": {"mean": 0.5, "lower": 0.4, "upper": 0.6},
+        "0.4M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "0.6M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "0.8M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "1M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "1.2M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "1.4M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "1.6M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "1.8M": {"mean": 0.55, "lower": 0.45, "upper": 0.65},
+        "2M": {"mean": 0.55, "lower": 0.45, "upper": 0.65}
+      }
+    }
+  },
+  "figure_5": {
+    "note": "Bar charts showing evaluation results (Utility) of GNN-based policy on randomly generated negotiation problems against baseline and full set of opponents.",
+    "Utility": {
+      "Ours (vs Baseline)": {
+        "BoulwareAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "ConcederAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "LinearAgent": {"mean": 0.85, "lower": 0.8, "upper": 0.9},
+        "RandomAgent": {"mean": 0.5, "lower": 0.45, "upper": 0.55}
+      },
+      "Opponent (Baseline)": {
+        "BoulwareAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "ConcederAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "LinearAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "RandomAgent": {"mean": 0.6, "lower": 0.55, "upper": 0.65}
+      },
+      "Ours (vs Full Set)": {
+        "Agent007": {"mean": 0.45, "lower": 0.4, "upper": 0.5},
+        "Agent4410": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "AgentFO2": {"mean": 0.55, "lower": 0.5, "upper": 0.6},
+        "AgentFish": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "ChargingBoul": {"mean": 0.5, "lower": 0.45, "upper": 0.55},
+        "DreamTeam109Agent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "LuckyAgent2022": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "MiCROAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "RGAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "SmartAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "SuperAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "ThirdAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "Tjaronchery10Agent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "ExploitAgent": {"mean": 0.4, "lower": 0.35, "upper": 0.45},
+        "BoulwareAgent": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "ConcederAgent": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "LinearAgent": {"mean": 0.8, "lower": 0.75, "upper": 0.85},
+        "RandomAgent": {"mean": 0.5, "lower": 0.45, "upper": 0.55}
+      },
+      "Opponent (Full Set)": {
+        "Agent007": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "Agent4410": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "AgentFO2": {"mean": 0.7, "lower": 0.65, "upper": 0.75},
+        "AgentFish": {"mean": 0.95, "lower": 0.9, "upper": 1.0},
+        "ChargingBoul": {"mean": 0.75, "lower": 0.7, "upper": 0.8},
+        "DreamTeam109Agent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "LuckyAgent2022": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "MiCROAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "RGAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "SmartAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "SuperAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "ThirdAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "Tjaronchery10Agent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "ExploitAgent": {"mean": 0.9, "lower": 0.85, "upper": 0.95},
+        "BoulwareAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "ConcederAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "LinearAgent": {"mean": 0.3, "lower": 0.25, "upper": 0.35},
+        "RandomAgent": {"mean": 0.6, "lower": 0.55, "upper": 0.65}
+      }
+    }
+  },
+  "table_2": {
+    "note": "Hyperparameter settings for PPO training.",
+    "Value": {
+      "total timesteps": "2 * 10^6",
+      "batch size": "6000",
+      "mini batch size": "300",
+      "policy update epochs": "30",
+      "entropy coefficient": "0.001",
+      "discount factor gamma": "1",
+      "value function coefficient": "1",
+      "GAE lambda": "0.95",
+      "# GAT layers": "4",
+      "# GAT attention heads": "4",
+      "hidden representation size": "256",
+      "Adam learning rate": "3 * 10^-4",
+      "Learning rate annealing": "True",
+      "activation functions": "ReLU"
+    }
+  }
+}

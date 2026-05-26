@@ -1,0 +1,362 @@
+
+{
+  "table_1": {
+    "note": "Median performance for our optimisation experiments.",
+    "Gymnasium LunarLander (minimise)": {
+      "base, base": {
+        "PPO Single Obj.": "273 (11%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "208 (27%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "287 (31%)",
+        "PPO Multi Obj.": "223 (10%)",
+        "SAC Single Obj.": "175 (14%)",
+        "SAC Multi Obj.": "174 (13%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "265 (27%)",
+        "PPO Multi Obj.": "277 (11%)",
+        "SAC Single Obj.": "194 (23%)",
+        "SAC Multi Obj.": "186 (15%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "262 (38%)",
+        "PPO Multi Obj.": "252 (24%)",
+        "SAC Single Obj.": "171 (15%)",
+        "SAC Multi Obj.": "193 (18%)"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "234 (25%)",
+        "PPO Multi Obj.": "227 (15%)",
+        "SAC Single Obj.": "177 (23%)",
+        "SAC Multi Obj.": "182 (21%)"
+      }
+    },
+    "Google Brax Ant (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "6785 (16%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "8054 (28%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "6706 (17%)",
+        "PPO Multi Obj.": "6663 (14%)",
+        "SAC Single Obj.": "7927 (32%)",
+        "SAC Multi Obj.": "7994 (29%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "8111 (14%)",
+        "PPO Multi Obj.": "7842 (6%)",
+        "SAC Single Obj.": "8282 (21%)",
+        "SAC Multi Obj.": "8216 (13%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "8013 (16%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "8064 (21%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "8049 (12%)",
+        "PPO Multi Obj.": "7923 (6%)",
+        "SAC Single Obj.": "8199 (23%)",
+        "SAC Multi Obj.": "8169 (18%)"
+      }
+    },
+    "Google Brax Humanoid (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "4196 (<1%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "3273 (11%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "4464 (<1%)",
+        "PPO Multi Obj.": "4472 (<1%)",
+        "SAC Single Obj.": "5284 (11%)",
+        "SAC Multi Obj.": "5208 (8%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "4826 (1%)",
+        "PPO Multi Obj.": "4719 (<1%)",
+        "SAC Single Obj.": "4881 (18%)",
+        "SAC Multi Obj.": "4466 (15%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "5112 (2%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "5913 (17%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "5433 (7%)",
+        "PPO Multi Obj.": "5485 (1%)",
+        "SAC Single Obj.": "6033 (12%)",
+        "SAC Multi Obj.": "6103 (1%)"
+      }
+    },
+    "Robosuite Wipe (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "101 (24%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "108 (24%)",
+        "SAC Multi Obj.": "114 (20%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "132 (10%)",
+        "SAC Multi Obj.": "131 (11%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "134 (10%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "136 (8%)",
+        "SAC Multi Obj.": "130 (10%)"
+      }
+    }
+  },
+  "table_5": {
+    "note": "Results of the trained policies for each optimisation experiment evaluated on each environment's default shaped reward function.",
+    "Gymnasium LunarLander (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "274 (8%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "276 (7%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "266 (10%)",
+        "PPO Multi Obj.": "283 (7%)",
+        "SAC Single Obj.": "286 (7%)",
+        "SAC Multi Obj.": "287 (7%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "275 (7%)",
+        "PPO Multi Obj.": "272 (7%)",
+        "SAC Single Obj.": "280 (7%)",
+        "SAC Multi Obj.": "283 (7%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "275 (8%)",
+        "PPO Multi Obj.": "276 (8%)",
+        "SAC Single Obj.": "287 (7%)",
+        "SAC Multi Obj.": "283 (7%)"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "234 (25%)",
+        "PPO Multi Obj.": "283 (7%)",
+        "SAC Single Obj.": "287 (7%)",
+        "SAC Multi Obj.": "285 (7%)"
+      }
+    },
+    "Google Brax Ant (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "7293 (17%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "8065 (30%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "7235 (18%)",
+        "PPO Multi Obj.": "7236 (17%)",
+        "SAC Single Obj.": "7600 (34%)",
+        "SAC Multi Obj.": "7814 (32%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "8379 (17%)",
+        "PPO Multi Obj.": "8127 (10%)",
+        "SAC Single Obj.": "8169 (25%)",
+        "SAC Multi Obj.": "8037 (19%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "8063 (18%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "7636 (24%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "8254 (16%)",
+        "PPO Multi Obj.": "8124 (9%)",
+        "SAC Single Obj.": "7717 (28%)",
+        "SAC Multi Obj.": "7866 (19%)"
+      }
+    },
+    "Google Brax Humanoid (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "10016 (<1%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "3273 (11%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "10256 (<1%)",
+        "PPO Multi Obj.": "10439 (<1%)",
+        "SAC Single Obj.": "10509 (11%)",
+        "SAC Multi Obj.": "10695 (11%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "10850 (2%)",
+        "PPO Multi Obj.": "10726 (<1%)",
+        "SAC Single Obj.": "10317 (19%)",
+        "SAC Multi Obj.": "9763 (17%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "11204 (<1%)",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "11746 (17%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "11599 (7%)",
+        "PPO Multi Obj.": "11562 (<1%)",
+        "SAC Single Obj.": "12141 (11%)",
+        "SAC Multi Obj.": "12292 (8%)"
+      }
+    },
+    "Robosuite Wipe (maximise)": {
+      "base, base": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "108 (38%)",
+        "SAC Multi Obj.": "-"
+      },
+      "base, DEHB": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "77 (57%)",
+        "SAC Multi Obj.": "78 (58%)"
+      },
+      "DEHB, base": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "134 (20%)",
+        "SAC Multi Obj.": "131 (20%)"
+      },
+      "DEHB, RS": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "126 (21%)",
+        "SAC Multi Obj.": "-"
+      },
+      "DEHB (ours)": {
+        "PPO Single Obj.": "-",
+        "PPO Multi Obj.": "-",
+        "SAC Single Obj.": "127 (25%)",
+        "SAC Multi Obj.": "132 (20%)"
+      }
+    }
+  },
+  "figure_3": {
+    "note": "Incumbent performance in terms of median optimisation objective across the five optimisation runs for the SAC experiments at each time step.",
+    "SAC LunarLander (minimise) Single-Obj.": {
+      "Baseline": [210, 210, 210],
+      "hpo:'base', rpo:'dehb'": [800, 180, 180],
+      "hpo:'dehb', rpo:'base'": [800, 200, 200],
+      "hpo:'dehb', rpo:'random search'": [800, 180, 180],
+      "hpo:'dehb', rpo:'dehb' (ours)": [800, 180, 180]
+    },
+    "SAC LunarLander (minimise) Multi-Obj.": {
+      "Baseline": [210, 210, 210],
+      "hpo:'base', rpo:'dehb'": [500, 180, 180],
+      "hpo:'dehb', rpo:'base'": [500, 190, 190],
+      "hpo:'dehb', rpo:'dehb' (ours)": [500, 180, 180]
+    },
+    "SAC Ant (maximise) Single-Obj.": {
+      "Baseline": [8000, 8000, 8000],
+      "hpo:'base', rpo:'dehb'": [6000, 7900, 7900],
+      "hpo:'dehb', rpo:'base'": [6000, 8200, 8200],
+      "hpo:'dehb', rpo:'random search'": [6000, 8000, 8000],
+      "hpo:'dehb', rpo:'dehb' (ours)": [6000, 8200, 8200]
+    },
+    "SAC Ant (maximise) Multi-Obj.": {
+      "Baseline": [8000, 8000, 8000],
+      "hpo:'base', rpo:'dehb'": [2000, 8000, 8000],
+      "hpo:'dehb', rpo:'base'": [2000, 8200, 8200],
+      "hpo:'dehb', rpo:'dehb' (ours)": [2000, 8200, 8200]
+    },
+    "SAC Humanoid (maximise) Single-Obj.": {
+      "Baseline": [3200, 3200, 3200],
+      "hpo:'base', rpo:'dehb'": [1000, 5200, 5200],
+      "hpo:'dehb', rpo:'base'": [1000, 4800, 4800],
+      "hpo:'dehb', rpo:'random search'": [1000, 5900, 5900],
+      "hpo:'dehb', rpo:'dehb' (ours)": [1000, 6000, 6000]
+    },
+    "SAC Humanoid (maximise) Multi-Obj.": {
+      "Baseline": [3200, 3200, 3200],
+      "hpo:'base', rpo:'dehb'": [1000, 5200, 5200],
+      "hpo:'dehb', rpo:'base'": [1000, 4400, 4400],
+      "hpo:'dehb', rpo:'dehb' (ours)": [1000, 6100, 6100]
+    },
+    "SAC Wipe (maximise) Single-Obj.": {
+      "Baseline": [100, 100, 100],
+      "hpo:'base', rpo:'dehb'": [0, 108, 108],
+      "hpo:'dehb', rpo:'base'": [0, 132, 132],
+      "hpo:'dehb', rpo:'random search'": [0, 134, 134],
+      "hpo:'dehb', rpo:'dehb' (ours)": [0, 136, 136]
+    },
+    "SAC Wipe (maximise) Multi-Obj.": {
+      "Baseline": [100, 100, 100],
+      "hpo:'base', rpo:'dehb'": [0, 114, 114],
+      "hpo:'dehb', rpo:'base'": [0, 131, 131],
+      "hpo:'dehb', rpo:'dehb' (ours)": [0, 130, 130]
+    }
+  },
+  "figure_6": {
+    "note": "The median optimisation objective's incumbent performance across the five optimisation runs for the PPO experiments at each time step.",
+    "PPO LunarLander (minimise) Single-Obj.": {
+      "Baseline": [270, 270, 270],
+      "hpo:'base', rpo:'dehb'": [1000, 280, 280],
+      "hpo:'dehb', rpo:'base'": [1000, 260, 260],
+      "hpo:'dehb', rpo:'random search'": [1000, 260, 260],
+      "hpo:'dehb', rpo:'dehb' (ours)": [1000, 230, 230]
+    },
+    "PPO LunarLander (minimise) Multi-Obj.": {
+      "Baseline": [270, 270, 270],
+      "hpo:'base', rpo:'dehb'": [500, 220, 220],
+      "hpo:'dehb', rpo:'base'": [500, 270, 270],
+      "hpo:'dehb', rpo:'dehb' (ours)": [500, 220, 220]
+    },
+    "PPO Ant (maximise) Single-Obj.": {
+      "Baseline": [6700, 6700, 6700],
+      "hpo:'base', rpo:'dehb'": [4000, 6700, 6700],
+      "hpo:'dehb', rpo:'base'": [4000, 8100, 8100],
+      "hpo:'dehb', rpo:'random search'": [4000, 8000, 8000],
+      "hpo:'dehb', rpo:'dehb' (ours)": [4000, 8000, 8000]
+    },
+    "PPO Ant (maximise) Multi-Obj.": {
+      "Baseline": [6700, 6700, 6700],
+      "hpo:'base', rpo:'dehb'": [2000, 6600, 6600],
+      "hpo:'dehb', rpo:'base'": [2000, 7800, 7800],
+      "hpo:'dehb', rpo:'dehb' (ours)": [2000, 7900, 7900]
+    },
+    "PPO Humanoid (maximise) Single-Obj.": {
+      "Baseline": [4200, 4200, 4200],
+      "hpo:'base', rpo:'dehb'": [1000, 4400, 4400],
+      "hpo:'dehb', rpo:'base'": [1000, 4800, 4800],
+      "hpo:'dehb', rpo:'random search'": [1000, 5100, 5100],
+      "hpo:'dehb', rpo:'dehb' (ours)": [1000, 5400, 5400]
+    },
+    "PPO Humanoid (maximise) Multi-Obj.": {
+      "Baseline": [4200, 4200, 4200],
+      "hpo:'base', rpo:'dehb'": [1000, 4400, 4400],
+      "hpo:'dehb', rpo:'base'": [1000, 4700, 4700],
+      "hpo:'dehb', rpo:'dehb' (ours)": [1000, 5400, 5400]
+    }
+  }
+}
