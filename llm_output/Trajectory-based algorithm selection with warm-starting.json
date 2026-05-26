@@ -1,0 +1,401 @@
+{
+  "Meta": {
+    "title": "Trajectory-based Algorithm Selection with Warm-starting",
+    "authors": [
+      "Anja Jankovic",
+      "Diederick Vermetten",
+      "Ana Kostovska",
+      "Jacob de Nobel",
+      "Tome Eftimov",
+      "Carola Doerr"
+    ],
+    "year": 2022,
+    "venue": "arXiv"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "how do we make use of the trajectory-based information of a default algorithm to predict performances of other algorithms?",
+      "reason": "Explicitly stated in Section I (Introduction) as an important open question from previous work [5] that the authors tackle in this work."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Can a per-run algorithm selector based on trajectory-based performance regression models and warm-starting outperform standalone optimization algorithms?",
+      "reason": "Implied in the Abstract and Introduction, where the authors state they study the quality and accuracy of these models and aim to show promising performance of the trajectory-based per-run algorithm selection compared to standalone algorithms."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that trajectory-based landscape features extracted from an initial algorithm's run can be used to train regression models that accurately predict the performance of other warm-started algorithms.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied in the Abstract and Section I, where they propose using features computed from points sampled by a solver to train performance regression models."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that a dynamic algorithm selection model built upon trajectory-based performance predictions will outperform any of the standalone algorithms in the portfolio.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied in the Abstract and Section I, where they state the goal of achieving peak performance by selecting the most efficient algorithm for a given problem instance."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "A two-stage dynamic algorithm execution where CMA-ES is run for 154 evaluations, after which landscape features are extracted from its trajectory. A Random Forest regression model is trained to predict the performance of five warm-started algorithms (CMA-ES, DE, PSO, MLSL, BFGS) for various remaining fixed budgets. The best predicted algorithm is then selected and compared against the virtual best solver.",
+      "strategy": "Leave-one-group-out cross-validation (groups defined by the 5 instance IDs). Fixed-budget target precision for the second algorithm (budgets: 100, 200, 300, 500, 700, 900).",
+      "data": [
+        "BBOB noiseless testbed (Hansen et al. 2020)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the predictive power of the Random Forest regression models trained on actual target precision versus log-target precision.",
+      "metrics": [
+        "R^2 score"
+      ],
+      "statistics": [
+        "Average R^2 score over the five hold-out groups"
+      ],
+      "test": [
+        "Direct comparison (greater than)"
+      ],
+      "results": {
+        "Tables": {
+          "Table II": {
+            "caption": "R2 scores for the regression models trained on the actual target precision for all considered A2 budgets.",
+            "reason": "Shows the performance of models trained on actual target precision.",
+            "metrics": [
+              "R^2 score"
+            ],
+            "statistics": [
+              "Average R^2 score over the five hold-out groups"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (greater than)"
+            ]
+          },
+          "Table III": {
+            "caption": "R2 scores for the regression models trained on the log-target precision for all considered A2 budgets.",
+            "reason": "Shows the performance of models trained on log-target precision.",
+            "metrics": [
+              "R^2 score"
+            ],
+            "statistics": [
+              "Average R^2 score over the five hold-out groups"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (greater than)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Section IV.B": {
+            "value": "We observe from Tab. II and Tab. III that the regression models for log-target precision generally outperform the models with the actual target precision.",
+            "reason": "States the result of comparing the two target precision types.",
+            "metrics": [
+              "R^2 score"
+            ],
+            "statistics": [
+              "Average R^2 score over the five hold-out groups"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (greater than)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the performance of the algorithm selector compared to the individual algorithms across the full portfolio.",
+      "metrics": [
+        "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+      ],
+      "statistics": [
+        "Mean loss",
+        "Loss distribution (boxplots)"
+      ],
+      "test": [
+        "Direct comparison (less than)"
+      ],
+      "results": {
+        "Tables": {
+          "Table IV": {
+            "caption": "Confusion matrix for our algorithm selector for A2 budget 900.",
+            "reason": "Shows how often the selector chose the optimal algorithm.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "Heatmap showing in how many (out of 1 200) runs each algorithm is the best one to switch to (left) and is selected to switch to by the logarithmic model (right), based on the amount of budget given to this second part of the search.",
+            "reason": "Visualizes the selection frequency vs actual best.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          },
+          "Figure 3": {
+            "caption": "Loss (measured as difference between the achieved target precision and that of the virtual best solver, in log-performance space) of the logarithmic algorithm selection model and each of the five individual algorithms, for different budgets of the second part of the search.",
+            "reason": "Shows the loss distributions of the selector vs individual algorithms.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss",
+              "Loss distribution (boxplots)"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          }
+        },
+        "Text": {
+          "Section IV": {
+            "value": "Our algorithm selector selects BFGS on 972 out of all 1 200 runs (see Fig. 2b). It performs slightly worse than BFGS, i.e., we do not gain in this setting from the landscape-aware selection.",
+            "reason": "Describes the performance for the full portfolio where BFGS dominates.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the performance of the algorithm selector when the dominant algorithm (BFGS) is excluded from the portfolio.",
+      "metrics": [
+        "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+      ],
+      "statistics": [
+        "Mean loss",
+        "75% percentile loss",
+        "Median loss"
+      ],
+      "test": [
+        "Direct comparison (less than)"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Heatmaps showing in how many (out of 1 200) runs each algorithm (excluding BFGS) is the best one to switch to (left) and is selected to switch to by the logarithmic model (right)",
+            "reason": "Shows selection frequency without BFGS.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss",
+              "75% percentile loss",
+              "Median loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          },
+          "Figure 5": {
+            "caption": "Loss (measured as difference between the achieved target precision and that of the virtual best solver, in log performance space) of the logarithmic algorithm selection model when excluding BFGS",
+            "reason": "Shows the loss distributions without BFGS.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss",
+              "75% percentile loss",
+              "Median loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          }
+        },
+        "Text": {
+          "Section IV": {
+            "value": "the loss of the CMA-ES is best among all four budgets, but the selector is better both in terms of mean performance (e.g., 0.14 vs. 0.17 for A2 budget 200 and 0.21 vs. 0.45 for A2 budget 900) and with respect to the 75% percentile (0.13 vs. 0.16 for A2 budget 200 and 0.21 vs. 0.30 for A2 budget 900, respectively; the median is 0 for both the CMA-ES and the selector for most cases).",
+            "reason": "Describes the performance improvement of the selector over the best single algorithm when BFGS is excluded.",
+            "metrics": [
+              "Loss (difference between log target precision of selected algorithm and virtual best solver)"
+            ],
+            "statistics": [
+              "Mean loss",
+              "75% percentile loss",
+              "Median loss"
+            ],
+            "data": [
+              "BBOB noiseless testbed (Hansen et al. 2020)"
+            ],
+            "test": [
+              "Direct comparison (less than)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The regression models for log-target precision generally outperform the models with the actual target precision, making them more suitable as a basis for the algorithm selector.",
+      "reason": "The authors explicitly state this in Section IV.B based on the R^2 scores in Tables II and III."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "When the full portfolio is used, BFGS heavily dominates the performance, especially for smaller budgets. The algorithm selector mostly chooses BFGS but performs slightly worse overall, meaning there is no gain from landscape-aware selection in this specific setting.",
+      "reason": "The authors note in Section IV that BFGS's dominance prevents the selector from outperforming the single best solver."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "When the dominant BFGS algorithm is excluded, there is more complementarity among the remaining algorithms. In this scenario, the algorithm selector outperforms the single best algorithm (CMA-ES) in terms of both mean performance and the 75% percentile.",
+      "reason": "The authors interpret the results in Section IV (Excluding BFGS) to show that the selector works well when performance complementarity exists."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that trajectory-based selection is able to outperform all of the individual algorithms in the portfolio, provided that there is sufficient complementarity in their performance. This supports the hypothesis that trajectory data can be used for effective dynamic algorithm selection, though its success depends heavily on the portfolio's composition.",
+      "reason": "Stated in Section VI (Conclusions and Future Work), summarizing the main finding of the paper."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can learned regression models be properly transferred to other benchmark collections (e.g., CEC competitions) and real-world problem suites (e.g., nevergrad)?",
+        "note": "Section VI (Conclusions and Future Work)",
+        "reason": "The authors explicitly mention extending their work to settings requiring transfer learning across different benchmark suites."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the trajectory-based approach be extended to larger algorithm portfolios that exhibit complementary behavior on different problem instances?",
+        "note": "Section VI (Conclusions and Future Work)",
+        "reason": "The authors plan to focus on larger portfolios to ensure the necessary complementarity for the selector to be effective."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can a universal warm-starting procedure be defined that can be employed independently of an algorithm's internal operating mechanism?",
+        "note": "Section V (Limitations of our Approach) and Section VI (Conclusions and Future Work)",
+        "reason": "The authors identify the current algorithm-specific warm-starting procedures as a limitation and suggest researching universal methods."
+      },
+      "suggested_research_question_4": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can information extracted from the evolution of state variables (time-series analysis) during the first part of the optimization process be used to enrich performance regression?",
+        "note": "Section VI (Conclusions and Future Work)",
+        "reason": "The authors suggest using recurrent neural networks or transformers on longitudinal trajectory data to improve predictions."
+      },
+      "suggested_research_question_5": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can an adaptive switching policy be implemented to replace the fixed-evaluation switching approach?",
+        "note": "Section VI (Conclusions and Future Work)",
+        "reason": "The authors state this is an important direction towards practical applicability."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that extracting information from the evolution of state variables during the first part of the optimization process (using time-series analysis, RNNs, or transformers) will strongly benefit and enrich the performance regression models.",
+        "note": "Section VI (Conclusions and Future Work)",
+        "reason": "The authors explicitly state they believe the regression models can strongly benefit from this longitudinal information."
+      }
+    }
+  }
+}
