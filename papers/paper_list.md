@@ -22,7 +22,7 @@ Revisiting SATZilla Features in 2024
 
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification
 
-# Anja Jankovic ✅ -> ❌
+# Anja Jankovic ✅ -> ✅
 
 Trajectory-based algorithm selection with warm-starting
 
