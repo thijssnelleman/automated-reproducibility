@@ -14,7 +14,7 @@ Robustness Distributions in Neural Network Verification
 
 Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 
-# Hadar Shavit ✅ -> ❌
+# Hadar Shavit ✅ -> ✅
 
 Revisiting SATZilla Features in 2024
 
