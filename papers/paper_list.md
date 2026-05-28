@@ -36,7 +36,7 @@ Audio Classification Models are Vulnerable to Filter Pertubations
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
-# Marie Anastacio ✅ -> ❌
+# Marie Anastacio ✅ -> ✅
 
 Instance selection for configuration performance comparison
 
