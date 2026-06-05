@@ -18,9 +18,11 @@ Data Efficient Pre-training for Language Models: An Empirical Study of Compute E
 
 Revisiting SATZilla Features in 2024
 
-# Konstantin Kaulen ✅ -> ✅
+# Konstantin Kaulen ✅ -> ✅ ❌
 
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification
+
+Rethinking Evaluation Paradigms in IBP-based Certified Training
 
 # Anja Jankovic ✅ -> ✅
 

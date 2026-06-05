@@ -58,7 +58,7 @@
         "hypothesis_2"
       ],
       "experiment_description": "The authors evaluate the proposed pooling operator on a graph classification task across multiple benchmark datasets. They compare their method (CPCL/CCPCCPCLL architectures) against Edge Pool (Diehl et al.) and Graph Isomorphism Networks (Xu et al.).",
-      "strategy": "10-fold cross-validation repeated 10 times (100 total runs). Random split (train = 0.8, validation = 0.1, test = 0.1).",
+      "strategy": "Random split (train = 0.8, validation = 0.1, test = 0.1), repeated 100 times.",
       "data": [
         "Proteins (Borgwardt et al. 2005 / Morris et al. [19])",
         "Reddit-Binary (Yanardag & Vishwanathan 2015 / Morris et al. [19])",
