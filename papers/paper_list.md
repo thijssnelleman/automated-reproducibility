@@ -114,5 +114,4 @@ HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimiz
 
 # Daria Barjaktarevic ❌ -> ❌
 
-An Evaluation of Neural Network Architectures for
-Predicting Hydro Unit Commitment Decisions
+An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitment Decisions
