@@ -1,0 +1,275 @@
+{
+  "Meta": {
+    "title": "An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitment Decisions",
+    "authors": [
+      "Daria Barjaktarevic",
+      "Jiehong Kong",
+      "Zhirong Yang",
+      "Christian Øyn Naversen"
+    ],
+    "year": 2026,
+    "venue": "IEEE"
+  },
+  "research_question_1": {
+    "explicit": false,
+    "value": "Which neural network architectures are most suitable for predicting Unit Commitment (UC) decisions in short-term hydro scheduling?",
+    "reason": "In Section I (Introduction), the authors state: 'However, the literature still lacks a systematic comparison of NN architectures to determine which are most suitable for UC prediction tasks.' This implies their motivation to systematically compare different architectures."
+  },
+  "research_question_2": {
+    "explicit": false,
+    "value": "Can machine learning models capture the UC decision structure to significantly reduce computational effort while maintaining realistic operational quality in hydro-dominated systems?",
+    "reason": "In Section I (Introduction), the authors state: 'This paper addresses these gaps by investigating the use of ML to support UC decisions in short-term hydro scheduling... to examine ML-based UC prediction under realistic operational conditions.' They aim to see if ML can reduce computational effort while maintaining objective values."
+  },
+  "hypothesis_1": {
+    "explicit": false,
+    "value": "The authors hypothesise that neural network architectures, particularly those capturing temporal and structural dependencies, can effectively predict hydro UC decisions and outperform the relaxed Mixed-Integer Programming (No_MIP) baseline in predictive performance.",
+    "research_questions": [
+      "research_question_1"
+    ],
+    "reason": "In Section V.A, the authors state 'we expect our models to perform at least as well as the baseline No_MIP.' Furthermore, the introduction implies that NNs, which have demonstrated strong predictive performance, should be able to capture the complex spatiotemporal dependencies of the problem."
+  },
+  "hypothesis_2": {
+    "explicit": false,
+    "value": "The authors hypothesise that embedding ML-predicted UC decisions into the scheduling pipeline will significantly reduce computational runtime while maintaining objective values close to those obtained with an exact MIP solution.",
+    "research_questions": [
+      "research_question_2"
+    ],
+    "reason": "In the Abstract and Section V.C, the authors describe the goal of ML-predicted UC decisions as improving or preserving operational performance compared to All_MIP while reducing the computational burden associated with exact MIP solutions."
+  },
+  "experiment_1": {
+    "research_questions": [
+      "research_question_1"
+    ],
+    "hypotheses": [
+      "hypothesis_1"
+    ],
+    "experiment_description": "Training and evaluating various neural network architectures (MLP, DLinear, CNN, CDIL-CNN, TCN, RNN, LSTM, CNN-LSTM, LSTM-CNN) on multilabel binary classification of UC decisions for 24-h and 168-h scheduling horizons.",
+    "strategy": "Random split (train = 0.8, evaluation = 0.2)",
+    "data": [
+      "Tokke-Vinje Watercourse Open Dataset v1_2025_11 (Kong and Naversen, 2025)",
+      "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+    ]
+  },
+  "experiment_2": {
+    "research_questions": [
+      "research_question_2"
+    ],
+    "hypotheses": [
+      "hypothesis_2"
+    ],
+    "experiment_description": "Embedding the ML-predicted UC decisions back into the SHOP workflow (ULD mode followed by simulation) to measure the operational impact in terms of total pipeline runtime and objective value differences compared to All_MIP, No_MIP, and Mixed_MIP.",
+    "strategy": "Evaluated on the 20% of cases reserved for prediction.",
+    "data": [
+      "Tokke-Vinje Watercourse Open Dataset v1_2025_11 (Kong and Naversen, 2025)",
+      "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+    ]
+  },
+  "analysis_1": {
+    "experiments": [
+      "experiment_1"
+    ],
+    "reason": "Evaluating the classification performance of the trained NN models against the No_MIP baseline.",
+    "metrics": [
+      "Accuracy",
+      "Precision",
+      "Recall",
+      "F1 score (micro average)"
+    ],
+    "statistics": [
+      "Raw scores (percentages)"
+    ],
+    "test": "Direct comparison (greater than/less than) of classification metrics between NN models and the No_MIP baseline.",
+    "results": {
+      "Tables": {},
+      "Figures": {
+        "Figure 4": {
+          "caption": "Classification performance metrics for models trained on the 24-h scheduling horizon.",
+          "reason": "Shows the accuracy, precision, recall, and F1 scores for all models and No_MIP for the 24-h horizon.",
+          "metrics": [
+            "Accuracy",
+            "Precision",
+            "Recall",
+            "F1 score (micro average)"
+          ],
+          "statistics": [
+            "Raw scores (percentages)"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        },
+        "Figure 5": {
+          "caption": "Classification performance metrics for models trained on the 168-h scheduling horizon.",
+          "reason": "Shows the accuracy, precision, recall, and F1 scores for all models and No_MIP for the 168-h horizon.",
+          "metrics": [
+            "Accuracy",
+            "Precision",
+            "Recall",
+            "F1 score (micro average)"
+          ],
+          "statistics": [
+            "Raw scores (percentages)"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        }
+      },
+      "Text": {
+        "Section V.A": {
+          "value": "all NNs achieve strong performance, with F1 scores of at least 98.23% for the 24-h horizon and 97.48% for the 168-h horizon... Compared to 98.21% and 97.35% for No_MIP, we see a solid but reasonable increase in performance from the baseline.",
+          "reason": "Describes the direct comparison of F1 scores between NNs and No_MIP.",
+          "metrics": [
+            "F1 score (micro average)"
+          ],
+          "statistics": [
+            "Raw scores (percentages)"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        }
+      }
+    }
+  },
+  "analysis_2": {
+    "experiments": [
+      "experiment_2"
+    ],
+    "reason": "Evaluating the operational impact of ML-predicted UC decisions by measuring total pipeline runtimes and objective value differences.",
+    "metrics": [
+      "Runtime (seconds)",
+      "Objective value difference (EUR)",
+      "Learnable parameters",
+      "Training time (s)",
+      "Prediction time (ms)"
+    ],
+    "statistics": [
+      "Median",
+      "Central 80% of data",
+      "Mean with standard deviations"
+    ],
+    "test": "Direct comparison of median runtimes and objective value differences against All_MIP and No_MIP.",
+    "results": {
+      "Tables": {
+        "TABLE II": {
+          "caption": "LEARNABLE PARAMETERS, TRAINING AND PREDICTION TIME",
+          "reason": "Provides the number of parameters, training time, and prediction time for each model.",
+          "metrics": [
+            "Learnable parameters",
+            "Training time (s)",
+            "Prediction time (ms)"
+          ],
+          "statistics": [
+            "Mean with standard deviations"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        }
+      },
+      "Figures": {
+        "Figure 6": {
+          "caption": "Violin plots of total runtimes for different SHOP operational settings and the CDIL-CNN, showing the central 80% of data. Median values are shown.",
+          "reason": "Shows the runtime comparison between All_MIP, Mixed_MIP, No_MIP, and CDIL-CNN.",
+          "metrics": [
+            "Runtime (seconds)"
+          ],
+          "statistics": [
+            "Median",
+            "Central 80% of data"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        },
+        "Figure 7": {
+          "caption": "Violin plots of objective-value differences (All_MIP \u2013 model), showing the central 80% of the data. Median values are indicated. Larger values represent greater deviations from the All_MIP objective value.",
+          "reason": "Shows the objective value differences for all models compared to All_MIP.",
+          "metrics": [
+            "Objective value difference (EUR)"
+          ],
+          "statistics": [
+            "Median",
+            "Central 80% of data"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        }
+      },
+      "Text": {
+        "Section V.B": {
+          "value": "CDIL-CNN, similar to other NN models, exhibits impressive speed-ups, reducing the median runtime by 56.1% and 64.4% compared to All_MIP for the 24-h and 168-h horizons, respectively.",
+          "reason": "Quantifies the runtime reduction achieved by the ML model.",
+          "metrics": [
+            "Runtime (seconds)"
+          ],
+          "statistics": [
+            "Median"
+          ],
+          "data": [
+            "KSP InterOpt Project Open Dataset (Kong et al., 2025)"
+          ],
+          "test": [
+            "Direct comparison"
+          ]
+        }
+      }
+    }
+  },
+  "interpretation_1": {
+    "analyses": [
+      "analysis_1"
+    ],
+    "value": "The authors interpret that all NNs achieve strong performance, outperforming the No_MIP baseline. They note that CNN-based models exhibit slightly better overall results, suggesting convolutional layers effectively capture temporal and structural dependencies. Recurrent models show the weakest overall performance.",
+    "reason": "Found in Section V.A. The authors explicitly state these observations based on the classification metrics in Figures 4 and 5."
+  },
+  "interpretation_2": {
+    "analyses": [
+      "analysis_2"
+    ],
+    "value": "The authors interpret that ML-enhanced runs significantly reduce runtime and exhibit objective values comparable to No_MIP, with some models showing notable improvements. However, they observe that models with the best classification metrics do not always achieve the largest objective-value improvements.",
+    "reason": "Found in Sections V.B and V.C. The authors highlight the runtime speed-ups and the disconnect between classification metrics and operational objective values."
+  },
+  "conclusion_1": {
+    "interpretations": [
+      "interpretation_1",
+      "interpretation_2"
+    ],
+    "research_questions": [
+      "research_question_1",
+      "research_question_2"
+    ],
+    "hypotheses": [
+      "hypothesis_1",
+      "hypothesis_2"
+    ],
+    "support": [
+      true,
+      true
+    ],
+    "value": "The authors conclude that NNs can effectively approximate hydro UC decisions and enable meaningful computational savings, supporting both hypotheses. They specifically highlight that convolutional architectures demonstrated the strongest and most stable performance. Furthermore, they conclude that conventional classification metrics alone do not fully capture the operational quality of predicted schedules, emphasizing the need to evaluate ML models within the full optimization context.",
+    "reason": "Found in Section VI (Conclusions). The authors summarize their findings, confirming the utility of NNs (especially CNNs) for this task and stressing the importance of operational evaluation."
+  },
+  "Suggested Research Questions": {},
+  "Suggested Hypotheses": {}
+}
