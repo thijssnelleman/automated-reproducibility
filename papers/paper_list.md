@@ -2,7 +2,7 @@
 
 Edge-Based Graph Component Pooling
 
-# Wadie Skaf ✅ -> ❌
+# Wadie Skaf ✅ -> ✅
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
