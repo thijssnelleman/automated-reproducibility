@@ -1,0 +1,383 @@
+
+{
+  "Meta": {
+    "title": "Incorporating the Cycle Inductive Bias in Masked Autoencoders",
+    "authors": [
+      "Start Gallina Ottersen",
+      "Kerstin Bach"
+    ],
+    "year": 2026,
+    "venue": "7th Northern Lights Deep Learning Conference (NLDL), PMLR 307"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can the cyclic structure of time series data be leveraged as an inductive bias in Masked Autoencoders (MAE) to improve modeling efficiency and effectiveness?",
+      "reason": "In the Abstract and Introduction (Section 1), the authors motivate the problem by stating that many time series exhibit cyclic structures, yet most representation learning methods treat them as generic sequences. They propose using cycles as an inductive bias to reduce computation in longer sequences while maintaining performance."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How does a cycle-based decomposition in Masked Autoencoders affect the model's ability to capture intra-cycle variations and its performance on downstream classification tasks?",
+      "reason": "In the Abstract and Section 3, the authors discuss how exposing the encoder to a greater diversity of temporal patterns (by treating each cycle as a training instance) might enhance the ability to capture subtle intra-cycle variations, which is essential for tasks like arrhythmia detection."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that explicitly leveraging cycles as an inductive bias in a masked autoencoder (MACE) will shorten the effective sequence length processed by the encoder, yielding substantial computational savings without loss in reconstruction quality or downstream performance.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "In the Abstract and Introduction, the authors propose their method and state that this decomposition shortens the effective sequence length, aiming to reduce the quadratic complexity of transformers while maintaining performance."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that exposing the encoder to individual cycles as separate training instances will enhance the model's ability to capture subtle intra-cycle variations, leading to better classification performance on cyclic datasets compared to baseline models.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "In the Abstract and Section 3, the authors claim that using cycles as sub-components exposes the encoder to data with more consistent structure, producing representations that capture fine-grained variations essential for classification tasks."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluating the classification performance of the proposed MACE model against baseline models (MOMENT, CRT, TimeMAE) on four cyclic datasets and two semi-cyclic datasets.",
+      "strategy": "5-fold cross-validation. Models are pre-trained on the entire dataset and then fully fine-tuned on the labels (except MOMENT, which uses linear probing/SVM). Early stopping with a patience of 10 is used, stopping after a maximum of 100 epochs.",
+      "data": [
+        "PTB-XL (Wagner et al. 2022)",
+        "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+        "Air quality (Chen 2016)",
+        "NHANES activity 2013-2014 (CDC 2013)",
+        "UCI HAR (Reyes-Ortiz et al. 2013)",
+        "FordA (Bagnall 2025)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Measuring and comparing the fine-tuning running times and loss convergence of MACE against baseline models to evaluate computational efficiency.",
+      "strategy": "Single run on a dedicated V100 GPU due to computational limitations, tracking running time and loss per epoch.",
+      "data": [
+        "PTB-XL (Wagner et al. 2022)",
+        "Air quality (Chen 2016)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Conducting ablation studies to test the effect of individual components of the MACE architecture, including the use of cycle vs. sequence loss, the presence of a teacher encoder, varying masking ratios, and pooling vs. query attention strategies.",
+      "strategy": "5-fold cross-validation (implied from general setup) evaluating F1 scores under different architectural configurations.",
+      "data": [
+        "PTB-XL (Wagner et al. 2022)",
+        "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+        "Air quality (Chen 2016)",
+        "NHANES activity 2013-2014 (CDC 2013)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To compare the downstream classification performance of MACE against baseline models on both cyclic and semi-cyclic datasets.",
+      "metrics": [
+        "F1 score (macro averaging)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Simple comparison (greater than / higher F1 score)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "F1 scores for cyclic data, macro averaging is used in multiclass problems.",
+            "reason": "Shows the main classification results comparing MACE to baselines on the four cyclic datasets.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+              "Air quality (Chen 2016)",
+              "NHANES activity 2013-2014 (CDC 2013)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          },
+          "Table 6": {
+            "caption": "F1 scores for semi-cyclic data, macro averaging is used in multiclass problems.",
+            "reason": "Shows the classification results comparing MACE to baselines on the two semi-cyclic datasets to test generalisability.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "UCI HAR (Reyes-Ortiz et al. 2013)",
+              "FordA (Bagnall 2025)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To evaluate the computational efficiency and convergence speed of MACE compared to baselines on the largest and smallest datasets.",
+      "metrics": [
+        "Running time (hours/minutes/seconds)",
+        "Loss"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Simple comparison (less time / faster convergence)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 3": {
+            "caption": "Fine-tuning times. *Linear probing time is estimated from running time after 12 hours.",
+            "reason": "Provides the quantitative running times for fine-tuning the models on PTB-XL and Air quality datasets.",
+            "metrics": [
+              "Running time (hours/minutes/seconds)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "Air quality (Chen 2016)"
+            ],
+            "test": [
+              "Simple comparison (less time / faster convergence)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 5": {
+            "caption": "Loss curves during fine-tuning of the TimeMAE, CRT and MACE models. The graphs are cut off due to the early stop criterion.",
+            "reason": "Visualizes the convergence speed of the models, showing MACE converging quicker to its best loss.",
+            "metrics": [
+              "Loss"
+            ],
+            "statistics": [],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)"
+            ],
+            "test": [
+              "Simple comparison (less time / faster convergence)"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "To determine the impact of specific architectural choices (losses, teacher encoder, masking ratio, pooling) on the model's performance.",
+      "metrics": [
+        "F1 score (macro averaging)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation"
+      ],
+      "test": [
+        "Simple comparison (greater than / higher F1 score)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 4": {
+            "caption": "F1 scores for MACE pre-trained using different losses.",
+            "reason": "Shows the effect of using cycle loss, sequence loss, or both.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+              "Air quality (Chen 2016)",
+              "NHANES activity 2013-2014 (CDC 2013)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          },
+          "Table 5": {
+            "caption": "F1 scores for MACE pre-trained using different learning representations.",
+            "reason": "Shows the effect of using a teacher encoder versus no teacher encoder.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+              "Air quality (Chen 2016)",
+              "NHANES activity 2013-2014 (CDC 2013)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          },
+          "Table 7": {
+            "caption": "F1 scores for MACE pre-trained using varying masking rates.",
+            "reason": "Shows the effect of different masking ratios (0.25, 0.5, 0.75, 0.9) on performance.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+              "Air quality (Chen 2016)",
+              "NHANES activity 2013-2014 (CDC 2013)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          },
+          "Table 8": {
+            "caption": "F1 scores for MACE pre-trained using different learning representations.",
+            "reason": "Shows the effect of using mean pooling versus query attention during fine-tuning.",
+            "metrics": [
+              "F1 score (macro averaging)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "PTB-XL (Wagner et al. 2022)",
+              "UCI Electricity Load Diagrams (ELD) (Trindade 2015)",
+              "Air quality (Chen 2016)",
+              "NHANES activity 2013-2014 (CDC 2013)"
+            ],
+            "test": [
+              "Simple comparison (greater than / higher F1 score)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {}
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "MACE is able to outperform the three baseline models on all four cyclic datasets. The authors attribute the strong performance on datasets like UCI ELD and Air quality to the regularisation of the teacher-student structure and the model's ability to capture subtle differences in local cycles.",
+      "reason": "Found in Section 4.3. The authors explicitly state that MACE outperforms baselines on cyclic data and provide reasoning based on the model's architecture and the nature of the datasets."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "On semi-cyclic datasets, MACE is able to outcompete some models but falls short of the best performing ones. It struggles with non-cyclic classes in UCI HAR because the whole sequence is passed as a single cycle, and performs comparably on Ford A except against CRT, which benefits from phase data.",
+      "reason": "Found in Section 4.3. The authors interpret the results on semi-cyclic data to understand the limitations of their inductive bias when applied to data that falls slightly outside its scope."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The fine-tuning time for MACE is considerably lower than the other models on the large PTB-XL dataset. However, on the smaller Air quality dataset, MACE is slower than MOMENT SVM and TimeMAE due to an overhead from reshaping, padding, and using multiple transformer encoders. MACE also converges considerably quicker to its best loss.",
+      "reason": "Found in Section 4.3. The authors explain the computational trade-offs, noting that MACE scales efficiently for large sequences but has overhead that impacts performance on smaller datasets."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Ablation studies show that using both cycle and sequence losses yields similar results to using them individually, except on Air quality where the combination makes a considerable difference. The teacher encoder slightly improves performance (significantly on Air quality). A 25% masking ratio is generally best, except for Air quality (75%). Mean pooling slightly outperforms query attention but with higher variance.",
+      "reason": "Found in Section 4.3. The authors break down the impact of their architectural choices to justify the final model design."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3",
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that incorporating an inductive bias for cyclic data in masked autoencoders allows for improved performance at a lower computational cost in longer sequences. The model outperforms baselines on cyclic datasets and shows comparable performance on semi-cyclic data. The decreased running times on large sequences and good classification performance indicate that the cyclic inductive bias is useful. However, they acknowledge that the model has some overhead making it worse on smaller datasets.",
+      "reason": "Found in Section 5 (Conclusion). This directly answers the research questions and supports the hypotheses, while also acknowledging the limitations observed in the experiments."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How does masking affect learning on time series, and can this lead to more generalisable approaches compared to the cycle-based method explored?",
+        "note": "Found in Section 5 (Conclusion).",
+        "reason": "The authors explicitly suggest this as a direction for future work to improve the generalisability of their approach."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

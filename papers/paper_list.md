@@ -120,4 +120,4 @@ An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitme
 
 Automatic Adjusting Global Similarity Measures in Learning CBR Systems
 
-Incoroporating the Cycle Inductive Bias in Masked Autoencoders
+Incorporating the Cycle Inductive Bias in Masked Autoencoders
