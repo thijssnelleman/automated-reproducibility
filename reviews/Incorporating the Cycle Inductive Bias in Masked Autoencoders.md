@@ -34,7 +34,7 @@ In the Abstract and Introduction (Section 1), the authors motivate the problem b
 Please grade the research question stated from the following options:
 
 The LLM ...
-[x] captures the research question (nearly) perfectly.
+[X] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -61,7 +61,7 @@ In the Abstract and Section 3, the authors discuss how exposing the encoder to a
 Please grade the research question stated from the following options:
 
 The LLM ...
-[x] captures the research question (nearly) perfectly.
+[X] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -101,7 +101,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[x] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -131,7 +131,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[x] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -173,7 +173,7 @@ The LLM describes this experiment as follows:
 Evaluating the classification performance of the proposed MACE model against baseline models (MOMENT, CRT, TimeMAE) on four cyclic datasets and two semi-cyclic datasets.
 
 The LLM ...
-[x] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
@@ -197,7 +197,7 @@ The LLM describes this experiment as follows:
 Measuring and comparing the fine-tuning running times and loss convergence of MACE against baseline models to evaluate computational efficiency.
 
 The LLM ...
-[x] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
@@ -221,7 +221,7 @@ The LLM describes this experiment as follows:
 Conducting ablation studies to test the effect of individual components of the MACE architecture, including the use of cycle vs. sequence loss, the presence of a teacher encoder, varying masking ratios, and pooling vs. query attention strategies.
 
 The LLM ...
-[x] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
@@ -328,7 +328,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[x] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -406,7 +406,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[x] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -525,7 +525,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[x] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -566,7 +566,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -590,14 +590,14 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 Corrected reason:
 
 This interpretation is based on the following analyses: analysis_1
-Your corrected answer (empty if correct):
-It does not outcompete, it performs similarly to some, but it is outcompeted by the best models.
+Your corrected answer (empty if correct): It does not outcompete, it performs similarly to some, but it is outcompeted by the best models.
+
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
 [] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
-[x] (Partially) Incorrect (serious misinterpretations or mistakes)
+[X] (Partially) Incorrect (serious misinterpretations or mistakes)
 [] Incorrect
 [] Hallucinatory, if so explain below:
 
@@ -622,7 +622,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -650,7 +650,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -688,11 +688,12 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 Corrected reason:
 
 This conclusion is based on the following interpretations: interpretation_1, interpretation_2, interpretation_3, interpretation_4
-Your corrected answer (empty if correct):
-interpretation_1, interpretation_2, interpretation_3
+Your corrected answer (empty if correct): interpretation_1, interpretation_2, interpretation_3
+
 Answer this question about the (possibly **corrected!**) interpretation_id.
+
 This conclusion based on the interpretation(s) is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -737,7 +738,7 @@ The LLM has linked the suggestion to the following conclusions: conclusion_1
 Please correct the IDs if wrong/missing (leave empty if correct):
 
 Please grade the suggestion below:
-[x] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
+[X] The LLM has (nearly) perfectly captured a future research direction suggested by our work.
 [] The LLM has stated a future research direction that was implied by our work, but not strongly suggested.
 [] The LLM has stated a future research direction from our work that is partially correct.
 [] The LLM has stated a future research direction that has some overlap with our work but has introduced incorrect or false information.
