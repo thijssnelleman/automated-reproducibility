@@ -116,8 +116,8 @@ HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimiz
 
 An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitment Decisions
 
-# Stuart Otter ❌ -> ❌
+# Stuart Otter ❌ -> ✅
 
-Automatic Adjusting Global Similarity Measures in Learning CBR Systems
+Automatic Adjusting Global Similarity Measures in Learning CBR Systems (✅)
 
-Incorporating the Cycle Inductive Bias in Masked Autoencoders
+Incorporating the Cycle Inductive Bias in Masked Autoencoders (✅)
