@@ -113,3 +113,7 @@ Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
 # Marcel Wever ❌ -> ✅
 
 HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimization
+
+# Matthias König ❌ -> ❌
+
+Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio
