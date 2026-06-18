@@ -118,7 +118,7 @@ HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimiz
 
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio
 
-# Jonas Seng ❌ -> ❌
+# Jonas Seng ❌ -> ✅
 
 Hyperparameter Optimization via Interacting with Probabilistic Circuits
 
