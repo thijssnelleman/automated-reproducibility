@@ -117,3 +117,11 @@ HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimiz
 # Matthias König ❌ -> ✅
 
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio
+
+# Jonas Seng ❌ -> ❌
+
+Hyperparameter Optimization via Interacting with Probabilistic Circuits
+
+# Leona Hennig ❌ -> ✅
+
+Leveraging AutoML for Sustainable Deep Learning: A Multi-Objective HPO Approach on Deep Shift Neural Networks
