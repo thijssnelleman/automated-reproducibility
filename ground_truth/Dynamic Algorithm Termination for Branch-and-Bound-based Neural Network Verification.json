@@ -1,0 +1,505 @@
+
+{
+  "Meta": {
+    "title": "Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification",
+    "authors": [
+      "Konstantin Kaulen",
+      "Matthias König",
+      "Holger H. Hoos"
+    ],
+    "year": 2025,
+    "venue": "AAAI"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can the computational cost of Branch-and-Bound-based neural network verification be reduced by leveraging running time prediction techniques?",
+      "reason": "In the Abstract and Introduction, the authors highlight the immense computational resources required for neural network verification and state: 'In this work, we seek to reduce this cost by leveraging running time prediction techniques, thereby allowing for more efficient resource allocation and use.'"
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "What features of branch-and-bound-based neural network verification instances enable reliable predictions about their solvability within a given time budget?",
+      "reason": "In the Introduction, the authors list as a primary contribution: 'We present, for the first time, features of branch-and-bound-based neural network verification instances that enable predictions about their solvability within a given time budget'."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that by using cheaply computable static and dynamic features to one can make meaningfully predictions about the running time of a verification algorithm.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In the Abstract, the authors state: 'Overall, using our method, we were able to reduce the total running time by 64% on average compared to the standard verification procedure, while certifying a comparable number of instances.' The Introduction further explains their operationalization of these predictions to avoid spending compute resources on unsolvable instances."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Evaluating the proposed dynamic algorithm termination method by simulating it on collected performance data from running verification tools (αβ-CROWN, VeriNet, Oval) on various benchmarks. A random forest classifier is trained to predict timeouts at regular checkpoints.",
+      "strategy": "5-fold cross-validation",
+      "data": [
+        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Conducting a feature importance study using Shapley value analysis and a feature ablation study to assess the relevance of the proposed static and dynamic instance features.",
+      "strategy": "Shapley value computation on predictions made by the classifiers; Feature ablation by re-running experiments excluding one feature at a time.",
+      "data": [
+        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": ["hypothesis_1"],
+      "experiment_description": "Predicting the exact running times of verification instances at the first checkpoint (after 10 seconds) using a random forest regression model to evaluate if features can model exact running times.",
+      "strategy": "5-fold cross-validation",
+      "data": [
+        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analyzing the classification performance of the timeout predictor and the overall impact on verification running time and number of solved instances.",
+      "metrics": [
+        "Running Time",
+        "Number of Solved Instances"
+      ],
+      "statistics": [
+        "Mean (averages over five folds)",
+        "Sum (accumulated over five folds)",
+        "Percentage of original running time",
+        "Difference in solved instances"
+      ],
+      "test": "Comparison against the standard verification procedure (baseline without early termination).",
+      "results": {
+        "Tables": {
+          "Table 3": {
+            "caption": "Results for dynamic termination of verification queries with θ = 0.99. We display the running time and the number of solved instances accumulated over five folds. In parentheses, we provide the fraction of running time used and the difference in the number of solved instances compared to the standard verification procedure.",
+            "reason": "Shows the main results of the dynamic termination method compared to the baseline.",
+            "metrics": [
+              "Running Time",
+              "Number of Solved Instances"
+            ],
+            "statistics": [
+              "Sum (accumulated over five folds)",
+              "Percentage of original running time",
+              "Difference in solved instances"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison against the standard verification procedure"
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Section Results and Discussion": {
+            "value": "On average, our classifier correctly identified 84% of timeouts while incorrectly classifying 5% of solvable instances... On average, our approach solved comparably many instances in 36% of the original running time.",
+            "reason": "Summarizes the main findings of the classification and termination performance.",
+            "metrics": [
+              "True Positive Rate (TPR)",
+              "False Positive Rate (FPR)",
+              "Running Time"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison against the standard verification procedure"
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Analyzing the Shapley values to determine which features contribute most to the predictions at which point time.",
+      "metrics": [
+        "Shapley value (impact on model output)"
+      ],
+      "statistics": [
+        "Distribution (boxplots)"
+      ],
+      "test": "Comparison of feature importance (larger Shapley values indicate higher importance).",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "Shapley Values of all features our method employs to predict whether problem instances verified by αβ-CROWN will be solved within the remaining compute budget...",
+            "reason": "Shows feature importance for αβ-CROWN.",
+            "metrics": [
+              "Shapley value (impact on model output)"
+            ],
+            "statistics": [
+              "Distribution (boxplots)"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison of feature importance"
+          },
+          "Figure 4": {
+            "caption": "Shapley Values of all features our method employs to predict whether problem instances verified by VeriNet will be solved within the remaining compute budget...",
+            "reason": "Shows feature importance for VeriNet.",
+            "metrics": [
+              "Shapley value (impact on model output)"
+            ],
+            "statistics": [
+              "Distribution (boxplots)"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison of feature importance"
+          },
+          "Figure 5": {
+            "caption": "Shapley Values of all features our method employs to predict whether problem instances verified by Oval will be solved within the remaining compute budget...",
+            "reason": "Shows feature importance for Oval.",
+            "metrics": [
+              "Shapley value (impact on model output)"
+            ],
+            "statistics": [
+              "Distribution (boxplots)"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison of feature importance"
+          }
+        },
+        "Text": {
+          "Section Results": {
+            "value": "Overall, our analysis revealed that all of our novel features impacted the predictions of our classification models. Primarily, BaB tree characteristics were the most important features across all considered verification systems and benchmarks.",
+            "reason": "Summarizes the findings of the feature importance study.",
+            "metrics": [
+              "Shapley value (impact on model output)"
+            ],
+            "statistics": [],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison of feature importance"
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Analyzing the performance of the running time regression model.",
+      "metrics": [
+        "Root Mean Squared Error (RMSE)",
+        "R2 score (R2)",
+        "Spearman Rank Correlation (ρ)"
+      ],
+      "statistics": [
+        "Mean (averages over five folds)"
+      ],
+      "test": "Comparison of predicted vs true running times.",
+      "results": {
+        "Tables": {
+          "Table 6": {
+            "caption": "Results for the running time regression task as averages over five folds in terms of root mean squared error (RMSE), R2 score (R2) and Spearman Rank Correlation (ρ)...",
+            "reason": "Shows the regression metrics.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)",
+              "R2 score (R2)",
+              "Spearman Rank Correlation (ρ)"
+            ],
+            "statistics": [
+              "Mean (averages over five folds)"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "None"
+          }
+        },
+        "Figures": {
+          "Figure 6": {
+            "caption": "Scatter plots of the predictions yielded by our running time regression approach (see Appendix ) against true running times.",
+            "reason": "Visualizes the correlation between predicted and true running times.",
+            "metrics": [
+              "Predicted running time",
+              "True running time"
+            ],
+            "statistics": [],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "Comparison of predicted vs true running times"
+          }
+        },
+        "Text": {
+          "Section Running Time Regression": {
+            "value": "Overall, we found that the best results across all experiments and verifiers were achieved on the 5 100 and 8 100 benchmarks for αβ-CROWN... While these results are promising, they did not generalise well enough for meaningful application.",
+            "reason": "Summarizes the regression performance.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)",
+              "R2 score (R2)",
+              "Spearman Rank Correlation (ρ)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+              "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+              "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+            ],
+            "test": "None"
+          }
+        }
+      }
+    },
+    "analysis_4": {
+        "experiments": [
+            "experiment_3"
+        ],
+        "reason": "The sensitivity study table 5, figure 2 for different theta values",
+        "metrics": [
+            "# Solved Instances",
+            "Running Time (GPU Hours)",
+            "Sum (accumulated over five folds)"
+        ],
+        "statistics": [],
+        "test": "Comparison of predicted vs true running times.",
+        "results": {
+            "Tables": {
+                "Table 5": {
+                    "caption": "Results for dynamic termination of verification queries with θ ∈ {0.5, 0.9}. We display the running time and the number of solved instances accumulated over five folds. Those hyperparameters were chosen because they yielded the smallest running times (θ = 0.5) and ,respectively, a good compromise between a substantially reduced running time and a high number of solved instances (θ = 0.9). In parentheses, we provide the fraction of running time used and the difference in the number of solved instances compared to the standard verification procedure.",
+                    "reason": "Shows the effect of various theta values on the metrics.",
+                    "metrics": [
+                        "Running Time (GPU Hours)",
+                        "# Solved Instances"
+                    ],
+                    "statistics": [
+                        "Sum (accumulated over five folds)"
+                    ],
+                    "data": [
+                        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+                        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+                        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+                    ],
+                    "test": "None"
+                }
+            },
+            "Figures": {
+                "Figure 2": {
+                    "caption": "We display the results of our method to dynamically terminate presumably unsolvable verification instances in terms of running time and the number of solved instances for all choices of the confidence threshold parameter θ between 0.5 and 0.99 with step size 0.01. θ represents the confidence that the prediction for the timeout class must exceed at any checkpoint such that an instance is terminated prematurely. For each choice of θ, we consider the average results over all benchmarks",
+                    "reason": "Visualizes the trade-off between running time and solved instances across different thresholds.",
+                    "metrics": [
+                        "Running Time (GPU Hours)",
+                        "# Solved Instances"
+                    ],
+                    "statistics": [
+                        "Sum (accumulated over five folds)"
+                    ],
+                    "data": [
+                        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+                        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+                        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+                    ],
+                    "test": "None"
+                }
+            },
+            "Text": {
+            }
+      }
+    },
+    "analysis_5": {
+        "experiments": [
+            "experiment_3"
+        ],
+        "reason": "Classifier preformance analysis",
+        "metrics": [
+            "Accuracy",
+            "TPR",
+            "FPR"
+        ],
+        "results": {
+            "Tables": {
+                "Table 2": {
+                    "caption": "Results for timeout prediction with continuous feature collection in terms of accuracy, true positive and false positive rate as averages over five folds. We display results for θ = 0.99, i.e., the confidence threshold that must be reached before an instance is terminated.",
+                    "reason": "Shows classifier performance",
+                    "metrics": [
+                        "Accuracy",
+                        "TPR",
+                        "FPR"
+                    ],
+                    "statistics": [
+                        "Mean (averages over five folds)"
+                    ],
+                    "data": [
+                        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+                        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+                        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+                    ],
+                    "test": "None"
+                }
+            },
+            "Figures": {},
+            "Text": {}
+        }
+    },
+    "analysis_6": {
+        "experiments": [
+            "experiment_3"
+        ],
+        "reason": "Classifier training time analysis",
+        "metrics": [
+            "Wall-clock Time (s)"
+        ],
+        "results": {
+            "Tables": {},
+            "Figures": {
+                "Figure 1": {
+                    "caption": "Training time distribution for the random forest classifier utilised in our method. We include all training runs required for our evaluation, i.e., one training run per checkpoint for each verification system and benchmark.",
+                    "reason": "Boxplot of training time distributions",
+                    "metrics": [
+                        "Wall-clock Time (s)"
+                    ],
+                    "statistics": [
+                        "Box plot"
+                    ],
+                    "data": [
+                        "ERAN repository (MNIST 5 100, 8 100, Conv Small, Conv Big) (Müller et al. 2022b; Singh et al. 2019a)",
+                        "CIFAR-10 ResNet 2B (Wang et al. 2021)",
+                        "VNN Competition benchmarks (Marabou, Oval21, ViT, SRI ResNet A, CIFAR-100, Tiny ImageNet) (Brix et al. 2023; Müller et al. 2022a; Bak, Liu, and Johnson 2021)"
+                    ],
+                    "test": "None"
+                }
+            },
+            "Text": {}
+        }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1",
+        "analysis_5"
+
+      ],
+      "value": "The authors interpret that their method obtains very high TPR scores while maintaining a FPR close to 0 for most verifiers and benchmarks, leading to substantial speed-ups (saving 64% of running time on average) with only a small amount of solvable instances terminated prematurely.",
+      "reason": "Based on the Results and Discussion section, where they state 'We obtained very high TPR scores while maintaining a FPR close to 0... we obtained substantial speed-ups, while only a small amount of solvable instances was terminated prematurely.'"
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The authors interpret that dynamic features capturing BaB tree characteristics are the most important features across all verification systems, while static features from incomplete methods are mainly important during the early stages of verification.",
+      "reason": "Based on the Results section for the feature importance study: 'Primarily, BaB tree characteristics were the most important features across all considered verification systems and benchmarks... the features that capture the results of the incomplete verification methods were important only during the beginning of the verification procedure'."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "The authors interpret that while running time regression shows promising results on specific benchmarks (e.g., fully-connected networks for αβ-CROWN), it does not generalize well enough across all benchmarks for meaningful application.",
+      "reason": "Based on the Running Time Regression section: 'While these results are promising, they did not generalise well enough for meaningful application.'"
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "Perhaps unsurprisingly, we found that both, the number of solved instances and the needed running time, increase when the threshold parameter θ is increased. However, the number of solved instances increased linearly while the running time requirements showed an exponential increase.",
+      "reason": "Theta as a trade off parameter between number of solved instances and saved running time (Appendix, interpret of fig 2)"
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that their dynamic algorithm termination method successfully reduces the computational resources demanded by neural network robustness verification. By identifying and terminating unsolvable instances early using the proposed features, the method accelerates the verification procedure by 64% on average while certifying a comparable number of instances.",
+      "reason": "Based on the Conclusions and Future Work section: 'In this study, we have, for the first time, shown that the computational resources demanded by neural network robustness verification can be greatly reduced... we showed that our method accelerates the verification procedure by 64% on average compared to the current state-of-the-art approach...'"
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Can the proposed features and dynamic termination approach be applied in other contexts, such as algorithm selection or satisfiability prediction?",
+        "note": "Conclusions and Future Work section",
+        "reason": "The authors explicitly state: 'Furthermore, we plan to investigate if our proposed features could be applied in other contexts, such as algorithm selection or satisfiability prediction.'"
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Can the running time prediction capabilities of the proposed features enable empirical scaling models of BaB-based verification?",
+        "note": "Conclusions and Future Work section",
+        "reason": "The authors state: 'Lastly, we are interested in further studying the running time prediction capabilities of our features, possibly enabling empirical scaling models of BaB-based verification.'"
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that their dynamic termination approach can be successfully extended to further BaB-based verification approaches, such as MN-BaB.",
+        "note": "Conclusions and Future Work section",
+        "reason": "The authors state: 'In future work, we seek to extend our approach to further BaB-based verification approaches (e.g., MN-BaB).'"
+      }
+    }
+  }
+}

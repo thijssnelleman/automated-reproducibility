@@ -1,0 +1,127 @@
+
+{
+  "Table I": {
+    "note": "Correlation of measurements obtained via different tools with the power meter measurements.",
+    "Single GPU - SMI": {
+      "Epoch Spearman": 0.58,
+      "Epoch Pearson": 0.64,
+      "Epoch KS": "X",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "X"
+    },
+    "Single GPU - SMI (corrected)": {
+      "Epoch Spearman": 0.99,
+      "Epoch Pearson": 0.95,
+      "Epoch KS": "✓",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "X"
+    },
+    "Single GPU - NVML": {
+      "Epoch Spearman": 0.98,
+      "Epoch Pearson": 0.99,
+      "Epoch KS": "✓",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "✓"
+    },
+    "Single GPU - Code Carbon": {
+      "Epoch Spearman": 0.99,
+      "Epoch Pearson": 0.99,
+      "Epoch KS": "X",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "✓"
+    },
+    "Multi GPU - SMI": {
+      "Epoch Spearman": 0.88,
+      "Epoch Pearson": 0.97,
+      "Epoch KS": "X",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "✓"
+    },
+    "Multi GPU - Code Carbon": {
+      "Epoch Spearman": 0.93,
+      "Epoch Pearson": 0.99,
+      "Epoch KS": "X",
+      "Full Training Spearman": 0.99,
+      "Full Training Pearson": 0.99,
+      "Full Training KS": "✓"
+    }
+  },
+  "Figure 6": {
+    "note": "Power measurements across time for Code Carbon and the power meter for an example model training on one GPU.",
+    "Power meter": {
+      "Epoch 10": 1300,
+      "Epoch 30": 1300,
+      "Epoch 50": 1300,
+      "Epoch 70": 1300,
+      "Epoch 90": 1300
+    },
+    "Code Carbon": {
+      "Epoch 10": 1150,
+      "Epoch 30": 1150,
+      "Epoch 50": 1150,
+      "Epoch 70": 1150,
+      "Epoch 90": 1150
+    },
+    "Power meter-Code Carbon": {
+      "Epoch 10": 150,
+      "Epoch 30": 150,
+      "Epoch 50": 150,
+      "Epoch 70": 150,
+      "Epoch 90": 150
+    }
+  },
+  "Figure 7": {
+    "note": "eCDF plot for the epoch power measurements aggregated across all training runs for Code Carbon and the power meter.",
+    "Code Carbon": {
+      "Power [W] at Cumulative Probability 0.0": 1180,
+      "Power [W] at Cumulative Probability 0.5": 1220,
+      "Power [W] at Cumulative Probability 1.0": 1280
+    },
+    "Power meter": {
+      "Power [W] at Cumulative Probability 0.0": 1350,
+      "Power [W] at Cumulative Probability 0.5": 1400,
+      "Power [W] at Cumulative Probability 1.0": 1450
+    },
+    "Power meter-Code Carbon": {
+      "Power [W] at Cumulative Probability 0.0": 150,
+      "Power [W] at Cumulative Probability 0.5": 180,
+      "Power [W] at Cumulative Probability 1.0": 200
+    }
+  },
+  "Figure 8": {
+    "note": "Boxplot with differences in energy measurements between Code Carbon and the power meter for single-GPU training.",
+    "Code Carbon": {
+      "Median": 0.103,
+      "Q1": 0.101,
+      "Q3": 0.104,
+      "Min": 0.100,
+      "Max": 0.105
+    },
+    "Upper bound (Idle)": {
+      "Median": 0.089,
+      "Q1": 0.088,
+      "Q3": 0.090,
+      "Min": 0.087,
+      "Max": 0.091
+    },
+    "Busy estimation (Prime)": {
+      "Median": 0.066,
+      "Q1": 0.065,
+      "Q3": 0.067,
+      "Min": 0.064,
+      "Max": 0.068
+    },
+    "Lower bound (Firestarter)": {
+      "Median": -0.036,
+      "Q1": -0.038,
+      "Q3": -0.034,
+      "Min": -0.040,
+      "Max": -0.030
+    }
+  }
+}

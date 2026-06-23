@@ -1,0 +1,243 @@
+{
+  "Meta": {
+    "title": "Instance selection for configuration performance comparison",
+    "authors": [
+      "Marie Anastacio",
+      "Théo Matricon",
+      "Holger H. Hoos"
+    ],
+    "year": 2022,
+    "venue": "ECMLPKDD Workshop on Meta-Knowledge Transfer"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "How does the selection method perform to compare a new configuration to the incumbent on the subset of instances for which we already collected information throughout the configuration run as seen in phase 1?",
+      "reason": "Explicitly stated in Section 4 (Empirical evaluation) as Q1."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "How does the selection method perform to compare a new configuration to the incumbent on all instances, selecting instances for which we did not collect information throughout the configuration run as seen in phase 2?",
+      "reason": "Explicitly stated in Section 4 (Empirical evaluation) as Q2."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that carefully selecting instances using methods based on performance models (such as discrimination, variance, UDD, or uncertainty) will significantly reduce the time required to accurately decide the better of two given algorithm configurations compared to uniform random sampling.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "Implied in the Abstract and Introduction. The authors state that prior work showed instance selection reduces time for algorithm comparison, and they explore applying a similar process to configuration comparison, expecting a speed-up over random sampling."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Phase 1 evaluation: Comparing configurations on known instances. A fraction of instances and configurations are randomly selected as known data to train a Random Forest model. A challenger configuration is picked, and instances are iteratively selected using the selection methods to compare it against the incumbent. The process stops when all selected instances are run, or when the Wilcoxon test decides that the challenger can be discarded.",
+      "strategy": "Random sampling of instances (p_I in [0.1, 0.2, 0.3, 0.4, 0.5]) and configurations (p_C in [10, 20, 30, 40, 50]) into known/unknown sets. 10 seeds per pair.",
+      "data": [
+        "Circuitfuzz (AClib)",
+        "IBM (AClib)",
+        "crypto (Nejati and Ganesh 2019)",
+        "RCW2 (AClib)",
+        "Regions200 (AClib)",
+        "MIPverify (König et al. 2021)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Phase 2 evaluation: Comparing configurations on unknown instances. A Random Forest model is trained on known data. Two configurations that cannot be told apart by a Wilcoxon test are chosen. Up to 10 unknown instances are iteratively selected and run for both configurations until they can be told apart by the test.",
+      "strategy": "Random sampling of instances (p_I in [0.1, 0.2, 0.3, 0.4, 0.5]) and configurations (p_C in [10, 20, 30, 40, 50]) into known/unknown sets. Stopping criterion: maximum of 10 instances selected or configurations told apart.",
+      "data": [
+        "Circuitfuzz (AClib)",
+        "IBM (AClib)",
+        "crypto (Nejati and Ganesh 2019)",
+        "RCW2 (AClib)",
+        "Regions200 (AClib)",
+        "MIPverify (König et al. 2021)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the accuracy of the selection methods over time in Phase 1 by comparing the outcome of the Wilcoxon test on the selected instances to the ground truth (all known instances).",
+      "metrics": [
+        "Accuracy",
+        "Percentage of time spent",
+        "Area under the curve (AUC)"
+      ],
+      "statistics": [
+        "Mean accuracy",
+        "Area under the curve (AUC)"
+      ],
+      "test": "Wilcoxon matched-pairs signed-ranks test (p = 0.05)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 1": {
+            "caption": "Mean accuracy of the Wilcoxon test (p=0.05) on which among Cch and Cinc performs best along the percentage of time spent on evaluations (100% means that all instances of Iknown have been run)",
+            "reason": "Shows the collected accuracy over the time spent to make the comparison for two examples.",
+            "metrics": [
+              "Accuracy",
+              "Percentage of time spent"
+            ],
+            "statistics": [
+              "Mean accuracy"
+            ],
+            "data": [
+              "IBM (AClib)",
+              "RCW2 (AClib)"
+            ],
+            "test": [
+              "Wilcoxon matched-pairs signed-ranks test (p = 0.05)"
+            ]
+          },
+          "Figure 2": {
+            "caption": "Area under the curve of the mean accuracy of the Wilcoxon test (p=0.05) on which among Cch and Cinc performs best along the time spent on evaluations",
+            "reason": "Synthesizes the curves by computing the AUC for each method across different amounts of prior data.",
+            "metrics": [
+              "Area under the curve (AUC)"
+            ],
+            "statistics": [
+              "Area under the curve (AUC)"
+            ],
+            "data": [
+              "Circuitfuzz (AClib)",
+              "IBM (AClib)",
+              "crypto (Nejati and Ganesh 2019)",
+              "RCW2 (AClib)",
+              "Regions200 (AClib)",
+              "MIPverify (König et al. 2021)"
+            ],
+            "test": [
+              "Wilcoxon matched-pairs signed-ranks test (p = 0.05)"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Evaluating the time used to decide between two configurations on unknown instances in Phase 2.",
+      "metrics": [
+        "Time used (seconds)"
+      ],
+      "statistics": [
+        "Median time"
+      ],
+      "test": "Wilcoxon matched-pairs signed-ranks test (p = 0.05)",
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Median time in seconds for each method over every tested prior data",
+            "reason": "Reports the median time used to run the instances selected by each of the methods for each prior data.",
+            "metrics": [
+              "Time used (seconds)"
+            ],
+            "statistics": [
+              "Median time"
+            ],
+            "data": [
+              "Circuitfuzz (AClib)",
+              "IBM (AClib)",
+              "crypto (Nejati and Ganesh 2019)",
+              "RCW2 (AClib)",
+              "Regions200 (AClib)",
+              "MIPverify (König et al. 2021)"
+            ],
+            "test": [
+              "Wilcoxon matched-pairs signed-ranks test (p = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 3": {
+            "caption": "Time used (in seconds) before taking a decision based on a Wilcoxon test (p=0.05) or reaching a maximum of 10 instance selected",
+            "reason": "Shows the running times obtained for two examples in Phase 2.",
+            "metrics": [
+              "Time used (seconds)"
+            ],
+            "statistics": [
+              "Median time"
+            ],
+            "data": [
+              "crypto (Nejati and Ganesh 2019)",
+              "RCW2 (AClib)"
+            ],
+            "test": [
+              "Wilcoxon matched-pairs signed-ranks test (p = 0.05)"
+            ]
+          }
+        },
+        "Text": {}
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Randomly sampling instances performs well but in most cases the discrimination and variance approaches do better. UDD and uncertainty have a lower performance than random sampling in some cases. There is a clear correlation between the amount of known configuration and the AUC, but adding more instances does not significantly improve performance.",
+      "reason": "The authors interpret the AUC and accuracy over time curves in Section 5.1, noting the superiority of discrimination and variance methods and the impact of prior data."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Most cases show that random is outperformed by all methods, with some exceptions. Discrimination and variance outperform the other methods in almost all cases, with variance providing a speedup ranging from a 5.8 up to 3000 times speedup compared to random.",
+      "reason": "The authors interpret the median time results from Table 1 and Figure 3 in Section 5.2, highlighting the massive speedup achieved by the variance method."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that selecting instances smartly allows quicker comparison between configurations of an algorithm. They found considerable potential in the use of these methods, in particular the ones based on the variability in running time or on discrimination power, which successfully reduced the time required to accurately decide the better of two given algorithms.",
+      "reason": "Summarized from Section 6 (Conclusion and future work), where the authors state that their results show considerable potential in both cases (Phase 1 and Phase 2), especially for variance and discrimination methods."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How would instance selection methods based on running time variability and discrimination power perform once integretaed into a full model-based algorithm configuration procedure?",
+        "note": "Section 6. Conclusion and future work",
+        "reason": "The authors explicitly state: 'This encourages us to pursue future work to include those methods in a model-based algorithm configuration procedure.'"
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

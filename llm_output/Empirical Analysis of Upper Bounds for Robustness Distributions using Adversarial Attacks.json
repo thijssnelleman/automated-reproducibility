@@ -1,0 +1,621 @@
+
+{
+  "Meta": {
+    "title": "Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks",
+    "authors": [
+      "Aaron Berger",
+      "Nils Eberhardt",
+      "Annelot W. Bosman",
+      "Henning Duwe",
+      "Holger H. Hoos",
+      "Jan N. van Rijn"
+    ],
+    "year": 2024,
+    "venue": "Unknown"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How effective are adversarial attacks in determining computationally efficient and tight upper bounds for robustness distributions of neural networks compared to complete verification techniques?",
+      "reason": "Implied from the abstract and introduction, where the authors state: 'This study examines the effectiveness of adversarial attacks in determining upper bounds for robustness distributions for neural networks. While complete neural network verification techniques can provide exact safety margins, their computational cost limits scalability.'"
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "Does the monotonicity assumption for perturbation radii of adversarial examples hold, enabling the use of binary search for finding critical epsilons?",
+      "reason": "Explicitly stated as a contribution in Section 1: 'We investigate the monotonicity assumption for perturbation radii of adversarial examples on MNIST...'"
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "Can robustness distributions approximated on a small subset of data accurately reflect the distribution of the entire test dataset?",
+      "reason": "Explicitly stated as a contribution in Section 1: 'We use the Kolmogorov-Smirnov test to show that approximating the robustness distributions on a subset of the data results in a distribution similar to that for the entire test dataset.'"
+    },
+    "research_question_4": {
+      "explicit": true,
+      "value": "Is there performance complementarity between different state-of-the-art adversarial attacks and complete verifiers in terms of running time and the size of adversarial perturbations?",
+      "reason": "Explicitly stated as a contribution in Section 1: 'We show performance complementarity between different state-of-the-art adversarial attacks and verifiers in terms of running time and the size of the adversarial perturbations obtained from them.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that adversarial attack methods can provide tight upper bounds for robustness distributions at a significantly reduced computational cost compared to complete verification methods.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_4"
+      ],
+      "reason": "Implied from the abstract and introduction where they propose using adversarial attacks as a 'cheap alternative' to complete verification to overcome computational cost limitations."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the monotonicity assumption for perturbation radii holds in most cases, making binary search a valid approach for computing robustness values.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied from Section 3 where they state: 'Mathematically, the binary search assumes that the robustness result is monotonic concerning the perturbation size. If the monotonicity assumption holds, binary search will find the epsilon* being the closest to the true epsilon*.'"
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that the robustness distributions constructed using adversarial attack methods tend to follow log-normal distributions.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "reason": "Implied from Section 5.2 where they test this hypothesis based on recent findings in the literature (Bosman et al.)."
+    },
+    "hypothesis_4": {
+      "explicit": false,
+      "value": "The authors hypothesise that approximating robustness distributions on a subset of the data results in a distribution statistically similar to that for the entire test dataset.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Implied from the introduction where they list this as a contribution to show that a subset is sufficient."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Iteratively checking local robustness for each epsilon value in the search space to find counterexamples to the monotonicity assumption.",
+      "strategy": "Iterative search over discretised search space S := {i/255 | i in N} intersect [0, 0.4]",
+      "data": [
+        "MNIST (LeCun et al. 1998)",
+        "mnist_relu_3_50 (König et al. 2024)",
+        "mnist-net_256x2 (König et al. 2024)",
+        "mnist_relu_9_100 (König et al. 2024)",
+        "mnist_relu_4_1024 (König et al. 2024)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_4"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_3"
+      ],
+      "experiment_description": "Computing robustness distributions using binary search with various adversarial attacks (FGSM, PGD, AutoAttack, FAB) and comparing them to the baseline complete verifier (alpha, beta-CROWN) on a subset of 100 MNIST test images.",
+      "strategy": "Binary search with k=40 iterations (for PGD/AutoAttack/CROWN) or specific restarts (FAB)",
+      "data": [
+        "MNIST (LeCun et al. 1998) subset of 100 images",
+        "mnist_relu_3_50 (König et al. 2024)",
+        "mnist-net_256x2 (König et al. 2024)",
+        "mnist_relu_9_100 (König et al. 2024)",
+        "mnist_relu_4_1024 (König et al. 2024)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_3",
+        "hypothesis_4"
+      ],
+      "experiment_description": "Computing robustness distributions using adversarial attacks on the complete MNIST test set (10000 images) and comparing them to the distributions from the 100-image subset.",
+      "strategy": "Binary search",
+      "data": [
+        "MNIST (LeCun et al. 1998) complete test set",
+        "mnist_relu_3_50 (König et al. 2024)",
+        "mnist-net_256x2 (König et al. 2024)",
+        "mnist_relu_9_100 (König et al. 2024)",
+        "mnist_relu_4_1024 (König et al. 2024)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To determine if the monotonicity assumption holds by counting counterexamples.",
+      "metrics": [
+        "Number of counterexamples",
+        "Distance between minimum adversarial example and largest robust epsilon"
+      ],
+      "statistics": [
+        "Count",
+        "Mean step distance"
+      ],
+      "test": [
+        "Simple comparison (existence of robust result for epsilon > p*)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 4": {
+            "caption": "Results of the monotonicity experiment. The experiment was executed on the first 100 images of the MNIST test set. We show for each algorithm-verifier combination, for how many images the monotonicity assumption was violated...",
+            "reason": "Shows the number of counterexamples found for the monotonicity assumption.",
+            "metrics": [
+              "Number of counterexamples",
+              "Distance between minimum adversarial example and largest robust epsilon"
+            ],
+            "statistics": [
+              "Count",
+              "Mean step distance"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)",
+              "mnist_relu_3_50 (König et al. 2024)",
+              "mnist-net_256x2 (König et al. 2024)",
+              "mnist_relu_9_100 (König et al. 2024)",
+              "mnist_relu_4_1024 (König et al. 2024)"
+            ],
+            "test": [
+              "Simple comparison (existence of robust result for epsilon > p*)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Section 5.1": {
+            "value": "Out of the 1572 queries to find the epsilon* with an iterative search procedure, the monotonicity assumption did not hold for just 17 queries.",
+            "reason": "Summarises the findings of the monotonicity experiment.",
+            "metrics": [
+              "Number of counterexamples"
+            ],
+            "statistics": [
+              "Count"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Simple comparison (existence of robust result for epsilon > p*)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To compare the upper bounds (p*) and running times of attacks vs complete verification.",
+      "metrics": [
+        "Average running time",
+        "Average minimal adversarial perturbation size (p*)",
+        "Ratio to the best p* (RB-p*)",
+        "Relative marginal contribution (RMC)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation",
+        "Minimum",
+        "Maximum"
+      ],
+      "test": [
+        "Simple comparison (smaller is better)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Performance comparison of complete verification method alpha, beta-CROWN and the considered adversarial attack methods in terms of running time in seconds averaged per image, the average minimum adversarial example, the relative marginal contribution (RMC) and the ratio of the average minimum adversarial perturbation p* over compared to the virtual best algorithm (VBA).",
+            "reason": "Provides the main performance metrics comparing attacks to the verifier.",
+            "metrics": [
+              "Average running time",
+              "Average minimal adversarial perturbation size (p*)",
+              "Ratio to the best p* (RB-p*)",
+              "Relative marginal contribution (RMC)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Simple comparison (smaller is better)"
+            ]
+          },
+          "Table 2": {
+            "caption": "Statistics on the 158 test images for which the epsilon* computation of alpha, beta-CROWN is as tight as possible and it holds that p* - epsilon* = 1/255.",
+            "reason": "Shows performance on instances where the verifier found the tightest possible bounds.",
+            "metrics": [
+              "Average running time",
+              "Average minimal adversarial perturbation size (p*)",
+              "Ratio to the best p* (RB-p*)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Simple comparison (smaller is better)"
+            ]
+          },
+          "Table 6": {
+            "caption": "Execution time in seconds and minimal adversarial perturbation on the first 100 MNIST test images.",
+            "reason": "Provides detailed statistics on execution time and p* values.",
+            "metrics": [
+              "Average running time",
+              "Average minimal adversarial perturbation size (p*)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation",
+              "Minimum",
+              "Maximum"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Simple comparison (smaller is better)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 1": {
+            "caption": "Approximation techniques and complete verification on first 100 MNIST test images. The lines display the CDFs of the p*-values for the different methods.",
+            "reason": "Visualises the robustness distributions (CDFs) for comparison.",
+            "metrics": [
+              "Average minimal adversarial perturbation size (p*)"
+            ],
+            "statistics": [],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": []
+          },
+          "Figure 2": {
+            "caption": "Scatterplots of the minimum adversarial examples found with alpha, beta-CROWN (x-axis) and AutoAttack (y-axis) for two networks.",
+            "reason": "Visualises the per-instance correlation between the verifier and the best attack.",
+            "metrics": [
+              "Average minimal adversarial perturbation size (p*)"
+            ],
+            "statistics": [],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": []
+          },
+          "Figure 4": {
+            "caption": "Fraction of instances where two algorithms found a minimal adverarial perturbation of equal size.",
+            "reason": "Shows complementarity and agreement between methods.",
+            "metrics": [
+              "Average minimal adversarial perturbation size (p*)"
+            ],
+            "statistics": [],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": []
+          },
+          "Figure 5": {
+            "caption": "Fraction of instances where the method on th y-axis found a smaller minimal adverarial perturbation than the method on the x-axis.",
+            "reason": "Shows pairwise superiority between methods.",
+            "metrics": [
+              "Average minimal adversarial perturbation size (p*)"
+            ],
+            "statistics": [],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Simple comparison (smaller is better)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.2": {
+            "value": "Using the adversarial attack methods, we observed running times two to four magnitudes smaller than those for complete verification.",
+            "reason": "Highlights the main finding regarding computational efficiency.",
+            "metrics": [
+              "Average running time"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Simple comparison (smaller is better)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_2",
+        "experiment_3"
+      ],
+      "reason": "To test if the robustness distributions follow a log-normal distribution.",
+      "metrics": [
+        "p-value",
+        "test statistic"
+      ],
+      "statistics": [
+        "p-value"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 7": {
+            "caption": "K-S test for log-normality for the robustness distributions computed of different neural networks using alpha, beta-CROWN on the first 100 images for the epsilon* and the p* values.",
+            "reason": "Shows log-normality test results for the verifier.",
+            "metrics": [
+              "p-value",
+              "test statistic"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          },
+          "Table 8": {
+            "caption": "K-S test for log-normality for the robustness distributions computed using attacks on the first 100 images.",
+            "reason": "Shows log-normality test results for attacks on the subset.",
+            "metrics": [
+              "p-value",
+              "test statistic"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          },
+          "Table 9": {
+            "caption": "K-S test for log-normality for the robustness distributions computed using attacks on all MNIST test images.",
+            "reason": "Shows log-normality test results for attacks on the full test set.",
+            "metrics": [
+              "p-value",
+              "test statistic"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) complete test set"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Section 5.2": {
+            "value": "By testing the hypothesis of log-normality using the Kolmogorov-Smirnov (K-S) test with a confidence level of 0.05, we found evidence that most of the robustness distributions constructed using the adversarial attack methods we considered tend to follow log-normal distributions.",
+            "reason": "Summarises the findings of the log-normality tests on the subset.",
+            "metrics": [
+              "p-value"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "To see if the distributions on the 100-image subset are statistically similar to the complete test set.",
+      "metrics": [
+        "p-value"
+      ],
+      "statistics": [
+        "p-value"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 10": {
+            "caption": "K-S test to compare the minimum adversarial perturbation distributions for the first 100 images with the distributions for the whole dataset.",
+            "reason": "Provides the statistical test results comparing subset and full set distributions.",
+            "metrics": [
+              "p-value"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) complete test set",
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 3": {
+            "caption": "To assess the similarities and differences of the robustness distributions on the 100-image subset and the test set, we plot the respective CDFs. Here we show the results for AutoAttack and all networks used in our study.",
+            "reason": "Visualises the comparison between subset and full set distributions.",
+            "metrics": [],
+            "statistics": [],
+            "data": [
+              "MNIST (LeCun et al. 1998) complete test set",
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.3": {
+            "value": "Using the K-S test we compare the distributions on the subset and the whole test set in Appendix F Table 10. We find general similarities between the results on the whole test dataset and the subset robustness distributions...",
+            "reason": "Summarises the findings of the comparison between subset and full set.",
+            "metrics": [
+              "p-value"
+            ],
+            "statistics": [
+              "p-value"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998) complete test set",
+              "MNIST (LeCun et al. 1998) subset of 100 images"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov (K-S) test (p < 0.05)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "As these counterexamples to the monotonicity assumption occur rarely, we argue that using binary search is valid for the computation of the robustness values.",
+      "reason": "Authors conclude that binary search is a valid approximation despite rare violations."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Most of the adversarial attack methods lead to p*-values close to the ones obtained using complete verification... Using the adversarial attack methods, we observed running times two to four magnitudes smaller than those for complete verification.",
+      "reason": "Authors interpret the results as showing attacks are efficient and accurate approximations."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "we found evidence that most of the robustness distributions constructed using the adversarial attack methods we considered tend to follow log-normal distributions... In contrast to the distributions on the first 100 images, we could not find evidence for the distributions on the entire test set to follow log-normal distributions using K-S tests. This is expected, as the K-S test tends to become overly conservative for large samples of discrete data...",
+      "reason": "Authors interpret the K-S test results, noting the limitation of the test on large discrete samples."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "We find general similarities between the results on the whole test dataset and the subset robustness distributions, indicating that looking at a subset of the MNIST dataset should generally be sufficient for computing a robustness distribution...",
+      "reason": "Authors interpret the K-S test comparing subset and full set."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "Furthermore, we examined the feasibility of using binary search and provided evidence that for adversarial attacks with non-random initialisation, our search space is mostly monotonic.",
+      "reason": "Final conclusion on RQ2."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_4"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "We have shown that adversarial attack methods can provide tight upper bounds at significantly lower computational costs than required for running complete verification methods.",
+      "reason": "Final conclusion on RQ1."
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_3",
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3",
+        "hypothesis_4"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "We also find no significant difference in the distributions on the subset and that on the complete dataset, while our statistical tests suggest that the distributions on the entire dataset do not follow log-normal distributions; this is likely due to our test becoming overly conservative for large samples of discrete data.",
+      "reason": "Final conclusion on RQ3 and log-normality."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How well do adversarial attack methods approximate robustness distributions on more complex datasets (e.g., CIFAR-10, GTSRB, ImageNet) and more sophisticated network architectures?",
+        "note": "Section 6 (Discussion and conclusions)",
+        "reason": "Authors explicitly state it would be interesting to apply the approach to more complex datasets and architectures."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "What are effective methods for finding tight and inexpensive lower bounds for robustness distributions?",
+        "note": "Section 6 (Discussion and conclusions)",
+        "reason": "Authors state 'future research on methods for finding tight and inexpensive lower bounds for robustness distributions is needed.'"
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "The authors hypothesise that the approach of using adversarial attacks for upper bounds is scalable to more complex datasets and sophisticated network architectures.",
+        "note": "Section 6 (Discussion and conclusions)",
+        "reason": "Derived from the statement that the approach is more scalable and it would be interesting to apply it to more complex datasets."
+      }
+    }
+  }
+}

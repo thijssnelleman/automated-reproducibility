@@ -1,0 +1,454 @@
+
+{
+  "Meta": {
+    "title": "Revisiting SATZilla Features in 2024",
+    "authors": [
+      "Hadar Shavit",
+      "Holger H. Hoos"
+    ],
+    "year": 2024,
+    "venue": "27th International Conference on Theory and Applications of Satisfiability Testing (SAT 2024)"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How does the updated SATZilla feature extraction tool compare to the 2012 version in terms of feature computation success rate and time on modern SAT instances?",
+      "reason": "Implied in Section 1 and 4.1, where the authors state the old tool is unable to compute many features due to time and memory limitations on modern instances, motivating a comparison of running times and the number of extracted features."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "Does the new SATZilla feature extraction tool improve the performance of downstream tasks such as satisfiability prediction, running time prediction, and algorithm selection?",
+      "reason": "Implied in Section 1 and 4, where the authors evaluate the extracted features on three downstream tasks to assess the advantage of using the new version over the old one."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that replacing the underlying solvers and preprocessor with up-to-date versions, fixing memory errors, and allowing user-defined time limits will enable feature extraction on a broader range of modern SAT instances and yield an advantage in performance across downstream tasks.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In Section 1 and 2, the authors describe the problem with the old tool failing on larger modern formulas and propose their new tool, stating 'We show that our new tool yields an important advantage in performance compared to the old tool across all three tasks.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Extracting features using both the new (2024) and old (2012) SATZilla tools to measure the percentage of features successfully computed over the available time budget.",
+      "strategy": "Time-limited execution (budget = 180 seconds per feature group)",
+      "data": [
+        "2022 SAT Competition formulas",
+        "2023 SAT Competition formulas"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Training a random forest classifier to predict whether a SAT instance is satisfiable or unsatisfiable using features extracted by both the old and new tools.",
+      "strategy": "10-fold cross-validation (inner for training/hyperparameter optimization via SMAC3 for 1 hour, outer for evaluation)",
+      "data": [
+        "2022 SAT Competition formulas",
+        "2023 SAT Competition formulas"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Training a random forest regressor to predict the log10-transformed running times of various SAT solvers using features extracted by both tools.",
+      "strategy": "10-fold cross-validation (inner for training/hyperparameter optimization via SMAC3 for 1 hour, outer for evaluation)",
+      "data": [
+        "2022 SAT Competition formulas",
+        "2023 SAT Competition formulas",
+        "Running times of 10 best solvers from 2022 and 2023 SAT Competitions"
+      ]
+    },
+    "experiment_4": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Building an algorithm selector using AutoFolio with a portfolio of the 10 best solvers from each competition to compare the performance of features from both tools.",
+      "strategy": "Algorithm configuration (AutoFolio trained for 8 hours)",
+      "data": [
+        "2022 SAT Competition formulas",
+        "2023 SAT Competition formulas",
+        "10 best solvers from 2022 and 2023 SAT Competitions"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Comparing the percentage of instances for which features were successfully computed within the 180-second budget across different feature groups.",
+      "metrics": [
+        "Percentage of features computed",
+        "Time (Seconds)"
+      ],
+      "statistics": [
+        "Percentage"
+      ],
+      "test": "Direct comparison (greater than)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 1": {
+            "caption": "Percentage of features computed by the old tool (SATZilla 2012; in red) and the new tool (SATZilla 2024; in blue) over the available time budget for each feature group on the 2022 SAT Competition.",
+            "reason": "Shows the success rate of feature extraction over time for the 2022 data.",
+            "metrics": [
+              "Percentage of features computed",
+              "Time (Seconds)"
+            ],
+            "statistics": [
+              "Percentage"
+            ],
+            "data": [
+              "2022 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          },
+          "Figure 2": {
+            "caption": "Percentage of features computed by the old tool (SATZilla 2012; in red) and the new tool (SATZilla 2024; in blue) over the available time budget for each feature group on the 2023 SAT Competition.",
+            "reason": "Shows the success rate of feature extraction over time for the 2023 data.",
+            "metrics": [
+              "Percentage of features computed",
+              "Time (Seconds)"
+            ],
+            "statistics": [
+              "Percentage"
+            ],
+            "data": [
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        },
+        "Text": {
+          "Section 4.1": {
+            "value": "We first observe that the new tool is able to extract more features than the old one for most feature groups. In particular, we highlight the performance gains on the preliminary feature group (Figure 2a), for which the new tool can extract the features for all formulas, compared to less than 80% of the formulas when using the the old tool.",
+            "reason": "Describes the direct comparison of extraction success rates.",
+            "metrics": [
+              "Percentage of features computed"
+            ],
+            "statistics": [
+              "Percentage"
+            ],
+            "data": [
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Evaluating the accuracy of the random forest classifier in predicting satisfiability.",
+      "metrics": [
+        "Accuracy %"
+      ],
+      "statistics": [
+        "Mean accuracy"
+      ],
+      "test": "Direct comparison (greater than)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "Accuracy of the satisfiability prediction task using a random forest with features extracted by the old (SATZilla 2012) and the new tool (SATZilla 2024).",
+            "reason": "Presents the accuracy scores for both tools on both datasets.",
+            "metrics": [
+              "Accuracy %"
+            ],
+            "statistics": [
+              "Mean accuracy"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        },
+        "Text": {
+          "Section 4.2": {
+            "value": "We see that, by using features extracted via the new tool, we achieve better performance across all instances on both SAT competitions. Furthermore, we notice that the new tool leads to a higher accuracy gain for satisfiable instances than for unsatisfiable instances.",
+            "reason": "Summarizes the accuracy improvements.",
+            "metrics": [
+              "Accuracy %"
+            ],
+            "statistics": [
+              "Mean accuracy"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Evaluating the RMSE of the random forest regressor in predicting log-transformed running times.",
+      "metrics": [
+        "Root Mean Squared Error (RMSE)",
+        "Error percentage"
+      ],
+      "statistics": [
+        "Mean RMSE",
+        "Histogram counts"
+      ],
+      "test": "Direct comparison (less than)",
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "RMSE of random forest for predicting log-transformed running times of SAT solvers from the 2022 SAT Competition using the old and new SATZilla features.",
+            "reason": "Shows RMSE values for 2022 solvers.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)"
+            ],
+            "statistics": [
+              "Mean RMSE"
+            ],
+            "data": [
+              "2022 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          },
+          "Table 2": {
+            "caption": "RMSE of random forest for predicting log-transformed running times of SAT solvers from the 2022 SAT Competition using the old and new SATZilla features (contd.).",
+            "reason": "Shows RMSE values for 2022 solvers.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)"
+            ],
+            "statistics": [
+              "Mean RMSE"
+            ],
+            "data": [
+              "2022 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          },
+          "Table 3": {
+            "caption": "RMSE of random forest for predicting log-transformed running times of SAT solvers from the 2023 SAT Competition using the old and new SATZilla features.",
+            "reason": "Shows RMSE values for 2023 solvers.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)"
+            ],
+            "statistics": [
+              "Mean RMSE"
+            ],
+            "data": [
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          }
+        },
+        "Figures": {
+          "Figure 4": {
+            "caption": "Root mean square error (RMSE) of (log-transformed) running time prediction using a random forest with features extracted by the old (SATZilla 2012; in red) and the new tool (SATZilla 2024; in blue), on SAT solvers from the 2022 and 2023 SAT Competitions.",
+            "reason": "Visualizes RMSE for the top 10 solvers.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)"
+            ],
+            "statistics": [
+              "Mean RMSE"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          },
+          "Figure 5": {
+            "caption": "Histogram of the error percentage of the root mean square error (RMSE) of (log-transformed) running time prediction using a random forest with features extracted by the old (SATZilla 2012; in red) and the new tool (SATZilla 2024; in blue), on SAT solvers from the 2022 and 2023 SAT Competitions.",
+            "reason": "Shows the distribution of error percentages.",
+            "metrics": [
+              "Error percentage"
+            ],
+            "statistics": [
+              "Histogram counts"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          }
+        },
+        "Text": {
+          "Section 4.3": {
+            "value": "We see that using the features extracted by the new tool leads to the lower RMSE for all solvers, compared to using those extracted by the old tool.",
+            "reason": "Summarizes the RMSE improvements.",
+            "metrics": [
+              "Root Mean Squared Error (RMSE)"
+            ],
+            "statistics": [
+              "Mean RMSE"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (less than)"
+          }
+        }
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_4"
+      ],
+      "reason": "Evaluating the algorithm selector's performance using closed gap and fraction of instances solved over time.",
+      "metrics": [
+        "Closed gap",
+        "Fraction of Instances Solved"
+      ],
+      "statistics": [
+        "Mean closed gap",
+        "ECDF"
+      ],
+      "test": "Direct comparison (greater than)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 6": {
+            "caption": "Closed gap values for the algorithm selection task using the old (SATZilla 2012; in red) and the new tool (SATZilla 2024; in blue) on the 2022 and 2023 SAT Competitions; higher is better.",
+            "reason": "Shows the closed gap metric.",
+            "metrics": [
+              "Closed gap"
+            ],
+            "statistics": [
+              "Mean closed gap"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          },
+          "Figure 7": {
+            "caption": "ECDF plots for the algorithm selection task using the old (SATZilla 2012) and the new tool (SATZilla 2024) on the 2022 and 2023 SAT Competitions.",
+            "reason": "Shows the fraction of instances solved over time.",
+            "metrics": [
+              "Fraction of Instances Solved"
+            ],
+            "statistics": [
+              "ECDF"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        },
+        "Text": {
+          "Section 4.4": {
+            "value": "Importantly, features extracted with the new tool lead to better closed gap values on both scenarios.",
+            "reason": "Summarizes the closed gap improvements.",
+            "metrics": [
+              "Closed gap"
+            ],
+            "statistics": [
+              "Mean closed gap"
+            ],
+            "data": [
+              "2022 SAT Competition formulas",
+              "2023 SAT Competition formulas"
+            ],
+            "test": "Direct comparison (greater than)"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The new tool is able to extract more features than the old one for most feature groups, particularly the preliminary feature group, though the old tool has a slight advantage for KLB and CG features due to the new SBVA preprocessing yielding larger formulas.",
+      "reason": "Authors interpret the feature computation success rates, noting the overall superiority of the new tool but acknowledging specific cases where the old tool extracts more due to formula size differences."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "Using features extracted via the new tool achieves better performance across all instances on both SAT competitions, with a higher accuracy gain for satisfiable instances than for unsatisfiable instances.",
+      "reason": "Authors interpret the satisfiability prediction accuracy results."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Using the features extracted by the new tool leads to a lower RMSE for all solvers, compared to using those extracted by the old tool, with more instances predicted with lower error rates.",
+      "reason": "Authors interpret the running time prediction RMSE and error histograms."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "Features extracted with the new tool lead to better closed gap values on both scenarios and generally solve more instances within the budget compared to the old tool.",
+      "reason": "Authors interpret the algorithm selection closed gap and ECDF plots."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3",
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that their improved version of the SATZilla feature extraction tool successfully facilitates the feature extraction process. By using the new tool, they achieve more accurate satisfiability prediction, a lower error for running time prediction, and a better closed gap for algorithm selection.",
+      "reason": "This directly answers the research questions and supports the hypothesis, as stated in the Conclusions section (Section 5)."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the new SATZilla 2024 extraction tool be extended to incorporate features based on recent developments in the explainability of SAT solvers or other advancements in SAT?",
+        "note": "Section 5 (Conclusions), paragraph 2.",
+        "reason": "The authors explicitly state that the tool is easily extensible and encourages building atop it by looking into features based on recent developments in explainability."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

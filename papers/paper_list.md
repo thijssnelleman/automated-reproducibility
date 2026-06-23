@@ -2,7 +2,7 @@
 
 Edge-Based Graph Component Pooling
 
-# Wadie Skaf ✅ -> ❌
+# Wadie Skaf ✅ -> ✅
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
@@ -14,15 +14,17 @@ Robustness Distributions in Neural Network Verification
 
 Data Efficient Pre-training for Language Models: An Empirical Study of Compute Efficiency and Linguistic Competence
 
-# Hadar Shavit ✅ -> ❌
+# Hadar Shavit ✅ -> ✅
 
 Revisiting SATZilla Features in 2024
 
-# Konstantin Kaulen ✅ -> ❌
+# Konstantin Kaulen ✅ -> ✅ ✅
 
 Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification
 
-# Anja Jankovic ✅ -> ❌
+Rethinking Evaluation Paradigms in IBP-based Certified Training
+
+# Anja Jankovic ✅ -> ✅
 
 Trajectory-based algorithm selection with warm-starting
 
@@ -36,7 +38,7 @@ Audio Classification Models are Vulnerable to Filter Pertubations
 
 Combining Automated Optimisation of Hyperparameters and Reward Shape
 
-# Marie Anastacio ✅ -> ❌
+# Marie Anastacio ✅ -> ✅
 
 Instance selection for configuration performance comparison
 
@@ -48,7 +50,7 @@ Towards Consistent and Efficient Decision-based Attacks
 
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks
 
-# Aaron Berger ✅ -> ❌
+# Aaron Berger ✅ -> ✅
 
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks
 
@@ -121,3 +123,15 @@ An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitme
 Automatic Adjusting Global Similarity Measures in Learning CBR Systems (✅)
 
 Incorporating the Cycle Inductive Bias in Masked Autoencoders (✅)
+
+# Matthias König ❌ -> ✅
+
+Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio
+
+# Jonas Seng ❌ -> ✅
+
+Hyperparameter Optimization via Interacting with Probabilistic Circuits
+
+# Leona Hennig ❌ -> ✅
+
+Leveraging AutoML for Sustainable Deep Learning: A Multi-Objective HPO Approach on Deep Shift Neural Networks

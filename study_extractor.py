@@ -32,19 +32,34 @@ for paper_path in papers:
         print(f"Output already exists for paper {paper_path}. Do you wish to replace it? (y/n): ", end="")
         if input().lower() != "y":
             continue
-    response = client.models.generate_content(
-        model=model,
-        contents=[
-            types.Part.from_bytes(
-                data=pdf_encoded,
-                mime_type="application/pdf",
-            ),
-            prompt
-        ],
-        config={
-            "temperature": 0.0,  # 0.0 = deterministic
-        }
-    )
+    
+    success = False
+    count = 1
+    while not success:
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=[
+                    types.Part.from_bytes(
+                        data=pdf_encoded,
+                        mime_type="application/pdf",
+                    ),
+                    prompt
+                ],
+                config={
+                    "temperature": 0.0,  # 0.0 = deterministic
+                }
+            )
+            success = True
+        except Exception as e:
+            print(f"[{count}] Error (Retrying): {e}")
+            if count >= 10:
+                sys.exit("Failed to generate response after 10 attempts.")
+            count += 1
+            import time
+            time.sleep(10)
+            
+
     with output_path.open("w+") as f:
         response_data = response.text
         if response_data[:7] == "```json":  # Trim leading ```json

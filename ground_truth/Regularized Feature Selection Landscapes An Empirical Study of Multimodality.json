@@ -1,0 +1,412 @@
+
+{
+  "Meta": {
+    "title": "Regularized Feature Selection Landscapes: An Empirical Study of Multimodality",
+    "authors": [
+      "Xavier F. C. Sánchez-Díaz",
+      "Corentin Masson",
+      "Ole Jakob Mengshoel"
+    ],
+    "year": 2024,
+    "venue": "Unknown"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "How multimodal are feature selection problems?",
+      "reason": "Found in Section 2.3, explicitly stated as a question raised by the challenge of highly multimodal pseudo-Boolean functions."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "How does multimodality change as the degree of regularization is varied?",
+      "reason": "Found in Section 2.3, explicitly stated alongside the first question."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that feature selection problems induce highly multimodal fitness landscapes, and that increasing the degree of regularization decreases the number of local optima while the landscape remains substantially multimodal.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "Implied in the Abstract and Section 1 (Contributions), where they state their study confirms previous findings of high multimodality and they expect to see how multimodality varies for different regularization settings, finding that it drops off but remains substantial."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Examine the modalities of ten datasets and see if and how they change when introducing different values of the regularization parameter epsilon.",
+      "strategy": "Exhaustive enumeration of all 2^n feature subsets. Random split (train = 0.7, test = 0.3). Epsilon values tested: {0, 1/32, 1/16, 1/8}.",
+      "data": [
+        "1-seeds (UCI)",
+        "2-e-coli (UCI)",
+        "3-breast-w (UCI)",
+        "4-glass (UCI)",
+        "5-heart-c (UCI)",
+        "6-wine (UCI)",
+        "7-credit-a (UCI)",
+        "8-zoo (UCI)",
+        "9-letter-r (UCI)",
+        "10-hepatitis (UCI)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "A closer look at two datasets (4-glass and 5-heart-c) to describe changes in the landscape due to regularization by visualizing optima and observing the three lowest-energy optima for redundant features.",
+      "strategy": "Visual comparison of landscapes under epsilon = 0 and epsilon = 1/8 using 2D bitmaps (Hinged bitstring maps).",
+      "data": [
+        "4-glass (UCI)",
+        "5-heart-c (UCI)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Analyze the 4-glass and 5-heart-c datasets to examine how the spread of optima through the landscape changes under different regularization levels.",
+      "strategy": "Calculate Hamming distance from all local optima to their closest global optimum. Reconstruct HBMs using Local Optima Networks (LONs).",
+      "data": [
+        "4-glass (UCI)",
+        "5-heart-c (UCI)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Counting the number of local and global optima for each dataset under different regularization values to observe the decrease in multimodality.",
+      "metrics": [
+        "Number of local optima (|L|)",
+        "Number of global optima (|G|)"
+      ],
+      "statistics": [
+        "Counts"
+      ],
+      "test": [
+        "Simple comparison (decrease in number of optima)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Datasets used in this study, sorted by number of features (n). We present the number of examples m, as well as the number of local optima |L| and global optima |G| for various values of the regularization term epsilon. We highlight in bold the two datasets that we analyze further in Section 4.2.",
+            "reason": "Presents the exact counts of optima for all datasets and epsilon values.",
+            "metrics": [
+              "Number of local optima (|L|)",
+              "Number of global optima (|G|)"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "1-seeds (UCI)",
+              "2-e-coli (UCI)",
+              "3-breast-w (UCI)",
+              "4-glass (UCI)",
+              "5-heart-c (UCI)",
+              "6-wine (UCI)",
+              "7-credit-a (UCI)",
+              "8-zoo (UCI)",
+              "9-letter-r (UCI)",
+              "10-hepatitis (UCI)"
+            ],
+            "test": [
+              "Simple comparison (decrease in number of optima)"
+            ]
+          }
+        },
+        "Figures": {},
+        "text": {
+          "Section 4.1": {
+            "value": "The first thing to notice is the nontrivial number of optima |L| for all datasets... As we increase the fitness penalty on the number of features in the fitness function h, we indirectly reshape the landscape since the model prefers bitstrings with fewer bits sets to 1. Although the expected behavior is a decrease in the number of optima, the decrease is quite significant but highly variable between datasets.",
+            "reason": "Describes the results of the optima counting and the effect of regularization.",
+            "metrics": [
+              "Number of local optima (|L|)"
+            ],
+            "statistics": [
+              "Counts"
+            ],
+            "data": [
+              "10-hepatitis (UCI)"
+            ],
+            "test": [
+              "Simple comparison (decrease in number of optima)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Visualizing the landscape and comparing the lowest-energy optima to see how specific features and optima change under regularization.",
+      "metrics": [
+        "Energy",
+        "Bitstring features"
+      ],
+      "statistics": [
+        "Exact values"
+      ],
+      "test": [
+        "Simple comparison (changes in optima location and energy)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "The tree lowest-energy optima in 4-glass and 5-heart-c datasets, for regularization values epsilon = 0 (top three rows in sub-table) and epsilon = 1/8 (bottom three rows). Redundant or unimportant features are highlighted on each group when there is a tie...",
+            "reason": "Shows the specific bitstrings, energy, and accuracy for the lowest-energy optima.",
+            "metrics": [
+              "Energy",
+              "Bitstring features"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "4-glass (UCI)",
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Simple comparison (changes in optima location and energy)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 1": {
+            "caption": "Hinged bitstring map (HBM) of the 4-glass dataset with 9 features. The plot at the top illustrates the landscape with epsilon = 0, while the plot at the bottom shows the landscape when epsilon = 1/8. Local and global optima are highlighted with a blue and red outline, respectively.",
+            "reason": "Visualizes the landscape changes for 4-glass.",
+            "metrics": [
+              "Energy"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "4-glass (UCI)"
+            ],
+            "test": [
+              "Simple comparison (changes in optima location and energy)"
+            ]
+          },
+          "Figure 2": {
+            "caption": "Hinged bitstring map (HBM) of the 5-heart-c dataset with 13 features. The plot at the top illustrates the landscape with epsilon = 0, while the plot at the bottom shows the landscape when epsilon = 1/8. Local and global optima are highlighted with a blue and red outline, respectively.",
+            "reason": "Visualizes the landscape changes for 5-heart-c.",
+            "metrics": [
+              "Energy"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Simple comparison (changes in optima location and energy)"
+            ]
+          },
+          "Figure 3": {
+            "caption": "Energy changes on a fixed set of bitstrings, including 04-glass' global optimum under epsilon = 0, b*_273, with three features selected (top), and 05-heart-c's global optimum under epsilon = 0, b*_6571, with eight features selected (bottom).",
+            "reason": "Shows how energy changes for specific feature sets across different epsilon values.",
+            "metrics": [
+              "Energy"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "4-glass (UCI)",
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Simple comparison (changes in optima location and energy)"
+            ]
+          }
+        },
+        "text": {}
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Analyzing the distribution of optima and their connectedness using Hamming distances and LONs to identify structural changes like big valleys. The energy is represented by the colour of a node.",
+      "metrics": [
+        "Hamming distance",
+        "Basin of attraction size",
+        "Edge weights"
+      ],
+      "statistics": [
+        "Counts (hexagonal binned plots)",
+        "Exact values"
+      ],
+      "test": [
+        "Visual inspection of distribution"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Hexagonal binned plot of the Hamming distance from all local optima to their closest global optimum. Each bin aggregates distance counts, where a darker shade means more local optima are at that given distance to the global optimum.",
+            "reason": "Shows the distribution of Hamming distances.",
+            "metrics": [
+              "Hamming distance"
+            ],
+            "statistics": [
+              "Counts (hexagonal binned plots)"
+            ],
+            "data": [
+              "4-glass (UCI)",
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Visual inspection of distribution"
+            ]
+          },
+          "Figure 5": {
+            "caption": "Partial LONs of the 04-glass dataset (with n = 9 features and |B*| = 65 local optima for epsilon = 0), as subjected to different regularization scenarios. The size of a vertex indicates the size of the basin of attraction, while the thickness of an edge represents its weight. Layout is according to the HBM for 04-glass in Figure 1.",
+            "reason": "Visualizes the LONs for 4-glass.",
+            "metrics": [
+              "Basin of attraction size",
+              "Edge weights"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "4-glass (UCI)"
+            ],
+            "test": [
+              "Visual inspection of distribution"
+            ]
+          },
+          "Figure 6": {
+            "caption": "Partial LONs of the 05-heart-c dataset (with n = 13 features and |B*| = 700 local optima for epsilon = 0), as subjected to different regularization scenarios. Layout is according to the HBM for 05-heart-c in Figure 2.",
+            "reason": "Visualizes the LONs for 5-heart-c.",
+            "metrics": [
+              "Basin of attraction size",
+              "Edge weights"
+            ],
+            "statistics": [
+              "Exact values"
+            ],
+            "data": [
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Visual inspection of distribution"
+            ]
+          }
+        },
+        "text": {
+          "Section 4.3": {
+            "value": "Under no regularization, the plots on both datasets illustrate a structure where most of the local optima are concentrated around a single global optimum—a landscape feature often referred to as the big valley structure. However, regularization induces changes in the landscape that alter the basins of attraction, and there is a split into separate regions.",
+            "reason": "Describes the structural changes observed in the plots.",
+            "metrics": [
+              "Hamming distance"
+            ],
+            "statistics": [
+              "Counts (hexagonal binned plots)"
+            ],
+            "data": [
+              "4-glass (UCI)",
+              "5-heart-c (UCI)"
+            ],
+            "test": [
+              "Visual inspection of distribution"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that the decrease in the number of optima is quite significant but highly variable between datasets as the fitness penalty on the number of features increases.",
+      "reason": "Found in Section 4.1, explaining the results of Table 1."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The authors note that original local optima under no regularization are not necessarily optima under another regularization landscape, and that redundant features are dropped.",
+      "reason": "Found in Section 4.2, discussing Table 2 and Figures 1-3."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "The authors interpret that regularization induces a split in the landscape, changing it from a 'big valley' structure centered around a single global optimum to separate regions centered on different local optima representing singleton feature subsets.",
+      "reason": "Found in Section 4.3, discussing Figures 4-6."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that there is a high degree of multimodality when there is no regularization and that the degree of multimodality generally drops off with increasing regularization. They state that this confirms and adds to previous findings that feature selection landscapes are highly multimodal.",
+      "reason": "Found in Section 5 (Conclusion and Future Work), directly answering the research questions and supporting the hypothesis."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How do different types of datasets and ML methods (e.g., for regression) impact the properties of regularization on the landscape?",
+        "note": "Section 5 (Conclusion and Future Work)",
+        "reason": "Explicitly suggested as an avenue for extending the research."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the newfound knowledge about feature selection fitness landscapes be utilized to improve heuristics for feature selection?",
+        "note": "Section 5 (Conclusion and Future Work)",
+        "reason": "Explicitly suggested as a possibility for future work."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How do other landscape features (like ruggedness and deception) combine with the analysis of multimodality and regularization?",
+        "note": "Section 5 (Conclusion and Future Work)",
+        "reason": "Explicitly suggested as a possibility for future work."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

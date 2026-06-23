@@ -1,0 +1,420 @@
+
+{
+  "Meta": {
+    "title": "Applying and benchmarking a stochastic programming-based bidding strategy for day-ahead hydropower scheduling",
+    "authors": [
+      "Kristine Klock Fleten",
+      "Ellen Krohn Aasgård",
+      "Liyuan Xing",
+      "Hanne Høie Grøttum",
+      "Stein-Erik Fleten",
+      "Odd Erik Gundersen"
+    ],
+    "year": 2024,
+    "venue": "Computational Management Science"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How does a stochastic programming-based bidding strategy perform compared to a traditional operator-determined bidding strategy in day-ahead hydropower scheduling?",
+      "reason": "Implied in the Abstract and Introduction (Section 1), where the authors state the paper details Aneo's efforts to transition to a new stochastic programming-based method and benchmark its performance against the existing operator-determined strategy."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How does the method of generating price scenarios (ensemble forecasts vs. in-house generated) influence the performance of the stochastic bidding model?",
+      "reason": "Implied in Section 3, where the authors state: 'we have therefore experimented with different ways of generating input to the stochastic model, in order to see how important this is as a driver of the performance of the stochastic bid model.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": true,
+      "value": "Our hypothesis is that maintaining this profile [daily profile from ensemble forecasts] may be advantageous for the resulting bids and production schedules, specifically related to start/stop of units as well as ramping restrictions, and pressure head optimization.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Explicitly stated in Section 3 (Price input and scenario generation). It is also reiterated in Section 5.6: 'This supports our initial hypothesis that the ensemble scenarios would give the best performance because they better represent the price profile.'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "A rolling horizon counterfactual experiment comparing operator-determined bids (sent to the real market) with stochastic-based bids (evaluated based on realized market prices) using two different price scenario inputs (ensemble and in-house).",
+      "strategy": "Rolling horizon comparison over consecutive two-week periods, resetting initial conditions (start reservoir levels) for the stochastic cases at the end of each two-week period.",
+      "data": [
+        "Watercourse portfolio in NO3 price area (Norway) (This work)",
+        "Ensemble price forecasts (External provider)",
+        "In-house generated price scenarios (This work)",
+        "Deterministic price and inflow forecasts (Aneo database)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [],
+      "experiment_description": "Real-time testing where operators were provided with both their own generated bids and the stochastic model bids side-by-side, giving them the opportunity to choose which to submit to the market.",
+      "strategy": "Real-time operational deployment and observation (June 2022 to March 2023).",
+      "data": [
+        "Real-time market data and operator decisions (This work)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the overall financial and operational performance of the bidding strategies by calculating the daily grand total, revenues, start-up costs, and change in reservoir value.",
+      "metrics": [
+        "Daily grand total",
+        "Revenues",
+        "Start-up costs",
+        "Change in reservoir value"
+      ],
+      "statistics": [
+        "Sum per two-week period",
+        "Relative difference with respect to the absolute value of the operator result"
+      ],
+      "test": "Direct comparison of aggregated totals and relative differences.",
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Daily grand total: presented as the relative change with respect to the operator result, aggregated per two-week period. In the final row, Equation (5) is applied to the sum of the nine periods",
+            "reason": "Shows the overall performance comparison between the methods.",
+            "metrics": [
+              "Daily grand total"
+            ],
+            "statistics": [
+              "Relative difference"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          },
+          "Table 2": {
+            "caption": "Revenues: presented as the relative change with respect to the operator result, aggregated per two-week period",
+            "reason": "Breaks down the revenue component of the grand total.",
+            "metrics": [
+              "Revenues"
+            ],
+            "statistics": [
+              "Relative difference"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          },
+          "Table 3": {
+            "caption": "Start-up costs: presented as relative change with respect to the operator result, aggregated per two-week period",
+            "reason": "Breaks down the start-up cost component.",
+            "metrics": [
+              "Start-up costs"
+            ],
+            "statistics": [
+              "Relative difference"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          },
+          "Table 4": {
+            "caption": "Change in reservoir value: presented as relative change with respect to the operator result, aggregated per two-week period",
+            "reason": "Breaks down the reservoir value component.",
+            "metrics": [
+              "Change in reservoir value"
+            ],
+            "statistics": [
+              "Relative difference"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 5": {
+            "caption": "Daily grand total for all days tested in the rolling horizon benchmark, including the daily average realized price. The x-axis labels indicate the start dates for each two-week period",
+            "reason": "Visualizes daily performance.",
+            "metrics": [
+              "Daily grand total"
+            ],
+            "statistics": [
+              "Daily values"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          },
+          "Figure 6": {
+            "caption": "Daily grand total for all days tested in the rolling horizon benchmark, cumulative by period",
+            "reason": "Visualizes cumulative performance.",
+            "metrics": [
+              "Daily grand total"
+            ],
+            "statistics": [
+              "Cumulative values"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          }
+        },
+        "text": {
+          "Section 5.1": {
+            "value": "It shows that the stochastic model with ensemble prices achieves the highest result, being 53% better than the operator-determined, followed by the model with in-house prices, which is 27% better than the operator-determined model.",
+            "reason": "Summarizes the main finding of the grand total analysis.",
+            "metrics": [
+              "Daily grand total"
+            ],
+            "statistics": [
+              "Relative difference"
+            ],
+            "data": [
+              "Watercourse portfolio in NO3 price area (Norway) (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Comparing the statistical properties and accuracy of the different price scenario inputs.",
+      "metrics": [
+        "Energy score",
+        "Integrated distance",
+        "Mean",
+        "Standard deviation"
+      ],
+      "statistics": [
+        "Mean over all test days",
+        "Mean standard deviation"
+      ],
+      "test": "Direct comparison of metric scores.",
+      "results": {
+        "Tables": {
+          "Table 5": {
+            "caption": "Comparing the different price forecasts. The values shown are the mean values over all days in our test period (from 2023-09-07 to 2024-01-10). Mean(standard deviation)",
+            "reason": "Presents the scenario evaluation metrics.",
+            "metrics": [
+              "Energy score",
+              "Integrated distance",
+              "Mean",
+              "Standard deviation"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Ensemble price forecasts (External provider)",
+              "In-house generated price scenarios (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          }
+        },
+        "Figures": {},
+        "text": {
+          "Section 5.6": {
+            "value": "the ensemble forecasts have smaller energy score than the in-house method, which is consistent with our benchmarking results where the ensemble has the best performance.",
+            "reason": "Links the scenario metrics to the benchmark performance.",
+            "metrics": [
+              "Energy score"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Ensemble price forecasts (External provider)",
+              "In-house generated price scenarios (This work)"
+            ],
+            "test": [
+              "Direct comparison"
+            ]
+          },
+          "Page 20": {
+            "value": "the integrated distance is similar for the ensemble and deterministic inputs, while the value for the in-house forecast is higher.",
+            "reason": "",
+            "metrics": [
+              "Integrated distance"
+            ],
+            "statistics": [
+              ""
+            ],
+            "data": [
+              "Ensemble scenarios",
+              "In-house scenarios",
+              "Deterministic forecast"
+            ],
+            "test": [
+              "Qualitative assessment"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Observing operator behavior and acceptance of the stochastic bids during real-time operations.",
+      "metrics": [
+        "Operator selection rate (qualitative)"
+      ],
+      "statistics": [
+        "Qualitative observation"
+      ],
+      "test": "Qualitative assessment",
+      "results": {
+        "Tables": {},
+        "Figures": {},
+        "text": {
+          "Section 6": {
+            "value": "During the real-time testing period, we observed that operators predominantly chose their own bids... operators ended up sometimes choosing the stochastic bids for the simpler systems (one-reservoir, one-plant) but almost never for the more complex cascades.",
+            "reason": "Describes the outcome of the real-time testing.",
+            "metrics": [
+              "Operator selection rate (qualitative)"
+            ],
+            "statistics": [
+              "Qualitative observation"
+            ],
+            "data": [
+              "Real-time market data and operator decisions (This work)"
+            ],
+            "test": [
+              "Qualitative assessment"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The stochastic-based models perform best overall, particularly in the first five periods, while the operator-determined bids perform better in the latter periods. The stochastic models are more willing to adjust production according to hourly price variations, leading to slightly higher start-up costs but better overall value in high-price periods. However, due to the long-term models not being tuned to the stochastic models, we see some extreme values in change in reservoir value - leading us to conclude that stochastic-based models may not necessarily perform better (see final paragraph of section 5.5).",
+      "reason": "Derived from Section 5.1 and 5.3, explaining the performance differences between the methods. Derived from Section 5.4, explaining why the stochastic models sometimes deviate significantly in reservoir value."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The ensemble scenarios perform better because they have a smaller energy score and better represent the price profile, supporting the initial hypothesis. The deterministic forecast has a higher energy score than stochastic alternatives, indicating its accuracy is not good enough to rely on deterministic modelling alone.",
+      "reason": "Derived from Section 5.6, interpreting the scenario metrics and linking them to the hypothesis."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "Operators were reluctant to use the stochastic bids because they wanted control over the bids, preferred familiar methods, and found the 'top-down' generated stochastic bids hard to interpret for individual plants, especially in complex cascades.",
+      "reason": "Derived from Section 6, explaining the lack of adoption during real-time testing."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "The stochastic method can largely replicate the current operator-determined bidding strategy and even show better overall performance in the benchmark. However, additional work is needed before full automation, particularly in managing special constraints and boundary conditions.",
+      "reason": "Summarizes the answer to the first research question based on the benchmark results (Section 7)."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that the ensemble price scenarios yield better performance than the in-house scenarios, supporting their hypothesis that maintaining the daily price profile is advantageous for resulting bids and schedules.",
+      "reason": "Directly addresses the hypothesis and second research question (Section 5.6 and 7)."
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "Implementing a fully automated setup is difficult with tools that require extensive hands-on adaptation. Human-computer interaction and operator experience are crucial and must be incorporated into the new method for it to be successful.",
+      "reason": "Reflects on the practical application of the research question based on real-time testing (Section 7)."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_3"
+        ],
+        "value": "How can inflow uncertainty be effectively incorporated into the stochastic optimization model to produce more robust bids?",
+        "note": "Section 6 and Section 7",
+        "reason": "The authors repeatedly state that including inflow uncertainty is the most significant improvement needed for their modelling setup."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_3"
+        ],
+        "value": "How can the underlying watercourse models in SHOP be improved to better capture physical characteristics crucial for scheduling decisions?",
+        "note": "Section 7",
+        "reason": "The authors note that updating watercourse models might be wiser than adding complexity through price uncertainty."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_3"
+        ],
+        "value": "The authors hypothesise that including inflow uncertainty in addition to price uncertainty will lead to more robust bids and better handling of smaller reservoirs and strict restrictions.",
+        "note": "Section 5.5 and Section 6",
+        "reason": "They state that for smaller reservoirs, inflow uncertainty might be more important than price uncertainty, and including it is a more important step towards automatic bidding."
+      }
+    }
+  }
+}

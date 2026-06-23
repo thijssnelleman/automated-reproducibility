@@ -1,0 +1,427 @@
+
+{
+  "Meta": {
+    "title": "Hyperparameter Optimization via Interacting with Probabilistic Circuits",
+    "authors": [
+      "Jonas Seng",
+      "Fabrizio Ventola",
+      "Zhongjie Yu",
+      "Kristian Kersting"
+    ],
+    "year": 2025,
+    "venue": "AutoML 2025"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "(Q1) Can IBO-HPC compete with prominent HPO methods?",
+      "reason": "Explicitly stated in Section 4 Experimental Evaluation."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "(Q2) How does the performance of IBO-HPC, provided with user knowledge at various points during optimization, compare to existing approaches incorporating user knowledge ex ante?",
+      "reason": "Explicitly stated in Section 4 Experimental Evaluation."
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "(Q3) Is IBO-HPC capable of reliably recovering from misleading user interactions?",
+      "reason": "Explicitly stated in Section 4 Experimental Evaluation."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that IBO-HPC is competitive with existing strong BO baselines without user interaction.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "Implied from Q1 and the conclusion in Section 4.1 where they state 'We thus answer (Q1) affirmatively, since IBO-HPC is competitive with existing strong BO baselines without user interaction.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that IBO-HPC converges significantly faster and achieves better solution quality when provided with valuable user knowledge compared to existing approaches.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Implied from Q2 and the results discussed in Section 4.2 under 'Beneficial Interactions' and 'Speed-up'."
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that IBO-HPC is capable of reliably recovering from misleading user interactions.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Implied from Q3 and the results discussed in Section 4.2 under 'Recovery and Multiple Interactions'."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Comparison of IBO-HPC against non-interactive HPO baselines (local search, BO with RF, BO with TPE, SMAC) to evaluate its performance when no user knowledge is provided.",
+      "strategy": "500 seeds for 200 iterations (50 seeds with 100 iterations for HPO-B, PD1, and FCNet), initialized with 5 random samples.",
+      "data": [
+        "JAHS (Bansal et al., 2022)",
+        "NAS-Bench-101 (Ying et al., 2019)",
+        "NAS-Bench-201 (Dong and Yang, 2020)",
+        "HPO-B (Pineda-Arango et al., 2021)",
+        "PD1 (Wang et al., 2024)",
+        "FCNet (Klein and Hutter, 2019)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Evaluation of IBO-HPC with beneficial user beliefs (distributions or point values) provided at different iterations (e.g., 5th, 10th) compared against interactive baselines (RS with priors, BOPrO, \u03c0BO, Priorband) that receive priors ex ante.",
+      "strategy": "500 seeds for 200 iterations (50 seeds with 100 iterations for HPO-B, PD1, and FCNet), initialized with 5 random samples.",
+      "data": [
+        "JAHS (Bansal et al., 2022)",
+        "NAS-Bench-101 (Ying et al., 2019)",
+        "NAS-Bench-201 (Dong and Yang, 2020)",
+        "HPO-B (Pineda-Arango et al., 2021)",
+        "PD1 (Wang et al., 2024)",
+        "FCNet (Klein and Hutter, 2019)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Testing the recovery mechanism of IBO-HPC by deliberately providing known sub-optimal values for a large subset of hyperparameters, and testing alternating beneficial and harmful beliefs.",
+      "strategy": "Budget of 2k iterations for each algorithm to test long-term effects.",
+      "data": [
+        "JAHS (Bansal et al., 2022)",
+        "NAS-Bench-101 (Ying et al., 2019)",
+        "NAS-Bench-201 (Dong and Yang, 2020)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analyzing the competitiveness of IBO-HPC without user interaction against standard HPO baselines.",
+      "metrics": [
+        "Mean test error",
+        "Accumulated wall-clock time"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard error"
+      ],
+      "test": "One-sided Wilcoxon test (p = 0.05)",
+      "results": {
+        "Tables": {
+          "Table 4": {
+            "caption": "IBO-HPC is competitive with BO baselines. IBO-HPC significantly outperforms our baselines in 50% of the cases when no user knowledge is provided.",
+            "reason": "Shows statistical significance of IBO-HPC compared to non-interactive baselines.",
+            "metrics": [
+              "Mean test error"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201",
+              "HPO-B",
+              "PD1",
+              "FCNet"
+            ],
+            "test": [
+              "One-sided Wilcoxon test (p = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 2": {
+            "caption": "IBO-HPC outperforms state of the art. For 5/5 tasks across three challenging benchmarks, IBO-HPC is competitive with strong baselines when no user knowledge is provided.",
+            "reason": "Visualizes the learning curves of IBO-HPC without user knowledge compared to baselines.",
+            "metrics": [
+              "Mean test error",
+              "Accumulated wall-clock time"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard error"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 4.1": {
+            "value": "Fig. 2 and App. E.4 show that the performance of IBO-HPC without user interaction is competitive to or outperforms BO baselines on all selected benchmarks.",
+            "reason": "Summarizes the findings for the non-interactive setting.",
+            "metrics": [
+              "Mean test error"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201",
+              "HPO-B",
+              "PD1",
+              "FCNet"
+            ],
+            "test": []
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Analyzing the performance improvements and speed-ups when beneficial user knowledge is provided to IBO-HPC.",
+      "metrics": [
+        "Mean test error",
+        "Accumulated wall-clock time",
+        "Relative performance speedup"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard error",
+        "Median"
+      ],
+      "test": "One-sided Wilcoxon test (p = 0.05)",
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "IBO-HPC significantly outperforms \u03c0BO, BOPrO and Priorband. IBO-HPC significantly outperforms our baselines that allow for user priors. The table above shows p-values of the Wilcoxon test with significance level p = 0.05 for runs in which the same beneficial user knowledge was provided to all algorithms. For IBO-HPC, the knowledge was provided at the 5th iteration...",
+            "reason": "Shows statistical significance of IBO-HPC with beneficial interactions at iteration 5.",
+            "metrics": [
+              "Mean test error"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201",
+              "HPO-B",
+              "PD1",
+              "FCNet"
+            ],
+            "test": [
+              "One-sided Wilcoxon test (p = 0.05)"
+            ]
+          },
+          "Table 3": {
+            "caption": "IBO-HPC significantly outperforms \u03c0BO, BOPrO and Priorband. ... For IBO-HPC, the knowledge was provided at the 10th iteration...",
+            "reason": "Shows statistical significance of IBO-HPC with beneficial interactions at iteration 10.",
+            "metrics": [
+              "Mean test error"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": [
+              "One-sided Wilcoxon test (p = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 4": {
+            "caption": "IBO-HPC achieves considerable runtime improvement with beneficial interactions (2-10x faster).",
+            "reason": "Shows the relative performance speedup due to beneficial user knowledge.",
+            "metrics": [
+              "Relative performance speedup"
+            ],
+            "statistics": [
+              "Median"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 4.2": {
+            "value": "Considering the case in which users provide knowledge, IBO-HPC outperforms \u03c0BO, Priorband, and BOPrO in 4/5 cases w.r.t. convergence speed and/or final performance",
+            "reason": "Summarizes the findings for beneficial interactions.",
+            "metrics": [
+              "Mean test error",
+              "Accumulated wall-clock time"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": []
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Analyzing the ability of IBO-HPC to recover from misleading user knowledge and handle alternating interactions.",
+      "metrics": [
+        "Mean test error",
+        "Accumulated wall-clock time"
+      ],
+      "statistics": [
+        "Mean"
+      ],
+      "test": "Comparison of learning curves",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "IBO-HPC recovers from misleading interactions. IBO-HPC automatically recovers from misleading feedback provided as point values at the 5th iteration of the search. Also, when providing harmful and beneficial beliefs alternatively, IBO-HPC catches up with or outperforms \u03c0BO and BOPrO in 4/5 cases.",
+            "reason": "Visualizes the recovery of IBO-HPC from misleading and alternating interactions.",
+            "metrics": [
+              "Mean test error",
+              "Accumulated wall-clock time"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 4.2": {
+            "value": "Fig. 3 shows that IBO-HPC recovers similarly well or better than \u03c0BO and BOPrO from misleading interactions. In most cases, IBO-HPC catches up with standard HPO competitor methods (having no good/bad interactions).",
+            "reason": "Summarizes the findings for recovery from misleading interactions.",
+            "metrics": [
+              "Mean test error"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "JAHS",
+              "NAS-Bench-101",
+              "NAS-Bench-201"
+            ],
+            "test": []
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "These results show that IBO-HPC performs well in complex and realistic settings. Also, it underlines that HPCs accurately capture characteristics of the objective function and that our sampling-based selection policy reliably identifies good configurations.",
+      "reason": "The authors interpret the competitive performance of IBO-HPC without user knowledge as evidence that their surrogate model and selection policy are effective."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The results demonstrate that IBO-HPC's selection policy accurately represents the given user beliefs. Also, it shows that the selection policy effectively leverages information encoded in user priors and the surrogate since beneficial feedback provides decisive improvements, and then the optimization keeps improving.",
+      "reason": "The authors interpret the performance gains from beneficial interactions as proof that their method successfully incorporates and leverages user knowledge."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "This confirms that IBO-HPC's recovery mechanism works reliably and that misleading user beliefs do not deteriorate IBO-HPC's performance in the long run.",
+      "reason": "The authors interpret the recovery curves as confirmation that their decay mechanism effectively mitigates the impact of misleading user knowledge."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "We thus answer (Q1) affirmatively, since IBO-HPC is competitive with existing strong BO baselines without user interaction.",
+      "reason": "The authors explicitly state their conclusion regarding Q1 based on the results of the non-interactive experiments."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_2",
+        "hypothesis_3"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "Given IBO-HPC's remarkable speed-ups and the reliable recovery mechanism, we can answer (Q2) and (Q3) positively.",
+      "reason": "The authors explicitly state their conclusion regarding Q2 and Q3 based on the results of the interactive experiments."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "How can Probabilistic Circuits be leveraged to enable hyperparameter transfer learning, incorporating both former HPO runs and user knowledge?",
+        "note": "Section 5 (Limitations & Future Work) and Appendix F.",
+        "reason": "The authors suggest this as a promising prospect for future research to make HPO more efficient."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Setting a minimal variance or introducing a minimum variance schedule can prevent IBO-HPC from getting stuck in local optima due to the surrogate PC's leaves exhibiting too low variance.",
+        "note": "Section 5 (Limitations & Future Work).",
+        "reason": "The authors identify a limitation where IBO-HPC can get stuck in local optima and propose a potential solution (hypothesis) to tackle it, though noting it introduces new hyperparameters."
+      }
+    }
+  }
+}

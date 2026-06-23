@@ -1,0 +1,667 @@
+{
+  "Meta": {
+    "title": "Leveraging AutoML for Sustainable Deep Learning: A Multi-Objective HPO Approach on Deep Shift Neural Networks",
+    "authors": [
+      "Leona Hennig",
+      "Marius Lindauer"
+    ],
+    "year": 2025,
+    "venue": "Transactions on Machine Learning Research"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can Deep Shift Neural Networks (DSNNs) be better optimized to balance predictive performance and energy consumption using hyperparameter optimization?",
+      "reason": "Implied in the Abstract and Introduction: 'By leveraging AutoML techniques, we provide valuable insights into the potential of DSNNs and how to design them in a better way. We focus on image classification... Since we consider complementary objectives such as accuracy and energy consumption, we combine state-of-the-art multi-fidelity (MF) hyperparameter optimization (HPO) with multi-objective optimization...'"
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "How do design choices specific to DSNNs lead to different trade-offs between accuracy and energy efficiency?",
+      "reason": "Explicitly stated in Section 1 (Contributions): 'Empirically exploring how specific design choices in DSNNs lead to different trade-offs between accuracy and energy efficiency, enabling stakeholders and researchers to leverage these findings to develop energy-efficient applications that maintain high computational accuracy'"
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "Can we identify specific configurations of DSNNs that surpass the baseline results in both dimensions of the performance-efficiency optimization problem?",
+      "reason": "Explicitly stated in Section 1 (Contributions): 'Identifying specific configurations of DSNNs that surpass the baseline results in both dimensions of the performance-efficiency optimization problem.'"
+    },
+    "research_question_4": {
+      "explicit": false,
+      "value": "Are the optimal DSNN configurations found on one dataset robust and transferable to other datasets without requiring full re-optimization and which hyperparameters play a crucial role in this?",
+      "reason": "Implied in Section 5.3: 'Understanding whether optimal configurations found in one setting remain effective in others is critical for practical and sustainable AutoML. In particular, the ability to transfer configurations across datasets can lead to substantial reductions in computational cost and associated emissions.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that applying automated machine learning (AutoML), specifically multi-fidelity multi-objective optimization (MFMO), to DSNNs will identify optimal configurations that significantly improve both predictive accuracy and energy consumption compared to default DSNN configurations.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "reason": "Implied in the Abstract and Introduction where the authors propose their approach: 'Our approach led to significantly better configurations of DSNNs regarding loss and emissions compared to default DSNNs. This includes simultaneously increasing performance by about 20% and reducing emissions, in some cases by more than 60%.'"
+    },
+    "hypothesis_2": {
+      "explicit": true,
+      "value": "We suspect that the configuration of DSNNs has a huge impact on both performance and computational efficiency.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Explicitly stated in Section 2 (Related Work / Context): 'We suspect that the configuration of DSNNs has a huge impact on both performance and computational efficiency.'"
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that Pareto-optimal configurations identified on one dataset will remain near-optimal and outperform default configurations when transferred to a different dataset.",
+      "research_questions": [
+        "research_question_4"
+      ],
+      "reason": "Implied in Section 5.3: 'If previously optimized configurations remain near-optimal despite changes in the data, users can avoid restarting the entire optimization process, thus saving both time and resources. To investigate this, we evaluated the Pareto-optimal configurations identified for a ResNet20 model on CIFAR-10 trained on ImageNet100...'"
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Optimizing DSNN architectures (ResNet20, MobileNetV2, GoogLeNet, EfficientNetV2) using a Multi-Fidelity Multi-Objective (MFMO) framework to find Pareto-optimal configurations that balance classification loss and inference emissions.",
+      "strategy": "Multi-fidelity multi-objective optimization using SMAC3 extended with ParEGO and Hyperband. Fidelities are defined as the number of epochs.",
+      "data": [
+        "CIFAR10 (Krizhevsky et al., 2009)",
+        "Caltech101 (Fei-Fei et al., 2004)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Analyzing the hyperparameter importance of the optimized DSNNs to understand which specific design choices (e.g., shift depth, activation bits) most strongly influence loss and emissions.",
+      "strategy": "fANOVA applied to the random forest surrogate model of the hyperparameter optimization landscape, decomposing variance into components corresponding to hyperparameters.",
+      "data": [
+        "CIFAR10 (Krizhevsky et al., 2009)",
+        "Caltech101 (Fei-Fei et al., 2004)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_4"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Evaluating the transferability of Pareto-optimal configurations found on CIFAR-10 by applying them to a different dataset (ImageNet100) and measuring their performance and emissions.",
+      "strategy": "Train a subset of previously identified Pareto-optimal configurations (from ResNet20 on CIFAR-10) on a new dataset and measure loss and emissions at inference.",
+      "data": [
+        "ImageNet100 (Tian et al., 2020)"
+      ]
+    },
+    "experiment_4": {
+      "research_questions": [
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Comparing the accuracy of the best Pareto-optimal VGG19 configuration found via the MOMF approach against the original unquantized VGG19 and other quantized network baselines from the literature.",
+      "strategy": "Single-objective comparison (accuracy) of the optimal configuration against literature baselines.",
+      "data": [
+        "CIFAR10 (Krizhevsky et al., 2009)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "To evaluate if the MFMO approach successfully finds configurations that dominate the default DSNNs in terms of both loss and emissions, and to extract the specific hyperparameter values of these optimal configurations.",
+      "metrics": [
+        "Loss (1 - accuracy)",
+        "Emissions (kgCO2eq)"
+      ],
+      "statistics": [
+        "Mean",
+        "Median Pareto fronts with uncertainty bounds"
+      ],
+      "test": "Comparison (Pareto dominance against default configuration)",
+      "results": {
+        "Tables": {
+          "Table 4": {
+            "caption": "Pareto optimal configurations and default DSNN initiation of ResNet 20 on CIFAR10. Pareto optimal solutions on the aggregated Pareto front of the ResNet20 architecture on CIFAR10 on three seeds, including the mean aggregated loss and emissions of the default configuration.",
+            "reason": "Shows the specific hyperparameter values and the resulting loss/emissions of the Pareto-optimal configurations compared to the default.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 5": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of MobileNetV2 on CIFAR10",
+            "reason": "Shows the specific configurations for MobileNetV2 on CIFAR10.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 6": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of GoogLeNet on CIFAR10",
+            "reason": "Shows the specific configurations for GoogLeNet on CIFAR10.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 7": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of ResNet20 on Caltech101",
+            "reason": "Shows the specific configurations for ResNet20 on Caltech101.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 8": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of MobileNetV2 on Caltech101",
+            "reason": "Shows the specific configurations for MobileNetV2 on Caltech101.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 9": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of GoogLeNet on Caltech101",
+            "reason": "Shows the specific configurations for GoogLeNet on Caltech101.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Table 10": {
+            "caption": "Pareto optimal configurations and default DSNN instantiation of EfficientNetV2 on CIFAR10",
+            "reason": "Shows the specific configurations for EfficientNetV2 on CIFAR10.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 1": {
+            "caption": "Pareto front for EfficientNetV2 on CIFAR10 over multiple seeds. We show the loss in % and the emissions in kgCO2eq. The plots include median Pareto fronts with uncertainty bars, as well as an aggregated Pareto front of Pareto-optimal solutions across all runs. The star denotes the averaged performance of the default DSNN configuration.",
+            "reason": "Visualizes the Pareto front for EfficientNetV2, showing the default is dominated.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Median Pareto fronts with uncertainty bounds"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          },
+          "Figure 2": {
+            "caption": "Comparison of Pareto fronts for MobileNet, GoogLeNet, and ResNet20 on Caltech101 and CIFAR10 datasets over multiple seeds. We show the loss in % and the emissions in kgCO2eq. The plots include median Pareto fronts with uncertainty bars, as well as an aggregated Pareto front of Pareto-optimal solutions across all runs. The star denotes the averaged performance of the default DSNN configuration.",
+            "reason": "Visualizes the Pareto fronts across multiple architectures and datasets, demonstrating that the default configurations are consistently dominated.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Median Pareto fronts with uncertainty bounds"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)",
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.2.1": {
+            "value": "The default configuration for the DSNN, as designed by Elhoushi et al. (2021), is in fact not part of the Pareto front in Figure 2. This holds for all architectures on both datasets. This means that there are better configurations that dominate the default configuration regarding both loss and emissions...",
+            "reason": "Confirms in text that the MFMO approach successfully found configurations that strictly dominate the defaults.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)",
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "To determine which hyperparameters have the most significant impact on the loss and emissions objectives using fANOVA.",
+      "metrics": [
+        "Hyperparameter Importance (variance contribution)"
+      ],
+      "statistics": [
+        "Mean importance with variance/confidence intervals"
+      ],
+      "test": "Comparison (Ranking of importance values)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 3": {
+            "caption": "Hyperparameter importance according to fANOVA for ResNet20 on CIFAR10. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for ResNet20 on CIFAR10.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          },
+          "Figure 6": {
+            "caption": "Hyperparameter importance according to fANOVA for MobileNet on Caltech101. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for MobileNet on Caltech101.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          },
+          "Figure 7": {
+            "caption": "Hyperparameter importance according to fANOVA for GoogLeNet on Caltech101. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for GoogLeNet on Caltech101.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          },
+          "Figure 8": {
+            "caption": "Hyperparameter importance according to fANOVA for ResNet20 on Caltech101. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for ResNet20 on Caltech101.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "Caltech101 (Fei-Fei et al., 2004)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          },
+          "Figure 9": {
+            "caption": "Hyperparameter importance according to fANOVA for MobileNet on CIFAR10. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for MobileNet on CIFAR10.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          },
+          "Figure 10": {
+            "caption": "Hyperparameter importance according to fANOVA for GoogLeNet on CIFAR10. (a) Importance with respect to loss. (b) Importance with respect to emissions.",
+            "reason": "Shows the ranked importance of hyperparameters for GoogLeNet on CIFAR10.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.2.2": {
+            "value": "The most important DSNN-specific hyperparameters for emissions in Figure 3b include activation integer and fraction bits... Regarding loss in Figure 3a, the shift depth is the most important hyperparameter.",
+            "reason": "Describes the key findings from the fANOVA analysis regarding which parameters control which objective.",
+            "metrics": [
+              "Hyperparameter Importance (variance contribution)"
+            ],
+            "statistics": [
+              "Mean importance with variance/confidence intervals"
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Ranking of importance values)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "To see if Pareto-optimal configurations from CIFAR-10 maintain their dominance over the default configuration when evaluated on ImageNet100.",
+      "metrics": [
+        "Loss (1 - accuracy)",
+        "Emissions (kgCO2eq)"
+      ],
+      "statistics": [],
+      "test": "Comparison (Pareto dominance against default configuration on new dataset)",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 5": {
+            "caption": "ResNet20 trained on Imagenet100, instantiated with Pareto-optimal configurations from CIFAR10 (see Table 4). We show the loss in % and the emissions in kgCO2eq.",
+            "reason": "Shows that the transferred configurations still outperform the default configuration on the new dataset.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [],
+            "data": [
+              "ImageNet100 (Tian et al., 2020)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration on new dataset)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 5.3": {
+            "value": "The results, shown in Figure 5 demonstrate that several of the original Pareto configurations remain competitive on Imagenet100, continuing to outperform the default configuration. Notably, the default remains Pareto-dominated while the transferred configurations yield improvements in both loss and emissions.",
+            "reason": "Confirms the transferability of the configurations in the text.",
+            "metrics": [
+              "Loss (1 - accuracy)",
+              "Emissions (kgCO2eq)"
+            ],
+            "statistics": [],
+            "data": [
+              "ImageNet100 (Tian et al., 2020)"
+            ],
+            "test": [
+              "Comparison (Pareto dominance against default configuration on new dataset)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_4"
+      ],
+      "reason": "To compare the accuracy of the best VGG19 configuration found by MOMF against other state-of-the-art quantized networks and the original unquantized network.",
+      "metrics": [
+        "Accuracy"
+      ],
+      "statistics": [],
+      "test": "Comparison (Greater than)",
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "Accuracy comparison of VGG19 model variants on CIFAR10. Baseline results from Elhoushi et al. (2021) are marked with an asterisk.",
+            "reason": "Shows that AutoDSNN achieves 93.45% accuracy, outperforming all baselines including the original unquantized model.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Greater than)"
+            ]
+          }
+        },
+        "Figures": {},
+        "Text": {
+          "Appendix A.3": {
+            "value": "As shown in Table 2, the final accuracy of this configuration outperforms not only the original unquantized VGG19 but also the quantized network baselines such as the DeepShift-PS baseline from Elhoushi et al. (2021), AdderNet (Chen et al., 2020b), and ShiftAddNet (You et al., 2020).",
+            "reason": "States the result of the baseline comparison in the text.",
+            "metrics": [
+              "Accuracy"
+            ],
+            "statistics": [
+            ],
+            "data": [
+              "CIFAR10 (Krizhevsky et al., 2009)"
+            ],
+            "test": [
+              "Comparison (Greater than)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "This means that there are better configurations that dominate the default configuration regarding both loss and emissions... This validates the need for proper HPO tuning since we found better configurations that take the energy-efficient DSNNs a significant step further by improving their accuracy and energy consumption.",
+      "reason": "The authors interpret the Pareto fronts as evidence that default configurations are suboptimal and that MFMO successfully finds better trade-offs, validating their approach."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The most important DSNN-specific hyperparameters for emissions in Figure 3b include activation integer and fraction bits. This hints at the precision of the activation quantization being the most controlling factor for energy efficiency. Naturally, precision is a key factor since it controls the amount of operations in the network. Regarding loss in Figure 3a, the shift depth is the most important hyperparameter. The proportion of the network converted to perform shift operations naturally controls the amount of information retained in the network.",
+      "reason": "The authors interpret the fANOVA results to explain the physical and architectural reasons why certain hyperparameters affect specific objectives."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_1",
+        "analysis_2"
+      ],
+      "value": "While we initially hypothesized a direct proportionality between shift depth and emission savings, our analysis reveals a more nuanced relationship between hyperparameters, especially the shift depth and the bit precision in weights and activations. These hyperparameters interact in a non-linear manner, jointly influencing both energy consumption and model performance in ways that are not immediately intuitive... Notably, increasing the number of shift layers does not consistently result in greater emission savings.",
+      "reason": "The authors interpret the specific configurations on the Pareto front, noting that counterintuitively, lower shift depths often appear in optimal configurations, challenging standard assumptions."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "This suggests a degree of robustness and transferability, which could be leveraged in practice to reduce the frequency of full re-optimization runs.",
+      "reason": "The authors interpret the success of the transferred configurations on ImageNet100 as proof of robustness and practical utility."
+    },
+    "interpretation_5": {
+      "analyses": [
+        "analysis_4"
+      ],
+      "value": "These results highlight the relevance of our approach to discovering well-performing DeepShift configurations tailored to both accuracy and emissions. In particular, our optimal configuration, which outperforms all considered baselines, is only partially quantized, demonstrating that effective configurations are not straightforward or easily designed by hand.",
+      "reason": "The authors interpret the baseline comparison as validation that their automated approach finds non-intuitive, superior configurations compared to manual design or standard heuristics."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_5"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "We successfully optimized DSNNs to achieve higher accuracy while minimizing energy consumption, surpassing the default configuration settings in both aspects... By optimizing these hyperparameters, our MFMO approach did not just improve one dimension of the problem – it concurrently enhanced both model loss and energy efficiency.",
+      "reason": "Concludes that the MFMO approach is highly effective for DSNNs, supporting H1 and answering RQ1 and RQ3."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "support": [
+        true
+      ],
+      "value": "Our results reveal that optimal configurations for DSNNs are often counterintuitive and highly dependent on the intricate relations between hyperparameters. For example, we found that low shift depths often achieve superior trade-offs between accuracy and energy efficiency, challenging assumptions about full quantization of networks. Additionally, our analysis highlights the importance of prioritizing specific hyperparameters for different objectives...",
+      "reason": "Concludes that DSNN configuration is complex and non-intuitive, supporting H2 and answering RQ2."
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_4"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The default remains Pareto-dominated while the transferred configurations yield improvements in both loss and emissions. This suggests a degree of robustness and transferability, which could be leveraged in practice to reduce the frequency of full re-optimization runs.",
+      "reason": "Concludes that configurations are transferable, supporting H3 and answering RQ4."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the multi-fidelity multi-objective implementation be improved to intertwine ParEGO and HyperBand more efficiently, such as by finding a more effective way to assign budgets and weights of objectives?",
+        "note": "Section 6 (Conclusion / Future Work)",
+        "reason": "Explicitly stated as a direction for future work to improve the underlying optimization algorithm."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1",
+          "conclusion_2"
+        ],
+        "value": "Can using the number of weight bits as a fidelity type in multi-objective algorithms achieve even greater reductions in model emissions?",
+        "note": "Section 6 (Conclusion / Future Work)",
+        "reason": "Explicitly stated as a future investigation to speed up training and improve environmental benefits."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that by controlling the precision of the weight quantization as a fidelity type, training can be sped up in the earlier fidelity while regaining as much information as possible, leading to further improvements in optimized DSNNs and sustainable AI.",
+        "note": "Section 6 (Conclusion / Future Work)",
+        "reason": "Implied hypothesis from the future work section regarding the use of weight bits as a fidelity type."
+      }
+    }
+  }
+}

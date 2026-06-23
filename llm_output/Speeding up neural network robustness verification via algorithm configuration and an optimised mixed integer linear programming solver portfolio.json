@@ -1,0 +1,293 @@
+
+{
+  "Meta": {
+    "title": "Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio",
+    "authors": [
+      "Matthias König",
+      "Holger H. Hoos",
+      "Jan N. van Rijn"
+    ],
+    "year": 2022,
+    "venue": "Machine Learning"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can automated algorithm configuration and portfolio construction techniques be leveraged to improve the performance (reduce CPU time and timeouts) of MIP-based neural network robustness verification tools?",
+      "reason": "In the abstract and introduction, the authors state their goal: 'We extend this approach by leveraging automated algorithm configuration techniques and, more specifically, construct a portfolio of MIP solver configurations optimised for the neural network verification task.' and 'we seek to improve the performance of MIP-based neural network verification tools by leveraging automated algorithm configuration techniques to optimise the hyperparameters of the solver at the heart of these verifiers.'"
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that constructing a parallel portfolio of MIP solver configurations using automated algorithm configuration will significantly reduce the CPU time and the number of timeouts for MIP-based neural network verification engines compared to using default solver configurations.",
+      "research_questions": [
+        "research_question_1"
+      ],
+      "reason": "The authors propose adapting Hydra to construct a parallel portfolio of MIP solver configurations and state they test this approach on MIPVerify and Venus to achieve substantial improvements in CPU time and reduce timeouts (Abstract, Section 1, Section 3)."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Evaluating the constructed parallel MIP solver portfolio against default configurations on the MIPVerify verification engine.",
+      "strategy": "Hydra configuration procedure (4 iterations, 2 SMAC runs of 24h each per iteration, k=1) to build a portfolio of up to 4 configurations. Evaluated on a test set with a cutoff time of 9600 seconds per core (4 cores total) vs baselines of 32 cores (1200s), 4 cores (9600s), and 1 core (38400s).",
+      "data": [
+        "SDPdMLPA (Raghunathan et al., 2018)",
+        "mnistnet (Botoeva et al., 2020)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Evaluating the constructed parallel MIP solver portfolio against default configurations on the Venus verification engine.",
+      "strategy": "Hydra configuration procedure (4 iterations, 2 SMAC runs of 24h each per iteration, k=1) to build a portfolio. Evaluated on a test set with a cutoff time of 7200 seconds per core (2 cores total) vs baseline of Venus with default settings (2 cores, 7200s).",
+      "data": [
+        "SDPdMLPA (Raghunathan et al., 2018)",
+        "mnistnet (Botoeva et al., 2020)",
+        "ACAS Xu (Julian et al., 2016; Katz et al., 2017)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Comparing the performance of the portfolio approach against default Gurobi configurations on MIPVerify.",
+      "metrics": [
+        "Timeouts",
+        "Adversarial error (Lower Bound)",
+        "Adversarial error (Upper Bound)",
+        "PAR10"
+      ],
+      "statistics": [
+        "Percentage",
+        "Mean"
+      ],
+      "test": [
+        "Binomial test (alpha = 0.05)",
+        "Permutation test (permutations = 10000, alpha = 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Timeouts, adversarial error and PAR10 scores for different solver configurations of the MIP solver embedded in the MIPVerify engine on the MNIST dataset. Note that all approaches were given the same budget in terms of CPU time (the number of cores times the cutoff time)",
+            "reason": "Presents the aggregated performance metrics for MIPVerify on SDPdMLPA and mnistnet.",
+            "metrics": [
+              "Timeouts",
+              "Adversarial error (Lower Bound)",
+              "Adversarial error (Upper Bound)",
+              "PAR10"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "SDPdMLPA (Raghunathan et al., 2018)",
+              "mnistnet (Botoeva et al., 2020)"
+            ],
+            "test": [
+              "Binomial test (alpha = 0.05)",
+              "Permutation test (permutations = 10000, alpha = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 3": {
+            "caption": "Evaluation of our parallel portfolio approach for MIPVerify on the MNIST dataset (n=10 000) using weights from the SDPdMLPa and mnistnet classifiers, respectively. Each dot represents a problem instance and the penalised running time for that instance achieved by the baseline approach (x-axis) vs our portfolio (y-axis).",
+            "reason": "Visualises the instance-level PAR10 performance of the portfolio vs baselines for MIPVerify.",
+            "metrics": [
+              "PAR10"
+            ],
+            "statistics": [],
+            "data": [
+              "SDPdMLPA (Raghunathan et al., 2018)",
+              "mnistnet (Botoeva et al., 2020)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.1": {
+            "value": "As seen in Table 1, our portfolio was able to certify a statistically significantly larger fraction of instances, while reducing CPU time by an average factor of 4.7 on the solvable instances (8 478 vs 39 772 CPU seconds). Furthermore, the portfolio strongly outperformed this baseline in terms of timeouts (14.96% vs 21.29%).",
+            "reason": "Describes the specific performance gains of the portfolio over the state-of-the-art baseline for MIPVerify.",
+            "metrics": [
+              "Timeouts",
+              "PAR10"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "SDPdMLPA (Raghunathan et al., 2018)"
+            ],
+            "test": [
+              "Binomial test (alpha = 0.05)",
+              "Permutation test (permutations = 10000, alpha = 0.05)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Comparing the performance of the portfolio approach against default Venus configurations.",
+      "metrics": [
+        "Timeouts",
+        "Adversarial error (Lower Bound)",
+        "Adversarial error (Upper Bound)",
+        "PAR10"
+      ],
+      "statistics": [
+        "Percentage",
+        "Mean"
+      ],
+      "test": [
+        "Binomial test (alpha = 0.05)",
+        "Permutation test (permutations = 10000, alpha = 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "Timeouts, adversarial error and PAR10 scores for different configurations of the MIP solver embedded in the Venus engine on the MNIST and ACAS Xu datasets",
+            "reason": "Presents the aggregated performance metrics for Venus on mnistnet, SDPdMLPA, and ACAS Xu.",
+            "metrics": [
+              "Timeouts",
+              "Adversarial error (Lower Bound)",
+              "Adversarial error (Upper Bound)",
+              "PAR10"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "SDPdMLPA (Raghunathan et al., 2018)",
+              "mnistnet (Botoeva et al., 2020)",
+              "ACAS Xu (Julian et al., 2016; Katz et al., 2017)"
+            ],
+            "test": [
+              "Binomial test (alpha = 0.05)",
+              "Permutation test (permutations = 10000, alpha = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 4": {
+            "caption": "Evaluation of our parallel portfolio approach for Venus on the MNIST dataset (n=10 000) using weights from the SDPdMLPa and mnistnet classifiers, respectively, and on the 172 property-network pairs from the ACAS Xu benchmark. Each dot represents a problem instance and the penalised running time for that instance achieved by the verifier with the embedded MIP solver at default (x-axis) vs our portfolio (y-axis).",
+            "reason": "Visualises the instance-level PAR10 performance of the portfolio vs baselines for Venus.",
+            "metrics": [
+              "PAR10"
+            ],
+            "statistics": [],
+            "data": [
+              "SDPdMLPA (Raghunathan et al., 2018)",
+              "mnistnet (Botoeva et al., 2020)",
+              "ACAS Xu (Julian et al., 2016; Katz et al., 2017)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.2": {
+            "value": "As Table 2 shows, the portfolio strongly outperformed Venus with default settings. On the mnistnet benchmark, it was able to certify a statistically significantly larger fraction of instances, while reducing CPU time by an average factor of 7.26 on the solvable instances (272 vs 1 975 CPU seconds).",
+            "reason": "Describes the specific performance gains of the portfolio over the baseline for Venus.",
+            "metrics": [
+              "Timeouts",
+              "PAR10"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "mnistnet (Botoeva et al., 2020)"
+            ],
+            "test": [
+              "Binomial test (alpha = 0.05)",
+              "Permutation test (permutations = 10000, alpha = 0.05)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that for MIPVerify, the portfolio approach clearly outperforms the default configuration of Gurobi running on 32, 4, and 1 cores in terms of CPU time and timeouts on the SDPdMLPA classifier. On the mnistnet classifier, the portfolio also outperforms the single-core baseline, although to a smaller extent, which they explain by the mnistnet network being comparatively smaller and easier to verify.",
+      "reason": "Found in Section 5.1, where the authors discuss the results from Table 1 and Figure 3, noting the significant reductions in PAR10 and timeouts."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The authors interpret that for Venus, the portfolio strongly outperforms the default settings on all three benchmarks (mnistnet, SDPdMLPA, and ACAS Xu), achieving significant reductions in CPU time and timeouts, and tightening previously reported bounds on adversarial error.",
+      "reason": "Found in Section 5.2, where the authors discuss the results from Table 2 and Figure 4, highlighting the large speedups and reduction in timeouts."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that automated algorithm configuration and portfolio construction can significantly reduce the CPU time required by MIP-based neural network verification systems on various benchmarks, while reducing the number of timeouts and certifying a larger fraction of instances. They state: 'Our results show that the portfolio approach can significantly reduce the CPU time required by these systems on various verification benchmarks, while reducing the number of timeouts and, thus, certifying a larger fraction of instances.'",
+      "reason": "Found in Section 6 (Conclusions and future work), directly answering the research question and supporting the hypothesis."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can per-instance algorithm selection techniques be used to further reduce the computational cost of the portfolio approach for neural network verification?",
+        "note": "Section 6 (Conclusions and future work)",
+        "reason": "The authors state: 'we plan to explore the use of per-instance algorithm configuration techniques to further reduce the computational cost of our approach... judicious use of per-instance algorithm selection techniques could potentially save some computational costs.'"
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can hyperparameters at the verification level be configured, and what is the impact of this on the MIP formulation and running time?",
+        "note": "Section 6 (Conclusions and future work)",
+        "reason": "The authors state: 'in future work, we will also configure the hyperparameters at the verification level. Due to the potential impact that this has on the MIP formulation and therefore on the running time of a given instance, this poses specific challenges...'"
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Can heterogeneous portfolios containing configurations of different verification engines lead to further improvements in neural network verification?",
+        "note": "Section 6 (Conclusions and future work)",
+        "reason": "The authors state: 'In principle, we could also consider heterogeneous portfolios that contain configurations of different verification engines, which could lead to further improvements in the state of the art in neural network verification...'"
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}
