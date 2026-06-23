@@ -88,7 +88,7 @@ The Evolution of Conformity, Malleability, and Influence in Simulated Online Age
 
 Exploring the Integration of Spatial Information into a Spectral Clustering Approach to Unsupervised Band Selection
 
-# [Christine Clock](kristine.klock.fleten@aneo.com) ✅ -> ✅
+# [Kristine Klock](kristine.klock.fleten@aneo.com) ✅ -> ✅
 
 Applying and benchmarking a stochastic programming-based bidding strategy for day-ahead hydropower scheduling
 
