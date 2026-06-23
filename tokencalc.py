@@ -8,7 +8,7 @@ import sys
 load_dotenv()
 
 client = genai.Client()
-model = "gemini-3-preview"  # Alternative: "gemini-2.5-pro", 
+model = "gemini-3.1-pro-preview"
 
 def encode_pdf(file_path: Path):
     """PDF Loader."""
@@ -23,9 +23,13 @@ if len(sys.argv) == 2:
 else:
     papers = Path("papers").glob("*.pdf")
 
+total_tokes = 0
+tokens_list = []
+total_papers = 0
 for paper_path in papers:
+    if not (Path("reviews") / f"{paper_path.stem}.md").exists():
+        continue
     pdf_encoded = encode_pdf(paper_path)
-    prompt = Path("study_prompt.yaml").open().read()
     response = client.models.count_tokens(
         model=model,
         contents=[
@@ -36,3 +40,12 @@ for paper_path in papers:
         ],
     )
     print(f"{paper_path.stem}: {response.total_tokens}")
+    tokens_list.append(response.total_tokens)
+    total_tokes += response.total_tokens
+    total_papers += 1
+
+print("Average tokens per paper: ", total_tokes / total_papers)
+
+import numpy as np
+
+print(np.median(tokens_list))

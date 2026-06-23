@@ -74,8 +74,6 @@ The Unreasonable Effectiveness of Open Science in AI: A Replication Study
 
 Regularized Feature Selection Landscapes An Empirical Study of Multimodality
 
-Link to research: https://rdcu.be/eM9hG
-
 # [Aleksandra Jekic](aleksander.jekic@ntnu.no) ✅ -> ❌
 
 Examining the robustness of Physics-Informed Neural Networks to noise for Inverse Problems
