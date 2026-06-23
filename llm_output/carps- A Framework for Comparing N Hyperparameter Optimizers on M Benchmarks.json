@@ -1,0 +1,361 @@
+{
+  "Meta": {
+    "title": "carps: A Framework for Comparing N Hyperparameter Optimizers on M Benchmarks",
+    "authors": [
+      "Carolin Benjamins",
+      "Helena Graf",
+      "Sarah Segel",
+      "Difan Deng",
+      "Tim Ruhkopf",
+      "Leona Hennig",
+      "Soham Basu",
+      "Neeratyoy Mallik",
+      "Edward Bergman",
+      "Deyao Chen",
+      "François Clément",
+      "Alexander Tornede",
+      "Matthias Feurer",
+      "Katharina Eggensperger",
+      "Frank Hutter",
+      "Carola Doerr",
+      "Marius Lindauer"
+    ],
+    "year": 2025,
+    "venue": "arXiv"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can we design a unified, lightweight benchmarking framework that eases the prototyping and evaluation of Hyperparameter Optimization (HPO) methods across diverse task types?",
+      "reason": "In Section 1 (Introduction) and Section 4, the authors motivate the need for a comprehensive experimentation pipeline and a lightweight interface to glue optimizers and benchmarks together, addressing the challenge of setting up new benchmarking setups from scratch and ensuring reproducibility."
+    },
+    "research_question_2": {
+      "explicit": false,
+      "value": "How can we select a diverse and representative subset of HPO benchmark tasks to reduce computational overhead and prevent evaluation bias from overrepresented task types?",
+      "reason": "In Section 1 and Section 7, the authors discuss the computational infeasibility and potential bias of using all 3336 available tasks, motivating a principled way to subselect benchmark tasks with respect to diversity in the performance space."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that minimizing the L_infinity star discrepancy of a subset of tasks in the performance space spanned by a set of diverse optimizers will yield a representative and diverse benchmark subset.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "In Section 7.1, the authors propose using the L_infinity star discrepancy on the performance data of N optimizers to select k points that best cover the space, expecting it to characterize the quality of the selected sets and provide a representative subset."
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that the rankings of HPO optimizers evaluated on the proposed subselected task sets will remain consistent across disjoint development and test subsets.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "reason": "In Section 7 and Appendix H.2, the authors propose using two disjoint sets (dev and test) for unbiased performance reporting and explicitly validate that the ranking remains consistent across these subsets to ensure the subsets are reliable."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "Subselecting representative sets of tasks for blackbox, multi-fidelity, multi-objective, and multi-fidelity-multi-objective task types by optimizing the star discrepancy for different subset sizes k.",
+      "strategy": "Iterative heuristic optimization of the L_infinity star discrepancy for subset sizes k in {10, 20, 30, ..., 100}. The process is performed twice to obtain disjoint dev and test sets.",
+      "data": [
+        "BBOB (Hansen et al., 2020)",
+        "HPOBench (Eggensperger et al., 2021)",
+        "YAHPO (Pfisterer et al., 2022)",
+        "MFPBench (Mallik et al., 2023)",
+        "Pymoo-MO (Blank and Deb, 2020)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_1"
+      ],
+      "hypotheses": [
+        "hypothesis_2"
+      ],
+      "experiment_description": "Benchmarking one representative optimization method from each optimizer family on the subselected task sets for each task type to establish baselines and validate ranking consistency.",
+      "strategy": "20 random seeds per optimizer per task. Budget depends on dimensionality (n_trials = ceil(20 + 40*sqrt(d))).",
+      "data": [
+        "Subselected tasks from carps framework (This work)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Evaluating the star discrepancy for different subset sizes to determine the optimal size k that minimizes the discrepancy sum of both dev and test sets.",
+      "metrics": [
+        "L_infinity star discrepancy"
+      ],
+      "statistics": [
+        "Sum of discrepancies",
+        "Histogram frequencies"
+      ],
+      "test": "Comparison of discrepancy values across different k (lowest value selected).",
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 4": {
+            "caption": "Subselection results summary. Top row: Each dot means one task and is represented by the 3-dimensional optimizer performance vector yi (Equation (4)), which is reduced via PCA to 2 dimensions. The subselected tasks follow the source distribution. Middle row: The histogram of the selected benchmark families. Bottom row: Histogram of the different dimensionalities of the selected tasks.",
+            "reason": "Shows the distribution of the selected subsets in the performance space to visually confirm representativeness.",
+            "metrics": [],
+            "statistics": [
+              "Histogram frequencies"
+            ],
+            "data": [
+              "BBOB (Hansen et al., 2020)",
+              "HPOBench (Eggensperger et al., 2021)",
+              "YAHPO (Pfisterer et al., 2022)",
+              "MFPBench (Mallik et al., 2023)",
+              "Pymoo-MO (Blank and Deb, 2020)"
+            ],
+            "test": []
+          },
+          "Figure 9": {
+            "caption": "Different subset sizes k with the star discrepancy",
+            "reason": "Shows the discrepancy values for different subset sizes k to justify the chosen k.",
+            "metrics": [
+              "L_infinity star discrepancy"
+            ],
+            "statistics": [
+              "Sum of discrepancies"
+            ],
+            "data": [],
+            "test": [
+              "Comparison of discrepancy values across different k (lowest value selected)."
+            ]
+          }
+        },
+        "Text": {
+          "Section H.1": {
+            "value": "For the blackbox task type we optimize the star discrepancy for different k in {20, 30, ..., 100}. We choose k = 30 because the discrepancy sum of both sets, dev and test, is the lowest, see Figure 9a.",
+            "reason": "Explains the selection of k based on the discrepancy metric.",
+            "metrics": [
+              "L_infinity star discrepancy"
+            ],
+            "statistics": [
+              "Sum of discrepancies"
+            ],
+            "data": [],
+            "test": [
+              "Comparison of discrepancy values across different k (lowest value selected)."
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Aggregating the experimental results via rankings to determine if there are significant differences between the median values of the optimizer populations and validating ranking consistency.",
+      "metrics": [
+        "Raw performance values (objective function cost)"
+      ],
+      "statistics": [
+        "Mean across seeds",
+        "Mean ranks"
+      ],
+      "test": "Friedman test (alpha = 0.05), Nemenyi post-hoc test (alpha = 0.05)",
+      "results": {
+        "Tables": {
+          "Table 5": {
+            "caption": "Mean Ranking for Scenario blackbox",
+            "reason": "Shows the mean ranking and significance for the blackbox scenario across dev and test sets.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Friedman test (alpha = 0.05)",
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          },
+          "Table 6": {
+            "caption": "Mean Ranking for Scenario multi-fidelity",
+            "reason": "Shows the mean ranking and significance for the multi-fidelity scenario.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Friedman test (alpha = 0.05)",
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          },
+          "Table 7": {
+            "caption": "Mean Ranking for Scenario multi-fidelity-objective",
+            "reason": "Shows the mean ranking and significance for the multi-fidelity-objective scenario.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Friedman test (alpha = 0.05)",
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          },
+          "Table 8": {
+            "caption": "Mean Ranking for Scenario multi-objective",
+            "reason": "Shows the mean ranking and significance for the multi-objective scenario.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Friedman test (alpha = 0.05)",
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 5": {
+            "caption": "Blackbox task type (test set) (a) Critical Difference Diagram (b) Rank over Time. The grey area indicates non-significance.",
+            "reason": "Visualizes the ranks for the final incumbent with indication of Critical Difference (CD) and ranks over time.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          },
+          "Figure 6": {
+            "caption": "Blackbox task type (test set): Final incumbent cost per task, averaged over 20 seeds.",
+            "reason": "Shows the performance per task and optimizer as a heatmap.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean across seeds"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 8.2": {
+            "value": "For each task type, many optimizers are not statistically significantly different. Their performance does differ on different tasks, indicating a possible complementarity... Sometimes, for the black-box task type, the order of ranks differs across the dev and test set. However, the distance of the ranks in those cases is lower than the critical difference, thus the absolute rank and the order thereof should be taken with a grain of salt.",
+            "reason": "Summarizes the statistical findings of the benchmarking experiment and validates ranking consistency.",
+            "metrics": [
+              "Raw performance values (objective function cost)"
+            ],
+            "statistics": [
+              "Mean ranks"
+            ],
+            "data": [
+              "Subselected tasks from carps framework (This work)"
+            ],
+            "test": [
+              "Friedman test (alpha = 0.05)",
+              "Nemenyi post-hoc test (alpha = 0.05)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "The authors interpret that the subselected tasks follow the source distribution well, and the chosen subset sizes (e.g., k=30 for blackbox) effectively minimize the discrepancy sum of the development and test sets, providing a representative sample of the full task space.",
+      "reason": "Based on Section 7.2 and Appendix H.1, the authors interpret the low discrepancy values and the visual alignment in PCA space (Figure 4) as evidence that the subsets are representative."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "The authors interpret that many optimizers are not statistically significantly different overall, but their performance varies across different tasks, indicating complementarity. Furthermore, the ranking remains consistent across the dev and test subsets, validating the reliability of the subsets.",
+      "reason": "In Section 8.2 and Appendix H.2, the authors note the lack of overall statistical significance but highlight task-specific strengths and confirm that the rank order distance between dev and test sets is lower than the critical difference."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "The authors conclude that carps successfully provides a lightweight benchmarking framework with representative subselected tasks that allow for efficient, unbiased evaluation and consistent ranking of HPO optimizers. They support this by showing that the subselected tasks minimize star discrepancy and maintain consistent optimizer rankings across disjoint dev and test sets.",
+      "reason": "In Section 10 (Conclusion) and Section 8.2, the authors summarize that the framework and its representative subsets facilitate scalable and reliable HPO development."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can alternative diversity measures, such as symmetrized versions of the L_infinity star discrepancy, be efficiently computed and compared for benchmark subset selection?",
+        "note": "Section 9 (Limitations and Future Work)",
+        "reason": "The authors note that the current L_infinity star discrepancy has a tendency to select more points in the upper right corner, and suggest exploring symmetrized versions once efficient subset selection methods become available."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can active benchmarking be implemented to dynamically select tasks and build a holistic view of an algorithm's performance across different task types?",
+        "note": "Section 9 (Limitations and Future Work)",
+        "reason": "The authors propose moving from evaluating on all available tasks to actively selecting tasks to better characterize optimizer strengths and weaknesses."
+      }
+    },
+    "Suggested Hypotheses": {
+      "suggested_hypothesis_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "The authors hypothesise that combining algorithm performance data with meta-features describing the tasks will span a more comprehensive task space for benchmark subselection.",
+        "note": "Section 9 (Limitations and Future Work)",
+        "reason": "The authors state they plan to contrast their current performance-based task space with one that also uses meta-features, possibly combining both to better characterize optimizers."
+      }
+    }
+  }
+}
