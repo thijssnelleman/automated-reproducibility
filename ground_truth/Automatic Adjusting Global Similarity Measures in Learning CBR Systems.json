@@ -1,0 +1,282 @@
+{
+  "Meta": {
+    "title": "Automatic Adjusting Global Similarity Measures in Learning CBR Systems",
+    "authors": [
+      "Stuart G. Ottersen",
+      "Kerstin Bach"
+    ],
+    "year": 2023,
+    "venue": "ICCBR 2023"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": true,
+      "value": "How does adding new cases affect the performance of a learning CBR system?",
+      "reason": "Found in the Abstract and Section 5 (Discussion), where the authors explicitly state: '(1) How adding cases affects the performance'."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "In what way can we detect and mitigate performance loss caused by concept drift in a growing case base?",
+      "reason": "Found in Section 3.2 and Section 5 (Discussion), where the authors explicitly state: '(2) in what way can we detect and mitigate performance loss'."
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "How can we adjust the global similarity weights to maintain aligned knowledge containers?",
+      "reason": "Found in Section 3.2 and Section 5 (Discussion), where the authors explicitly state: '(3) how to adjust the global similarity weights'."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": false,
+      "value": "The authors hypothesise that using a rolling window of the CBR system's performance to trigger feature weight updates (the RUGS method) will minimize unnecessary updates while maintaining predictive performance comparable to always updating.",
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "reason": "Implied in Section 3.5 and the Abstract. The authors propose RUGS to avoid unnecessary updates and state their aim is to identify when drift is large enough to suggest an update, expecting it to maintain performance while reducing computational cost."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "experiment_description": "The experiment simulates concept drift by introducing cases to the CBR system in batches sorted by a single feature. It compares three feature weight updating strategies: no update after the first batch, updating after every batch, and updating using the RUGS method. The performance and number of updates are measured to evaluate the effectiveness of RUGS.",
+      "strategy": "Leave-one-out cross-validation (LOOCV) after each batch addition. Batch size is set to 3% of the dataset with a minimum threshold of 5. Concept drift is simulated by sorting a single feature in ascending order.",
+      "data": [
+        "Banking [13]",
+        "Glioma [20]",
+        "Iris [9]",
+        "Tictactoe [3]",
+        "Wdbc [23]",
+        "Wine [2]",
+        "Zoo [10]"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Analysis of the predictive performance (F1-score) and the frequency/computational cost of updates across the three different updating strategies.",
+      "metrics": [
+        "F1-micro score",
+        "Accuracy",
+        "Number of updates",
+        "Running time (seconds)"
+      ],
+      "statistics": [
+        "Mean",
+        "Standard deviation",
+        "Median",
+        "Quartiles"
+      ],
+      "test": "Direct comparison (greater than, less than, comparable)",
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "Showing results calculated on all features and all batches. Zoo has fewer updates due to the minimum size of 5 for the batch size.",
+            "reason": "Provides the quantitative results for F1-score and number of updates across all datasets and strategies.",
+            "metrics": [
+              "F1-micro score",
+              "Number of updates"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Banking [13]",
+              "Glioma [20]",
+              "Iris [9]",
+              "Tictactoe [3]",
+              "Wdbc [23]",
+              "Wine [2]",
+              "Zoo [10]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          },
+          "Table 3": {
+            "caption": "Showing the running time in seconds for the time random forest uses to calculate the feature attributions and average running time for RUGS",
+            "reason": "Demonstrates the computational efficiency of the RUGS method compared to calculating feature weights.",
+            "metrics": [
+              "Running time (seconds)"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Banking [13]",
+              "Glioma [20]",
+              "Iris [9]",
+              "Tictactoe [3]",
+              "Wdbc [23]",
+              "Wine [2]",
+              "Zoo [10]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          }
+        },
+        "Figures": {
+          "Figure 5": {
+            "caption": "Showing boxplot of results for each dataset and each feature weight updating strategy. Calculated over all features and batches.",
+            "reason": "Visualizes the variance and median performance of the three strategies across all datasets.",
+            "metrics": [
+              "F1-micro score"
+            ],
+            "statistics": [
+              "Median",
+              "Quartiles"
+            ],
+            "data": [
+              "Banking [13]",
+              "Glioma [20]",
+              "Iris [9]",
+              "Tictactoe [3]",
+              "Wdbc [23]",
+              "Wine [2]",
+              "Zoo [10]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          },
+          "Figure 6": {
+            "caption": "Showing change in F1 score for each feature over batch number, the red lines represent feature weight updates performed .",
+            "reason": "Shows how RUGS detects performance drops and rebounds performance over time for the Iris dataset.",
+            "metrics": [
+              "F1-micro score",
+              "Number of updates"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Iris [9]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          },
+          "Figure 7": {
+            "caption": "Showing the effect of rolling window size on predictive performance for iris dataset.",
+            "reason": "Analyzes the sensitivity of the RUGS method to its main parameter, the rolling window size.",
+            "metrics": [
+              "F1-micro score",
+              "Number of updates"
+            ],
+            "statistics": [
+              "Mean"
+            ],
+            "data": [
+              "Iris [9]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          }
+        },
+        "Text": {
+          "Section 4.3": {
+            "value": "The effectiveness of RUGS is evident in the results of the experiment shown in Table 2. Here we see that the F1-score remains competitive with the continuously updated feature weights while using considerably fewer updates.",
+            "reason": "Summarizes the primary finding that RUGS achieves its goal of maintaining performance with fewer updates.",
+            "metrics": [
+              "F1-micro score",
+              "Number of updates"
+            ],
+            "statistics": [
+              "Mean",
+              "Standard deviation"
+            ],
+            "data": [
+              "Banking [13]",
+              "Glioma [20]",
+              "Iris [9]",
+              "Tictactoe [3]",
+              "Wdbc [23]",
+              "Wine [2]",
+              "Zoo [10]"
+            ],
+            "test": "Direct comparison (greater than, less than, comparable)"
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "RUGS can perform similarly to always updating the feature weights. The variance is also very comparable, while for the initial feature weight update, the performance tends to be considerably worse and has a higher variance.",
+      "reason": "Found in Section 4.3. The authors interpret the boxplots (Figure 5) and the table 2 to show that RUGS successfully matches the performance of continuous updates."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "Depending on the importance of performance, selecting a very small window will cause an exaggerated number of updates, while a large window will allow for periods of poorer predictive performance.",
+      "reason": "Found in Section 4.3. The authors interpret Figure 7 to highlight the importance of the window size parameter in balancing update frequency and performance drops."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "RUGS takes about one tenth the time to run, making the trade off worth it in all of the tested scenarios.",
+      "reason": "Found in Section 4.3. The authors interpret Table 3 to emphasize the computational efficiency and practical value of the RUGS method."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1",
+        "interpretation_2",
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1"
+      ],
+      "support": [
+        true
+      ],
+      "value": "The authors conclude that adding cases affects performance depending on the order of data introduction and distribution changes (RQ1). They conclude that using rolling windows to detect performance decreases effectively mitigates performance loss (RQ2). Finally, they conclude that using random forest feature attributions to update global similarity weights is an effective way to maintain aligned knowledge containers (RQ3). This supports their hypothesis that RUGS allows for less frequent updates while maintaining performance.",
+      "reason": "Found in Section 5 (Discussion) and Section 6 (Conclusion), where the authors explicitly summarize their answers to the research questions and confirm the efficacy of their proposed method."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "Is the RUGS method applicable in a more complex context with more complex real-world datasets?",
+        "note": "Section 6 (Conclusion)",
+        "reason": "The authors suggest that the simplicity of the tested datasets might have influenced the results, prompting the need to test on more complex scenarios."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How does the window size parameter affect performance in more detail, and can it function as a proxy for the sensitivity of the feature weight updates?",
+        "note": "Section 6 (Conclusion)",
+        "reason": "The authors identify window size as a critical parameter and suggest further exploration of its effects."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How does the RUGS approach compare to more complex baselines?",
+        "note": "Section 6 (Conclusion)",
+        "reason": "The authors suggest that comparing their work to more complex baselines (beyond just 'never update' and 'always update') would be a valuable addition."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}

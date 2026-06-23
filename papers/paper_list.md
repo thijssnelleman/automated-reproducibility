@@ -114,6 +114,16 @@ Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
 
 HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimization
 
+# Daria Barjaktarevic ❌ -> ❌
+
+An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitment Decisions
+
+# Stuart Otter ❌ -> ✅
+
+Automatic Adjusting Global Similarity Measures in Learning CBR Systems (✅)
+
+Incorporating the Cycle Inductive Bias in Masked Autoencoders (✅)
+
 # Matthias König ❌ -> ✅
 
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio

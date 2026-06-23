@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>tasks.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="task-decomposition-of-reproducing-research-and-scoring-reproducibility">Task decomposition of Reproducing Research and scoring reproducibility</h1>
+<p>This is an effort to decompose the main tasks of a reproducibility research paired with the overall goal of our research which is automated reproducibility. It adds the evaluation of reproducibility, essentially a measurement of reproducibility for research papers. To avoid confusion between the components of a paper and reproducibility experiemnt the components related with reproducibility experiment are marked with <strong>RE</strong>.</p>
+<h2 id="main-tasks">Main tasks</h2>
+<p>We decompose the main tasks into the following:</p>
+<ol>
+<li><strong>Understand</strong> the research</li>
+<li><strong>Plan</strong> the execution of the reproducibility experiment</li>
+<li><strong>Execute</strong> the reproducibility experiment</li>
+<li><strong>Analyze</strong> the resilt from the reproducibility experiment</li>
+<li><strong>Evaluate</strong> the analysis and conclude reproducibility</li>
+</ol>
+<p>it is also possible to add a 6th step</p>
+<ol start="6">
+<li><strong>Explain</strong> the reproducibility evaluation and score</li>
+</ol>
+<p>These tasks has their own sub tasks. The process is described in a sequence diagrams below.</p>
+<h3 id="1-subtasks-understand">1. Subtasks Understand</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lime INPUTS
+participant P as Paper
+end
+box Cyan UNDERSTAND
+participant A1 as Research Question & Goal
+participant A2 as Hypothesis
+participant A3 as Experiment Plan
+participant A4 as Experiment Result
+participant A5 as Research Conclusions
+end
+
+P->>A1: Extracting information from paper
+P->>A2:
+P->>A3:
+P->>A4:
+P->>A5:
+
+box lime OUTPUTS
+participant K as Extracted Knowledge
+end
+
+A1->>K: Outputs structured knowledge with relations between RQ, Hypothesis, Experiment, Results, and Conclusions
+A2->>K:
+A3->>K:
+A4->>K:
+A5->>K:
+</div></code></pre>
+<h3 id="2-subtasks-plan">2. Subtasks Plan</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lime INPUTS
+participant EK as Extracted Knowledge
+participant P as Paper
+end
+box yellow PLAN EXECUTION
+participant B1 as Find Resources Avilable
+participant B2 as Create Experiment Plan
+participant B3 as Fetch Resources
+end
+
+B1->>P: Evaluate Resources (Code and data)
+B1->>B2:
+B2->>EK: Get experiment and hypothesis information
+B2-->>B3: Fetch necessary <br/> external resources if needed
+B2->>PL: Create and save experiment plan
+
+box lime OUTPUTS
+participant PL as Plan
+end
+</div></code></pre>
+<h3 id="3-subtasks-execute">3. Subtasks Execute</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lime INPUTS
+participant PL as Plan
+end
+box pink EXECUTE
+participant C1 as Gather / build data and code
+participant C2 as Create Execution Environment
+participant C3 as Produce RE Result
+end
+box lime OUTPUTS
+participant R as RE Results
+end
+PL->>C1: Plan and resources
+C1-->>C1: Possibly build code and data
+
+loop Until Resolved
+    C1->>C2: Provide execution stack
+    C2->>C2: Build environment for code
+    C2-->>C1: Possibly request code changes
+    C2->>C3: Prompt execution
+    C3->>C3: Build results
+    C3-->>C2: Possible errors
+    C3-->>C1: Possible errors
+    PL->>C3: Sanity check results with plan
+    C3-->>C1:Possible changes from <br/> sanity check
+end
+
+C3->>R: Return RE Results
+
+</div></code></pre>
+<h3 id="4-subtasks-analyse">4. Subtasks Analyse</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lime INPUTS
+    participant PL as Plan
+    participant R as Results
+end
+box rgb(255,128,1) ANALYSE
+    participant GM as Generate Metrics
+    participant PT as Perform Tests
+    participant CR as Conclude Tests
+end
+box lime OUTPUTS
+    participant REC as RE Conclusions
+end
+
+PL->>GM: Provide evaluation strategy from<br/> RE experiment plan
+R->>GM: Pass RE Results
+GM->>GM: Generate metrics
+GM->>PT: Pass metrics
+PT->>PT: Generate test results RE
+PT->>CR: Pass test results RE
+PL->>CR: Pass hypothesis of RE experiments run in Execution phase
+CR->>CR: Make conclusions based on <br/> passed hypothesis
+CR->>REC: Pass RE Conclusions
+</div></code></pre>
+<h3 id="5-subtasks-evaluate-reproducbility">5. Subtasks Evaluate Reproducbility</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lime INPUTS
+    participant EK as Extracted Knowledge
+    participant REC as RE Conclusions (REC)
+
+end
+box rgb(255,100,255) Evaluate Reproducibility
+    participant CC as Compare Conclusions
+    participant ARS as Assign Reproducibility (score)
+end
+box lime OUTPUTS
+    participant RE as Reproducibility Evaluation
+end
+
+EK->>CC: Pass Conclusions from original Paper
+REC->>CC: Pass REC's
+
+CC->>CC: Measure similarity of conclusions?
+CC->>ARS: Pass comparisons
+CC->>RE: Pass comparisons
+
+ARS->> ARS: Generate reproducibility score
+ARS->>RE: Pass scores
+</div></code></pre>
+<h3 id="6-subtask-explain-reproducibility-evaluation-and-score">6. Subtask Explain Reproducibility Evaluation and Score</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+box lightblue Input
+    participant EK as Extracted Knowledge
+    participant PL as Plan
+    participant R as Results RE
+    participant REC as RE Conclusions
+    participant RE as Reproducibility Evaluation
+end
+
+box Summarised Reproducibility Research (RR)
+    participant ER as Explain RR
+end
+EK-->>ER: Extracted information from the paper
+PL-->>ER: Execution plan with available resources
+R-->>ER: Results from the reproucivility experiments
+REC-->>ER: Interpretations and conclusions from RE
+RE-->>ER: Comparison of conlusions <br> from paper and RE <br> with reproducibility evaluations
+
+
+</div></code></pre>
+
+</body>
+</html>
