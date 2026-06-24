@@ -1,8 +1,37 @@
 Paper,section,field,value
+Robustness Distributions in Neural Network Verification,research_question_1,Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,research_question_2,Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,research_question_3,Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,research_question_4,Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,research_question_5,Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,hypothesis_1,Hypothesis Likert Score,1
+Robustness Distributions in Neural Network Verification,hypothesis_2,Hypothesis Likert Score,1
+Robustness Distributions in Neural Network Verification,hypothesis_3,Hypothesis Likert Score,1
+Robustness Distributions in Neural Network Verification,experiment_1,Experiment Description Likert Score,1
+Robustness Distributions in Neural Network Verification,experiment_2,Experiment Description Likert Score,1
+Robustness Distributions in Neural Network Verification,experiment_3,Experiment Description Likert Score,1
+Robustness Distributions in Neural Network Verification,experiment_4,Experiment Description Likert Score,1
+Robustness Distributions in Neural Network Verification,analysis_1,Analysis Likert Score,1
+Robustness Distributions in Neural Network Verification,analysis_2,Analysis Likert Score,1
+Robustness Distributions in Neural Network Verification,analysis_3,Analysis Likert Score,1
+Robustness Distributions in Neural Network Verification,analysis_4,Analysis Likert Score,1
+Robustness Distributions in Neural Network Verification,analysis_5,Analysis Likert Score,1
+Robustness Distributions in Neural Network Verification,interpretation_1,Interpretation Likert Score,1
+Robustness Distributions in Neural Network Verification,interpretation_2,Interpretation Likert Score,1
+Robustness Distributions in Neural Network Verification,interpretation_3,Interpretation Likert Score,1
+Robustness Distributions in Neural Network Verification,interpretation_4,Interpretation Likert Score,1
+Robustness Distributions in Neural Network Verification,conclusion_1,Conclusion Likert Score,1
+Robustness Distributions in Neural Network Verification,conclusion_2,Conclusion Likert Score,1
+Robustness Distributions in Neural Network Verification,conclusion_3,Conclusion Likert Score,4
+Robustness Distributions in Neural Network Verification,conclusion_4,Conclusion Likert Score,3
+Robustness Distributions in Neural Network Verification,suggested_research_question_1,Suggested Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,suggested_research_question_2,Suggested Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,suggested_research_question_3,Suggested Research Question Likert Score,1
+Robustness Distributions in Neural Network Verification,suggested_research_question_4,Suggested Research Question Likert Score,1
 Instance selection for configuration performance comparison,research_question_1,Research Question Likert Score,1
 Instance selection for configuration performance comparison,research_question_2,Research Question Likert Score,1
 Instance selection for configuration performance comparison,hypothesis_1,Hypothesis Likert Score,1
-Instance selection for configuration performance comparison,experiment_1,Experiment Description Likert Score,1
+Instance selection for configuration performance comparison,experiment_1,Experiment Description Likert Score,3
 Instance selection for configuration performance comparison,experiment_2,Experiment Description Likert Score,1
 Instance selection for configuration performance comparison,analysis_1,Analysis Likert Score,1
 Instance selection for configuration performance comparison,analysis_2,Analysis Likert Score,1
@@ -50,7 +79,7 @@ Combining Automated Optimisation of Hyperparameters and Reward Shape,research_qu
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_1,Hypothesis Likert Score,1
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_2,Hypothesis Likert Score,2
 Combining Automated Optimisation of Hyperparameters and Reward Shape,hypothesis_3,Hypothesis Likert Score,1
-Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Description Likert Score,2
+Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_1,Experiment Description Likert Score,1
 Combining Automated Optimisation of Hyperparameters and Reward Shape,experiment_2,Experiment Description Likert Score,2
 Combining Automated Optimisation of Hyperparameters and Reward Shape,analysis_1,Analysis Likert Score,1
 Combining Automated Optimisation of Hyperparameters and Reward Shape,analysis_2,Analysis Likert Score,2
@@ -117,7 +146,7 @@ Audio Classification Models are Vulnerable to Filter Pertubations,research_quest
 Audio Classification Models are Vulnerable to Filter Pertubations,hypothesis_1,Hypothesis Likert Score,1
 Audio Classification Models are Vulnerable to Filter Pertubations,hypothesis_2,Hypothesis Likert Score,1
 Audio Classification Models are Vulnerable to Filter Pertubations,hypothesis_3,Hypothesis Likert Score,1
-Audio Classification Models are Vulnerable to Filter Pertubations,experiment_1,Experiment Description Likert Score,1
+Audio Classification Models are Vulnerable to Filter Pertubations,experiment_1,Experiment Description Likert Score,2
 Audio Classification Models are Vulnerable to Filter Pertubations,experiment_2,Experiment Description Likert Score,1
 Audio Classification Models are Vulnerable to Filter Pertubations,analysis_1,Analysis Likert Score,1
 Audio Classification Models are Vulnerable to Filter Pertubations,analysis_2,Analysis Likert Score,1
@@ -147,7 +176,7 @@ Rethinking Evaluation Paradigms in IBP-based Certified Training,interpretation_1
 Rethinking Evaluation Paradigms in IBP-based Certified Training,interpretation_2,Interpretation Likert Score,1
 Rethinking Evaluation Paradigms in IBP-based Certified Training,interpretation_3,Interpretation Likert Score,1
 Rethinking Evaluation Paradigms in IBP-based Certified Training,interpretation_4,Interpretation Likert Score,1
-Rethinking Evaluation Paradigms in IBP-based Certified Training,conclusion_1,Conclusion Likert Score,1
+Rethinking Evaluation Paradigms in IBP-based Certified Training,conclusion_1,Conclusion Likert Score,2
 Rethinking Evaluation Paradigms in IBP-based Certified Training,conclusion_2,Conclusion Likert Score,1
 Rethinking Evaluation Paradigms in IBP-based Certified Training,suggested_research_question_1,Suggested Research Question Likert Score,1
 Rethinking Evaluation Paradigms in IBP-based Certified Training,suggested_research_question_2,Suggested Research Question Likert Score,1
@@ -160,7 +189,7 @@ Empirical Analysis of Upper Bounds for Robustness Distributions using Adversaria
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_3,Hypothesis Likert Score,1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,hypothesis_4,Hypothesis Likert Score,1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_1,Experiment Description Likert Score,1
-Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_2,Experiment Description Likert Score,1
+Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_2,Experiment Description Likert Score,3
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,experiment_3,Experiment Description Likert Score,1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,analysis_1,Analysis Likert Score,1
 Empirical Analysis of Upper Bounds for Robustness Distributions using Adversarial Attacks,analysis_2,Analysis Likert Score,1
@@ -184,8 +213,8 @@ EDC: Equation Discovery for Classification,experiment_1,Experiment Description L
 EDC: Equation Discovery for Classification,experiment_2,Experiment Description Likert Score,1
 EDC: Equation Discovery for Classification,analysis_1,Analysis Likert Score,1
 EDC: Equation Discovery for Classification,analysis_2,Analysis Likert Score,3
-EDC: Equation Discovery for Classification,interpretation_1,Interpretation Likert Score,2
-EDC: Equation Discovery for Classification,interpretation_2,Interpretation Likert Score,2
+EDC: Equation Discovery for Classification,interpretation_1,Interpretation Likert Score,1
+EDC: Equation Discovery for Classification,interpretation_2,Interpretation Likert Score,1
 EDC: Equation Discovery for Classification,conclusion_1,Conclusion Likert Score,2
 EDC: Equation Discovery for Classification,suggested_research_question_1,Suggested Research Question Likert Score,1
 EDC: Equation Discovery for Classification,suggested_hypothesis_1,Suggested Hypothesis Likert Score,1
@@ -239,9 +268,9 @@ Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyph
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,research_question_3,Research Question Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_1,Hypothesis Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,hypothesis_2,Hypothesis Likert Score,1
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Experiment Description Likert Score,2
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_2,Experiment Description Likert Score,2
-Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_3,Experiment Description Likert Score,2
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_1,Experiment Description Likert Score,1
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_2,Experiment Description Likert Score,1
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_3,Experiment Description Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,experiment_4,Experiment Description Likert Score,2
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,analysis_1,Analysis Likert Score,1
 Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,analysis_2,Analysis Likert Score,2
@@ -261,7 +290,7 @@ Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,research_qu
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,research_question_3,Research Question Likert Score,1
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,hypothesis_1,Hypothesis Likert Score,2
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,hypothesis_2,Hypothesis Likert Score,1
-Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,experiment_1,Experiment Description Likert Score,2
+Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,experiment_1,Experiment Description Likert Score,1
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,experiment_2,Experiment Description Likert Score,2
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,analysis_1,Analysis Likert Score,1
 Guidelines for the Quality Assessment of Energy-Aware NAS Benchmarks,analysis_2,Analysis Likert Score,1
@@ -304,13 +333,13 @@ Data Efficient Pre-training for Language Models An Empirical Study of Compute Ef
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,research_question_2,Research Question Likert Score,3
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_1,Hypothesis Likert Score,3
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,hypothesis_2,Hypothesis Likert Score,1
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Description Likert Score,2
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_1,Experiment Description Likert Score,1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,experiment_2,Experiment Description Likert Score,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,analysis_1,Analysis Likert Score,1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,analysis_2,Analysis Likert Score,1
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Likert Score,2
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_2,Interpretation Likert Score,2
-Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_3,Interpretation Likert Score,2
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_1,Interpretation Likert Score,1
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_2,Interpretation Likert Score,1
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,interpretation_3,Interpretation Likert Score,1
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,conclusion_1,Conclusion Likert Score,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,conclusion_2,Conclusion Likert Score,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,suggested_research_question_1,Suggested Research Question Likert Score,1
@@ -323,8 +352,8 @@ Speeding up neural network robustness verification via algorithm configuration a
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,experiment_2,Experiment Description Likert Score,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,analysis_1,Analysis Likert Score,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,analysis_2,Analysis Likert Score,1
-Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,interpretation_1,Interpretation Likert Score,2
-Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,interpretation_2,Interpretation Likert Score,2
+Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,interpretation_1,Interpretation Likert Score,1
+Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,interpretation_2,Interpretation Likert Score,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,conclusion_1,Conclusion Likert Score,2
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,suggested_research_question_1,Suggested Research Question Likert Score,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,suggested_research_question_2,Suggested Research Question Likert Score,1
@@ -334,7 +363,7 @@ Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,hypothesis_1,Hypothesis Likert Score,4
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,experiment_1,Experiment Description Likert Score,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,analysis_1,Analysis Likert Score,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Likert Score,2
+Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,interpretation_1,Interpretation Likert Score,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,conclusion_1,Conclusion Likert Score,2
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,suggested_research_question_1,Suggested Research Question Likert Score,1
 Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,suggested_hypothesis_1,Suggested Hypothesis Likert Score,2
@@ -349,10 +378,10 @@ Revisiting SATZilla Features in 2024,analysis_1,Analysis Likert Score,2
 Revisiting SATZilla Features in 2024,analysis_2,Analysis Likert Score,1
 Revisiting SATZilla Features in 2024,analysis_3,Analysis Likert Score,1
 Revisiting SATZilla Features in 2024,analysis_4,Analysis Likert Score,1
-Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Likert Score,2
-Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Likert Score,2
-Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Likert Score,2
-Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Likert Score,2
+Revisiting SATZilla Features in 2024,interpretation_1,Interpretation Likert Score,1
+Revisiting SATZilla Features in 2024,interpretation_2,Interpretation Likert Score,1
+Revisiting SATZilla Features in 2024,interpretation_3,Interpretation Likert Score,1
+Revisiting SATZilla Features in 2024,interpretation_4,Interpretation Likert Score,1
 Revisiting SATZilla Features in 2024,conclusion_1,Conclusion Likert Score,2
 Revisiting SATZilla Features in 2024,suggested_research_question_1,Suggested Research Question Likert Score,1
 Hyperparameter Optimization via Interacting with Probabilistic Circuits,research_question_1,Research Question Likert Score,1
@@ -428,10 +457,10 @@ Towards General Negotiation Strategies with End-to-End Reinforcement Learning,ex
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,analysis_1,Analysis Likert Score,2
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,analysis_2,Analysis Likert Score,2
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,analysis_3,Analysis Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_3,Interpretation Likert Score,2
-Towards General Negotiation Strategies with End-to-End Reinforcement Learning,conclusion_1,Conclusion Likert Score,2
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_1,Interpretation Likert Score,1
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_2,Interpretation Likert Score,1
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,interpretation_3,Interpretation Likert Score,1
+Towards General Negotiation Strategies with End-to-End Reinforcement Learning,conclusion_1,Conclusion Likert Score,1
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,conclusion_2,Conclusion Likert Score,2
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,suggested_research_question_1,Suggested Research Question Likert Score,3
 Towards General Negotiation Strategies with End-to-End Reinforcement Learning,suggested_research_question_2,Suggested Research Question Likert Score,1
@@ -442,7 +471,7 @@ Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework f
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_1,Hypothesis Likert Score,3
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_2,Hypothesis Likert Score,5
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,hypothesis_3,Hypothesis Likert Score,4
-Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Description Likert Score,2
+Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_1,Experiment Description Likert Score,3
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,experiment_2,Experiment Description Likert Score,2
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,analysis_1,Analysis Likert Score,2
 Time Series Representations Classroom (TSRC) A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning,analysis_2,Analysis Likert Score,2

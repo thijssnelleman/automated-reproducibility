@@ -15,23 +15,24 @@ def process_research_question(lines: list[str], df: list):
     score = None
     rq_id = lines[0].split(" ")[1].strip()
     for line_n, line in enumerate(lines):
-        if not score:
-            match = re.search(x_pattern, line)
-            if match:
-                if "captures the research question (nearly) perfectly." in line:
-                    score = 1
-                elif "has stated a research question capturing the general spirit of our work." in line:
-                    score = 2
-                elif "has stated an incomplete research question; the answer is correct but is missing key information." in line:
-                    score = 3
-                elif "has stated the general research question but has introduced false or incorrect information." in line:
-                    score = 4
-                elif "has stated a research question similar to ours, but is far too innaccurate to consider correct." in line:
-                    score = 5
-                elif "has stated a research question that has (nearly) no overlap with our work." in line:
-                    score = 6
-                elif "has stated a research question of lesser quality than described above: " in line:
-                    score = 7
+        match = re.search(x_pattern, line)
+        if match:
+            if "captures the research question (nearly) perfectly." in line:
+                score = 1
+            elif "has stated a research question capturing the general spirit of our work." in line:
+                score = 2
+            elif "has stated an incomplete research question; the answer is correct but is missing key information." in line:
+                score = 3
+            elif "has stated the general research question but has introduced false or incorrect information." in line:
+                score = 4
+            elif "has stated a research question similar to ours, but is far too innaccurate to consider correct." in line:
+                score = 5
+            elif "has stated a research question that has (nearly) no overlap with our work." in line:
+                score = 6
+            elif "has stated a research question of lesser quality than described above: " in line:
+                score = 7
+        if score:
+            break
     df.append([review.stem, rq_id, "Research Question Likert Score", score])
     return
 
@@ -39,24 +40,23 @@ def process_hypothesis(lines: list[str], df: list):
     score = None
     hypothesis_id = lines[0].split(" ")[1].strip()
     for _, line in enumerate(lines):
-        if not score:
-            match = re.search(x_pattern, line)
-            if match:
-                if "captures the hypothesis (nearly) perfectly." in line:
-                    score = 1
-                elif "has stated a hypothesis capturing the general spirit of our work." in line:
-                    score = 2
-                elif "has stated an incomplete hypothesis; the answer is correct but is missing key information." in line:
-                    score = 3
-                elif "has stated the general hypothesis but has introduced false or incorrect information." in line:
-                    score = 4
-                elif "has stated a hypothesis similar to ours, but is far too innaccurate to consider correct." in line:
-                    score = 5
-                elif "has stated a hypothesis that has (nearly) no overlap with our work." in line:
-                    score = 6
-                elif "has stated a hypothesis of lesser quality than described above: " in line:
-                    score = 7
-        else:
+        match = re.search(x_pattern, line)
+        if match:
+            if "captures the hypothesis (nearly) perfectly." in line:
+                score = 1
+            elif "has stated a hypothesis capturing the general spirit of our work." in line:
+                score = 2
+            elif "has stated an incomplete hypothesis; the answer is correct but is missing key information." in line:
+                score = 3
+            elif "has stated the general hypothesis but has introduced false or incorrect information." in line:
+                score = 4
+            elif "has stated a hypothesis similar to ours, but is far too innaccurate to consider correct." in line:
+                score = 5
+            elif "has stated a hypothesis that has (nearly) no overlap with our work." in line:
+                score = 6
+            elif "has stated a hypothesis of lesser quality than described above: " in line:
+                score = 7
+        if score:
             break
     if not score:
         raise ValueError(f"No box marked in {hypothesis_id} of {review}")
@@ -80,6 +80,8 @@ def process_experiment(lines: list[str], df: list):
                 description_score = 4
             elif "Other. If it has hallucinated, please describe below." in line:
                 description_score = 5
+        if description_score:
+            break
 
     assert description_score is not None
 
@@ -110,7 +112,6 @@ def process_analysis(lines: list[str], df: list):
     return
 
 def process_interpretation(lines: list[str], df: list):
-    
     interpretation_id = lines[0].split(" ")[1].strip()
     lines = lines[1:]
     interpretation_score = None
@@ -118,25 +119,22 @@ def process_interpretation(lines: list[str], df: list):
     lines = [l for l in lines if l.strip() != ""]
     for _, line in enumerate(lines):
         match = re.search(x_pattern, line)
+        line = line.strip().lower()
         if match:
-            if "Correct" in line:
+            if "correct" in line:
                 interpretation_score = 1
-            elif "Almost correct" in line:
+            elif "almost correct" in line:
                 interpretation_score = 2
-            elif "Acceptable" in line:
+            elif "acceptable" in line:
                 interpretation_score = 3
-            elif "(Partially) Incorrect" in line:
+            elif "(partially) incorrect" in line:
                 interpretation_score = 4
-            elif "Incorrect" in line:
+            elif "incorrect" in line:
                 interpretation_score = 5
-            elif "Hallucinatory" in line:
+            elif "hallucinatory" in line:
                 interpretation_score = 6
-                interpretation_hallucination_explanation = []
-                for l in lines[lines.index(line)+1:]:
-                    if l.startswith("This interpretation is to support (or not)"):
-                        break
-                    elif l.strip() != "":
-                        interpretation_hallucination_explanation.append(l.strip())
+        if interpretation_score:
+            break
     df.append([review.stem, interpretation_id, "Interpretation Likert Score", interpretation_score])
     return
 
@@ -159,6 +157,8 @@ def process_conclusion(lines: list[str], df: list):
                 conclusion_score = 5
             elif "Hallucinatory, if so explain below:" in line:
                 conclusion_score = 6
+        if conclusion_score:
+            break
     df.append([review.stem, conclusion_id, "Conclusion Likert Score", conclusion_score])
     return
 
@@ -187,7 +187,7 @@ def process_future_work(lines: list[str], df: list):
 
 
 for review in Path("reviews").glob("*.md"):
-    print(review)
+    print("Extracting from;", review)
     with review.open() as review_file:
         review_text = review_file.readlines()[18:]  # First 18 lines are description
 
@@ -216,7 +216,6 @@ for review in Path("reviews").glob("*.md"):
         end_index = 0
         for index, line in enumerate(review_text):
             if line.startswith("## Experiments"):
-                print("!!!")
                 end_index = index
                 break
             elif line.startswith("### hypothesis_"):
@@ -228,9 +227,7 @@ for review in Path("reviews").glob("*.md"):
         review_text = review_text[1:]
         end_index = 0
         for index, line in enumerate(review_text):
-            print(line)
             if line.startswith("## Analysis"):
-                print("!!!")
                 end_index = index
                 break
             elif line.startswith("### experiment_"):
