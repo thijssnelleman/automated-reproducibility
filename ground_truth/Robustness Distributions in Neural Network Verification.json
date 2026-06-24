@@ -1,0 +1,627 @@
+{
+  "Meta": {
+    "title": "Robustness Distributions in Neural Network Verification",
+    "authors": [
+      "Annelot W. Bosman",
+      "Aaron Berger",
+      "Holger H. Hoos",
+      "Jan N. van Rijn"
+    ],
+    "year": 2025,
+    "venue": "Journal of Artificial Intelligence Research"
+  },
+  "Research Questions": {
+    "research_question_1": {
+      "explicit": false,
+      "value": "How can we effectively estimate the critical epsilon values for each input in a given set to build robustness distributions?",
+      "reason": "Implied in Section 1 and Section 3, where the authors motivate the need to find an empirical lower bound on the critical epsilon value using a variant of the binary search algorithm (k-binary search) to overcome the computational cost of complete verification."
+    },
+    "research_question_2": {
+      "explicit": true,
+      "value": "Whether the robustness distributions follow the same parametric distribution class for all fully-connected neural networks for the MNIST dataset.",
+      "reason": "Explicitly stated in Section 4: 'Next, we investigated whether the robustness distributions follow the same parametric distribution class for all fully-connected neural networks for the MNIST dataset.'"
+    },
+    "research_question_3": {
+      "explicit": true,
+      "value": "Whether the robustness of the training observations and the testing observations for a given neural network comes from the same distribution.",
+      "reason": "Explicitly stated in Section 4: 'Then, we assessed whether the robustness of the training observations and the testing observations for a given neural network comes from the same distribution.'"
+    },
+    "research_question_4": {
+      "explicit": true,
+      "value": "What is the correlation of the critical epsilon between networks trained on the same data?",
+      "reason": "Explicitly stated in Section 4: 'Furthermore, we investigated the correlation of the epsilon between networks trained on the same data.'"
+    },
+    "research_question_5": {
+      "explicit": true,
+      "value": "What is the effect of adversarial training on the robustness distributions of fully-connected and convolutional neural networks?",
+      "reason": "Explicitly stated in Section 5 and Section 6: 'we investigated the effect of adversarial training on the robustness distributions of fully-connected neural networks' and 'we investigated the effect of adversarial training on the robustness distributions of convolutional neural networks.'"
+    },
+    "research_question_6": {
+      "explicit": true,
+      "value": "What value should k have for k-binary search to find the empirical lower bound of the critical epsilon whilst minimising the computational cost?",
+      "reason": "Investigated in the experiments by varying the k values."
+    }
+  },
+  "Hypotheses": {
+    "hypothesis_1": {
+      "explicit": true,
+      "value": "The critical epsilon values of the networks follow a log-normal distribution.",
+      "research_questions": [
+        "research_question_2"
+      ],
+      "reason": "Explicitly stated in Section 1: 'Using a Kolmogorov-Smirnov test, we obtain support for the hypothesis that the critical epsilon values of 11 of these networks follow a log-normal distribution.'"
+    },
+    "hypothesis_2": {
+      "explicit": false,
+      "value": "The authors hypothesise that robustness distributions do not significantly differ between training and testing data.",
+      "research_questions": [
+        "research_question_3"
+      ],
+      "reason": "Implied in Section 1 and Section 4.4, where the authors test and confirm that there are no statistically significant differences between the critical epsilon distributions for training and testing data."
+    },
+    "hypothesis_3": {
+      "explicit": false,
+      "value": "The authors hypothesise that adversarial training significantly improves the critical epsilon distributions for testing as well as training data.",
+      "research_questions": [
+        "research_question_5"
+      ],
+      "reason": "Implied in Section 1 and Section 5.3, where the authors state that adversarial training improves the robustness of a neural network, which should be clearly reflected in the respective robustness distributions."
+    }
+  },
+  "Experiments": {
+    "experiment_1": {
+      "research_questions": [
+        "research_question_1",
+        "research_question_6"
+      ],
+      "hypotheses": [],
+      "experiment_description": "Evaluating the efficiency of k-binary search with different values of k (1, 2, 4, 8, 16) to find the empirical lower bound of the critical epsilon.",
+      "strategy": "Parallel verification queries with a 1-hour CPU time limit per query.",
+      "data": [
+        "MNIST (LeCun et al. 1998)"
+      ]
+    },
+    "experiment_2": {
+      "research_questions": [
+        "research_question_2",
+        "research_question_3",
+        "research_question_4"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "experiment_description": "Determining the robustness distributions of 12 pre-trained conventionally trained MNIST neural networks on training and testing data, checking for log-normality, comparing train vs test distributions, and analyzing correlations between networks.",
+      "strategy": "k-binary search (k=2) with 200 epsilon values ranging from 0.001 to 0.4 in intervals of 0.002.",
+      "data": [
+        "MNIST (LeCun et al. 1998)"
+      ]
+    },
+    "experiment_3": {
+      "research_questions": [
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Investigating the effect of adversarial training (FGSM, PGD) on the robustness distributions of fully-connected neural networks for MNIST, CIFAR-10, and GTSRB.",
+      "strategy": "k-binary search  (k=2 and ovalbab for MNIST, k=1 and abcrown for CIFAR-10/GTSRB) with epsilon values up to 0.4 on the CPU for MNIST and GPU for CIFAR-10 and GTSRB. ",
+      "data": [
+        "MNIST (LeCun et al. 1998)",
+        "CIFAR-10 (Krizhevsky et al. 2009)",
+        "GTSRB (Houben et al. 2013)"
+      ]
+    },
+    "experiment_4": {
+      "research_questions": [
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "experiment_description": "Investigating the effect of adversarial training on the robustness distributions of Convolutional Neural Networks (CNNs) for MNIST, CIFAR-10, and GTSRB.",
+      "strategy": "Standard binary search (k=1) with 1-hour wallclock time limit per query using abcrown. ",
+      "data": [
+        "MNIST (LeCun et al. 1998)",
+        "CIFAR-10 (Krizhevsky et al. 2009)",
+        "GTSRB (Houben et al. 2013)"
+      ]
+    }
+  },
+  "Analyses": {
+    "analysis_1": {
+      "experiments": [
+        "experiment_1"
+      ],
+      "reason": "Compare the number of queries, wallclock time, and CPU time for different k values in k-binary search.",
+      "metrics": [
+        "Number of queries",
+        "Wallclock time",
+        "CPU time",
+        "Number of time-outs"
+      ],
+      "statistics": [
+        "Average",
+        "Minimum",
+        "Maximum"
+      ],
+      "test": [
+        "Comparison (lowest/highest average)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 1": {
+            "caption": "Comparison of the efficiency of finding epsilon using k-binary search with different values of k.",
+            "reason": "Shows the actual minimum, maximum, and average number of queries, CPU time, wallclock time, and time-outs required to find the critical epsilon for a single instance.",
+            "metrics": [
+              "Number of queries",
+              "Wallclock time",
+              "CPU time",
+              "Number of time-outs"
+            ],
+            "statistics": [
+              "Average",
+              "Minimum",
+              "Maximum"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Comparison (lowest/highest average)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 1": {
+            "caption": "Cumulative distribution of the fraction of instances solved by k-binary search with different values of k within a certain amount of wallclock time (left) and CPU time (right).",
+            "reason": "Visualizes the efficiency of different k values in terms of wall clock and CPU time.",
+            "metrics": [
+              "Wallclock time",
+              "CPU time"
+            ],
+            "statistics": [
+              "Cumulative distribution"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Comparison (lowest/highest average)"
+            ]
+          }
+        },
+        "Text": {
+          "Section 4.2": {
+            "value": "We can see that k = 2 resulted in the lowest average number of verification queries needed as well as the lowest maximum.",
+            "reason": "Describes the main finding regarding the optimal k value.",
+            "metrics": [
+              "Number of queries"
+            ],
+            "statistics": [
+              "Average",
+              "Maximum"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Comparison (lowest/highest average)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_2": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Characterize the shape of the robustness distributions, compare train vs test distributions, and test for log-normality.",
+      "metrics": [
+        "Critical epsilon value"
+      ],
+      "statistics": [
+        "Median",
+        "Cumulative distribution"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov test (p < 0.05)"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 2": {
+            "caption": "Boxplots of the distributions of critical epsilon for 12 MNIST classifiers over their set of correctly classified inputs from the training set.",
+            "reason": "Shows the distribution of critical epsilon values for different networks on training data.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Median"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": []
+          },
+          "Figure 4": {
+            "caption": "Boxplots of the distributions of critical epsilon for 12 MNIST classifiers over their sets of correctly classified inputs on training and testing data.",
+            "reason": "Compares the robustness distributions between training and testing data.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Median"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 4.4": {
+            "value": "Using the Kolmogorov-Smirnov test with a standard significance level of 0.05, we found no evidence that the minor differences in robustness distributions for the same network on training and testing data are statistically significant... Furthermore, we found evidence that the robustness distributions for the networks considered could be characterised well by log-normal distributions, except for net-256x4.",
+            "reason": "Reports the statistical test results for log-normality and train vs test comparison.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Cumulative distribution"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov test (p < 0.05)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_3": {
+      "experiments": [
+        "experiment_2"
+      ],
+      "reason": "Understand whether the size of the critical epsilon for an instance is related to the input or specific to a given network.",
+      "metrics": [
+        "Critical epsilon value"
+      ],
+      "statistics": [
+        "Spearman correlation coefficient"
+      ],
+      "test": [
+        "Spearman correlation"
+      ],
+      "results": {
+        "Tables": {},
+        "Figures": {
+          "Figure 6": {
+            "caption": "Heatmap for the Spearman correlation between the critical epsilon for training, depicted on the top, and testing images, depicted on the bottom.",
+            "reason": "Visualizes the correlation of critical epsilon values across different networks.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Spearman correlation coefficient"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Spearman correlation"
+            ]
+          }
+        },
+        "Text": {
+          "Section 4.5": {
+            "value": "In Figure 6a we can see that the correlation of critical epsilon between networks varies from slight correlation (rs = 0.18) to strong correlation (rs = 0.82), and on average, we observed a correlation of rs = 0.55.",
+            "reason": "Reports the numerical results of the correlation analysis.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Spearman correlation coefficient"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Spearman correlation"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_4": {
+      "experiments": [
+        "experiment_3"
+      ],
+      "reason": "Evaluate how adversarial training changes the robustness distributions and verification gaps for fully-connected networks.",
+      "metrics": [
+        "Critical epsilon value",
+        "Verification gap",
+        "Percentage of critical terminations",
+        "Percentage of unsolved instances"
+      ],
+      "statistics": [
+        "Mean",
+        "Median",
+        "Percentage"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov test (p < 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 2": {
+            "caption": "Details on the quality of the robustness distributions of the fully-connected neural networks for the MNIST, CIFAR-10 and GTSRB datasets.",
+            "reason": "Shows the KS-test results, critical terminations, unsolved instances, and average verification gaps for standard and adversarially trained networks.",
+            "metrics": [
+              "Verification gap",
+              "Percentage of critical terminations",
+              "Percentage of unsolved instances"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)",
+              "CIFAR-10 (Krizhevsky et al. 2009)",
+              "GTSRB (Houben et al. 2013)"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov test (p < 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 8": {
+            "caption": "Empirical CDF for the empirical robustness distributions of neural networks across MNIST, CIFAR-10, and GTSRB datasets.",
+            "reason": "Visualizes the shift in robustness distributions due to adversarial training.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Cumulative distribution"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)",
+              "CIFAR-10 (Krizhevsky et al. 2009)",
+              "GTSRB (Houben et al. 2013)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 5.3": {
+            "value": "Figure 8 shows that adversarial training increases the robustness of the networks we studied in almost all cases... Interestingly, we observed that although the robustness distributions of the standardly trained MNIST neural networks appear to follow a log-normal distribution, adversarial training changes this.",
+            "reason": "Describes the impact of adversarial training on robustness and distribution shape.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Cumulative distribution"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov test (p < 0.05)"
+            ]
+          }
+        }
+      }
+    },
+    "analysis_5": {
+      "experiments": [
+        "experiment_4"
+      ],
+      "reason": "Evaluate how adversarial training changes the robustness distributions and verification gaps for convolutional neural networks.",
+      "metrics": [
+        "Critical epsilon value",
+        "Verification gap",
+        "Percentage of critical terminations",
+        "Percentage of unsolved instances"
+      ],
+      "statistics": [
+        "Mean",
+        "Median",
+        "Percentage"
+      ],
+      "test": [
+        "Kolmogorov-Smirnov test (p < 0.05)"
+      ],
+      "results": {
+        "Tables": {
+          "Table 3": {
+            "caption": "Details on the quality of the robustness distributions of the convolutional neural networks for the MNIST, CIFAR-10 and GTSRB datasets.",
+            "reason": "Shows the KS-test results, critical terminations, unsolved instances, and average verification gaps for CNNs.",
+            "metrics": [
+              "Verification gap",
+              "Percentage of critical terminations",
+              "Percentage of unsolved instances"
+            ],
+            "statistics": [
+              "Percentage",
+              "Mean"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)",
+              "CIFAR-10 (Krizhevsky et al. 2009)",
+              "GTSRB (Houben et al. 2013)"
+            ],
+            "test": [
+              "Kolmogorov-Smirnov test (p < 0.05)"
+            ]
+          }
+        },
+        "Figures": {
+          "Figure 10": {
+            "caption": "Empirical CDF for the empirical robustness distributions of convolutional neural networks across the MNIST, CIFAR-10 and GTSRB datasets.",
+            "reason": "Visualizes the robustness distributions for CNNs trained with different methods.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Cumulative distribution"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)",
+              "CIFAR-10 (Krizhevsky et al. 2009)",
+              "GTSRB (Houben et al. 2013)"
+            ],
+            "test": []
+          }
+        },
+        "Text": {
+          "Section 6.3": {
+            "value": "From Figure 11, we can see that for convMedG, the robustness improved significantly when trained with PGDK with weight 0.3, while for the other networks, we did not observe a significant improvement due to training.",
+            "reason": "Describes the mixed impact of adversarial training on CNN robustness.",
+            "metrics": [
+              "Critical epsilon value"
+            ],
+            "statistics": [
+              "Median"
+            ],
+            "data": [
+              "MNIST (LeCun et al. 1998)"
+            ],
+            "test": []
+          }
+        }
+      }
+    }
+  },
+  "Interpretations": {
+    "interpretation_1": {
+      "analyses": [
+        "analysis_1"
+      ],
+      "value": "From these results, it appears that the theoretically best choice, k = 2, also works best in practice. It might seem counterintuitive that the wallclock time does not continue to decrease as k increases; however, every time we increase the number of queries that can be verified simultaneously, the amount of available memory per query decreases.",
+      "reason": "The authors interpret the results of the k-binary search experiment, concluding that k=2 is the optimal balance between query reduction and resource constraints (Section 4.2)."
+    },
+    "interpretation_2": {
+      "analyses": [
+        "analysis_2"
+      ],
+      "value": "This suggests that finding the robustness distribution for a given training set is sufficient for analysing the overall robustness of a network in a supervised learning scenario... This finding is significant, as it enables reasoning about the distribution of critical epsilon values for unseen instances drawn from the same distribution as the testing images.",
+      "reason": "The authors interpret the lack of significant difference between train and test distributions and the log-normality as a way to generalize robustness without exhaustive testing (Section 4.4)."
+    },
+    "interpretation_3": {
+      "analyses": [
+        "analysis_3"
+      ],
+      "value": "This suggests that the training processes typically ensure that networks exhibit similar robustness for the same images, but less so for the robustness of test images; it does not imply that networks are less robust on test images.",
+      "reason": "The authors interpret the correlation results, noting that while training images show strong correlation across networks, testing images show less correlation (Section 4.5)."
+    },
+    "interpretation_4": {
+      "analyses": [
+        "analysis_4",
+        "analysis_5"
+      ],
+      "value": "Surprisingly, we not only found that adversarial training increases the robustness of the least robust inputs, but we also observed an increase in the robustness for the entire set of verified inputs... Interestingly, we observed that although the robustness distributions of the standardly trained MNIST neural networks appear to follow a log-normal distribution, adversarial training changes this.",
+      "reason": "The authors interpret the effect of adversarial training, noting it improves overall robustness but breaks the log-normal distribution property and increases verification complexity (Section 5.3)."
+    }
+  },
+  "Conclusions": {
+    "conclusion_1": {
+      "interpretations": [
+        "interpretation_1"
+      ],
+      "research_questions": [
+        "research_question_1",
+        "research_question_6"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "While determining critical epsilon values comes at an additional computational cost, we show that, when utilising parallel k-binary search, they can be determined efficiently.",
+      "reason": "The authors conclude that their proposed k-binary search method effectively addresses the computational challenges of finding critical epsilon values (Section 7)."
+    },
+    "conclusion_2": {
+      "interpretations": [
+        "interpretation_2"
+      ],
+      "research_questions": [
+        "research_question_2",
+        "research_question_3"
+      ],
+      "hypotheses": [
+        "hypothesis_1",
+        "hypothesis_2"
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "value": "Analysing these critical epsilon (or more generally: robustness) distributions, we have found evidence that, at least for the fully-connected MNIST ReLU networks we have analysed, they closely resemble log-normal distributions... We also found evidence that the robustness distributions for inputs that the network was not trained on (testing data) do not differ significantly from those of the inputs used for training.",
+      "reason": "The authors conclude that robustness distributions are log-normal and generalize well, supporting their hypotheses and answering their research questions (Section 7)."
+    },
+    "conclusion_3": {
+      "interpretations": [
+        "interpretation_3"
+      ],
+      "research_questions": [
+        "research_question_4"
+      ],
+      "hypotheses": [],
+      "support": [],
+      "value": "This analysis uncovered that there is generally a moderate to strong correlation in the perturbation radius. At the same time, we found that these networks may differ in the classes they mispredict for a given non-robust input.",
+      "reason": "The authors conclude on the correlation of robustness across networks, answering RQ4 (Section 7)."
+    },
+    "conclusion_4": {
+      "interpretations": [
+        "interpretation_4"
+      ],
+      "research_questions": [
+        "research_question_5"
+      ],
+      "hypotheses": [
+        "hypothesis_3"
+      ],
+      "support": [
+        true
+      ],
+      "value": "We found that the robustness distributions can capture the increased robustness produced by adversarial training for part of the datasets and architectures... In this part of the investigation, we also found that adversarially trained neural networks do not seem to follow log-normal distributions.",
+      "reason": "The authors conclude that adversarial training improves robustness (supporting H3) but note that it alters the distribution shape, answering RQ5 (Section 7)."
+    }
+  },
+  "Future Work": {
+    "Suggested Research Questions": {
+      "suggested_research_question_1": {
+        "conclusions": [
+          "conclusion_4"
+        ],
+        "value": "What determines the shape of the robustness distributions?",
+        "note": "Section 7 (Discussion and Outlook)",
+        "reason": "The authors observed that adversarially trained networks lose log-normality and suggest investigating the underlying causes."
+      },
+      "suggested_research_question_2": {
+        "conclusions": [
+          "conclusion_1"
+        ],
+        "value": "How can the efficiency of calculating critical epsilon distributions via k-binary search be increased, e.g., via reusing information from other images?",
+        "note": "Section 7 (Discussion and Outlook)",
+        "reason": "The authors suggest exploring ways to further optimize the k-binary search algorithm."
+      },
+      "suggested_research_question_3": {
+        "conclusions": [
+          "conclusion_2"
+        ],
+        "value": "What is the effect of different norms, besides the l_infinity norm, on the shape of the robustness distribution?",
+        "note": "Section 7 (Discussion and Outlook)",
+        "reason": "The authors suggest expanding the analysis to other perturbation norms."
+      },
+      "suggested_research_question_4": {
+        "conclusions": [
+          "conclusion_4"
+        ],
+        "value": "How do different training regimens for the same architecture affect the shape of the robustness distributions?",
+        "note": "Section 7 (Discussion and Outlook)",
+        "reason": "The authors suggest a more principled study to isolate the effect of training regimens on distribution shapes."
+      }
+    },
+    "Suggested Hypotheses": {}
+  }
+}
