@@ -6,7 +6,7 @@ Edge-Based Graph Component Pooling
 
 Time Series Representations Classroom (TSRC): A Teacher-Student-based Framework for Interpretability-enhanced Unsupervised Time Series Representation Learning
 
-# Annelot Bosman ✅ -> ❌
+# Annelot Bosman ✅ -> ✅
 
 Robustness Distributions in Neural Network Verification
 
