@@ -1,22 +1,17 @@
-
 {
   "Meta": {
     "title": "Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music",
-    "authors": [
-      "Justin Dettmer",
-      "Igor Vatolkin",
-      "Tobias Glasmachers"
-    ],
+    "authors": ["Justin Dettmer", "Igor Vatolkin", "Tobias Glasmachers"],
     "year": 2024,
     "venue": "EvoMUSART 2024"
   },
   "Research Questions": {
-    "research_question_1": {
+    "research_question_2": {
       "explicit": false,
       "value": "Does initializing the evolutionary population with probable pitches derived from spectral information (CQT) improve the performance of joint instrument and pitch detection compared to random initialization?",
       "reason": "This is the core methodological contribution described in the Abstract and Section 4 (Page 5), where the authors propose using spectral information to initialise populations."
     },
-    "research_question_2": {
+    "research_question_3": {
       "explicit": false,
       "value": "Is the COSH distance fitness function sufficiently correlated with the correct detection of instrument and pitch tuples to drive the evolutionary algorithm towards the ground truth?",
       "reason": "In the Abstract and Section 6.3 (Page 13), the authors investigate the fitness function, noting that it tends to create false positives and may conceal the potential of the approach."
@@ -26,41 +21,27 @@
     "hypothesis_1": {
       "explicit": false,
       "value": "The authors hypothesise that initializing the evolutionary algorithm with a probability distribution of pitches derived from the Constant-Q Transform (CQT) of the target signal will exclude unlikely pitches, resulting in faster convergence and reduced detection errors compared to uniform random initialization.",
-      "research_questions": [
-        "research_question_1"
-      ],
+      "research_questions": ["research_question_2"],
       "reason": "Implied in Section 1 (Introduction) and Section 4 (Initialisation with Pitch Probabilities). The authors state: 'We present a modification... that uses spectral information to initialise populations with probable pitches' and expect 'significantly faster convergence speed and slightly improved pitch and instrument detection errors'."
     },
     "hypothesis_2": {
       "explicit": false,
       "value": "The authors hypothesise that the COSH distance fitness function assigns worse (higher) fitness values to individuals that correctly match the ground truth instrument-pitch tuples compared to incorrect individuals.",
-      "research_questions": [
-        "research_question_2"
-      ],
+      "research_questions": ["research_question_3"],
       "reason": "This is the underlying assumption of using the EA for this task. It is implicitly tested in Section 6.3 (Page 13) where they investigate 'Error-Fitness Correlation' to see if the fitness function is a bottleneck."
     }
   },
   "Experiments": {
     "experiment_1": {
-      "research_questions": [
-        "research_question_1"
-      ],
-      "hypotheses": [
-        "hypothesis_1"
-      ],
+      "research_questions": ["research_question_2"],
+      "hypotheses": ["hypothesis_1"],
       "experiment_description": "Parameter search to determine the optimal cut-off value 'k' (number of top pitches to keep) and the dimensionality reduction method (summation vs. maximum) for the probabilistic initialization.",
       "strategy": "Grid search over 20 values of k and 2 methods (summation, maximum).",
-      "data": [
-        "Synthetic single-onset polyphonic audio mixes (This work)"
-      ]
+      "data": ["Synthetic single-onset polyphonic audio mixes (This work)"]
     },
     "experiment_2": {
-      "research_questions": [
-        "research_question_1"
-      ],
-      "hypotheses": [
-        "hypothesis_1"
-      ],
+      "research_questions": ["research_question_2"],
+      "hypotheses": ["hypothesis_1"],
       "experiment_description": "Ground Truth Search: Comparison of the baseline algorithm (uniform initialization) vs. the modified algorithm (weighted initialization) on single-onset examples where the target signal can be exactly re-created.",
       "strategy": "Evolutionary Algorithm run for 10,000 generations. Population size = 10.",
       "data": [
@@ -68,12 +49,8 @@
       ]
     },
     "experiment_3": {
-      "research_questions": [
-        "research_question_1"
-      ],
-      "hypotheses": [
-        "hypothesis_1"
-      ],
+      "research_questions": ["research_question_2"],
+      "hypotheses": ["hypothesis_1"],
       "experiment_description": "Full Piece Approximation: Comparison of baseline vs. modified algorithm on full musical pieces. The target signals cannot be exactly re-created due to library differences.",
       "strategy": "Evolutionary Algorithm run for 10,000 generations. Population size = 300. Repeated 20 times per piece.",
       "data": [
@@ -81,12 +58,8 @@
       ]
     },
     "experiment_4": {
-      "research_questions": [
-        "research_question_2"
-      ],
-      "hypotheses": [
-        "hypothesis_2"
-      ],
+      "research_questions": ["research_question_3"],
+      "hypotheses": ["hypothesis_2"],
       "experiment_description": "Validation test to investigate the correlation between fitness and detection errors.",
       "strategy": "Random search for 100 steps on correct instrument styles to find best fitness for ground truth labels.",
       "data": [
@@ -96,16 +69,10 @@
   },
   "Analyses": {
     "analysis_1": {
-      "experiments": [
-        "experiment_1"
-      ],
+      "experiments": ["experiment_1"],
       "reason": "To select the best parameters for the initialization method before running the main comparisons.",
-      "metrics": [
-        "Pitch approximation error (Jaccard)"
-      ],
-      "statistics": [
-        "Mean"
-      ],
+      "metrics": ["Pitch approximation error (Jaccard)"],
+      "statistics": ["Mean"],
       "test": "Comparison of error rates across k values and methods.",
       "results": {
         "Figures": {
@@ -123,18 +90,14 @@
       }
     },
     "analysis_2": {
-      "experiments": [
-        "experiment_2"
-      ],
+      "experiments": ["experiment_2"],
       "reason": "To evaluate the impact of the proposed initialization on convergence and error rates in a controlled (single-onset) environment.",
       "metrics": [
         "Jaccard error (Instrument)",
         "Jaccard error (Pitch)",
         "Jaccard error (Joint)"
       ],
-      "statistics": [
-        "Mean"
-      ],
+      "statistics": ["Mean"],
       "test": "Visual comparison of convergence curves.",
       "results": {
         "Figures": {
@@ -160,9 +123,7 @@
       }
     },
     "analysis_3": {
-      "experiments": [
-        "experiment_3"
-      ],
+      "experiments": ["experiment_3"],
       "reason": "To evaluate the method on realistic, full polyphonic music pieces.",
       "metrics": [
         "Jaccard error (Instrument)",
@@ -170,9 +131,7 @@
         "Jaccard error (Joint)",
         "Mean Fitness"
       ],
-      "statistics": [
-        "Mean"
-      ],
+      "statistics": ["Mean"],
       "test": "Visual comparison of error and fitness curves.",
       "results": {
         "Figures": {
@@ -190,17 +149,13 @@
       }
     },
     "analysis_4": {
-      "experiments": [
-        "experiment_4"
-      ],
+      "experiments": ["experiment_4"],
       "reason": "To determine if the fitness function correctly identifies the ground truth as the optimal solution.",
       "metrics": [
         "Fitness value",
         "Percentage of onsets where evolved fitness > ground truth fitness"
       ],
-      "statistics": [
-        "Percentage"
-      ],
+      "statistics": ["Percentage"],
       "test": "Comparison of fitness values.",
       "results": {
         "text": {
@@ -214,65 +169,40 @@
   },
   "Interpretations": {
     "interpretation_1": {
-      "analyses": [
-        "analysis_1"
-      ],
+      "analyses": ["analysis_1"],
       "value": "The summation method is more robust to single peaks in the CQT and outperforms the maximum method. A lower k (specifically k=3) concentrates probability mass on correct pitches better than higher k values.",
       "reason": "Section 5 (Page 7) and Section 6.1 (Page 9)."
     },
     "interpretation_2": {
-      "analyses": [
-        "analysis_2"
-      ],
+      "analyses": ["analysis_2"],
       "value": "The modified algorithm shows significantly faster convergence speed. Although there is a temporary increase in pitch error in the first 80 generations (due to mutation dynamics), the initial error is drastically lower. The final errors are comparable to the baseline in the single-onset task.",
       "reason": "Section 6.1 (Page 9)."
     },
     "interpretation_3": {
-      "analyses": [
-        "analysis_3"
-      ],
+      "analyses": ["analysis_3"],
       "value": "On full pieces, the modification leads to smaller errors after convergence compared to the baseline. The initialization method improves instrument error more than pitch error in this context, likely because finding the correct pitch is a prerequisite for finding the correct instrument.",
       "reason": "Section 6.2 (Page 11)."
     },
     "interpretation_4": {
-      "analyses": [
-        "analysis_4"
-      ],
+      "analyses": ["analysis_4"],
       "value": "The high rate of false positives (individuals with better fitness than the ground truth) indicates that the COSH distance fitness function is not sufficiently correlated with the correct instrument-pitch tuples. This suggests the fitness function is a bottleneck hiding the true potential of the modification.",
       "reason": "Section 6.3 (Page 13)."
     }
   },
   "Conclusions": {
     "conclusion_1": {
-      "interpretations": [
-        "interpretation_2",
-        "interpretation_3"
-      ],
-      "research_questions": [
-        "research_question_1"
-      ],
-      "hypotheses": [
-        "hypothesis_1"
-      ],
-      "support": [
-        true
-      ],
+      "interpretations": ["interpretation_2", "interpretation_3"],
+      "research_questions": ["research_question_2"],
+      "hypotheses": ["hypothesis_1"],
+      "support": [true],
       "value": "The authors conclude that the weighted initialization using CQT spectral information 'greatly improves mean pitch and instrument detection errors upon initialisation' and leads to 'significantly faster convergence speed and slightly improved pitch and instrument detection errors' on full pieces.",
       "reason": "Abstract and Conclusion (Page 14)."
     },
     "conclusion_2": {
-      "interpretations": [
-        "interpretation_4"
-      ],
-      "research_questions": [
-        "research_question_2"
-      ],
-      "hypotheses": [
-        "hypothesis_2"
-      ],
-      "support": [
-        true
-      ],
+      "interpretations": ["interpretation_4"],
+      "research_questions": ["research_question_3"],
+      "hypotheses": ["hypothesis_2"],
+      "support": [true],
       "value": "The authors conclude that the current fitness function is flawed. They state: 'fitness values were even better than those of individuals manually created with correct instrument-pitch tuples, suggesting a need for a modification to the current fitness function.'",
       "reason": "Conclusion (Page 14)."
     }
@@ -280,33 +210,25 @@
   "Future Work": {
     "Suggested Research Questions": {
       "suggested_research_question_1": {
-        "conclusions": [
-          "conclusion_2"
-        ],
+        "conclusions": ["conclusion_2"],
         "value": "Can a multi-objective fitness function that combines a wider variety of features improve detection errors significantly?",
         "note": "Conclusion section, Page 14.",
         "reason": "The authors identify the single-objective COSH distance as a bottleneck."
       },
       "suggested_research_question_2": {
-        "conclusions": [
-          "conclusion_1"
-        ],
+        "conclusions": ["conclusion_1"],
         "value": "How would extending the individual's dimensions with aspects such as loudness or audio effects (reverb, compression) affect the approximation quality?",
         "note": "Conclusion section, Page 14.",
         "reason": "Suggested to improve the synthesis quality and potentially the detection."
       },
       "suggested_research_question_3": {
-        "conclusions": [
-          "conclusion_1"
-        ],
+        "conclusions": ["conclusion_1"],
         "value": "How would the method perform or behave on other popular datasets?",
         "note": "Conclusion section, Page 14.",
         "reason": "Suggested to study 'For method comparison on more popular datasets, one may also reduce the size of the sample library to only the known set of instruments present in a given dataset'."
       },
       "suggested_research_question_4": {
-        "conclusions": [
-          "conclusion_1"
-        ],
+        "conclusions": ["conclusion_1"],
         "value": "How would the method behave with different evolutionary algorithms?",
         "note": "Conclusion section, Page 14.",
         "reason": "Suggested to study 'future work may also explore other mutation methods'."
@@ -314,9 +236,7 @@
     },
     "Suggested Hypotheses": {
       "suggested_hypothesis_1": {
-        "conclusions": [
-          "conclusion_2"
-        ],
+        "conclusions": ["conclusion_2"],
         "value": "The authors suggest that a multi-objective fitness function combining various features may improve detection errors significantly compared to the current single-objective approach.",
         "note": "Conclusion section, Page 14.",
         "reason": "Directly follows from the finding that the current fitness function allows false positives."
