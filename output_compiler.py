@@ -33,7 +33,7 @@ def process_research_question(lines: list[str], df: list):
                 score = 7
         if score:
             break
-    df.append([review.stem, rq_id, "Research Question Likert Score", score])
+    df.append([review.stem, "Research Question Likert Score", rq_id, score])
     return
 
 def process_hypothesis(lines: list[str], df: list):
@@ -60,7 +60,7 @@ def process_hypothesis(lines: list[str], df: list):
             break
     if not score:
         raise ValueError(f"No box marked in {hypothesis_id} of {review}")
-    df.append([review.stem, hypothesis_id, "Hypothesis Likert Score", score])
+    df.append([review.stem, "Hypothesis Likert Score", hypothesis_id, score])
     return
 
 def process_experiment(lines: list[str], df: list):
@@ -85,7 +85,7 @@ def process_experiment(lines: list[str], df: list):
 
     assert description_score is not None
 
-    df.append([review.stem, experiment_id, "Experiment Description Likert Score", description_score])
+    df.append([review.stem, "Experiment Description Likert Score", experiment_id, description_score])
     return
 
 def process_analysis(lines: list[str], df: list):
@@ -108,7 +108,7 @@ def process_analysis(lines: list[str], df: list):
         if overall_score:
             break
     assert overall_score is not None
-    df.append([review.stem, analysis_id, "Analysis Likert Score", overall_score])
+    df.append([review.stem, "Analysis Likert Score", analysis_id, overall_score])
     return
 
 def process_interpretation(lines: list[str], df: list):
@@ -135,7 +135,7 @@ def process_interpretation(lines: list[str], df: list):
                 interpretation_score = 6
         if interpretation_score:
             break
-    df.append([review.stem, interpretation_id, "Interpretation Likert Score", interpretation_score])
+    df.append([review.stem, "Interpretation Likert Score", interpretation_id, interpretation_score])
     return
 
 def process_conclusion(lines: list[str], df: list):
@@ -159,7 +159,7 @@ def process_conclusion(lines: list[str], df: list):
                 conclusion_score = 6
         if conclusion_score:
             break
-    df.append([review.stem, conclusion_id, "Conclusion Likert Score", conclusion_score])
+    df.append([review.stem, "Conclusion Likert Score", conclusion_id, conclusion_score])
     return
 
 def process_future_work(lines: list[str], df: list):
@@ -182,7 +182,7 @@ def process_future_work(lines: list[str], df: list):
                 future_work_score = 5
         if future_work_score:
             break
-    df.append([review.stem, future_work_id, f"Suggested {suggested_type} Likert Score", future_work_score])
+    df.append([review.stem, f"Suggested {suggested_type} Likert Score", future_work_id, future_work_score])
     return
 
 
@@ -193,11 +193,8 @@ for review in Path("reviews").glob("*.md"):
 
     while not review_text[0].startswith("##"):
         review_text = review_text[1:]
-    # with Path(f"llm_output/{review.stem}.json").open() as llm_output_file:
-    #     llm_output = json.load(llm_output_file)
 
     title = review.stem
-
     # 1. Extract all Research Question answers
     if review_text[0].startswith("## Research Questions"):
         review_text = review_text[1:]  # Remove title
@@ -278,7 +275,6 @@ for review in Path("reviews").glob("*.md"):
             if line.startswith("#### suggested"):
                 process_future_work(review_text[index:], df)
         review_text = review_text[end_index:]
-
-
+        
 df = pd.DataFrame(columns=["Paper", "section", "field", "value"], data=df)
 df.to_csv("output.csv", index=False)
