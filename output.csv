@@ -329,6 +329,15 @@ Leveraging AutoML for Sustainable Deep Learning: A Multi- Objective HPO Approach
 Leveraging AutoML for Sustainable Deep Learning: A Multi- Objective HPO Approach on Deep Shift Neural Networks,Suggested Research Question Likert Score,suggested_research_question_1,1
 Leveraging AutoML for Sustainable Deep Learning: A Multi- Objective HPO Approach on Deep Shift Neural Networks,Suggested Research Question Likert Score,suggested_research_question_2,1
 Leveraging AutoML for Sustainable Deep Learning: A Multi- Objective HPO Approach on Deep Shift Neural Networks,Suggested Hypothesis Likert Score,suggested_hypothesis_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Research Question Likert Score,research_question_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Research Question Likert Score,research_question_2,2
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Hypothesis Likert Score,hypothesis_1,4
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Experiment Description Likert Score,experiment_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Analysis Likert Score,analysis_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Interpretation Likert Score,interpretation_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Conclusion Likert Score,conclusion_1,2
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Suggested Research Question Likert Score,suggested_research_question_1,1
+Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning,Suggested Hypothesis Likert Score,suggested_hypothesis_1,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,Research Question Likert Score,research_question_1,2
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,Research Question Likert Score,research_question_2,3
 Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,Hypothesis Likert Score,hypothesis_1,3
@@ -358,15 +367,6 @@ Speeding up neural network robustness verification via algorithm configuration a
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,Suggested Research Question Likert Score,suggested_research_question_1,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,Suggested Research Question Likert Score,suggested_research_question_2,1
 Speeding up neural network robustness verification via algorithm configuration and an optimised mixed integer linear programming solver portfolio,Suggested Research Question Likert Score,suggested_research_question_3,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Research Question Likert Score,research_question_1,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Research Question Likert Score,research_question_2,2
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Hypothesis Likert Score,hypothesis_1,4
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Experiment Description Likert Score,experiment_1,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Analysis Likert Score,analysis_1,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Interpretation Likert Score,interpretation_1,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Conclusion Likert Score,conclusion_1,2
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Suggested Research Question Likert Score,suggested_research_question_1,1
-Growing with Experience- Growing Neural Networks in Deep Reinforcement Learning,Suggested Hypothesis Likert Score,suggested_hypothesis_1,2
 Revisiting SATZilla Features in 2024,Research Question Likert Score,research_question_1,1
 Revisiting SATZilla Features in 2024,Research Question Likert Score,research_question_2,1
 Revisiting SATZilla Features in 2024,Hypothesis Likert Score,hypothesis_1,1
@@ -500,3 +500,26 @@ AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmosph
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Conclusion Likert Score,conclusion_2,1
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Suggested Research Question Likert Score,suggested_research_question_1,3
 AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Suggested Hypothesis Likert Score,suggested_hypothesis_1,3
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,Suggested Research Question Likert Score,suggested_research_question_4,-1
+Data Efficient Pre-training for Language Models An Empirical Study of Compute Efficiency and Linguistic Competence,Suggested Research Question Likert Score,suggested_research_question_5,-1
+Rethinking Evaluation Paradigms in IBP-based Certified Training,Conclusion Likert Score,conclusion_3,-1
+Rethinking Evaluation Paradigms in IBP-based Certified Training,Suggested Research Question Likert Score,suggested_research_question_3,-1
+Towards Consistent and Efficient Decision-based Attacks,Analysis Likert Score,analysis_2,-1
+Towards Consistent and Efficient Decision-based Attacks,Interpretation Likert Score,interpretation_3,-1
+Robustness Distributions in Neural Network Verification,Research Questions Likert Score,research_question_6,-1
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,Suggested Research Question Likert Score,suggested_research_question_3,-1
+Weighted Initialisation of Evolutionary Instrument and Pitch Detection in Polyphonic Music,Suggested Research Question Likert Score,suggested_research_question_4,-1
+HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimization,Suggested Research Question Likert Score,suggested_research_question_4,-1
+Hyperparameters in Reinforcement Learning and How To Tune Them,Analysis Likert Score,analysis_4,-1
+Hyperparameters in Reinforcement Learning and How To Tune Them,Interpretation Likert Score,interpretation_4,-1
+Hyperparameters in Reinforcement Learning and How To Tune Them,Interpretation Likert Score,interpretation_5,-1
+Hyperparameters in Reinforcement Learning and How To Tune Them,Conclusion Likert Score,conclusion_2,-1
+Hyperparameters in Reinforcement Learning and How To Tune Them,Conclusion Likert Score,conclusion_3,-1
+EDC: Equation Discovery for Classification,Suggested Research Question Likert Score,suggested_research_question_2,-1
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,Analysis Likert Score,analysis_4,-1
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,Analysis Likert Score,analysis_5,-1
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,Analysis Likert Score,analysis_6,-1
+Dynamic Algorithm Termination for Branch-and-Bound-based Neural Network Verification,Interpretation Likert Score,interpretation_4,-1
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Analysis Likert Score,analysis_3,-1
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Interpretation Likert Score,interpretation_3,-1
+AutoMergeNet- AutoML-Based M-Source Satellite Data Fusion Evaluated With Atmospheric Case Studies,Conclusion Likert Score,conclusion_3,-1

@@ -275,6 +275,35 @@ for review in Path("reviews").glob("*.md"):
             if line.startswith("#### suggested"):
                 process_future_work(review_text[index:], df)
         review_text = review_text[end_index:]
-        
+
+og_df = df
 df = pd.DataFrame(columns=["Paper", "section", "field", "value"], data=df)
+cur_len = len(df)
+import warnings
+warnings.simplefilter(action='ignore', category=UserWarning)
+print()
+for ground_truth in Path("ground_truth").glob("*.json"):
+    print("Extracting from;", ground_truth)
+    with ground_truth.open() as ground_truth_file:
+        ground_truth_data = json.load(ground_truth_file)
+    future_work_flag = False
+    for field, label in [("Research Questions", "Research Questions Likert Score"), ("Hypotheses", "Hypothesis Likert Score"), ("Experiments", "Experiment Description Likert Score"), ("Analyses", "Analysis Likert Score"), ("Interpretations", "Interpretation Likert Score"), ("Conclusions", "Conclusion Likert Score"), ("Future Work", "Suggested Hypothesis Likert Score")]:   
+        for key in ground_truth_data[field]:
+            if field == "Future Work":
+                if future_work_flag:
+                    continue
+                for key2 in ground_truth_data[field]["Suggested Hypotheses"]:
+                    if df[df["Paper"] == ground_truth.stem][df["field"] == key2].empty:
+                        og_df.append([ground_truth.stem, label, key2, -1])
+                label = label.replace("Hypothesis", "Research Question")
+                for key2 in ground_truth_data[field]["Suggested Research Questions"]:
+                    if df[df["Paper"] == ground_truth.stem][df["field"] == key2].empty:
+                        print("\t", ground_truth.stem, key2)
+                        og_df.append([ground_truth.stem, label, key2, -1])
+                future_work_flag = True
+            elif df[df["Paper"] == ground_truth.stem][df["field"] == key].empty:
+                og_df.append([ground_truth.stem, label, key, -1])
+
+df = pd.DataFrame(columns=["Paper", "section", "field", "value"], data=og_df)
+print("Added missing:", len(og_df) - cur_len)
 df.to_csv("output.csv", index=False)
