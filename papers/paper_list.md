@@ -114,7 +114,7 @@ Growing with Experience: Growing Neural Networks in Deep Reinforcement Learning
 
 HyperSHAP: Shapley Values and Interactions for Explaining Hyperparameter Optimization
 
-# Daria Barjaktarevic ❌ -> ❌
+# Daria Barjaktarevic ❌ -> ✅
 
 An Evaluation of Neural Network Architectures for Predicting Hydro Unit Commitment Decisions
 

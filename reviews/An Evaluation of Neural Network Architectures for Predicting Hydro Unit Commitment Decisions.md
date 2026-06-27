@@ -32,7 +32,7 @@ In Section I (Introduction), the authors state: 'However, the literature still l
 Please grade the research question stated from the following options:
 
 The LLM ...
-[] captures the research question (nearly) perfectly.
+[x] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -60,7 +60,7 @@ In Section I (Introduction), the authors state: 'This paper addresses these gaps
 Please grade the research question stated from the following options:
 
 The LLM ...
-[] captures the research question (nearly) perfectly.
+[x] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -80,7 +80,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 
 The LLM has provided you with one or more research questions from your work. Is this the amount of research questions the same as the amount you specified or implied?
 
-Please write the amount of research questions you had for the study: []
+Please write the amount of research questions you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -103,7 +103,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[] captures the hypothesis (nearly) perfectly.
+[x] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -134,7 +134,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[] captures the hypothesis (nearly) perfectly.
+[x] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -154,7 +154,7 @@ Based on the LLMs answer, would you like to improve the answer to more accuratel
 
 The LLM has provided you with zero or more hypothesis from your work. Is this the amount of hypothesis the same as the amount you specified?
 
-Please write the amount of hypothesis you had for the study: []
+Please write the amount of hypothesis you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -178,7 +178,7 @@ The LLM describes this experiment as follows:
 Training and evaluating various NN architectures (MLP, DLinear, CNN, CDIL-CNN, TCN, RNN, LSTM, CNN-LSTM, LSTM-CNN) to predict UC decisions for 24-h and 168-h scheduling horizons, and subsequently applying these predictions in the SHOP operational scheduling tool to assess their impact on objective value and computational time.
 
 The LLM ...
-[] has described the experiment (nearly) perfectly
+[x] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
@@ -201,7 +201,7 @@ Your corrected list (empty if correct):
 
 The LLM has provided you with one or more experiments from your work. Is this amount of experiments the same as the amount you specified?
 
-Please write the amount of experiments you had for the study: []
+Please write the amount of experiments you had for the study: [1]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -285,7 +285,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[] Very well (No major mistakes and/or missing information)
+[x] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -376,7 +376,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[] Very well (No major mistakes and/or missing information)
+[x] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -387,7 +387,7 @@ The LLM has overall captured the analysis details...
 
 The LLM has provided you with one or more analyses from your work. Is this amount of analyses the same as the amount you specified?
 
-Please write the amount of analyses you had for the study: []
+Please write the amount of analyses you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -418,7 +418,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[] Correct
+[x] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -445,7 +445,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[] Correct
+[x] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -457,7 +457,7 @@ This interpretation of the analysis is ...
 
 The LLM has provided you with one or more interpretations from your work. Is this amount of interpretations the same as the amount you specified?
 
-Please write the amount of interpretations you had for the study: []
+Please write the amount of interpretations you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -487,7 +487,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
-[] Correct
+[x] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -525,7 +525,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
-[] Correct
+[x] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -548,7 +548,7 @@ Your corrected answer (empty if correct):
 
 The LLM has provided you with one or more conclusions from your work. Is this amount of conclusions the same as the amount you specified?
 
-Please write the amount of conclusions you had for the study: []
+Please write the amount of conclusions you had for the study: [2]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -565,7 +565,7 @@ The LLM has also found possible future work directions in terms of research ques
 
 The LLM has provided you with one or more Suggested Research Questions from your work. Is this amount of Suggested Research Questions the same as the amount you specified?
 
-Please write the amount of Suggested Research Questions you had for the study: []
+Please write the amount of Suggested Research Questions you had for the study: [0]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
 
@@ -578,6 +578,6 @@ If this amount does not overlap with the LLMs answer, feel free to specify reaso
 
 The LLM has provided you with one or more Suggested Hypotheses from your work. Is this amount of Suggested Hypotheses the same as the amount you specified?
 
-Please write the amount of Suggested Hypotheses you had for the study: []
+Please write the amount of Suggested Hypotheses you had for the study: [0]
 
 If this amount does not overlap with the LLMs answer, feel free to specify reasons below;
