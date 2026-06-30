@@ -32,7 +32,7 @@ In Section I (Introduction), the authors state: 'However, the literature still l
 Please grade the research question stated from the following options:
 
 The LLM ...
-[x] captures the research question (nearly) perfectly.
+[X] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -60,7 +60,7 @@ In Section I (Introduction), the authors state: 'This paper addresses these gaps
 Please grade the research question stated from the following options:
 
 The LLM ...
-[x] captures the research question (nearly) perfectly.
+[X] captures the research question (nearly) perfectly.
 [] has stated a research question capturing the general spirit of our work.
 [] has stated an incomplete research question; the answer is correct but is missing key information.
 [] has stated a general research question but has introduced false or incorrect information.
@@ -103,7 +103,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[x] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -134,7 +134,7 @@ Your corrected list (empty if correct):
 Please grade the hypothesis stated from the following options:
 
 The LLM ...
-[x] captures the hypothesis (nearly) perfectly.
+[X] captures the hypothesis (nearly) perfectly.
 [] has stated a hypothesis capturing the general spirit of our work.
 [] has stated an incomplete hypothesis; the answer is correct but is missing key information.
 [] has stated the general hypothesis but has introduced false or incorrect information.
@@ -178,7 +178,7 @@ The LLM describes this experiment as follows:
 Training and evaluating various NN architectures (MLP, DLinear, CNN, CDIL-CNN, TCN, RNN, LSTM, CNN-LSTM, LSTM-CNN) to predict UC decisions for 24-h and 168-h scheduling horizons, and subsequently applying these predictions in the SHOP operational scheduling tool to assess their impact on objective value and computational time.
 
 The LLM ...
-[x] has described the experiment (nearly) perfectly
+[X] has described the experiment (nearly) perfectly
 [] has described the experiment but is lacking information
 [] has described the experiment but has introduced false information or made mistakes
 [] has described an experiment which has nearly no overlap with that found in our work
@@ -285,7 +285,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[x] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -376,7 +376,7 @@ The analysed results were found in the following locations:
 
 The LLM has overall captured the analysis details...
 
-[x] Very well (No major mistakes and/or missing information)
+[X] Very well (No major mistakes and/or missing information)
 [] Well (Missing some information and/or minor mistakes)
 [] Okay (Missing important information and/or substantial mistakes)
 [] Poorly (Missing crucial information and/or severe mistakes)
@@ -418,7 +418,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -445,7 +445,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) analyses_id.
 This interpretation of the analysis is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -487,7 +487,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
@@ -525,7 +525,7 @@ Your corrected answer (empty if correct):
 
 Answer this question about the (possibly **corrected!**) interpretation_id.
 This conclusion based on the interpretation(s) is ...
-[x] Correct
+[X] Correct
 [] Almost correct (few and minor misinterpretations or mistakes)
 [] Acceptable (some misinterpretations or mistakes)
 [] (Partially) Incorrect (serious misinterpretations or mistakes)
