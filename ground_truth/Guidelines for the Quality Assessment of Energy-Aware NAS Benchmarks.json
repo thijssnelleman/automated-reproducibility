@@ -102,7 +102,7 @@
         "Kolmogorov-Smirnov (KS) test (alpha = 0.05)"
       ],
       "results": {
-        "tables": {
+        "Tables": {
           "Table I": {
             "caption": "Correlation of measurements obtained via different tools with the power meter measurements.",
             "reason": "Presents the statistical correlation and KS test results comparing SMI, NVML, and Code Carbon to the power meter.",
@@ -123,7 +123,7 @@
             ]
           }
         },
-        "figures": {
+        "Figures": {
           "Figure 2": {
             "caption": "eCDF of the power meter measurements and the SMI sampled power estimates for an example model training on one GPU.",
             "reason": "Visualizes the plateau of non-measured power states due to the low sampling rate in SMI.",
@@ -181,8 +181,8 @@
         "Linear correlation comparison"
       ],
       "results": {
-        "tables": {},
-        "figures": {
+        "Tables": {},
+        "Figures": {
           "Figure 5": {
             "caption": "Top left: GPU power consumption vs GPU utilisation for single-GPU training. Bottom left: GPU power consumption vs GPU memory utilisation for single-GPU training. Top right: GPU power consumption vs GPU utilisation for multi-GPU training. Bottom right: GPU power consumption vs GPU memory utilisation for multi-GPU training.",
             "reason": "Visualizes the narrow range of GPU power consumption and its correlation with utilization.",
@@ -239,8 +239,8 @@
         "Comparison of percentage inaccuracy"
       ],
       "results": {
-        "tables": {},
-        "figures": {
+        "Tables": {},
+        "Figures": {
           "Figure 6": {
             "caption": "Power measurements across time for Code Carbon and the power meter for an example model training on one GPU.",
             "reason": "Shows the constant differences between Code Carbon and the power meter.",
