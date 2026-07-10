@@ -132,7 +132,7 @@
           }
         },
         "Figures": {},
-        "text": {
+        "Text": {
           "Section 4.1": {
             "value": "The first thing to notice is the nontrivial number of optima |L| for all datasets... As we increase the fitness penalty on the number of features in the fitness function h, we indirectly reshape the landscape since the model prefers bitstrings with fewer bits sets to 1. Although the expected behavior is a decrease in the number of optima, the decrease is quite significant but highly variable between datasets.",
             "reason": "Describes the results of the optima counting and the effect of regularization.",
@@ -239,7 +239,7 @@
             ]
           }
         },
-        "text": {}
+        "Text": {}
       }
     },
     "analysis_3": {
@@ -314,7 +314,7 @@
             ]
           }
         },
-        "text": {
+        "Text": {
           "Section 4.3": {
             "value": "Under no regularization, the plots on both datasets illustrate a structure where most of the local optima are concentrated around a single global optimum—a landscape feature often referred to as the big valley structure. However, regularization induces changes in the landscape that alter the basins of attraction, and there is a split into separate regions.",
             "reason": "Describes the structural changes observed in the plots.",

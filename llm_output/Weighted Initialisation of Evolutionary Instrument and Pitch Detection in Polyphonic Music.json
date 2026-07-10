@@ -86,7 +86,7 @@
             "reason": "Shows the performance of summation vs maximum methods and the effect of k."
           }
         },
-        "text": {
+        "Text": {
           "Section 6.1": {
             "value": "The results in Fig. 5 show that larger values of k cause increased error rates and that the summation method clearly outperforms the maximum method. For all our experiments, we settled on k = 3 with the summation method.",
             "reason": "States the selected parameters."
@@ -115,7 +115,7 @@
             "reason": "Modified algorithm performance."
           }
         },
-        "text": {
+        "Text": {
           "Section 6.1": {
             "value": "It is clear that the initial mean pitch error is drastically lower compared to the baseline algorithm... Errors after convergence are comparable to those of the baseline algorithm, however the slopes in the first few thousand generations are steeper in our modified algorithm.",
             "reason": "Comparison of baseline and modified approach."
@@ -141,7 +141,7 @@
             "reason": "Comparison of Baseline (dotted) vs Modified (solid)."
           }
         },
-        "text": {
+        "Text": {
           "Section 6.2": {
             "value": "We see lower initial errors for all three error classes... Unlike the single-onset experiments, we can also observe a slight improvement in errors after convergence for the modified algorithm.",
             "reason": "Describes the improvement in the full piece scenario."
@@ -159,7 +159,7 @@
       "statistics": ["Percentage"],
       "test": "Comparison of fitness values.",
       "results": {
-        "text": {
+        "Text": {
           "Section 6.3": {
             "value": "This test revealed that our evolutionary approach indeed found individuals with better fitness than those with correct labels for 80.8% of onsets.",
             "reason": "Quantifies the failure of the fitness function to prioritize ground truth."

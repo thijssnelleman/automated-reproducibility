@@ -140,7 +140,7 @@
             ]
           }
         },
-        "text": {
+        "Text": {
           "Section V.B": {
             "value": "Epochs measured in this way exhibit a poor energy correlation with the power meter, with a Pearson correlation coefficient of 0.64.",
             "reason": "States the exact correlation result for SMI per-epoch measurements.",
@@ -201,7 +201,7 @@
             ]
           }
         },
-        "text": {
+        "Text": {
           "Section VI.C": {
             "value": "The range of different power draws on the GPU is relatively narrow, with 146 W to 305 W compared to the base consumption of the GPU of 75 W and the maximum consumption of 800 W. The GPU was never fully used, with maximum usage around 40%.",
             "reason": "Explicitly states the narrow range of power draw and maximum usage observed during the experiments.",
@@ -257,7 +257,7 @@
             "test": []
           }
         },
-        "text": {
+        "Text": {
           "Section VI.D": {
             "value": "The base Code Carbon approach is 10.3% off the power meter, while the bounds given are 8.9 to -3.6 %. The load estimation via prime number calculation already improves the upper bound to 6.6%.",
             "reason": "States the quantitative improvement in maximum inaccuracy achieved by the proposed calibration method.",

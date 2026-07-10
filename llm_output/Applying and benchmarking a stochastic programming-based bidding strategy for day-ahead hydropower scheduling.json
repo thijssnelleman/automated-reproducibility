@@ -183,7 +183,7 @@
             ]
           }
         },
-        "text": {
+        "Text": {
           "Section 5.1": {
             "value": "It shows that the stochastic model with ensemble prices achieves the highest result, being 53% better than the operator-determined, followed by the model with in-house prices, which is 27% better than the operator-determined model.",
             "reason": "Summarizes the main finding of the grand total analysis.",
@@ -244,7 +244,7 @@
           }
         },
         "Figures": {},
-        "text": {
+        "Text": {
           "Section 5.6": {
             "value": "the ensemble forecasts have smaller energy score than the in-house method, which is consistent with our benchmarking results where the ensemble has the best performance.",
             "reason": "Links the scenario metrics to the benchmark performance.",
@@ -280,7 +280,7 @@
       "results": {
         "Tables": {},
         "Figures": {},
-        "text": {
+        "Text": {
           "Section 6": {
             "value": "During the real-time testing period, we observed that operators predominantly chose their own bids... operators ended up sometimes choosing the stochastic bids for the simpler systems (one-reservoir, one-plant) but almost never for the more complex cascades.",
             "reason": "Describes the outcome of the real-time testing.",
