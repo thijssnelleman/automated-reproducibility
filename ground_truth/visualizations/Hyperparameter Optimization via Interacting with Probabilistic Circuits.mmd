@@ -1,0 +1,115 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Analyzing the competitiveness of IBO-HPC ... against standard HPO baselines."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Analyzing the performance improvements ... user knowledge is provided to IBO-HPC."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Analyzing the ability of IBO-HPC to ... and handle alternating interactions."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>We thus answer (Q1) affirmatively, since ... BO baselines without user interaction."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>Given IBO-HPC's remarkable speed-ups and ... we can answer (Q2) and (Q3) positively."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Comparison of IBO-HPC against ... when no user knowledge is provided."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Evaluation of IBO-HPC with beneficial ... Priorband) that receive priors ex ante."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Testing the recovery mechanism of IBO-HPC ... beneficial and harmful beliefs."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>Setting a minimal variance or introducing ... PC's leaves exhibiting too low variance."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can Probabilistic Circuits be ... both former HPO runs and user knowledge?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that IBO-HPC is ... BO baselines without user interaction."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that IBO-HPC ... compared to existing approaches."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that IBO-HPC is ... from misleading user interactions."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>These results show that IBO-HPC performs ... reliably identifies good configurations."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The results demonstrate that IBO-HPC's ... then the optimization keeps improving."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>This confirms that IBO-HPC's recovery ... IBO-HPC's performance in the long run."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>(Q1) Can IBO-HPC compete with prominent HPO methods?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>(Q2) How does the performance of IBO-HPC, ... incorporating user knowledge ex ante?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>(Q3) Is IBO-HPC capable of reliably recovering from misleading user interactions?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_2 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Hypotheses_hypothesis_3 --> Experiments_experiment_3
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_3 --> Experiments_experiment_3
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_3
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_hypothesis_1 future_work

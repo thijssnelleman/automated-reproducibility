@@ -1,0 +1,124 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To compare the formal linguistic ... different model sizes and data scales."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To compare the functional linguistic ... different model sizes and data scales."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>Our findings indicate that models trained ... as mixture of experts (MoE) development)."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The gap in functional linguistic ... to functional linguistic competence."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Pre-training Llama-based decoder-only ... to assess formal linguistic competence."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Pre-training the same Llama-based models ... assess functional linguistic competence."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that optimising ... performance of the various models."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How does child-directed speech (e.g., ... competence and computational efficiency?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How do these findings generalize to a ... distillation and reinforcement learning)?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>Can curriculum learning, incorporating ... vocabulary and improve performance?"]
+    Future Work_suggested_research_question_4["'<b><font size="5">suggested_research_question_4</font></b>'<br>How do other datasets from other specific ... competence and computational efficiency?"]
+    Future Work_suggested_research_question_5["'<b><font size="5">suggested_research_question_5</font></b>'<br>Does the model maintain its functional ... about its generalization capabilities?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that pre-training ... synthetic narrative data (TinyStories)."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that early ... of unpromising candidate models."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>Possibly, the TinyStories dataset lacks ... stagnation around the 64 million tokens."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Notably, unlike for the BLiMP results, ... for language use and understanding."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>We demonstrate that early performance ... to discard unpromising candidate models."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How do dataset size, complexity, and ... when pre-training small language models?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>How do these dataset differences impact ... throughout the pre-training life cycle?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+        Future Work_suggested_research_question_4
+        Future Work_suggested_research_question_5
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_1 --> Interpretations_interpretation_3
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_4
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_4
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_5
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_1
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work
+    class Future Work_suggested_research_question_4 future_work
+    class Future Work_suggested_research_question_5 future_work
+    class Future Work_suggested_hypothesis_1 future_work

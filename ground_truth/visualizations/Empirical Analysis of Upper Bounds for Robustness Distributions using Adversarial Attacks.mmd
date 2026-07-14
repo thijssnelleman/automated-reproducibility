@@ -1,0 +1,146 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To determine if the monotonicity assumption holds by counting counterexamples."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To compare the upper bounds (p*) and running times of attacks vs complete verification."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>To test if the robustness distributions follow a log-normal distribution."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>To see if the distributions on the ... similar to the complete test set."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>Furthermore, we examined the feasibility ... our search space is mostly monotonic."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>We have shown that adversarial attack ... running complete verification methods."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>We also find no significant difference in ... for large samples of discrete data."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Iteratively checking local robustness for ... to the monotonicity assumption."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Computing robustness distributions using ... on a subset of 100 MNIST test images."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Computing robustness distributions using ... distributions from the 100-image subset."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that the approach ... and sophisticated network architectures."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How well do adversarial attack methods ... more sophisticated network architectures?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>What are effective methods for finding ... bounds for robustness distributions?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that adversarial ... to complete verification methods."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that the ... approach for computing robustness values."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that the ... tend to follow log-normal distributions."]
+    Hypotheses_hypothesis_4["'<b><font size="5">hypothesis_4</font></b>'<br>The authors hypothesise that ... to that for the entire test dataset."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>As these counterexamples to the ... the computation of the robustness values."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Most of the adversarial attack methods ... than those for complete verification."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>we found evidence that most of the ... for large samples of discrete data..."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>We find general similarities between the ... computing a robustness distribution..."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How effective are adversarial attacks in ... to complete verification techniques?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Does the monotonicity assumption for ... search for finding critical epsilons?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Can robustness distributions approximated ... distribution of the entire test dataset?"]
+    Research Questions_research_question_4["'<b><font size="5">research_question_4</font></b>'<br>Is there performance complementarity ... the size of adversarial perturbations?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+        Research Questions_research_question_4
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+        Hypotheses_hypothesis_4
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_4
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_4
+    Conclusions_conclusion_3 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_2 --> Analyses_analysis_3
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_3 --> Analyses_analysis_4
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_3 --> Experiments_experiment_2
+    Hypotheses_hypothesis_3 --> Experiments_experiment_3
+    Hypotheses_hypothesis_4 --> Experiments_experiment_3
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_3
+    Interpretations_interpretation_4 --> Conclusions_conclusion_3
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_3
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_3 --> Experiments_experiment_3
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_3
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_4
+    Research Questions_research_question_4 --> Experiments_experiment_2
+    Research Questions_research_question_4 --> Hypotheses_hypothesis_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Research Questions_research_question_4 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Hypotheses_hypothesis_4 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_hypothesis_1 future_work

@@ -1,0 +1,107 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To compare the downstream classification ... on both cyclic and semi-cyclic datasets."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To evaluate the computational efficiency ... on the largest and smallest datasets."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>To determine the impact of specific ... pooling) on the model's performance."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that incorporating ... making it worse on smaller datasets."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluating the classification performance ... datasets and two semi-cyclic datasets."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Measuring and comparing the fine-tuning ... to evaluate computational efficiency."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Conducting ablation studies to test the ... pooling vs. query attention strategies."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How does masking affect learning on time ... to the cycle-based method explored?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that explicitly ... quality or downstream performance."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that exposing the ... datasets compared to baseline models."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>MACE is able to outperform the three ... subtle differences in local cycles."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>On semi-cyclic datasets, MACE is able to ... CRT, which benefits from phase data."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>The fine-tuning time for MACE is ... considerably quicker to its best loss."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Ablation studies show that using both ... query attention but with higher variance."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How can the cyclic structure of time ... modeling efficiency and effectiveness?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>How does a cycle-based decomposition in ... on downstream classification tasks?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_1 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_3
+    Analyses_analysis_3 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_3
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Experiments_experiment_3
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_3
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work

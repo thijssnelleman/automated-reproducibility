@@ -1,0 +1,80 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To compare the performance of DACES ... across different network architectures."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To determine the complementarity of DACES ... to the Virtual Best Attack for ImageNet."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that DACES achieves ... efficiency and performance (Section 6)."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>The authors evaluate DACES against four ... queries and record the running time."]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that their ... state-of-the-art decision-based attacks."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that DACES will ... more applicable to real-world settings."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The authors interpret that DACES-NNI is ... the time is constrained (Section 5.2)."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The authors note that DACES-NNI obtains ... followed by CGBA and DACES (Section 5.2)."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>By excluding DACES from this VBA (i.e. ... only), this grows to 2.26, a plus of 55%."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How can we develop a decision-based ... of both query budget and running time?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>How can the Covariance Matrix Adaptation ... of decision-based adversarial attacks?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_1 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_1 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default

@@ -1,0 +1,163 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Compare the number of queries, wallclock ... different k values in k-binary search."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Characterize the shape of the robustness ... and test for log-normality."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Understand whether the size of the ... the input or specific to a given network."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>Evaluate how adversarial training changes ... gaps for fully-connected networks."]
+    Analyses_analysis_5["'<b><font size="5">analysis_5</font></b>'<br>Evaluate how adversarial training changes ... gaps for convolutional neural networks."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>While determining critical epsilon values ... they can be determined efficiently."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>Analysing these critical epsilon (or more ... those of the inputs used for training."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>This analysis uncovered that there is ... mispredict for a given non-robust input."]
+    Conclusions_conclusion_4["'<b><font size="5">conclusion_4</font></b>'<br>We found that the robustness ... seem to follow log-normal distributions."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluating the efficiency of k-binary ... lower bound of the critical epsilon."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Determining the robustness distributions ... analyzing correlations between networks."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Investigating the effect of adversarial ... networks for MNIST, CIFAR-10, and GTSRB."]
+    Experiments_experiment_4["'<b><font size="5">experiment_4</font></b>'<br>Investigating the effect of adversarial ... (CNNs) for MNIST, CIFAR-10, and GTSRB."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>What determines the shape of the robustness distributions?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How can the efficiency of calculating ... reusing information from other images?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>What is the effect of different norms, ... the shape of the robustness distribution?"]
+    Future Work_suggested_research_question_4["'<b><font size="5">suggested_research_question_4</font></b>'<br>How do different training regimens for ... shape of the robustness distributions?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The critical epsilon values of the networks follow a log-normal distribution."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that robustness ... differ between training and testing data."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that adversarial ... for testing as well as training data."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>From these results, it appears that the ... of available memory per query decreases."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>This suggests that finding the robustness ... same distribution as the testing images."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>This suggests that the training processes ... networks are less robust on test images."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Surprisingly, we not only found that ... adversarial training changes this."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How can we effectively estimate the ... set to build robustness distributions?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Whether the robustness distributions ... neural networks for the MNIST dataset."]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Whether the robustness of the training ... network comes from the same distribution."]
+    Research Questions_research_question_4["'<b><font size="5">research_question_4</font></b>'<br>What is the correlation of the critical epsilon between networks trained on the same data?"]
+    Research Questions_research_question_5["'<b><font size="5">research_question_5</font></b>'<br>What is the effect of adversarial ... and convolutional neural networks?"]
+    Research Questions_research_question_6["'<b><font size="5">research_question_6</font></b>'<br>What value should k have for k-binary ... whilst minimising the computational cost?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+        Research Questions_research_question_4
+        Research Questions_research_question_5
+        Research Questions_research_question_6
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+        Experiments_experiment_4
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+        Analyses_analysis_5
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+        Conclusions_conclusion_4
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+        Future Work_suggested_research_question_4
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Analyses_analysis_5 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_6
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Conclusions_conclusion_3 --> Research Questions_research_question_4
+    Conclusions_conclusion_4 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_4 --> Future Work_suggested_research_question_4
+    Conclusions_conclusion_4 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_4 --> Research Questions_research_question_5
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_2 --> Analyses_analysis_3
+    Experiments_experiment_3 --> Analyses_analysis_4
+    Experiments_experiment_4 --> Analyses_analysis_5
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Hypotheses_hypothesis_3 --> Experiments_experiment_3
+    Hypotheses_hypothesis_3 --> Experiments_experiment_4
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_3
+    Interpretations_interpretation_4 --> Conclusions_conclusion_4
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_3 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_4 --> Experiments_experiment_2
+    Research Questions_research_question_5 --> Experiments_experiment_3
+    Research Questions_research_question_5 --> Experiments_experiment_4
+    Research Questions_research_question_5 --> Hypotheses_hypothesis_3
+    Research Questions_research_question_6 --> Experiments_experiment_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Research Questions_research_question_4 default
+    class Research Questions_research_question_5 default
+    class Research Questions_research_question_6 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Experiments_experiment_4 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Analyses_analysis_5 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Conclusions_conclusion_4 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work
+    class Future Work_suggested_research_question_4 future_work

@@ -1,0 +1,108 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Compare the training curve as a sanity ... Higa et al. (2023) on a fixed problem."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Evaluate the training curve as a sanity ... random problems against baseline agents."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Evaluate the training curve as a sanity ... problems against competition agents."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that they have ... never-before-seen negotiation problems.'"]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that their method ... the end-to-end aim of our approach.'"]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Compare the proposed GNN method to a ... problem against baseline agents."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Train and evaluate the end-to-end method ... baseline agents to test generalization."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Train and evaluate the end-to-end method ... baseline agents and ANAC 2022 agents."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>What are the effects on performance of ... problems with huge outcome spaces?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How can end-to-end policies be extended ... in the current or previous encounter?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>How can the method be improved to handle ... the necessity of discretizing them?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that an ... varying observation and action spaces."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that their ... RL methods on fixed negotiation problems."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>We can see in Figure 3 that our method ... being more complex and broadly usable."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>As seen in Figure 5a, our method performs ... generalise over such different problems."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>The results show much lower performance ... of learning opponent characteristics."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Can a general RL-based negotiation ... using end-to-end reinforcement learning?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_1
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Experiments_experiment_3
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work

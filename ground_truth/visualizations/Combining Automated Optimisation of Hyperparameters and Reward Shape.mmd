@@ -1,0 +1,110 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Visualizing and analyzing the parameter ... hyperparameters and reward parameters."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Comparing the median performance and ... individual, single vs multi-objective)."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>We illustrated dependencies in a simple ... be the best practice for RL optimisation."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>Our results further indicate that ... achieving this performance consistently."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>An exhaustive landscape analysis for PPO ... to understand their interdependencies."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Optimisation experiments using DEHB to ... (variance penalty) optimisation."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can a broader range of reward ... optimized jointly with hyperparameters?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How do more sophisticated risk-averse ... and stability during joint optimization?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that an RL ... without appropriate values for the other."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that combined ... optimisation in challenging environments."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that including a ... similar or better expected performance."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>Overall, our results indicate that ... reward parameters and vice versa."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Our results show that simultaneously ... complex Humanoid and Wipe environments."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>multi-objective optimisation can improve ... sometimes even achieve slight gains..."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>To what extent are an RL algorithm's ... and reward function mutually dependent?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Can the combined optimisation of ... optimisation of these components?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Does including a variance penalty as an ... without sacrificing expected performance?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Hypotheses_hypothesis_3 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_3 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_3
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work

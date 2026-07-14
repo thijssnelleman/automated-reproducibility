@@ -1,0 +1,121 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Analyzing the classification performance ... time and number of solved instances."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Analyzing the Shapley values to determine ... to the predictions at which point time."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Analyzing the performance of the running time regression model."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>The sensitivity study table 5, figure 2 for different theta values"]
+    Analyses_analysis_5["'<b><font size="5">analysis_5</font></b>'<br>Classifier preformance analysis"]
+    Analyses_analysis_6["'<b><font size="5">analysis_6</font></b>'<br>Classifier training time analysis"]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that their dynamic ... a comparable number of instances."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluating the proposed dynamic algorithm ... predict timeouts at regular checkpoints."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Conducting a feature importance study ... static and dynamic instance features."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Predicting the exact running times of ... features can model exact running times."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that their ... verification approaches, such as MN-BaB."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>Can the proposed features and dynamic ... selection or satisfiability prediction?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>Can the running time prediction ... scaling models of BaB-based verification?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that by using ... running time of a verification algorithm."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The authors interpret that their method ... instances terminated prematurely."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The authors interpret that dynamic ... during the early stages of verification."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>The authors interpret that while running ... benchmarks for meaningful application."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Perhaps unsurprisingly, we found that ... showed an exponential increase."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How can the computational cost of ... running time prediction techniques?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>What features of branch-and-bound-based ... solvability within a given time budget?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+        Analyses_analysis_5
+        Analyses_analysis_6
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Analyses_analysis_5 --> Interpretations_interpretation_1
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_3 --> Analyses_analysis_4
+    Experiments_experiment_3 --> Analyses_analysis_5
+    Experiments_experiment_3 --> Analyses_analysis_6
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_3
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Experiments_experiment_3
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Analyses_analysis_5 default
+    class Analyses_analysis_6 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_hypothesis_1 future_work

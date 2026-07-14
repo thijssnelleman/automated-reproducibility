@@ -1,0 +1,106 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Analysis of the clustering performance to ... internally and externally."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Analysis of the classification ... learned via the TSRC framework."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that the TSRC ... better knowledge from the teacher model.'"]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that 'the TSRC ... is beneficial beyond just clustering."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluation of the TSRC framework's impact ... weak-weak) and tailored curricula."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Evaluation of the transferability of the ... task of time series classification."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that training a ... for multiple runs of the TSRC framework."]
+    Future Work_suggested_hypothesis_2["'<b><font size="5">suggested_hypothesis_2</font></b>'<br>The authors hypothesise that utilizing ... democratize the usage of the framework."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can the TSRC framework be adapted to ... model on multiple datasets at once?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How does the robustness of the teacher ... overall efficacy of the TSRC framework?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>How can Automated Machine Learning ... curricula based on previous performance?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that combining ... space while maintaining interpretability."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The authors interpret that the TSRC ... yields better knowledge distillation."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The authors interpret that 'TSRC not only ... when trained with the framework."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Is the TSRC framework effective in ... from a contrastive-based teacher model?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>How does the choice of the teacher and ... the performance of the TSRC framework?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>How well do representations learned ... particularly time series classification?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+        Future Work_suggested_hypothesis_1
+        Future Work_suggested_hypothesis_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_3 --> Experiments_experiment_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work
+    class Future Work_suggested_hypothesis_1 future_work
+    class Future Work_suggested_hypothesis_2 future_work

@@ -1,0 +1,114 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Compare SMI and pyNVML measurements to ... on a per-epoch and full-training basis."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Analyze the range of GPU power draw and ... space utilizes the hardware effectively."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Evaluate the accuracy of Code Carbon for ... against the external power meter."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that energy-aware ... original data collection) is reliable."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that current ... of allowing a wide range of device usage."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>The authors conclude that holistic energy ... assumptions about memory consumption."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>A large-scale validation study mimicking ... SMI, RAPL, and an external power meter."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Three follow-up experiments to enrich the ... 3) Single GPU replacing SMI with pyNVML."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can energy-aware NAS benchmarks ... towards hardware-constrained devices?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How can the off-socket load on a device ... bounds during energy cost reporting?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that Nvidia SMI ... sampling in low-power epochs."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that holistic ... can significantly reduce this inaccuracy."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>SMI exhibits poor energy correlation with ... (0.99) and passing the KS test."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The range of different power draws on the ... space is not ideal for the H100 GPU."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>Code Carbon consistently underestimates ... maximum inaccuracy from 10.3% to 6.6%."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How reliable are the power measurements ... SMI compared to an external power meter?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Does the search space of current ... represent diverse hardware constraints?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>How accurate are holistic energy ... and how can their accuracy be improved?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_2
+    Conclusions_conclusion_3 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_3 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_1 --> Analyses_analysis_2
+    Experiments_experiment_2 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_2 --> Analyses_analysis_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_3
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work

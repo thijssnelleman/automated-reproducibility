@@ -1,0 +1,98 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To assess EDC's ability to find the ... noise and out-of-grammar targets."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To compare EDC's performance on ... black-box methods (MLP, RF, SVM)."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that EDC is a highly ... run time compared to standard algorithms."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluation of the EDC algorithm under ... decision boundaries and handle noise."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Evaluation of the EDC algorithm on ... black-box methods (MLP, RF, SVM)."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that reducing the ... the most promising candidate equations."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>Can the run time of the EDC algorithm be ... the accuracy of the discovered equations?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How would the proposed EDC method perform when extended to multi-class classification?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that their ... and M4GP) in binary classification tasks."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that EDC will ... transparent and interpretable models."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The authors interpret that EDC can ... outperforms existing explainable methods."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The authors interpret that EDC ... outperform the proposed EDC algorithm."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Can Equation Discovery (ED) techniques be ... that specify the decision boundary?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>How does the proposed Equation Discovery ... in terms of predictive performance?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_2
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_hypothesis_1 future_work

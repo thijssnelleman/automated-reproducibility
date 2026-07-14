@@ -17,7 +17,7 @@ def get_node_label(key, data, section="", max_chars=90, for_mermaid=False):
 
     # Truncate the label in the middle if it's too long
     if len(label) > max_chars:
-        part_len = (max_chars - 5) // 2  # approx length of each part
+        part_len = (max_chars - 5) // 2  # approx length of each part, accounting for " ... "
         
         # Find a good place to cut the first part
         start_cut = label.rfind(' ', 0, part_len)
@@ -29,7 +29,7 @@ def get_node_label(key, data, section="", max_chars=90, for_mermaid=False):
         if end_cut == -1: end_cut = len(label) - part_len  # fallback if no space is found
         end_text = label[end_cut+1:]
 
-        label = start_text + " [...] " + end_text
+        label = start_text + " ... " + end_text
 
     if not for_mermaid:
         # Escape HTML characters for Graphviz
@@ -53,9 +53,8 @@ def get_node_label(key, data, section="", max_chars=90, for_mermaid=False):
 
     if for_mermaid:
         # Use Markdown and HTML for Mermaid labels to increase title font size
-        bold_key = f'<b><font size="5">{key}</font></b>'
-        wrapped_label = "<br>".join(lines)
-        return f'"{bold_key}<br>{wrapped_label}"'
+        bold_key = f'\'<b><font size="5">{key}</font></b>\''
+        return f'"{bold_key}<br>{label}"'
     else:
         # Use HTML-like labels for Graphviz formatting
         bold_key = f'<B><FONT POINT-SIZE="16">{key}</FONT></B>'
@@ -214,7 +213,9 @@ def visualize_paper_structure(json_path, output_dir, output_format='mmd'):
                             # e.g., RQ -> Hypo, Hypo -> Exp, etc.
                             # User requested to reverse edges for conclusions.
                             # print(section, link_type)
-                            if section == "Conclusions" and link_type in ["research_questions", "hypotheses"]:
+                            if section == "Conclusions" and link_type in [
+                                "research_questions", "hypotheses", "suggested_research_questions", "suggested_hypotheses"
+                            ]:
                                 from_node, to_node = source_node_id, target_node_id
 
                             if output_format == 'mmd':

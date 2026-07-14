@@ -1,0 +1,120 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To compare the efficacy of Filter-based ... the vulnerability of baseline models."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To evaluate the effectiveness of adversarial training in improving robustness."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that ... the effectiveness of the attack method."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that adversarial ... in accuracy on unperturbed data."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluation of baseline models (PaSST and ... classification accuracy degradation."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Application of adversarial training to ... against the attack on the test set."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors suggest that bounding the ... to comapre it to noise-based attacks."]
+    Future Work_suggested_hypothesis_2["'<b><font size="5">suggested_hypothesis_2</font></b>'<br>The authors suggest that neural network ... guarantees with regards to filters."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How does the robustness of models change ... devices or acoustic environments?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How perceptible are filter-based ... to noise-based attacks to human subjects?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that the proposed ... within the same perturbation constraints."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that ... to filter-based perturbations."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that adversarial ... of audio models against such attacks."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>For all three datasets, it is clear that ... attacks, even for small epsilon values."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Filter-based PGD performs significantly ... the search into more promising regions."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>Adversarial training creates models that ... the accuracy on the unperturbed test set."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Attacks on the ESC-50 dataset remain the ... comparatively small size of the dataset"]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Are state-of-the-art audio classification ... created band-pass filter perturbations?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Can a gradient-based adversarial attack ... perturbations compared to random search?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Can adversarial training with ... of audio models to these attacks?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_hypothesis_1
+        Future Work_suggested_hypothesis_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_1 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_3
+    Analyses_analysis_2 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_3 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_3 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_3
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_hypothesis_1 future_work
+    class Future Work_suggested_hypothesis_2 future_work

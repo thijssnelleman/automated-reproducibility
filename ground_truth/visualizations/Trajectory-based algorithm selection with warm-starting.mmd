@@ -1,0 +1,111 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Evaluating the predictive power of the ... precision versus log-target precision."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Evaluating the performance of the ... algorithms across the full portfolio."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Evaluating the performance of the ... (BFGS) is excluded from the portfolio."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that ... heavily on the portfolio's composition."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>A two-stage dynamic algorithm execution ... compared against the virtual best solver."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that extracting ... enrich the performance regression models."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can learned regression models be ... problem suites (e.g., nevergrad)?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How can the trajectory-based approach be ... behavior on different problem instances?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>How can a universal warm-starting ... algorithm's internal operating mechanism?"]
+    Future Work_suggested_research_question_4["'<b><font size="5">suggested_research_question_4</font></b>'<br>How can information extracted from the ... be used to enrich performance regression?"]
+    Future Work_suggested_research_question_5["'<b><font size="5">suggested_research_question_5</font></b>'<br>How can an adaptive switching policy be ... the fixed-evaluation switching approach?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that ... of other warm-started algorithms."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>If hypothesis_1 turns out to be true, the ... standalone algorithms in the portfolio."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The regression models for log-target ... as a basis for the algorithm selector."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>When the full portfolio is used, BFGS ... selection in this specific setting."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>When the dominant BFGS algorithm is ... mean performance and the 75% percentile."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>how do we make use of the ... predict performances of other algorithms?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>If research_question_1 turns out be ... standalone optimization algorithms?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+        Future Work_suggested_research_question_4
+        Future Work_suggested_research_question_5
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_5
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_1 --> Analyses_analysis_2
+    Experiments_experiment_1 --> Analyses_analysis_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work
+    class Future Work_suggested_research_question_4 future_work
+    class Future Work_suggested_research_question_5 future_work
+    class Future Work_suggested_hypothesis_1 future_work

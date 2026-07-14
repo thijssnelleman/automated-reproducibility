@@ -1,0 +1,92 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Analysis of the predictive performance ... the three different updating strategies."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that adding cases ... updates while maintaining performance."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>The experiment simulates concept drift by ... to evaluate the effectiveness of RUGS."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>Is the RUGS method applicable in a more ... with more complex real-world datasets?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How does the window size parameter affect ... of the feature weight updates?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>How does the RUGS approach compare to more complex baselines?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that using a ... comparable to always updating."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>RUGS can perform similarly to always ... worse and has a higher variance."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Depending on the importance of ... periods of poorer predictive performance."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>RUGS takes about one tenth the time to ... worth it in all of the tested scenarios."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How does adding new cases affect the performance of a learning CBR system?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>In what way can we detect and mitigate ... by concept drift in a growing case base?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>How can we adjust the global similarity weights to maintain aligned knowledge containers?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_1 --> Interpretations_interpretation_2
+    Analyses_analysis_1 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_3 --> Experiments_experiment_1
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Experiments_experiment_1 default
+    class Analyses_analysis_1 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work

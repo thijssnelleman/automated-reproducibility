@@ -1,0 +1,130 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Comparing the discovered Pareto fronts of ... to assess the true state of the art."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Identifying which hyperparameters drive ... improvements and trade-offs using fANOVA."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Determining if prior works overestimated ... performance by tuning on the test set."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>Evaluating if the proposed ... affect the quality of the Pareto front."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>Overall, our work calls for a shift in ... unknown performance complementarities."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>Beyond benchmarking, our work provides ... hyperparameter optimisation method."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>Our results demonstrate that the ... have underestimated their potential."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluating IBP, CROWN-IBP, SABR, and ... reported single configurations."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Analyzing the importance of individual ... and derive actionable insights."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Assessing the impact of tuning directly ... set tuning versus test set tuning."]
+    Experiments_experiment_4["'<b><font size="5">experiment_4</font></b>'<br>Studying the effect of reduced ... computational costs and efficiency."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can certified training methods be ... where progress has currently stalled?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How do the findings regarding ... threat models beyond ℓ∞ perturbations?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>People may develop methods based on this ... of certified training methods."]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that evaluating ... than single-configuration comparisons."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that the ... hyperparameter optimisation methods."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>In nearly all scenarios, the results from ... delivering stronger certified guarantees."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The trade-off between clean and certified ... to, method-specific trade-off parameters."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>These results demonstrate that previous ... of IBP-based certified training."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Overall, these results suggest that ... more detrimental to their quality."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How does the common practice of reporting ... between natural and certified accuracy?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Which hyperparameters and their ... accuracy in IBP-based certified training?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+        Experiments_experiment_4
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_2
+    Conclusions_conclusion_3 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_3 --> Research Questions_research_question_1
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_4 --> Analyses_analysis_4
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_4
+    Hypotheses_hypothesis_2 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_3
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Experiments_experiment_3
+    Research Questions_research_question_1 --> Experiments_experiment_4
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Experiments_experiment_4 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work

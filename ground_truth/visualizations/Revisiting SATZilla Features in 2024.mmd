@@ -1,0 +1,109 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Comparing the percentage of instances for ... budget across different feature groups."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Evaluating the accuracy of the random forest classifier in predicting satisfiability."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Evaluating the RMSE of the random forest ... predicting log-transformed running times."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>Evaluating the algorithm selector's ... fraction of instances solved over time."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that their improved ... more features from all instances."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Extracting features using both the new ... computed over the available time budget."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Training a random forest classifier to ... extracted by both the old and new tools."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Training a random forest regressor to ... using features extracted by both tools."]
+    Experiments_experiment_4["'<b><font size="5">experiment_4</font></b>'<br>Building an algorithm selector using ... performance of features from both tools."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can the new SATZilla 2024 extraction ... SAT solvers or other advancements in SAT?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that replacing ... in performance across downstream tasks."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The new tool is able to extract more ... preprocessing yielding larger formulas."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Using features extracted via the new tool ... than for unsatisfiable instances."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>Using the features extracted by the new ... predicted with lower error rates."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Features extracted with the new tool lead ... the budget compared to the old tool."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How does the updated SATZilla feature ... rate and time on modern SAT instances?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Does the new SATZilla feature extraction ... time prediction, and algorithm selection?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+        Experiments_experiment_4
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_4 --> Analyses_analysis_4
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Hypotheses_hypothesis_1 --> Experiments_experiment_4
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Interpretations_interpretation_4 --> Conclusions_conclusion_1
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Experiments_experiment_3
+    Research Questions_research_question_2 --> Experiments_experiment_4
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Experiments_experiment_4 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Future Work_suggested_research_question_1 future_work

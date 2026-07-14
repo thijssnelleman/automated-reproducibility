@@ -1,0 +1,166 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Analyzing the effect of individual ... hyperparameter importance using fANOVA."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Comparing the performance of DEHB, PB2, ... and different numbers of tuning seeds."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>Comparing HPO methods against hand-tuned ... Procgen with budgets of 16 and 64 runs."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>"]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>Underreported tuning practices have the ... may lead to suboptimal performance."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>With only small budgets, we demonstrate ... hyperparameter sweeps or grid searches."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>Thus, our conclusion is somewhat ... landscapes appear to be rather smooth."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Sweeping over 8-11 hyperparameters for ... landscape smoothness, and importance."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Comparing HPO methods (RS, DEHB, PB2) on ... the effect of tuning on multiple seeds."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Tuning state-of-the-art RL algorithms ... runs, comparing to hand-tuned baselines."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>Frameworks for learnt hyperparameter ... an algorithm's behaviour on a given seed."]
+    Future Work_suggested_hypothesis_2["'<b><font size="5">suggested_hypothesis_2</font></b>'<br>Higher-level AutoRL approaches that ... stabilize RL algorithms in the long term."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>How can we develop HPO approaches ... for a given hyperparameter configuration?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that ... has a strong influence on tuning results."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that existing HPO ... computational resources than hand-tuning."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that RL ... additions to the tuning algorithm."]
+    Hypotheses_hypothesis_4["'<b><font size="5">hypothesis_4</font></b>'<br>The authors hypothesise that evaluating ... and prevents overfitting to tuning seeds."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>Since most hyperparameters have ... landscapes appear to be rather smooth."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>Evaluating the configurations across ... though it can help avoid overfitting."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>Overall, HPO tools conceived for the AC ... use orders of magnitude more compute."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>Simply reporting the performance of tuned ... which can lead to wrong conclusions."]
+    Interpretations_interpretation_5["'<b><font size="5">interpretation_5</font></b>'<br>Given that we believe tuning only a few ... than the optimization landscape itself."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>How do hyperparameter choices affect the ... and sample efficiency of RL algorithms?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Are existing Hyperparameter Optimization ... resources compared to hand-tuning?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Which RL Hyperparameters Should Be Tuned?"]
+    Research Questions_research_question_4["'<b><font size="5">research_question_4</font></b>'<br>Are Hyperparameters in RL Well Behaved?"]
+    Research Questions_research_question_5["'<b><font size="5">research_question_5</font></b>'<br>How do we account for the noise in the RL algorithm while tuning RL hyperparameters?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+        Research Questions_research_question_4
+        Research Questions_research_question_5
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+        Hypotheses_hypothesis_4
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+        Interpretations_interpretation_5
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_hypothesis_1
+        Future Work_suggested_hypothesis_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_2 --> Interpretations_interpretation_4
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_5
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_1 --> Future Work_suggested_hypothesis_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_4
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_3
+    Conclusions_conclusion_1 --> Research Questions_research_question_4
+    Conclusions_conclusion_1 --> Research Questions_research_question_5
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_4
+    Conclusions_conclusion_2 --> Research Questions_research_question_1
+    Conclusions_conclusion_2 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Conclusions_conclusion_2 --> Research Questions_research_question_4
+    Conclusions_conclusion_2 --> Research Questions_research_question_5
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_3 --> Research Questions_research_question_4
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_3 --> Analyses_analysis_4
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_3
+    Hypotheses_hypothesis_3 --> Experiments_experiment_1
+    Hypotheses_hypothesis_4 --> Experiments_experiment_1
+    Hypotheses_hypothesis_4 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_2
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_2
+    Interpretations_interpretation_4 --> Conclusions_conclusion_1
+    Interpretations_interpretation_5 --> Conclusions_conclusion_3
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_3
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_3 --> Experiments_experiment_1
+    Research Questions_research_question_4 --> Experiments_experiment_1
+    Research Questions_research_question_4 --> Hypotheses_hypothesis_3
+    Research Questions_research_question_5 --> Experiments_experiment_1
+    Research Questions_research_question_5 --> Experiments_experiment_2
+    Research Questions_research_question_5 --> Hypotheses_hypothesis_4
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Research Questions_research_question_4 default
+    class Research Questions_research_question_5 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Hypotheses_hypothesis_4 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Interpretations_interpretation_5 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_hypothesis_1 future_work
+    class Future Work_suggested_hypothesis_2 future_work

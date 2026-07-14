@@ -1,0 +1,117 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To determine if AutoMergeNet multibranch ... performance over baselines."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To compare the practical operational ... against a domain-specific expert model."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>To determine the impact of various architectures."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that transforming ... improving the precision of the pipeline."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that their automated ... needing manual feature engineering."]
+    Conclusions_conclusion_3["'<b><font size="5">conclusion_3</font></b>'<br>On both datasets, the CNN was chosen most ... images than complex backbone networks."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Evaluating AutoMergeNet against six ... the auxiliary unimodal classifier."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Applying the best AutoMergeNet model ... to the operational model by Schuit et al."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors hypothesise that adding more ... and reduce the generalisation gap."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>What are the causes of the generalisation ... results and the use case application?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that transforming ... for satellite image classification."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that enforcing ... by filtering out clear negative images."]
+    Hypotheses_hypothesis_3["'<b><font size="5">hypothesis_3</font></b>'<br>The authors hypothesise that ... when applied in an operational scenario."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>AutoMergeNet outperformed all baselines ... empty based on the primary channel."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The model automatically created by ... caused by albedo variation in the desert."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>Our results show consistent evidence that simpler architectures yield better results."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Does transforming conventional, ... for satellite image classification?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Does enforcing implicit focus on the ... for satellite image classification?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>How do AutoMergeNet-created models ... when applied in an operational scenario?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+        Hypotheses_hypothesis_3
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+        Conclusions_conclusion_3
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_3
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Conclusions_conclusion_3 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_3 --> Research Questions_research_question_1
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_1 --> Analyses_analysis_3
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Hypotheses_hypothesis_3 --> Experiments_experiment_2
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Interpretations_interpretation_3 --> Conclusions_conclusion_3
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+    Research Questions_research_question_3 --> Experiments_experiment_2
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_3
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Hypotheses_hypothesis_3 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Conclusions_conclusion_3 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_hypothesis_1 future_work

@@ -1,0 +1,131 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>To select the best parameters for the ... before running the main comparisons."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>To evaluate the impact of the proposed ... a controlled (single-onset) environment."]
+    Analyses_analysis_3["'<b><font size="5">analysis_3</font></b>'<br>To evaluate the method on realistic, full polyphonic music pieces."]
+    Analyses_analysis_4["'<b><font size="5">analysis_4</font></b>'<br>To determine if the fitness function ... the ground truth as the optimal solution."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that the weighted ... detection errors' on full pieces."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that the current ... to the current fitness function.'"]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Parameter search to determine the optimal ... for the probabilistic initialization."]
+    Experiments_experiment_2["'<b><font size="5">experiment_2</font></b>'<br>Ground Truth Search: Comparison of the ... target signal can be exactly re-created."]
+    Experiments_experiment_3["'<b><font size="5">experiment_3</font></b>'<br>Full Piece Approximation: Comparison of ... re-created due to library differences."]
+    Experiments_experiment_4["'<b><font size="5">experiment_4</font></b>'<br>Validation test to investigate the correlation between fitness and detection errors."]
+    Future Work_suggested_hypothesis_1["'<b><font size="5">suggested_hypothesis_1</font></b>'<br>The authors suggest that a ... to the current single-objective approach."]
+    Future Work_suggested_research_question_1["'<b><font size="5">suggested_research_question_1</font></b>'<br>Can a multi-objective fitness function ... improve detection errors significantly?"]
+    Future Work_suggested_research_question_2["'<b><font size="5">suggested_research_question_2</font></b>'<br>How would extending the individual's ... affect the approximation quality?"]
+    Future Work_suggested_research_question_3["'<b><font size="5">suggested_research_question_3</font></b>'<br>How would the method perform or behave on other popular datasets?"]
+    Future Work_suggested_research_question_4["'<b><font size="5">suggested_research_question_4</font></b>'<br>How would the method behave with different evolutionary algorithms?"]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>The authors hypothesise that initializing ... to uniform random initialization."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that the COSH ... tuples compared to incorrect individuals."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>The summation method is more robust to ... pitches better than higher k values."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>The modified algorithm shows ... to the baseline in the single-onset task."]
+    Interpretations_interpretation_3["'<b><font size="5">interpretation_3</font></b>'<br>On full pieces, the modification leads to ... for finding the correct instrument."]
+    Interpretations_interpretation_4["'<b><font size="5">interpretation_4</font></b>'<br>The high rate of false positives ... the true potential of the modification."]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Does initializing the evolutionary ... compared to random initialization?"]
+    Research Questions_research_question_3["'<b><font size="5">research_question_3</font></b>'<br>Is the COSH distance fitness function ... algorithm towards the ground truth?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_2
+        Research Questions_research_question_3
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+        Experiments_experiment_2
+        Experiments_experiment_3
+        Experiments_experiment_4
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+        Analyses_analysis_3
+        Analyses_analysis_4
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+        Interpretations_interpretation_3
+        Interpretations_interpretation_4
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    subgraph Future Work
+        Future Work_suggested_research_question_1
+        Future Work_suggested_research_question_2
+        Future Work_suggested_research_question_3
+        Future Work_suggested_research_question_4
+        Future Work_suggested_hypothesis_1
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Analyses_analysis_3 --> Interpretations_interpretation_3
+    Analyses_analysis_4 --> Interpretations_interpretation_4
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_2
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_3
+    Conclusions_conclusion_1 --> Future Work_suggested_research_question_4
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Conclusions_conclusion_2 --> Future Work_suggested_hypothesis_1
+    Conclusions_conclusion_2 --> Future Work_suggested_research_question_1
+    Conclusions_conclusion_2 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_2 --> Research Questions_research_question_3
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_2 --> Analyses_analysis_2
+    Experiments_experiment_3 --> Analyses_analysis_3
+    Experiments_experiment_4 --> Analyses_analysis_4
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_1 --> Experiments_experiment_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_3
+    Hypotheses_hypothesis_2 --> Experiments_experiment_4
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_3 --> Conclusions_conclusion_1
+    Interpretations_interpretation_4 --> Conclusions_conclusion_2
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Experiments_experiment_2
+    Research Questions_research_question_2 --> Experiments_experiment_3
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_3 --> Experiments_experiment_4
+    Research Questions_research_question_3 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_2 default
+    class Research Questions_research_question_3 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Experiments_experiment_2 default
+    class Experiments_experiment_3 default
+    class Experiments_experiment_4 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Analyses_analysis_3 default
+    class Analyses_analysis_4 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Interpretations_interpretation_3 default
+    class Interpretations_interpretation_4 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
+    class Future Work_suggested_research_question_1 future_work
+    class Future Work_suggested_research_question_2 future_work
+    class Future Work_suggested_research_question_3 future_work
+    class Future Work_suggested_research_question_4 future_work
+    class Future Work_suggested_hypothesis_1 future_work

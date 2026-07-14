@@ -1,0 +1,80 @@
+graph LR;
+    %% Styles
+    classDef default fill:#F5F5F5,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef hypothesis fill:#F8CECC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef future_work fill:#DAE8FC,stroke:#333,stroke-width:1px,rx:5,ry:5;
+
+    %% Nodes
+    Analyses_analysis_1["'<b><font size="5">analysis_1</font></b>'<br>Evaluating the classification performance ... models compared to the No_MIP baseline."]
+    Analyses_analysis_2["'<b><font size="5">analysis_2</font></b>'<br>Assessing the operational impact of ... to exact and relaxed MIP settings."]
+    Conclusions_conclusion_1["'<b><font size="5">conclusion_1</font></b>'<br>The authors conclude that all tested ... close to those of an exact MIP solution."]
+    Conclusions_conclusion_2["'<b><font size="5">conclusion_2</font></b>'<br>The authors conclude that conventional ... within the full optimization context."]
+    Experiments_experiment_1["'<b><font size="5">experiment_1</font></b>'<br>Training and evaluating various NN ... objective value and computational time."]
+    Hypotheses_hypothesis_1["'<b><font size="5">hypothesis_1</font></b>'<br>we expect our models to perform at least as well as the baseline No_MIP."]
+    Hypotheses_hypothesis_2["'<b><font size="5">hypothesis_2</font></b>'<br>The authors hypothesise that integrating ... obtained with an exact MIP solution."]
+    Interpretations_interpretation_1["'<b><font size="5">interpretation_1</font></b>'<br>All NNs achieve strong performance, with ... inherent to hydro scheduling."]
+    Interpretations_interpretation_2["'<b><font size="5">interpretation_2</font></b>'<br>CDIL-CNN, similar to other NN models, ... the largest objective-value improvements."]
+    Research Questions_research_question_1["'<b><font size="5">research_question_1</font></b>'<br>Which neural network architectures are ... decisions in short-term hydro scheduling?"]
+    Research Questions_research_question_2["'<b><font size="5">research_question_2</font></b>'<br>Can machine learning models capture the ... in realistic hydro-dominated systems?"]
+
+    subgraph Research Questions
+        Research Questions_research_question_1
+        Research Questions_research_question_2
+    end
+
+    subgraph Hypotheses
+        Hypotheses_hypothesis_1
+        Hypotheses_hypothesis_2
+    end
+
+    subgraph Experiments
+        Experiments_experiment_1
+    end
+
+    subgraph Analyses
+        Analyses_analysis_1
+        Analyses_analysis_2
+    end
+
+    subgraph Interpretations
+        Interpretations_interpretation_1
+        Interpretations_interpretation_2
+    end
+
+    subgraph Conclusions
+        Conclusions_conclusion_1
+        Conclusions_conclusion_2
+    end
+
+    %% Edges
+    Analyses_analysis_1 --> Interpretations_interpretation_1
+    Analyses_analysis_2 --> Interpretations_interpretation_2
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_1
+    Conclusions_conclusion_1 --> Hypotheses_hypothesis_2
+    Conclusions_conclusion_1 --> Research Questions_research_question_1
+    Conclusions_conclusion_1 --> Research Questions_research_question_2
+    Experiments_experiment_1 --> Analyses_analysis_1
+    Experiments_experiment_1 --> Analyses_analysis_2
+    Hypotheses_hypothesis_1 --> Experiments_experiment_1
+    Hypotheses_hypothesis_2 --> Experiments_experiment_1
+    Interpretations_interpretation_1 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_1
+    Interpretations_interpretation_2 --> Conclusions_conclusion_2
+    Research Questions_research_question_1 --> Experiments_experiment_1
+    Research Questions_research_question_1 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Experiments_experiment_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_1
+    Research Questions_research_question_2 --> Hypotheses_hypothesis_2
+
+    %% Styling
+    class Research Questions_research_question_1 default
+    class Research Questions_research_question_2 default
+    class Hypotheses_hypothesis_1 hypothesis
+    class Hypotheses_hypothesis_2 hypothesis
+    class Experiments_experiment_1 default
+    class Analyses_analysis_1 default
+    class Analyses_analysis_2 default
+    class Interpretations_interpretation_1 default
+    class Interpretations_interpretation_2 default
+    class Conclusions_conclusion_1 default
+    class Conclusions_conclusion_2 default
