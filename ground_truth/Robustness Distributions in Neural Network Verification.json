@@ -37,7 +37,7 @@
       "reason": "Explicitly stated in Section 5 and Section 6: 'we investigated the effect of adversarial training on the robustness distributions of fully-connected neural networks' and 'we investigated the effect of adversarial training on the robustness distributions of convolutional neural networks.'"
     },
     "research_question_6": {
-      "explicit": true,
+      "explicit": false,
       "value": "What value should k have for k-binary search to find the empirical lower bound of the critical epsilon whilst minimising the computational cost?",
       "reason": "Investigated in the experiments by varying the k values."
     }
