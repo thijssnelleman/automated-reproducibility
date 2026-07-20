@@ -1,6 +1,6 @@
 # Automating Reproducibility
 
-This repository accompanies our paper "Automated Reproducibility Has a Problem Statement Problem". We have the following directory structure;
+This repository accompanies our paper "A Scientific Framework for Automating the Reproduction of Empirical AI Research". We have the following directory structure;
 
 ```bash
 - llm_output -> The raw LLM output files of the dataset
@@ -31,6 +31,10 @@ Furthermore:
 Run `python review_compiler.py path/to/the/output.json` and find the result in `reviews/your_paper_name.md`
 
 ## How to Cite
+
+TBA
+
+Former version:
 
 @article{snelleman2026automatedreproducibility,
   title={Automated Reproducibility Has a Problem Statement Problem},
